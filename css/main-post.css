@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'Text';
+    src: url('../fonts/text.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Text2';
+    src: url('../fonts/text2.otf') format('opentype');
+}
+
+@media only screen and (max-width: 767px) {
+    #post{
+        width: 100%;
+    }
+
+    #post-description{
+        font-size: 10px;
+    }
+    #profile-nick{
+        font-size: 11px;
+    }
+    #comment-like{
+        font-size: 10px;
+    }
+    #picture{
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+    }
+
+    #comment-like img{
+        vertical-align: top;
+        width: 18px;
+        height: 18px;
+    }
+    #post-more img {
+        height: 13px;
+        width: 13px;
+    }
+    .map{
+        width: 100%;
+        height: 300px;
+    }
+    #post-footer{
+        font-size: 8px;
+    }
+    #time{
+        font-size: 7px;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    #post{
+        width: 60%;
+    }
+    #post-description{
+        font-size: 17px;
+    }
+    #profile-nick{
+        font-size: 17px;
+    }
+    #like-comment{
+        font-size: 17px;
+    }
+    #picture{
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+    }
+
+    #comment-like img{
+        vertical-align: top;
+        width: 24px;
+        height: 24px;
+    }
+    #post-more img {
+        height: 20px;
+        width: 20px;
+    }
+    .map{
+        width: 100%;
+        height: 500px;
+    }
+    #post-footer{
+        font-size: 17px;
+    }
+    #time{
+        font-size: 10px;
+    }
+}
+
+html{
+    background: #dddddd;
+}
+
+table{
+    background: white;
+}
+
+#post{
+    margin: auto;
+    margin-bottom: 3%;
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+    border-color: rgba(189,189,189,1.00);
+}
+
+#profile-picture{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+#profile-nick{
+    text-align: left;
+    width:100%;
+    color: black;
+    font-family: Text;
+}
+
+#time{
+    font-family: Text2;
+    color: #a0b3b0;
+    text-align: left;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+#post-description{
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 5px;
+    text-align: left;
+    font-family: Text2;
+    vertical-align: bottom;
+}
+
+#like-image{
+    width: 26px;
+    text-align: right;
+    cursor: pointer;
+}
+
+#comment-image{
+    width: 26px;
+    text-align: right;
+    cursor: pointer;
+}
+
+#like-number{
+    min-width: 15px;
+    text-align: center;
+    font-family: Text;
+}
+
+#comment-number{
+    min-width: 20px;
+    text-align: center;
+    font-family: Text;
+}
+
+#post-footer{
+    font-family: Text2;
+    width: 100%;
+    font-size: 12px;
+}
+
+#footer-distance{
+    width: 33%;
+    float: left;
+    border-bottom: #66131c;
+    background: blue;
+}
+
+#footer-time{
+    width: 33%;
+    float: left;
+    background: red;
+}
+
+#footer-activity{
+    margin-left: 0.5%;
+    width: 33%;
+    float: left;
+    background: purple;
+}
