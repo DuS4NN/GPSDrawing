@@ -4,7 +4,7 @@ function like(id) {
     if(x.src.includes("unlike")){
         x.src = x.src.replace("unlike","like");
         var num = parseInt(y.innerText)+1
-        y.innerHTML = "&nbsp "+num;
+        y.innerHTML = num;
 
         $(document).ready(function () {
             $(".like").load(localStorage.getItem("web")+"/php/like.php", {id: id, action: 0});
@@ -13,7 +13,7 @@ function like(id) {
     }else {
         x.src = x.src.replace("like", "unlike");
         var num = parseInt(y.innerText)-1
-        y.innerHTML = "&nbsp "+num;
+        y.innerHTML = num;
 
         $(document).ready(function () {
             $(".like").load(localStorage.getItem("web")+"/php/like.php", {id: id, action: 1});

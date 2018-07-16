@@ -2,6 +2,10 @@
     session_start();
     require '../config/db.php';
 
+    if(!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['action']) || !isset($_SESSION['id']) || empty($_SESSION['id'])){
+        return;
+    }
+
     $action = $_POST['action'];
     $id = $_POST['id'];
 

@@ -2,6 +2,11 @@
     session_start();
     require '../config/db.php';
 
+
+    if(!isset($_POST['password']) || empty($_POST['password']) || $_POST['email'] || empty($_POST['email']) || $_POST['nickname'] || empty($_POST['nickname']) || $_POST['firstname'] || empty($_POST['firstname']) || !isset($_POST['lastname']) || empty($_POST['lastname'])){
+        return;
+    }
+
     $first_name = $_POST['firstname'];
     $last_name =  $_POST['lastname'];
     $nick_name = $_POST['nickname'];

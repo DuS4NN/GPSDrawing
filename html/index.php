@@ -83,7 +83,7 @@
                             <label>
                                 <?php echo $lang['last_name'] ?><span class="req">*</span>
                             </label>
-                            <input type="text"required autocomplete="off" name='lastname' />
+                            <input type="text" required autocomplete="off" name='lastname' />
                         </div>
                     </div>
 
@@ -91,14 +91,14 @@
                         <label>
                             <?php echo $lang['nick_name'] ?><span class="req">*</span>
                         </label>
-                        <input type="text"required maxlength="20" autocomplete="off" name='nickname'/>
+                        <input type="text" required maxlength="20" autocomplete="off" name='nickname'/>
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             <?php echo $lang['email_address'] ?><span class="req">*</span>
                         </label>
-                        <input type="email"required autocomplete="off" name='email' />
+                        <input type="email" required autocomplete="off" name='email' />
                     </div>
 
                     <div class="field-wrap">

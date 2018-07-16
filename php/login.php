@@ -2,6 +2,10 @@
     session_start();
     require '../config/db.php';
 
+    if(!isset($_POST['email']) || empty($_POST['email']) || !isset($_POST['password']) || empty($_POST['password'])){
+        return;
+    }
+
     $password = sha1($_POST['password']);
     $email = $_POST['email'];
 

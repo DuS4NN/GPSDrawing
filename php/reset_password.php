@@ -2,6 +2,10 @@
     session_start();
     require '../config/db.php';
 
+    if(!isset($_POST['newpassword']) || empty($_POST['newpassword']) || !isset($_POST['confirmpassword']) || empty($_POST['confirmpassword'])){
+        return;
+    }
+
     if($_SERVER['REQUEST_METHOD']=='POST'){
         if($_POST['newpassword']==$_POST['confirmpassword']){
             $password = sha1($_POST['newpassword']);

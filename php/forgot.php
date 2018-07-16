@@ -2,6 +2,10 @@
     session_start();
     require '../config/db.php';
 
+    if(!isset($_POST['email']) || empty($_POST['email'])){
+        return;
+    }
+
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $email = $_POST['email'];
 

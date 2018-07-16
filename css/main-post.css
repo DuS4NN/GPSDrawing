@@ -41,16 +41,63 @@
         height: 300px;
     }
     #post-footer{
-        font-size: 8px;
+        font-size: 10px;
     }
     #time{
         font-size: 7px;
+    }
+    .comment{
+        margin-top: 1px;
+    }
+    #comment-input input{
+        font-size: 9px;
+        height: 25px;
+    }
+    #comment-input{
+        margin-left: 40px;
+    }
+    #like-number{
+        font-size: 13px;
+    }
+    #comment-number{
+        font-size: 13px;
+    }
+    #profile-picture-comment img{
+        height: 25px;
+        width: 25px;
+        border-radius: 50px;
+    }
+    #profile-picture-comment{
+        min-width: 25px;
+    }
+    #comment-comment{
+        font-size: 10px;
+    }
+    #comment-time{
+        font-size: 8px;
+    }
+    .comment-more img{
+        height: 8px;
+        width: 8px;
+    }
+    .load-more{
+        font-size: 9px;
+    }
+    #post-more img {
+        height: 12px;
+        width: 12px;
+    }
+    #post-coop{
+        font-size: 9px;
+    }
+    #post-coop a{
+        font-size: 10px;
     }
 }
 
 @media only screen and (min-width: 767px) {
     #post{
-        width: 60%;
+        width: 50%;
     }
     #post-description{
         font-size: 17px;
@@ -66,7 +113,9 @@
         height: 45px;
         width: 45px;
     }
-
+    .comment{
+        margin-top: 5px;
+    }
     #comment-like img{
         vertical-align: top;
         width: 24px;
@@ -86,14 +135,47 @@
     #time{
         font-size: 10px;
     }
+    #comment-input input{
+        font-size: 14px;
+        height: 33px;
+    }
+    #comment-input{
+        margin-left: 55px;
+    }
+    #profile-picture-comment img{
+        height: 33px;
+        width: 33px;
+        border-radius: 50px;
+    }
+    #profile-picture-comment{
+        max-width: 35px;
+    }
+    #comment-comment{
+        font-size: 13px;
+    }
+    #comment-time{
+        font-size: 10px;
+    }
+    .comment-more img{
+        height: 10px;
+        width: 10px;
+    }
+    .load-more{
+        font-size: 12px;
+    }
+    #post-more img {
+        height: 15px;
+        width: 15px;
+    }
 }
 
 html{
-    background: #dddddd;
+    background: #eeeeee;
 }
 
 table{
     background: white;
+    border: none;
 }
 
 #post{
@@ -106,8 +188,8 @@ table{
 }
 
 #profile-picture{
-    padding-top: 5px;
-    padding-left: 5px;
+    padding-top: 15%;
+    padding-left: 15%;
 }
 
 #profile-nick{
@@ -151,12 +233,14 @@ a{
 
 #like-number{
     min-width: 15px;
+    margin-left: 5px;
     text-align: center;
     font-family: Text;
 }
 
 #comment-number{
-    min-width: 20px;
+    min-width: 15px;
+    margin-left: 5px;
     text-align: center;
     font-family: Text;
 }
@@ -164,25 +248,146 @@ a{
 #post-footer{
     font-family: Text2;
     width: 100%;
-    font-size: 12px;
+    text-align: center;
+    color: #a0b3b0;
 }
 
 #footer-distance{
     width: 33%;
     float: left;
-    border-bottom: #66131c;
-    background: blue;
+    border-right: solid 1px rgba(160,179,176,0.3);
+    border-left: solid 1px rgba(160,179,176,0.3);
 }
 
 #footer-time{
     width: 33%;
     float: left;
-    background: red;
 }
 
 #footer-activity{
     margin-left: 0.5%;
     width: 33%;
     float: left;
-    background: purple;
 }
+
+hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#comment-form{
+    margin-top: 10px;
+}
+
+#comment-input{
+    margin-right: 15px;
+}
+
+#comment-input input{
+    font-family: Text2;
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 15px;
+}
+
+#comment-input input::placeholder{
+    color: rgba(100,100,100,1);
+}
+#comment-input input:-ms-input-placeholder{
+    color: rgba(100,100,100,1);
+}
+#comment-input input:-ms-input-placeholder{
+    color: rgba(100,100,100,1);
+}
+
+#comment-input input:focus::placeholder{
+    color: rgba(100,100,100,0.6);
+}
+#comment-input input:focus :-ms-input-placeholder{
+    border: 1px solid #bbbbbb;
+}
+#comment-input input:focus :-ms-input-placeholder{
+    border: 1px solid #bbbbbb;
+}
+
+#profile-picture-comment{
+    margin-left: 10px;
+    float: left;
+}
+
+
+#comment-comment a{
+    font-family: Text;
+}
+
+.comment:hover img{
+    visibility: visible;
+}
+
+.comment img{
+    visibility: hidden;
+}
+
+.comment{
+    float: left;
+    width: 95%;
+}
+
+#comment-comment{
+    width: 95%;
+    float: left;
+    font-family: Text2;
+}
+
+.comment-more{
+    height: 20px;
+    text-align: right;
+    float: right;
+    width: 5%;
+}
+
+.comment-more img {
+    cursor: pointer;
+}
+
+#comment-time{
+    float: left;
+    font-family: Text2;
+    color: #bbbbbb;
+}
+
+.load-more{
+    float: left;
+    cursor: pointer;
+    padding-left: 15px;
+    font-family: Text2;
+    color: #bbbbbb;
+}
+
+.load-more:hover{
+    color: #aaaaaa;
+}
+
+#post-more{
+    text-align: right;
+    padding-right: 10px;
+}
+
+#post-coop{
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    font-family: Text2;
+    color: #555555;
+}
+
+#post-coop a{
+    font-family: Text;
+}
+
+
+
