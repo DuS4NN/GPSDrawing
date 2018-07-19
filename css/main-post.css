@@ -6,6 +6,10 @@
     font-family: 'Text2';
     src: url('../fonts/text2.otf') format('opentype');
 }
+@font-face {
+    font-family: 'Text6';
+    src: url('../fonts/text3.otf') format('opentype');
+}
 
 @media only screen and (max-width: 767px) {
     #post{
@@ -41,7 +45,7 @@
         height: 300px;
     }
     #post-footer{
-        font-size: 10px;
+        font-size: 9px;
     }
     #time{
         font-size: 7px;
@@ -93,6 +97,14 @@
     #post-coop a{
         font-size: 10px;
     }
+    .cancel-edit{
+        font-size: 8px;
+        margin-right: 11px;
+    }
+    #post-footer img{
+        width: 12px;
+        height: 12px;
+    }
 }
 
 @media only screen and (min-width: 767px) {
@@ -130,7 +142,7 @@
         height: 500px;
     }
     #post-footer{
-        font-size: 17px;
+        font-size: 16px;
     }
     #time{
         font-size: 10px;
@@ -166,6 +178,14 @@
     #post-more img {
         height: 15px;
         width: 15px;
+    }
+    .cancel-edit{
+        font-size: 13px;
+        margin-right: 11px;
+    }
+    #post-footer img{
+        width: 18px;
+        height: 18px;
     }
 }
 
@@ -246,28 +266,39 @@ a{
 }
 
 #post-footer{
-    font-family: Text2;
-    width: 100%;
+    font-family: Text;
+    font-family: Text;
+    width: 90%;
+    margin: auto;
+    margin-top: 5px;
     text-align: center;
-    color: #a0b3b0;
+    color: black;
 }
 
 #footer-distance{
+    padding-top: 5px;
     width: 33%;
+    border-right: solid 1px #ddd;
+    border-left: solid 1px #ddd;
     float: left;
-    border-right: solid 1px rgba(160,179,176,0.3);
-    border-left: solid 1px rgba(160,179,176,0.3);
 }
 
 #footer-time{
+    padding-top: 5px;
     width: 33%;
     float: left;
 }
 
 #footer-activity{
-    margin-left: 0.5%;
+    padding-top: 5px;
     width: 33%;
     float: left;
+}
+
+
+#post-footer-desc{
+   color: #aaaaaa;
+    font-family: Text2;
 }
 
 hr{
@@ -317,7 +348,6 @@ hr{
     margin-left: 10px;
     float: left;
 }
-
 
 #comment-comment a{
     font-family: Text;
@@ -373,13 +403,14 @@ hr{
 
 #post-more{
     text-align: right;
-    padding-right: 10px;
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 #post-coop{
     text-align: left;
     margin-top: 5px;
-    margin-bottom: 5px;
     padding-left: 10px;
     font-family: Text2;
     color: #555555;
@@ -389,5 +420,17 @@ hr{
     font-family: Text;
 }
 
+.cancel-edit{
+    font-weight: bold;
+    cursor: pointer;
+    text-align: right;
+    color: #aaaaaa;
+    font-family: Text2;
+    float: right;
+}
+
+.cancel-edit:hover{
+    color: #777;
+}
 
 

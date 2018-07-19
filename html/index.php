@@ -4,7 +4,7 @@
     require '../config/lang.php';
 ?>
 
-<!DOCTYPE html>
+<HTML>
 <html xmlns="http://www.w3.org/1999/html">
 
     <head>

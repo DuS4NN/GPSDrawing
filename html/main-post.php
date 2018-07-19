@@ -1,5 +1,4 @@
-
-<div id="post" >
+<div id="post" class="post<?php echo $row['id']; ?>">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td width="60px">
@@ -94,23 +93,31 @@
                 <?php
                     if(isset($result2)){
                         echo "<div id='post-coop'>";
+
                         echo $lang['collaboration'];
+                        $row_cnt = sizeof($result2);
+                        $loop_cnt = 0;
                         while($row2 = $result2->fetch_assoc()){
                             echo
                                 " <a href='".$web."/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
+                            if($loop_cnt<$row_cnt){
+                                echo ",";
+                            }
+                                $loop_cnt++;
                         }
                         echo "</div>";
                     }
                 ?>
             </td>
         </tr>
-
         <tr>
             <td colspan="3">
                 <div id="post-footer">
+                    <div id="post-footer-side">
+                    </div>
                     <div id="footer-activity">
-                        <img src="<?php echo $web ?>/img/activity.png" title="Calendar" width="20" height="20">
-                        <?php echo $lang['activity'] ?>:
+                        <img src="<?php echo $web ?>/img/activity.png" title="<?php echo $lang['activity']; ?>">
+                        <span id="post-footer-desc"><?php echo $lang['activity'] ?>:</span><br>
                         <?php switch ($row['activity']){
                             case 0:
                                 echo $lang['walking'];
@@ -126,12 +133,14 @@
                         }  ?>
                     </div>
                     <div id="footer-distance">
-                        <img src="https://png.icons8.com/map-pinpoint/ultraviolet/80" title="Map Pinpoint" width="20" height="20">
-                        <?php echo $lang['distance'] ?>: <?php echo $row['distance']; ?>
+                        <img src="<?php echo $web ?>/img/distance.png" title="<?php echo $lang['distance']; ?>">
+                        <span id="post-footer-desc"><?php echo $lang['distance'] ?>:<br></span> <?php echo $row['distance']; ?> km
                     </div>
                     <div id="footer-time">
-                        <img src="https://png.icons8.com/time/ultraviolet/80" title="Time" width="20" height="20">
-                        <?php echo $lang['time'] ?>: <?php echo $row['time']; ?>
+                        <img src="<?php echo $web ?>/img/stopwatch.png" title="<?php echo $lang['time']; ?>">
+                        <span id="post-footer-desc"><?php echo $lang['time'] ?>:<br></span> <?php echo $row['time']; ?> min
+                    </div>
+                    <div id="post-footer-side">
                     </div>
                 </div>
             </td>
@@ -144,12 +153,13 @@
                         <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
                     </div>
                     <div id="comment-input">
-                        <input minlength="2" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
+                        <input edit="0" minlength="1" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
+                        <div style="visibility: hidden" onclick="cancel_edit(<?php echo $row['id']; ?>)" class="cancel-edit" id="cancel-edit<?php echo $row['id']; ?>"><i class="fas fa-times"></i>&nbsp;<?php echo $lang['cancel']; ?></div>
                     </div>
                     <br>
                 </div>
 
-                <div class="load-more" data-id="more<?php echo $row['id'] ?>" id="loadmore-5-<?php echo $row['id']; ?>">
+                <div class="load-more" load="5" id="loadmore-<?php echo $row['id']; ?>">
                     Load more
                 </div>
 
@@ -158,11 +168,72 @@
         </tr>
         <tr>
             <td colspan="3">
-                <div id="post-more">
+                <div class="post-more-<?php echo $row['id']; ?>"  id="post-more">
                     <img src="<?php echo $web; ?>/img/more.png" />
                 </div>
             </td>
         </tr>
     </table>
 </div>
+
+
+<script>
+
+    $(function() {
+        $.contextMenu({
+            trigger: 'left',
+            selector: '.post-more-<?php echo $row['id']; ?>',
+            callback: function(key, options) {
+                if(key==""){
+
+                }else if(key==""){
+
+                }
+            },
+            items: {
+                <?php
+                    if($_SESSION['id']==$row['userid']){
+                            if($row['bookmark']==1){
+                            echo '
+                                "remove_from_bookmarks": {name: "'.$lang['remove_from_bookmarks'].'", icon: "fas fa-bookmark"},
+                                "dis1": {name: "'.$lang['rfb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            ';
+                            }else{
+                            echo '
+                                "add_to_bookmarks": {name: "'.$lang['add_to_bookmarks'].'", icon: "far fa-bookmark"},
+                                "dis1": {name: "'.$lang['atb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            ';
+                            }
+                        echo '                     
+                            "edit_description": {name: "'.$lang['edit_description'].'", icon: "far fa-edit"},
+                            "dis2": {name: "'.$lang['edit_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            "delete_post": {name: "'.$lang['delete_post'].'", icon: "far fa-trash-alt"},
+                            "dis3": {name: "'.$lang['delete_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}}
+                        ';
+                    }else{
+                        if($row['bookmark']==1){
+                            echo '
+                                "remove_from_bookmarks": {name: "'.$lang['remove_from_bookmarks'].'", icon: "fas fa-bookmark"},
+                                "dis1": {name: "'.$lang['rfb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            ';
+                        }else{
+                            echo '
+                                "add_to_bookmarks": {name: "'.$lang['add_to_bookmarks'].'", icon: "far fa-bookmark"},
+                                "dis1": {name: "'.$lang['atb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            ';
+                        }
+                        echo '                       
+                            "hide_post": {name: "'.$lang['hide_post'].'", icon: "fas fa-ban"},
+                            "dis2": {name: "'.$lang['hide_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
+                            "report_post": {name: "'.$lang['report_post'].'", icon: "far fa-flag"},
+                            "dis3": {name: "'.$lang['report_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}}
+                            
+                        ';
+                    }
+                ?>
+            }
+        });
+    });
+
+</script>
 
