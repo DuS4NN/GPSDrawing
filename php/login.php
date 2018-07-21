@@ -9,7 +9,11 @@
     $password = sha1($_POST['password']);
     $email = $_POST['email'];
 
-    $stmt = $db->prepare("SELECT COUNT(*) AS count, verify, id, nick_name FROM users WHERE email = ? AND password = ?");
+    $stmt = $db->prepare("SELECT COUNT(*) AS count, verify, users.id, nick_name, users_options.color, users_options.show_icons, 
+                                users_options.color_of_collab, users_options.night_mode,users_options.map_theme, users_options.color_icon 
+                                FROM users 
+                                INNER JOIN users_options ON users_options.id_user = users.id 
+                                WHERE users.email = ? AND password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
 
@@ -20,7 +24,13 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['nickname'] = $row['nickname'];
                 $_SESSION['id'] = $row['id'];
-                echo "<script>localStorage.setItem('id','".$row['id']."'); </script>";
+                $_SESSION['color'] = $row['color'];
+                $_SESSION['show_icons'] = $row['show_icons'];
+                $_SESSION['color_of_collab'] = $row['color_of_collab'];
+                $_SESSION['night_mode'] = $row['night_mode'];
+                $_SESSION['map_theme'] = $row['map_theme'];
+                $_SESSION['color_icon'] = $row['color_icon'];
+                echo "<script> localStorage.setItem('id','".$row['id']."'); </script>";
                 header("location: ../home");
             }else{
                 //error unverify email

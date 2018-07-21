@@ -1,7 +1,7 @@
 <?php
 
     $web = "http://localhost/GPSDrawing";
-    echo "<script>localStorage.setItem('web','http://localhost/GPSDrawing'); </script>";
+    echo "<script> localStorage.setItem('web','http://localhost/GPSDrawing'); </script>";
 
 
     if(!isset($_SESSION['lang'])) {

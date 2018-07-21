@@ -1,20 +1,26 @@
-function initMap(id,point) {
-
+function initMap(id,point,color,collab,color_icon,icons, theme) {
     setTimeout(function () {
         if (id == null) {
             return;
         }
         try {
             var service = new google.maps.DirectionsService;
-            var map = new google.maps.Map(document.getElementById('map' + id),{
-                zoom: 0,
-                center: {
-                    lat: 28.6247,
-                    lng: 77.3731
-                },
-                disableDefaultUI: true,
+
+            var styledMapType = get_theme(theme);
+
+
+            var map = new google.maps.Map(document.getElementById('map'+id), {
+                center: {lat: 55.647, lng: 37.581},
+                zoom: 11,
+                mapTypeControlOptions: {
+                    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                        'styled_map']
+                }
             });
-            // list of points
+
+            map.mapTypes.set('styled_map', styledMapType);
+            map.setMapTypeId('styled_map');
+
 
             if (point.includes("*")) {
                 var array = point.split("*");
@@ -51,10 +57,19 @@ function initMap(id,point) {
                         count2++;
                     }
                 }
+                console.log(color_icon);
+                 var icon = 'https://png.icons8.com/ios-glyphs/30/009999/user-location.png';
 
-                var linecolors = ['red', 'blue', 'green', 'yellow'];
-                var direction = [];
+
+                if(collab==1){
+                    var linecolors = ['red', 'blue', 'green', 'yellow', 'black'];
+
+                }else if(collab==0){
+                    var linecolors = [color];
+                }
                 var colorIdx = 0;
+                var direction = [];
+
 
                 var lngs = stations.map(function(station) { return station.lng; });
                 var lats = stations.map(function(station) { return station.lat; });
@@ -66,8 +81,25 @@ function initMap(id,point) {
                     south: Math.max.apply(null, lats),
                 });
 
-
                 for (var i = 0; i < map_points.length; i++) {
+
+                    if(icons==1){
+                        var  marker = new google.maps.Marker({
+                            position: map_points[i][0],
+                            icon: icon,
+                            map: map
+                        });
+                        var content = users[i];
+
+                        var infowindow = new google.maps.InfoWindow();
+
+                        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+                            return function() {
+                                infowindow.setContent(content);
+                                infowindow.open(map,marker);
+                            };
+                        })(marker,content,infowindow));
+                    }
 
                     for (var j = 0, parts = [], max = 8 - 1; j < map_points[i].length; j = j + max) {
                         parts.push(map_points[i].slice(j, j + max + 1));
@@ -94,11 +126,12 @@ function initMap(id,point) {
                                     suppressMarkers: true,
                                     preserveViewport: true,
                                     polylineOptions: {
-                                        strokeColor: linecolors[colorIdx++ % 3]
+                                        strokeColor: linecolors[colorIdx % color.length],
+                                        strokeWeight: 3
                                     },
                                     map: map
                                 }));
-
+                                if(collab==1)colorIdx++;
                                 if (status == google.maps.DirectionsStatus.OK) {
                                     direction[direction.length - 1].setDirections(directions);
                                 }
@@ -106,15 +139,9 @@ function initMap(id,point) {
                         );
                     }
                 }
-
                 service.route(service_options);
 
-
             }else{
-                var service = new google.maps.DirectionsService;
-                var map = new google.maps.Map(document.getElementById('map'+id));
-                // list of points
-
                 var points = point.split(";");
 
                 var stations = new Array();
@@ -147,7 +174,14 @@ function initMap(id,point) {
                     }
                     var renderer = new google.maps.DirectionsRenderer;
                     renderer.setMap(map);
-                    renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+                    renderer.setOptions({
+                        suppressMarkers: true,
+                        preserveViewport: true,
+                        polylineOptions: {
+                            strokeColor: color
+                        }
+
+                    });
                     renderer.setDirections(response);
                 };
 
@@ -173,6 +207,5 @@ function initMap(id,point) {
             initMap(id, point);
         }
     }, 250);
-
-
 }
+

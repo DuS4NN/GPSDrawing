@@ -43,17 +43,17 @@
                 <form action="<?php echo $web ?>/php/login.php" method="post" autocomplete="off">
 
                     <div class="field-wrap">
-                        <label>
+                        <label  id="label-login-nick">
                             <?php echo $lang['email_address'] ?><span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" name="email"/>
+                        <input type="email" required autocomplete="off" id="form-login-nick" name="email"/>
                     </div>
 
                     <div class="field-wrap">
-                        <label>
+                        <label id="label-login-password">
                             <?php echo $lang['password'] ?><span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" name="password"/>
+                        <input type="password" required autocomplete="off" id="form-login-password" name="password"/>
                     </div>
 
                     <p class="forgot"><a href="forgot"><?php echo $lang['forgot_password'] ?></a></p>
@@ -95,17 +95,17 @@
                     </div>
 
                     <div class="field-wrap">
-                        <label>
+                        <label id="label-register-nick">
                             <?php echo $lang['email_address'] ?><span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" name='email' />
+                        <input type="email" required autocomplete="off" id="form-register-nick" name='email' />
                     </div>
 
                     <div class="field-wrap">
-                        <label>
+                        <label id="label-register-password">
                             <?php echo $lang['password'] ?><span class="req">*</span>
                         </label>
-                        <input id="inputPassword" minlength=5 type="password"  required autocomplete="off" name='password'/>
+                        <input id="inputPassword" minlength=5 type="password" required autocomplete="off" name='password'/>
 
                         <div style="text-align: center">
                             <div id="strong" style="display:inline-block;">

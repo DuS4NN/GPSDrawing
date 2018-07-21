@@ -80,11 +80,10 @@
                 </div>
             </td>
         </tr>
-
         <tr>
             <td colspan="3">
                 <div id="map<?php echo $row['id'] ?>" class="map">
-                    <img style="width: 1px; height: 1px" onload="initMap(<?php echo $row['id'] ?> , '<?php echo $row['points'] ?>')" src="<?php echo $web ?>/img/load.png"/>
+                    <img style="width: 1px; height: 1px" onload="initMap(<?php echo $row['id']; ?> , '<?php echo $row['points']; ?>','<?php echo $_SESSION['color']; ?>', '<?php echo $_SESSION['color_of_collab']; ?>','<?php echo $_SESSION['color_icon'];?>','<?php echo $_SESSION['show_icons']; ?>',<?php echo $_SESSION['map_theme'];?>)" src="<?php echo $web; ?>/img/load.png"/>
                 </div>
             </td>
         </tr>
@@ -98,6 +97,9 @@
                         $row_cnt = sizeof($result2);
                         $loop_cnt = 0;
                         while($row2 = $result2->fetch_assoc()){
+                            if($row2['nick_name']==$row['nick_name']){
+                                continue;
+                            }
                             echo
                                 " <a href='".$web."/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
                             if($loop_cnt<$row_cnt){
@@ -148,6 +150,7 @@
         <tr>
         <td colspan="3">
             <div id="comments-body<?php echo $row['id']; ?>" style="display: none ">
+                <br>
                 <div id="comment-form">
                     <div id="profile-picture-comment">
                         <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
