@@ -38,7 +38,7 @@ CASE WHEN EXISTS (SELECT * FROM comments WHERE comments.id_user = ? AND comments
     while ($row = $result->fetch_assoc()){
         if($row['count']<=$num){
             echo '<script>
-                    var x = document.getElementById("loadmore-'.$num.'-'.$id.'");
+                    var x = document.getElementById("loadmore-'.$id.'");
                    
                     x.style.display = "none";
                   </script>

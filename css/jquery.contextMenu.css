@@ -16,7 +16,7 @@
     font-size: 14px;
   }
   .context-menu-item.context-menu-disabled{
-    font-size: 10px;
+    font-size: 9px;
     padding-left: 3em;
   }
 }
@@ -72,51 +72,16 @@
 }
 
 
-
-
-.context-menu-icon-add:before {
-  content: "\EA01";
-}
-
-.context-menu-icon-copy:before {
-  content: "\EA02";
-}
-
-.context-menu-icon-cut:before {
-  content: "\EA03";
-}
-
-.context-menu-icon-delete:before {
-  content: "\EA04";
-}
-
-.context-menu-icon-edit:before {
-  content: "\f2bb";
-}
-
-.context-menu-icon-loading:before {
-  content: "\EA06";
-}
-
-.context-menu-icon-paste:before {
-  content: "\EA07";
-}
-
-.context-menu-icon-quit:before {
-  content: "\EA08";
-}
-
 .context-menu-icon::before {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 2em; 
-  font-family: "context-menu-icons";
+  width: 2em;
+  font-family: "Text";
   font-size: 1em;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  color: #000;
   text-align: center;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -150,13 +115,12 @@
   position: absolute;
   top: 50%;
   left: 0;
-  width: 2em; 
+  width: 2em;
   font-family: Text;
   font-size: 1em;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  color: #000000;
   text-align: center;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -182,10 +146,10 @@
   position: absolute;
   top: .3em; 
   left: .5em;
-  color: #000;
+  color: #1ab188;
 }
 .context-menu-icon.context-menu-icon--fa5.context-menu-hover i, .context-menu-icon.context-menu-icon--fa5.context-menu-hover svg {
-  color: #000;
+  color: #1ab188;
 }
 .context-menu-icon.context-menu-icon--fa5.context-menu-disabled i, .context-menu-icon.context-menu-icon--fa5.context-menu-disabled svg {
   color: #bbb;
@@ -195,10 +159,11 @@
   position: absolute;
   display: inline-block;
   min-width: 13em;
-  max-width: 26em;
+  max-width: 17em;
   padding: .25em 0;
   margin: .3em;
-  font-family: Text;
+  font-family: Text2;
+  font-weight: bold;
   list-style-type: none;
   background: #fff;
   border: 1px solid #bbbbbb;
@@ -213,7 +178,7 @@
      -moz-box-sizing: content-box;
           box-sizing: content-box;
   padding: .2em 2em;
-  color: rgba(0,0,0,0.8);
+  color: #333;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

@@ -2,7 +2,7 @@
     echo require '../config/lang.php';
 ?>
 
-<!DOCTYPE html>
+<HTML>
 <html>
     <head>
         <meta charset="UTF-8">
