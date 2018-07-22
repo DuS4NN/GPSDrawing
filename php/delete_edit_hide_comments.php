@@ -17,6 +17,11 @@
         $stmt->execute();
 
     }else if($action==1){//Edit
+        if(isset($_POST['text']) && !empty($_POST['text'])){
+            $stmt = $db->prepare("UPDATE comments SET comment = ? WHERE id_user = ? AND id_post = ? AND id = ? ;");
+            $stmt->bind_param("siii", $_POST['text'], $_SESSION['id'], $post, $id);
+            $stmt->execute();
+        }
 
     }else if($action==2){//Hide
         $stmt = $db->prepare("INSERT INTO `blocked_comments` (`id`, `id_user`, `id_comment`) VALUES (NULL, ?, ?)");

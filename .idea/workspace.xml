@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/js/post-more.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/post-actions.php" afterDir="false" />
+    <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="Commit #5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main-post.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main-post.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/main-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/main-post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/load-map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/load-map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languages/en.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languages/sk.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/sk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/delete_edit_hide_comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/delete_edit_hide_comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/modal.css" afterDir="false" />
     </list>
-    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Tretí commit">
-      <change afterPath="$PROJECT_DIR$/css/modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts/text3.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/activity2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/distance.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/stopwatch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/modalEffects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/jquery.contextMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/jquery.contextMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/post.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/forgot.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/forgot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/reset.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/reset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/activity.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/activity.png" afterDir="false" />
+    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5">
       <change beforePath="$PROJECT_DIR$/php/delete_edit_hide_comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/delete_edit_hide_comments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/load_comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/load_comments.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +37,17 @@
       <file leaf-file-name="modal.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/modal.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="102" column="17" lean-forward="true" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+            <state relative-caret-position="493">
+              <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delete_edit_hide_comments.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/delete_edit_hide_comments.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -67,17 +55,17 @@
       <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
+            <state relative-caret-position="2091">
               <caret line="123" column="123" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="123" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="post-more.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="post-more.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/post-more.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="561">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="n#!!block;n#go_on_post#0" />
               </folding>
@@ -90,9 +78,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="34" column="90" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
-              <folding>
-                <element signature="e#76#83#1" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -191,7 +176,6 @@
         <option value="$PROJECT_DIR$/php/delete_edit_hide_comments.php" />
         <option value="$PROJECT_DIR$/html/main-post.php" />
         <option value="$PROJECT_DIR$/css/main-post.css" />
-        <option value="$PROJECT_DIR$/css/modal.css" />
         <option value="$PROJECT_DIR$/php/main.php" />
         <option value="$PROJECT_DIR$/languages/en.php" />
         <option value="$PROJECT_DIR$/languages/en.php" />
@@ -199,6 +183,7 @@
         <option value="$PROJECT_DIR$/js/modalEffects.js" />
         <option value="$PROJECT_DIR$/php/post-actions.php" />
         <option value="$PROJECT_DIR$/js/post-more.js" />
+        <option value="$PROJECT_DIR$/css/modal.css" />
       </list>
     </option>
   </component>
@@ -208,18 +193,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/php/delete_edit_hide_comments.php">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="6" changelist="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" />
-        <range start1="20" end1="20" start2="19" end2="24" changelist="c870d073-602c-4b01-850c-ae65034af234" />
-      </ranges>
-    </file>
-  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="680" />
     <option name="width" value="1247" />
     <option name="height" value="1047" />
@@ -230,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,7 +249,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,6 +310,7 @@
       <workItem from="1532089769739" duration="1302000" />
       <workItem from="1532159713062" duration="32978000" />
       <workItem from="1532245753214" duration="31055000" />
+      <workItem from="1532280313207" duration="925000" />
     </task>
     <task id="LOCAL-00001" summary="Druhy commit">
       <created>1531764866546</created>
@@ -362,22 +340,30 @@
       <option name="project" value="LOCAL" />
       <updated>1532198239475</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Commit #5">
+      <created>1532280370869</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532280370869</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340578000" />
+    <option name="totallyTimeSpent" value="341503000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.13752665" />
+      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.1391258" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.108932465" />
+      <window_info anchor="bottom" id="Version Control" order="10" visible="true" weight="0.22984749" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" sideWeight="0.1269461" side_tool="true" weight="0.08770257" />
       <window_info anchor="bottom" id="Terminal" order="9" />
@@ -396,19 +382,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.08770257" />
       <window_info id="Structure" order="1" sideWeight="0.1269461" side_tool="true" visible="true" weight="0.08770257" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="11" visible="true" weight="0.08140814" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893288" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="11" visible="true" weight="0.08140814" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="8" />
@@ -451,7 +437,8 @@
     <MESSAGE value="Druhy commit" />
     <MESSAGE value="Tretí commit" />
     <MESSAGE value="Štvrtý commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Štvrtý commit" />
+    <MESSAGE value="Commit #5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit #5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,13 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/delete_edit_hide_comments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="25" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/load-map.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -760,33 +740,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="90" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
-          <folding>
-            <element signature="e#76#83#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/modal.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="102" column="17" lean-forward="true" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
+        <state relative-caret-position="2091">
           <caret line="123" column="123" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="123" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/post-more.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="561">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="n#!!block;n#go_on_post#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/modal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="52" column="18" lean-forward="true" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/delete_edit_hide_comments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
         </state>
       </provider>
     </entry>
