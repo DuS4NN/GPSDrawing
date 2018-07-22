@@ -30,8 +30,8 @@
 
 </head>
 <body>
-
     <div id="body">
+        <br><br>
         <?php
 
     $stmt = $db->prepare("SELECT 
@@ -50,8 +50,9 @@
                                 LEFT JOIN comments ON comments.id_post = posts.id 
                                 INNER JOIN users ON users.id = posts.id_user 
                                 GROUP BY posts.id 
+                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
                                 ORDER BY posts.date DESC");
-        $stmt->bind_param("ss",$_SESSION['id'], $_SESSION['id']);
+        $stmt->bind_param("sss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -70,31 +71,72 @@
 
     </div>
     <div id="alerts">
-        <?php require '../php/alerts.php';
-        ?>
+        <?php require '../php/alerts.php'; ?>
+    </div>
+    <div id="alerts-2">
+
     </div>
 
-    <div class="md-modal md-effect-1" id="modal-1">
-        <div class="md-content">
-            <h3>Are you sure ?</h3>
-            <div>
-                <i class="fas fa-exclamation-circle"></i>
-
-                <p>Do you really want to delete this comment?
-                     This process cannot be undone.</p>
-
-                <div class="md-modal-buttons">
-                    <br><br>
-                    <button class="md-delete">Delete</button>
-                    <button class="md-close">Cancel</button>
-                </div>
-            </div>
+    <div class="md-modal md-effect-1" post-id="0" id="modal-1">
+        <div  id="more-post" class="md-content">
+            <button onclick="go_on_post('modal-1')"><?php echo $lang['go_to_post'];?></button>
+            <button onclick="add_to_project('modal-1')" ><?php echo $lang['add_to_projekt'];?></button>
+            <button onclick="report('modal-1')"><?php echo $lang['report_inappropriate'];?></button>
+            <button onclick="hide_post('modal-1')"><?php echo $lang['hide_post'];?></button>
+            <button onclick="add_to_bookmarks('modal-1')"><?php echo $lang['add_to_bookmarks'];?></button>
+            <button class="md-close"><?php echo $lang['cancel'];?></button>
         </div>
     </div>
 
-    <div class="md-overlay"></div>
+    <div class="md-modal md-effect-1" post-id="0" id="modal-2">
+        <div  id="more-post" class="md-content">
+            <button onclick="go_on_post('modal-2')"><?php echo $lang['go_to_post'];?></button>
+            <button onclick="add_to_project('modal-2')"><?php echo $lang['add_to_projekt'];?></button>
+            <button onclick="report('modal-2')"><?php echo $lang['report_inappropriate'];?></button>
+            <button onclick="hide_post('modal-2')"><?php echo $lang['hide_post'];?></button>
+            <button onclick="remove_from_bookmarks('modal-2')"><?php echo $lang['remove_from_bookmarks'];?></button>
+            <button class="md-close"><?php echo $lang['cancel'];?></button>
+        </div>
+    </div>
+
+    <div class="md-modal md-effect-1" post-id="0" id="modal-3">
+        <div  id="more-post" class="md-content">
+            <button onclick="go_on_post('modal-3')"><?php echo $lang['go_to_post'];?></button>
+            <button onclick="add_to_project('modal-3')"><?php echo $lang['add_to_projekt'];?></button>
+            <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
+            <div id="md-modal-really">
+                <button class="md-modal-really-yes" onclick="delete_post('modal-3')"><?php echo $lang['delete'];?></button>
+                <button class="md-modal-really-no" onclick=document.getElementById('md-modal-really').style.maxHeight=null;><?php echo $lang['cancel'];?></button>
+            </div>
+            <button onclick="edit_post('modal-3')"><?php echo $lang['edit_description'];?></button>
+            <button onclick="add_to_bookmarks('modal-3')"><?php echo $lang['add_to_bookmarks'];?></button>
+            <button class="md-close"><?php echo $lang['cancel'];?></button>
+        </div>
+    </div>
+
+    <div class="md-modal md-effect-1" post-id="0" id="modal-4">
+        <div  id="more-post" class="md-content">
+            <button onclick="go_on_post('modal-4')"><?php echo $lang['go_to_post'];?></button>
+            <button onclick="add_to_project('modal-4')"><?php echo $lang['add_to_projekt'];?></button>
+            <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
+            <div id="md-modal-really">
+                <button class="md-modal-really-yes" onclick="delete_post('modal-4')"><?php echo $lang['delete'];?></button>
+                <button class="md-modal-really-no" onclick=document.getElementById('md-modal-really').style.maxHeight=null;><?php echo $lang['cancel'];?></button>
+            </div>
+            <button onclick="edit_post('modal-4')"><?php echo $lang['edit_description'];?></button>
+            <button onclick="remove_from_bookmarks('modal-4')"><?php echo $lang['remove_from_bookmarks'];?></button>
+            <button class="md-close"><?php echo $lang['cancel'];?></button>
+        </div>
+    </div>
+
+    <div id="overlay" class="md-overlay"></div>
     <script src="<?php echo $web ?>/js/classie.js"></script>
     <script src="<?php echo $web ?>/js/modalEffects.js"></script>
+    <script src="<?php echo $web ?>/js/comments.js"></script>
+    <script src="<?php echo $web ?>/js/post-more.js"></script>
+    <script src="<?php echo $web ?>/js/like.js"></script>
+    <script src="<?php echo $web ?>/js/load-map.js"></script>
+    <script src="<?php echo $web; ?>/js/load-theme.js"></script>
     <script>
         var close = document.getElementsByClassName("closebtn");
         var i;
@@ -107,11 +149,6 @@
             }
         }
     </script>
-    <script src="<?php echo $web ?>/js/comments.js"></script>
-    <script src="<?php echo $web ?>/js/like.js"></script>
-    <script src="<?php echo $web ?>/js/load-map.js"></script>
-
-    <script src="<?php echo $web; ?>/js/load-theme.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<div id="post" class="post<?php echo $row['id']; ?>">
+<div id="post-<?php echo $row['id'];?>" class="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td width="60px">
@@ -172,71 +172,22 @@
         <tr>
             <td colspan="3">
                 <div class="post-more-<?php echo $row['id']; ?>"  id="post-more">
-                    <img src="<?php echo $web; ?>/img/more.png" />
+                    <img class="md-trigger" id="<?php echo $row['id']?>" data-modal=
+                    "<?php
+                        if($row['userid']==$_SESSION['id']){
+                            if($row['bookmark']==0) echo 'modal-3';
+                            else echo 'modal-4';
+                        }else{
+                            if($row['bookmark']==0) echo 'modal-1';
+                            else echo 'modal-2';
+                        }
+
+                     ?>"
+                     src="<?php echo $web; ?>/img/more.png" />
                 </div>
             </td>
         </tr>
     </table>
 </div>
 
-
-<script>
-
-    $(function() {
-        $.contextMenu({
-            trigger: 'left',
-            selector: '.post-more-<?php echo $row['id']; ?>',
-            callback: function(key, options) {
-                if(key==""){
-
-                }else if(key==""){
-
-                }
-            },
-            items: {
-                <?php
-                    if($_SESSION['id']==$row['userid']){
-                            if($row['bookmark']==1){
-                            echo '
-                                "remove_from_bookmarks": {name: "'.$lang['remove_from_bookmarks'].'", icon: "fas fa-bookmark"},
-                                "dis1": {name: "'.$lang['rfb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            ';
-                            }else{
-                            echo '
-                                "add_to_bookmarks": {name: "'.$lang['add_to_bookmarks'].'", icon: "far fa-bookmark"},
-                                "dis1": {name: "'.$lang['atb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            ';
-                            }
-                        echo '                     
-                            "edit_description": {name: "'.$lang['edit_description'].'", icon: "far fa-edit"},
-                            "dis2": {name: "'.$lang['edit_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            "delete_post": {name: "'.$lang['delete_post'].'", icon: "far fa-trash-alt"},
-                            "dis3": {name: "'.$lang['delete_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}}
-                        ';
-                    }else{
-                        if($row['bookmark']==1){
-                            echo '
-                                "remove_from_bookmarks": {name: "'.$lang['remove_from_bookmarks'].'", icon: "fas fa-bookmark"},
-                                "dis1": {name: "'.$lang['rfb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            ';
-                        }else{
-                            echo '
-                                "add_to_bookmarks": {name: "'.$lang['add_to_bookmarks'].'", icon: "far fa-bookmark"},
-                                "dis1": {name: "'.$lang['atb_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            ';
-                        }
-                        echo '                       
-                            "hide_post": {name: "'.$lang['hide_post'].'", icon: "fas fa-ban"},
-                            "dis2": {name: "'.$lang['hide_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},
-                            "report_post": {name: "'.$lang['report_post'].'", icon: "far fa-flag"},
-                            "dis3": {name: "'.$lang['report_post_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}}
-                            
-                        ';
-                    }
-                ?>
-            }
-        });
-    });
-
-</script>
 

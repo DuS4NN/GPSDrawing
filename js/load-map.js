@@ -57,12 +57,14 @@ function initMap(id,point,color,collab,color_icon,icons, theme) {
                         count2++;
                     }
                 }
-                console.log(color_icon);
-                 var icon = 'https://png.icons8.com/ios-glyphs/30/009999/user-location.png';
+                 var icon = {
+                    url: 'https://png.icons8.com/ios-glyphs/40/000000/user-location.png',
+                    scaledSize: new google.maps.Size(28, 28),
+                 };
 
 
                 if(collab==1){
-                    var linecolors = ['red', 'blue', 'green', 'yellow', 'black'];
+                    var linecolors = ['red', 'blue', 'green', 'yellow', 'black','orange'];
 
                 }else if(collab==0){
                     var linecolors = [color];

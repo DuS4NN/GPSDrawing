@@ -4,7 +4,6 @@
     require '../config/db.php';
 
     if(!isset($_POST['idPost']) || empty($_POST['idPost']) || !isset($_POST['idComment']) || empty($_POST['idComment']) || !isset($_POST['action']) || !isset($_SESSION['id']) || empty($_SESSION['id'])){
-        echo $_POST['idComment']." ".$_POST['idPost']." ".$_POST['action'];
         return;
     }
 
