@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     session_start();
     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
         //header("location: ../GPSDrawing/welcome");
@@ -7,15 +7,15 @@
     }
     require '../config/db.php';
     require '../config/lang.php';
-    header("Content-type: text/html; charset=windows-1250");
+    ini_set("default_charset", "UTF-8");
+    header('Content-type: text/html; charset=UTF-8');
 
 ?>
 
 <html>
 <head>
     <title><?php echo $lang['title_index'] ?></title>
-    <meta http-equiv="Content-Type" content="text/html;charset=windows-1250">
-    <link rel="stylesheet" href="<?php echo $web ?>/css/alerts.css">
+    <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
@@ -30,7 +30,7 @@
 
 </head>
 <body>
-    <div id="body">
+    <div id="body" style="width: 100%; left:0; margin: auto">
         <br><br>
         <?php
 
@@ -52,6 +52,7 @@
                                 GROUP BY posts.id 
                                 HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
                                 ORDER BY posts.date DESC");
+
         $stmt->bind_param("sss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -73,61 +74,16 @@
     <div id="alerts">
         <?php require '../php/alerts.php'; ?>
     </div>
+
     <div id="alerts-2">
 
     </div>
 
-    <div class="md-modal md-effect-1" post-id="0" id="modal-1">
-        <div  id="more-post" class="md-content">
-            <button onclick="go_on_post('modal-1')"><?php echo $lang['go_to_post'];?></button>
-            <button onclick="add_to_project('modal-1')" ><?php echo $lang['add_to_projekt'];?></button>
-            <button onclick="report('modal-1')"><?php echo $lang['report_inappropriate'];?></button>
-            <button onclick="hide_post('modal-1')"><?php echo $lang['hide_post'];?></button>
-            <button onclick="add_to_bookmarks('modal-1')"><?php echo $lang['add_to_bookmarks'];?></button>
-            <button class="md-close"><?php echo $lang['cancel'];?></button>
-        </div>
-    </div>
+    <?php require '../html/modals.html'; ?>
 
-    <div class="md-modal md-effect-1" post-id="0" id="modal-2">
-        <div  id="more-post" class="md-content">
-            <button onclick="go_on_post('modal-2')"><?php echo $lang['go_to_post'];?></button>
-            <button onclick="add_to_project('modal-2')"><?php echo $lang['add_to_projekt'];?></button>
-            <button onclick="report('modal-2')"><?php echo $lang['report_inappropriate'];?></button>
-            <button onclick="hide_post('modal-2')"><?php echo $lang['hide_post'];?></button>
-            <button onclick="remove_from_bookmarks('modal-2')"><?php echo $lang['remove_from_bookmarks'];?></button>
-            <button class="md-close"><?php echo $lang['cancel'];?></button>
-        </div>
-    </div>
 
-    <div class="md-modal md-effect-1" post-id="0" id="modal-3">
-        <div  id="more-post" class="md-content">
-            <button onclick="go_on_post('modal-3')"><?php echo $lang['go_to_post'];?></button>
-            <button onclick="add_to_project('modal-3')"><?php echo $lang['add_to_projekt'];?></button>
-            <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
-            <div id="md-modal-really">
-                <button class="md-modal-really-yes" onclick="delete_post('modal-3')"><?php echo $lang['delete'];?></button>
-                <button class="md-modal-really-no" onclick=document.getElementById('md-modal-really').style.maxHeight=null;><?php echo $lang['cancel'];?></button>
-            </div>
-            <button onclick="edit_post('modal-3')"><?php echo $lang['edit_description'];?></button>
-            <button onclick="add_to_bookmarks('modal-3')"><?php echo $lang['add_to_bookmarks'];?></button>
-            <button class="md-close"><?php echo $lang['cancel'];?></button>
-        </div>
-    </div>
 
-    <div class="md-modal md-effect-1" post-id="0" id="modal-4">
-        <div  id="more-post" class="md-content">
-            <button onclick="go_on_post('modal-4')"><?php echo $lang['go_to_post'];?></button>
-            <button onclick="add_to_project('modal-4')"><?php echo $lang['add_to_projekt'];?></button>
-            <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
-            <div id="md-modal-really">
-                <button class="md-modal-really-yes" onclick="delete_post('modal-4')"><?php echo $lang['delete'];?></button>
-                <button class="md-modal-really-no" onclick=document.getElementById('md-modal-really').style.maxHeight=null;><?php echo $lang['cancel'];?></button>
-            </div>
-            <button onclick="edit_post('modal-4')"><?php echo $lang['edit_description'];?></button>
-            <button onclick="remove_from_bookmarks('modal-4')"><?php echo $lang['remove_from_bookmarks'];?></button>
-            <button class="md-close"><?php echo $lang['cancel'];?></button>
-        </div>
-    </div>
+
 
     <div id="overlay" class="md-overlay"></div>
     <script src="<?php echo $web ?>/js/classie.js"></script>
@@ -137,18 +93,8 @@
     <script src="<?php echo $web ?>/js/like.js"></script>
     <script src="<?php echo $web ?>/js/load-map.js"></script>
     <script src="<?php echo $web; ?>/js/load-theme.js"></script>
-    <script>
-        var close = document.getElementsByClassName("closebtn");
-        var i;
+    <script src="<?php echo $web; ?>/js/alerts-main.js"></script>
 
-        for (i = 0; i < close.length; i++) {
-            close[i].onclick = function(){
-                var div = this.parentElement;
-                div.style.opacity = "0";
-                setTimeout(function(){ div.style.display = "none"; }, 600);
-            }
-        }
-    </script>
 
 </body>
 </html>

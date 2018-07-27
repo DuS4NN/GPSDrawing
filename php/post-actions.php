@@ -13,6 +13,12 @@
         case 0:
             $stmt = $db->prepare("INSERT INTO `blocked_posts` (`id`, `id_user`, `id_post`) VALUES (NULL, ?, ?)");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
+            echo '
+            <div class="alert info" id="alert-main-post">
+                   <span class="closebtn">&times;</span> 
+                  '.$lang['info4'].' 
+                </div>      
+            ';
             $stmt->execute();
             break;
         case 1:
@@ -20,20 +26,60 @@
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
             echo '
-            <div class="alert inf" >
-               <span class="closebtn">&times;</span>  
-              '.$lang['info1'].' 
-            </div>          
+            <div class="alert info" id="alert-main-post">
+                   <span class="closebtn">&times;</span> 
+                  '.$lang['info1'].' 
+            </div>                       
             ';
             break;
         case 2:
             $stmt = $db->prepare("DELETE FROM `bookmarks` WHERE bookmarks.id_user = ? AND bookmarks.id_post = ?");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
+            echo '
+            <div class="alert info" id="alert-main-post">
+                   <span class="closebtn">&times;</span> 
+                  '.$lang['info2'].' 
+                </div>      
+            ';
             break;
         case 3:
             $stmt = $db->prepare("DELETE FROM `posts` WHERE posts.id_user = ? AND posts.id = ?");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
+            echo '
+            <div class="alert info" id="alert-main-post">
+                   <span class="closebtn">&times;</span> 
+                  '.$lang['info3'].' 
+                </div>      
+            ';
+            break;
+        case 4:
+            if(isset($_POST['reason'])){
+                date_default_timezone_set('UTC');
+                $time = date("Y-m-d H:i");
+                $stmt = $db->prepare("INSERT INTO `reported_posts` (`id`, `id_user`, `id_post`,`time`,`reason`) VALUES (NULL, ?, ?, ?, ?)");
+                $stmt->bind_param("iisi", $_SESSION['id'],$id, $time, $_POST['reason']);
+                $stmt->execute();
+                echo '
+                <div class="alert info" id="alert-main-post">
+                       <span class="closebtn">&times;</span> 
+                      '.$lang['info5'].' 
+                    </div>      
+                ';
+            }
+            break;
+        case 5:
+            if(isset($_POST['text'])){
+                $stmt = $db->prepare("UPDATE `posts` SET `description` = ? WHERE id = ? AND id_user = ?;");
+                $stmt->bind_param("sii", $_POST['text'],$id, $_SESSION['id']);
+                $stmt->execute();
+                echo '
+                <div class="alert info" id="alert-main-post">
+                       <span class="closebtn">&times;</span> 
+                      '.$lang['info6'].' 
+                    </div>      
+                ';
+            }
             break;
     }

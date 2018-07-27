@@ -85,7 +85,7 @@
     color: #fff;
 }
 
-#md-modal-really{
+.md-modal-really{
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
@@ -94,6 +94,7 @@
 }
 
 .md-modal-really-yes{
+	color: red;
 	width: 30% !important;
 	border-radius: 0px !important;
 	border-bottom: 0px !important;
@@ -105,13 +106,25 @@
 }
 
 .md-modal-really-no{
-	color: red;
 	width: 30% !important;
 	border-bottom: 0px !important;
 	border-radius: 0px !important;
 	display: inline !important;
 }
 
+#md-modal-edit-input {
+	margin-top: 10px;
+	font-family: Text2;
+	padding: 10px;
+	width: 80%;
+	border: solid 1px #aaaaaa;
+	border-radius: 15px;
+	height: 30px;
+}
+
+#md-modal-edit-input:focus{
+	border: solid 1px #333333;
+}
 
 #more-post button {
     border: 0;
@@ -138,6 +151,28 @@
     width: 100%;
     margin: auto;
     text-align: center;
+}
+
+#modal-report-title{
+	width: 100%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom: solid 1px #eee;
+	padding: 15px 0;
+	font-family: Text2;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+#report-title{
+	width: 100%;
+}
+
+#report-desc{
+	color: #aaaaaa;
+	padding-top: 10px;
+	font-size: 0.8em;
+	font-family: Text2;
 }
 
 

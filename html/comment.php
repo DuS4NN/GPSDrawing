@@ -1,7 +1,7 @@
 <div id="comment<?php echo $row['comid']; ?>">
     <div class="comment" style="width: 100%">
         <div id="comment-comment">
-            <a href="<?php echo $web; ?>/<?php echo $row['nick_name']; ?>"><?php echo $row['nick_name']; ?></a><span id="comment-text-<?php echo $row['comid']?>"> <?php echo utf8_encode($row['comment']); ?></span>
+            <a href="<?php echo $web; ?>/<?php echo $row['nick_name']; ?>"><?php echo $row['nick_name']; ?></a><span id="comment-text-<?php echo $row['comid']?>"> <?php echo $row['comment']; ?></span>
         </div>
         <div class="comment-more" id="comment-more-<?php echo $row['comid']; ?>">
             <img class="comment-more-menu<?php echo $row['comid']; ?>" id="comment-more-menu-<?php echo $row['comid']; ?>:<?php echo $row['id_post'] ; ?>" src="<?php echo $web; ?>/img/more.png" />

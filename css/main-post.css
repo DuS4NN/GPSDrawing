@@ -13,10 +13,10 @@
 
 @media only screen and (max-width: 767px) {
     .post{
-        width: 100%;
+        width: 99%;
     }
 
-    #post-description{
+    .post-description{
         font-size: 10px;
     }
     #profile-nick{
@@ -111,7 +111,7 @@
     .post{
         width: 50%;
     }
-    #post-description{
+    .post-description{
         font-size: 17px;
     }
     #profile-nick{
@@ -190,11 +190,14 @@
 }
 
 body{
+    padding: 0;
     margin: 0;
     width: 100%;
 }
 
 html{
+    margin: 0;
+    padding: 0;
     background: #eeeeee;
 }
 
@@ -235,7 +238,7 @@ a{
     text-decoration: none;
 }
 
-#post-description{
+.post-description{
     width: 100%;
     padding-left: 10px;
     padding-top: 5px;

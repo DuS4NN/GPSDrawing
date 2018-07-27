@@ -75,8 +75,8 @@
         </tr>
         <tr>
             <td colspan="2">
-                <div id="post-description">
-                    <?php echo utf8_encode($row['description']); ?>
+                <div class="post-description" id="post-description-<?php echo $row['id'];?>">
+                    <?php echo $row['description']; ?>
                 </div>
             </td>
         </tr>
