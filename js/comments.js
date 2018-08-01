@@ -60,8 +60,9 @@ $(document).ready(function () {
    });
 });
 
-function deleteComment(idComment) {
-    var idPost = idComment.split(":");
+function deleteComment() {
+    var string = document.getElementById('modal-5').getAttribute('post-id');
+    var idPost = string.split(":");
     var id = idPost[0].split("-");
     document.getElementById("comment"+id[3]).style.display = "none";
     var num = parseInt(document.getElementById("comment-number"+idPost[1]).innerText)-1;
@@ -69,22 +70,27 @@ function deleteComment(idComment) {
     $("#comment"+id[3]).load(localStorage.getItem("web")+"/php/delete_edit_hide_comments.php",{idComment: id[3], idPost: idPost[1], action: 0});
     var count = document.getElementById("loadmore-"+idPost[1]).getAttribute("load");
     document.getElementById("loadmore-"+idPost[1]).setAttribute("load",parseInt(count-1));
+    close_modal('modal-5');
 }
 
-function editComment(id) {
-    var idPost = id.split(":");
+function editComment() {
+    var string = document.getElementById('modal-5').getAttribute('post-id');
+    var idPost = string.split(":");
     var id = idPost[0].split("-");
     document.getElementById("add-comment-"+idPost[1]).value = document.getElementById("comment-text-"+id[3]).innerText;
     document.getElementById("add-comment-"+idPost[1]).setAttribute("edit",id[3]);
-    document.getElementById("cancel-edit"+idPost[1]).style.visibility = "visible";
+    document.getElementById("cancel-edit"+idPost[1]).style.visibility = "visible"
+    close_modal('modal-5');
 }
 
-function hideComment(id) {
-    var idPost = id.split(":");
+function hideComment() {
+    var string = document.getElementById('modal-6').getAttribute('post-id');
+    var idPost = string.split(":");
     var id = idPost[0].split("-");
 
     document.getElementById("comment"+id[3]).style.display = "none";
     $("#comment"+id[3]).load(localStorage.getItem("web")+"/php/delete_edit_hide_comments.php",{idComment: id[3], idPost: idPost[1], action: 2});
+    close_modal('modal-6');
 }
 
 function cancel_edit(id) {

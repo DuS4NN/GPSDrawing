@@ -18,20 +18,20 @@
     <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
+    <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="<?php echo $web ?>/css/jquery.contextMenu.css">
-    <script src="<?php echo $web; ?>/js/jquery.contextMenu.js"></script>
-    <script src="<?php echo $web; ?>/js/jquery.ui.position.js"></script>
 
 
 </head>
 <body>
-    <div id="body" style="width: 100%; left:0; margin: auto">
-        <br><br>
+
+    <?php require '../html/header.html'; ?>
+
+    <div id="body" style="width: 100%; left:0;">
         <?php
 
     $stmt = $db->prepare("SELECT 
@@ -82,10 +82,8 @@
     <?php require '../html/modals.html'; ?>
 
 
-
-
-
     <div id="overlay" class="md-overlay"></div>
+
     <script src="<?php echo $web ?>/js/classie.js"></script>
     <script src="<?php echo $web ?>/js/modalEffects.js"></script>
     <script src="<?php echo $web ?>/js/comments.js"></script>

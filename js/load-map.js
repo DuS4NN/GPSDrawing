@@ -10,8 +10,6 @@ function initMap(id,point,color,collab,color_icon,icons, theme) {
 
 
             var map = new google.maps.Map(document.getElementById('map'+id), {
-                center: {lat: 55.647, lng: 37.581},
-                zoom: 11,
                 mapTypeControlOptions: {
                     mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
                         'styled_map']
@@ -58,14 +56,20 @@ function initMap(id,point,color,collab,color_icon,icons, theme) {
                     }
                 }
                  var icon = {
-                    url: 'https://png.icons8.com/ios-glyphs/40/000000/user-location.png',
+                    url: 'https://png.icons8.com/ios-glyphs/40/'+color_icon.substring(1,color_icon.length)+'/user-location.png',
                     scaledSize: new google.maps.Size(28, 28),
                  };
 
 
                 if(collab==1){
-                    var linecolors = ['red', 'blue', 'green', 'yellow', 'black','orange'];
-
+                    var colorRGB = [parseInt(color.substring(1,3),16),parseInt(color.substring(3,5),16),parseInt(color.substring(5,7),16)];
+                    var linecolors = [];
+                    var hue = rgb2hue(colorRGB[0],colorRGB[1],colorRGB[2]);
+                    var add = Math.round(100/users.length);
+                    for(var i=0;i<users.length;i++) {
+                        var aa = 100 - i * add;
+                        linecolors.push('hsl(' + hue.toString() + ',' + aa.toString() + '%,50%)');
+                    }
                 }else if(collab==0){
                     var linecolors = [color];
                 }
@@ -211,3 +215,97 @@ function initMap(id,point,color,collab,color_icon,icons, theme) {
     }, 250);
 }
 
+function rgbToHsl(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if (max == min) {
+        h = s = 0;
+    } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+
+        h /= 6;
+    }
+
+    return [ h, s, l ];
+}
+
+
+
+function hslToRgb(h, s, l) {
+    var r, g, b;
+
+    if (s == 0)
+    {
+        r = g = b = l;
+    }
+    else
+    {
+        function hue2rgb(p, q, t)
+        {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+        }
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+
+        r = hue2rgb(p, q, h + 1 / 3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return [
+        Math.max(0, Math.min(Math.round(r * 255), 255))
+        ,Math.max(0, Math.min(Math.round(g * 255), 255))
+        ,Math.max(0, Math.min(Math.round(b * 255), 255))
+    ];
+}
+
+function rgb2hue(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    var c   = max - min;
+    var hue;
+    if (c == 0) {
+        hue = 0;
+    } else {
+        switch(max) {
+            case r:
+                var segment = (g - b) / c;
+                var shift   = 0 / 60;       // R° / (360° / hex sides)
+                if (segment < 0) {          // hue > 180, full rotation
+                    shift = 360 / 60;         // R° / (360° / hex sides)
+                }
+                hue = segment + shift;
+                break;
+            case g:
+                var segment = (b - r) / c;
+                var shift   = 120 / 60;     // G° / (360° / hex sides)
+                hue = segment + shift;
+                break;
+            case b:
+                var segment = (r - g) / c;
+                var shift   = 240 / 60;     // B° / (360° / hex sides)
+                hue = segment + shift;
+                break;
+        }
+    }
+    return Math.round(hue * 60); // hue is in [0,6], scale it up
+}

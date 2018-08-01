@@ -104,3 +104,11 @@ function edit_post() {
 function add_to_project(modalid) {
     var id = document.getElementById(modalid).getAttribute("post-id");
 }
+
+$(document).ready(function () {
+   $('#md-modal-edit-input').keypress(function (e) {
+      if(e.keyCode==13){
+        edit_post();
+      }
+   });
+});

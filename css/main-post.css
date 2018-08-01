@@ -15,7 +15,9 @@
     .post{
         width: 99%;
     }
-
+    #body{
+        margin-top: 80px;
+    }
     .post-description{
         font-size: 10px;
     }
@@ -111,6 +113,9 @@
     .post{
         width: 50%;
     }
+    #body{
+        margin-top: 100px;
+    }
     .post-description{
         font-size: 17px;
     }
@@ -198,7 +203,7 @@ body{
 html{
     margin: 0;
     padding: 0;
-    background: #eeeeee;
+    background: #fafafa;
 }
 
 table{
@@ -207,12 +212,11 @@ table{
 }
 
 .post{
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 3%;
     text-align: center;
-    border-style: solid;
-    border-width: thin;
-    border-color: rgba(189,189,189,1.00);
+    border: 1px solid rgba(0,0,0,0.0975);
 }
 
 #profile-picture{

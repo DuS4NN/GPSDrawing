@@ -1,0 +1,62 @@
+<nav>
+    <div id="container-nav">
+        <div id="nav-logo">
+            <a href="<?php echo $web;?>/home"><?php echo $lang['title_index'];?></a>
+            <i id="icon-caret" class="fas fa-caret-down"></i>
+        </div>
+        <div id="nav-links">
+            <div id="nav-links-text"><a href="<?php echo $web;?>/profile"><img src="<?php echo $web;?>/img/icon-profile.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/profile"><?php echo $lang['profile'];?></a></div></div>
+            <div id="nav-links-text"><a href="<?php echo $web;?>/projects"><img src="<?php echo $web;?>/img/icon-projects.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/projects"><?php echo $lang['projects'];?></a></div></div>
+            <div id="nav-links-text"><a href="<?php echo $web;?>/bookmarks"><img src="<?php echo $web;?>/img/icon-bookmarks.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/bookmarks"><?php echo $lang['bookmarks'];?></a></div></div>
+            <div id="nav-links-text"><a href="<?php echo $web;?>/settings"><img src="<?php echo $web;?>/img/icon-settings.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/settings"><?php echo $lang['settings'];?></a></div></div>
+            <div id="nav-icons">
+                <img src="<?php echo $web;?>/img/icon-notification.png">
+                <span class="nav-img-search"><img src="<?php echo $web; ?>/img/icon-search.png"></span>
+                <div id="nav-container-input">
+                    <input class="search" type="text" placeholder="<?php echo $lang['search']; ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<script>
+    $('.nav-img-search').click(function () {
+        $('.search').toggleClass('expanded');
+        $('.nav-img-search').toggleClass('expanded');
+    });
+
+
+    $('#icon-caret').click(function () {
+        if(document.getElementById('icon-caret').className=='fas fa-caret-down'){
+            $(this).removeClass('fas fa-caret-down').addClass('fas fa-caret-up');
+            $('#nav-links').toggleClass('expanded');
+        }else{
+            $(this).removeClass('fas fa-caret-up').addClass('fas fa-caret-down');
+            $('#nav-links').toggleClass('expanded');
+        }
+
+        console.log(this);
+    });
+
+    $(document).ready(function() {
+        var scrollTop = 0;
+        $(window).scroll(function () {
+            scrollTop = $(window).scrollTop();
+            $('.counter').html(scrollTop);
+
+            if (scrollTop >= 100) {
+                $('#container-nav').addClass('scrolled-nav');
+                $('#nav-logo').addClass('scrolled-nav');
+                $('#nav-links').addClass('scrolled-nav');
+            } else if (scrollTop < 100) {
+                $('#container-nav').removeClass('scrolled-nav');
+                $('#nav-logo').removeClass('scrolled-nav');
+                $('#nav-links').removeClass('scrolled-nav');
+            }
+
+        });
+    });
+</script>
+

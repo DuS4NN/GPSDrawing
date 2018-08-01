@@ -80,3 +80,23 @@
         <button class="md-close"><?php echo $lang['cancel'];?></button>
     </div>
 </div>
+
+<div class="md-modal md-effect-1" post-id="0" id="modal-5">
+    <div id="more-post" class="md-content">
+        <button class="md-modal-delete"><?php echo $lang['delete_comment'];?></button>
+        <div class="md-modal-really">
+            <button class="md-modal-really-yes" onclick="deleteComment()"><?php echo $lang['delete'];?></button>
+            <button class="md-modal-really-no" onclick=document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null; ><?php echo $lang['cancel'];?></button>
+        </div>
+        <button onclick="editComment()"><?php echo $lang['edit_comment'];?></button>
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
+
+<div class="md-modal md-effect-1" post-id="0" id="modal-6">
+    <div id="more-post" class="md-content">
+        <button onclick="hideComment()"><?php echo $lang['hide_comment'];?></button>
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
+

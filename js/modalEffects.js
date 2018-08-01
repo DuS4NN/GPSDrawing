@@ -1,4 +1,4 @@
-$(".md-trigger").click(function () {
+$(document).on('click','.md-trigger',function () {
 	var id= $(this).attr('id');
 	if(id.startsWith("report")) {
         var modal = document.getElementById("modal-report");

@@ -4,7 +4,7 @@
             <a href="<?php echo $web; ?>/<?php echo $row['nick_name']; ?>"><?php echo $row['nick_name']; ?></a><span id="comment-text-<?php echo $row['comid']?>"> <?php echo $row['comment']; ?></span>
         </div>
         <div class="comment-more" id="comment-more-<?php echo $row['comid']; ?>">
-            <img class="comment-more-menu<?php echo $row['comid']; ?>" id="comment-more-menu-<?php echo $row['comid']; ?>:<?php echo $row['id_post'] ; ?>" src="<?php echo $web; ?>/img/more.png" />
+            <img class="md-trigger" data-modal="<?php if($_SESSION['id']==$row['id_user'])echo 'modal-5';  else echo 'modal-6';?>"  id="comment-more-menu-<?php echo $row['comid']; ?>:<?php echo $row['id_post'] ; ?>" src="<?php echo $web; ?>/img/more.png" />
         </div>
     </div>
 
@@ -37,37 +37,4 @@
         ?>
     </div>
 </div>
-
-<script>
-    $.contextMenu({
-        trigger: 'left',
-        selector: '.comment-more-menu<?php echo $row['comid']; ?>',
-        callback: function(key, options) {
-            var id = options['$trigger'][0]['id'];
-            if(key=="delete"){
-                deleteComment(id);
-            }else if(key=="edit"){
-                editComment(id);
-            }else if(key=="hide"){
-                hideComment(id);
-
-            }
-        },
-        items: {
-            <?php
-                if($row['commented']==1){
-                    echo '"edit": {name: "'.$lang['edit_comment'].'", icon: "far fa-edit"},   
-                          "dis": {name: "'.$lang['edit_comment_desc'].'", icon: "", disabled: function(key,opt){return !this.data("disDisabled");}},  
-                          "delete": {name: "'.$lang['delete_comment'].'", icon: "far fa-trash-alt"},   
-                          "dis2": {name: "'.$lang['delete_comment_desc'].'", icon: "", disabled: function(key,opt){return !this.data("dis2Disabled");}}
-                          ';
-                }else{
-                    echo '"hide": {name: "'.$lang['hide_comment'].'", icon: "fas fa-ban"},
-                          "dis3": {name: "'.$lang['hide_comment_desc'].'", icon: "", disabled: function(key,opt){return !this.data("dis3Disabled");}}';
-                }
-            ?>
-        }
-    });
-</script>
-
 
