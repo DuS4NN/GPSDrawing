@@ -8,7 +8,7 @@
             </td>
             <td valign="bottom">
                 <div id="profile-nick">
-                    <a href="../<?php echo $row['nick_name']; ?>"><h7><b><?php echo $row['nick_name']; ?></b></h7></a><br>
+                    <a href="<?php echo $web?>/user/<?php echo $row['nick_name']; ?>"><h7><b><?php echo $row['nick_name']; ?></b></h7></a><br>
                 </div>
                 <div id="time">
                     <?php
@@ -101,7 +101,7 @@
                                 continue;
                             }
                             echo
-                                " <a href='".$web."/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
+                                " <a href='".$web."/user/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
                             if($loop_cnt<$row_cnt){
                                 echo ",";
                             }

@@ -4,4 +4,5 @@ RewriteRule ^welcome html/index.php [NC,L]
 RewriteRule ^forgot html/forgot.php [NC,L]
 RewriteRule ^reset html/reset.php [NC,L]
 RewriteRule ^home php/main.php [NC,L]
+RewriteRule ^user/([0-9a-zA-Z_*.-]+) html/profile.php?user=$1 [NC,L]
 DirectoryIndex html/index.php

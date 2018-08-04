@@ -15,9 +15,6 @@
     .post{
         width: 99%;
     }
-    #body{
-        margin-top: 80px;
-    }
     .post-description{
         font-size: 10px;
     }
@@ -202,6 +199,7 @@ body{
 
 html{
     margin: 0;
+    overflow-y: scroll;
     padding: 0;
     background: #fafafa;
 }

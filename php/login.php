@@ -22,7 +22,7 @@
         if($row['count']>0){
             if($row['verify']==1){
                 $_SESSION['email'] = $email;
-                $_SESSION['nickname'] = $row['nickname'];
+                $_SESSION['nickname'] = $row['nick_name'];
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['color'] = $row['color'];
                 $_SESSION['show_icons'] = $row['show_icons'];

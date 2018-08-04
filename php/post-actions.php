@@ -65,7 +65,7 @@
                 <div class="alert info" id="alert-main-post">
                        <span class="closebtn">&times;</span> 
                       '.$lang['info5'].' 
-                    </div>      
+                </div>      
                 ';
             }
             break;

@@ -57,7 +57,7 @@
 
                     <p class="forgot"><a href="forgot"><?php echo $lang['forgot_password'] ?></a></p>
 
-                    <button onclick="login()" class="button button-block" name="login" /><?php echo $lang['log_in'] ?></button>
+                    <button class="button button-block" name="login" /><?php echo $lang['log_in'] ?></button>
 
                 </form>
 
@@ -90,7 +90,7 @@
                         <label>
                             <?php echo $lang['nick_name'] ?><span class="req">*</span>
                         </label>
-                        <input type="text" required maxlength="20" autocomplete="off" name='nickname'/>
+                        <input type="text" minlength="3" required maxlength="20" autocomplete="off" name='nickname'/>
                     </div>
 
                     <div class="field-wrap">

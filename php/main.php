@@ -1,9 +1,8 @@
 <?php
     session_start();
     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-        //header("location: ../GPSDrawing/welcome");
-        //$_SESSION['alerts'] = "error:9";
-        $_SESSION['id'] = "1";
+        $_SESSION['alerts'] = "error:9";
+        header("location: ../GPSDrawing/welcome");
     }
     require '../config/db.php';
     require '../config/lang.php';

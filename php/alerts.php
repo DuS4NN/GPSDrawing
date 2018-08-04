@@ -8,7 +8,7 @@ if(isset($_SESSION['alerts']) && !empty($_SESSION['alerts'])){
 
         if($code[0]=="error"){
 
-            echo '<div class="alert" >
+            echo '<div class="alert" id="alert-main-post">
                   <span class="closebtn">&times;</span>  
                   ' .$lang['error'.$code[1]].
                 '</div>';
@@ -16,7 +16,7 @@ if(isset($_SESSION['alerts']) && !empty($_SESSION['alerts'])){
         }else if($code[0]=="success"){
 
             echo '
-                <div class="alert success" >
+                <div class="alert success" id="alert-main-post">
                    <span class="closebtn">&times;</span> 
                   '.$lang['success'.$code[1]].' 
                 </div>
@@ -24,7 +24,7 @@ if(isset($_SESSION['alerts']) && !empty($_SESSION['alerts'])){
 
         }else if($code[0]=="info"){
             echo '
-            <div class="alert inf" >
+            <div class="alert info" id="alert-main-post">
                <span class="closebtn">&times;</span>  
               '.$lang['info'.$code[1]].' 
             </div>          

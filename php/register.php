@@ -19,6 +19,15 @@
     $checkemail = true;
     $checknickname = true;
 
+    if(!preg_match("/^[a-zA-Z0-9-.*_]+$/",$nick_name)==1){
+        echo 'zle je';
+        $_SESSION['alerts'] = "error:10";
+        header("location: ../welcome");
+        return;
+    }
+
+
+
     //Check if email exists
     $stmt = $db->prepare("SELECT COUNT(*) AS count FROM users where email = ?");
     $stmt->bind_param("s", $email);
@@ -49,8 +58,12 @@
 
     //Add user
     if($checkemail == true && $checknickname == true){
-        $stmt = $db->prepare("INSERT INTO users (email, nick_name, first_name, last_name, profile_picture, password, hash) VALUES (?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssssss", $email, $nick_name, $first_name, $last_name, $profilepicture, $password, $hash);
+
+        date_default_timezone_set('UTC');
+        $date = date("Y-m-d H:i");
+
+        $stmt = $db->prepare("INSERT INTO users (email, nick_name, first_name, last_name, profile_picture, password, hash, date) VALUES (?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssss", $email, $nick_name, $first_name, $last_name, $profilepicture, $password, $hash, $date);
         $stmt->execute();
 
         $lastID = mysqli_insert_id($db);
