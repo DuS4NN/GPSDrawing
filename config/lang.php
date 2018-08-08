@@ -10,10 +10,10 @@
     }else if(isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_GET['lang']) ){
         if($_GET['lang'] == "en"){
             $_SESSION['lang'] = "en";
-            echo "<script>localStorage.setItem('lang','en'); </script>";
+            echo "<script>localStorage.setItem('lang','en'); console.log(localStorage.getItem('lang'));</script>";
         }else if($_GET['lang'] == "sk"){
             $_SESSION['lang'] = "sk";
-            echo "<script>localStorage.setItem('lang','sk'); </script>";
+            echo "<script>localStorage.setItem('lang','sk'); console.log(localStorage.getItem('lang'));</script>";
         }
     }
 

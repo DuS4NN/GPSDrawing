@@ -75,6 +75,11 @@
         "collaborations" => "Collaborations",
         "users_posts" => "User's posts",
         "since" => "Since",
+        "follow" => "Follow",
+        "following" => "Following",
+        "block_user" => "Block user",
+        "report_user" => "Report user",
+        "sign_out" => "Sign out",
         "error1" => "Invalid email or password.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Nick name already exists.",
@@ -95,5 +100,6 @@
         "info3" => "Post was deleted.",
         "info4" => "Post was hidden.",
         "info5" => "Thank you for your response.",
-        "info6" => "The description of the post has been modified."
+        "info6" => "The description of the post has been modified.",
+        "info7" => "User successfully blocked."
     );

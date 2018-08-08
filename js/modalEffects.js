@@ -1,9 +1,16 @@
 $(document).on('click','.md-trigger',function () {
 	var id= $(this).attr('id');
 	if(id.startsWith("report")) {
-        var modal = document.getElementById("modal-report");
-        modal.className = modal.className + " md-show";
-        var close = modal.querySelector(".md-close");
+	    if(id.endsWith("user")){
+            var modal = document.getElementById("modal-report-user");
+            modal.className = modal.className + " md-show";
+            var close = modal.querySelector(".md-close");
+        }else{
+            var modal = document.getElementById("modal-report");
+            modal.className = modal.className + " md-show";
+            var close = modal.querySelector(".md-close");
+        }
+
 
     }else if(id.startsWith("md-edit")){
         var modal = document.getElementById("modal-edit");
@@ -21,7 +28,7 @@ $(document).on('click','.md-trigger',function () {
 
 	var top = window.pageYOffset;
     document.body.style.position = "fixed";
-    document.body.style.overflowY = "scroll";
+    //document.body.style.overflowY = "scroll";
     document.body.style.top = "-"+top;
     localStorage.setItem("top",top+"");
 
@@ -43,7 +50,7 @@ $(document).on('click','.md-trigger',function () {
         document.body.style.top = null;
         document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
         document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
-        document.body.style.overflowY = "auto";
+        //document.body.style.overflowY = "auto";
         window.scrollTo(0,localStorage.getItem("top"));
     });
 
@@ -62,7 +69,7 @@ $(document).on('click','.md-trigger',function () {
 
         document.body.style.position = "static";
         document.body.style.top = null;
-        document.body.style.overflowY = "auto";
+        //document.body.style.overflowY = "auto";
         window.scrollTo(0,localStorage.getItem("top"));
         document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
         document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
@@ -76,7 +83,7 @@ function close_modal(id) {
     modal.className = classmodal[0]+" "+classmodal[1];
     document.body.style.position = "static";
     document.body.style.top = null;
-    document.body.style.overflowY = "auto";
+    //document.body.style.overflowY = "auto";
     window.scrollTo(0,localStorage.getItem("top"));
     document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
     document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
@@ -102,48 +109,6 @@ function getID(modal,secmodal) {
     report.setAttribute("post-id",modal.getAttribute("post-id"));
 }
 
-/*function init() {
-
-		var overlay = document.querySelector( '.md-overlay' );
-
-		[].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
-			
-			var modal = document.querySelector( '#' + el.getAttribute( 'data-modal' ) ),
-				close = modal.querySelector( '.md-close' );
-			function removeModal() {
-				//classie.remove( modal, 'md-show' );
-                document.body.style.position = "static";
-                document.body.style.overflowY = "auto";
-				window.scrollTo(0,localStorage.getItem("top"));
-				modal.removeEventListener('click',removeModalHandler);
-			}
-
-			function removeModalHandler() {
-				removeModal( classie.has( el, 'md-setperspective' ) );
-			}
-			el.addEventListener( 'click', function( ev ) {
-				//classie.add( modal, 'md-show' );
-                var top = window.pageYOffset;
-                modal.setAttribute("post-id",ev['explicitOriginalTarget']['id']);
-				document.body.style.position = "fixed";
-                document.body.style.overflowY = "scroll";
-				document.body.style.top = "-"+top;
-				localStorage.setItem("top",top+"");
-				overlay.removeEventListener( 'click', removeModalHandler);
-				overlay.addEventListener( 'click', removeModalHandler);
-				modal.addEventListener('click', removeModalHandler);
-			});
-
-			close.addEventListener( 'click', function( ev ) {
-				ev.stopPropagation();
-				removeModalHandler();
-			});
-
-		} );
-
-	}
-
-	init();*/
 
 
 

@@ -76,6 +76,10 @@
         "collaborations" => "Spolupráce",
         "users_posts" => "Príspevky",
         "since" => "Od",
+        "follow" => "Sledovať",
+        "following" => "Sledované",
+        "report_user" => "Nahlásiť užívateľa",
+        "sign_out" => "Odhlásiť sa",
         "error1" => "Meno alebo heslo je nesprávne.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Tento nick už existuje.",
@@ -96,5 +100,6 @@
         "info3" => "Príspevok odstranený.",
         "info4" => "Príspevok bol skrytý.",
         "info5" => "Ďakujeme za Vašu odozvu.",
-        "info6" => "Popis príspevku bol upravený."
+        "info6" => "Popis príspevku bol upravený.",
+        "info7" => "Používateľ úspešne zablokovaný."
     );

@@ -1,4 +1,4 @@
-function initMap(id,point,color,collab,color_icon,icons, theme) {
+window.initMap = function (id,point,color,collab,color_icon,icons, theme) {
     setTimeout(function () {
         if (id == null) {
             return;
