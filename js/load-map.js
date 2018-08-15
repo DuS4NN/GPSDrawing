@@ -1,4 +1,4 @@
-window.initMap = function (id,point,color,collab,color_icon,icons, theme) {
+window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelmode) {
     setTimeout(function () {
         if (id == null) {
             return;
@@ -174,26 +174,45 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme) {
 
                 // Callback function to process service results
                 var service_callback = function(response, status) {
-                    if (status != 'OK') {
-                        console.log('Directions request failed due to ' + status);
-                        return;
-                    }
-                    var renderer = new google.maps.DirectionsRenderer;
-                    renderer.setMap(map);
-                    renderer.setOptions({
-                        suppressMarkers: true,
-                        preserveViewport: true,
-                        polylineOptions: {
-                            strokeColor: color
+                        if (status != 'OK') {
+                            console.log('Directions request failed due to ' + status);
+                            return;
                         }
+                        //console.log(id+": "+response.routes[0].legs[0].distance.value);
 
-                    });
-                    renderer.setDirections(response);
+                        var renderer = new google.maps.DirectionsRenderer;
+                        renderer.setMap(map);
+                        renderer.setOptions({
+                            suppressMarkers: true,
+                            preserveViewport: true,
+                            polylineOptions: {
+                                strokeColor: color
+                            }
+
+                        });
+                        renderer.setDirections(response);
                 };
 
                 // Send requests to service to get route (for stations count <= 25 only one request will be sent)
                 for (var i = 0; i < parts.length; i++) {
                     // Waypoints does not include first station (origin) and last station (destination)
+
+                    var travel = 'WALKING';
+                    switch (travelmode){
+                        case 0:
+                            travel = 'WALKING';
+                            break;
+                        case 1:
+                            travel = 'WALKING';
+                            break;
+                        case 2:
+                            travel = 'BICYCLING';
+                            break;
+                        case 3:
+                            travel = 'DRIVING';
+                            break;
+                    }
+
                     var waypoints = [];
                     for (var j = 1; j < parts[i].length - 1; j++)
                         waypoints.push({location: parts[i][j], stopover: false});
@@ -202,18 +221,20 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme) {
                         origin: parts[i][0],
                         destination: parts[i][parts[i].length - 1],
                         waypoints: waypoints,
-                        travelMode: 'WALKING'
+                        travelMode: travel
                     };
                     // Send request
-                    service.route(service_options, service_callback);
+
+                     service.route(service_options, service_callback);
+
+
+
                 }
             }
-
         } catch (e) {
-            initMap(id, point);
-            console.log(e);
+           // initMap(id,point,color,collab,color_icon,icons, theme,travelmode);
         }
-    }, 250);
+    }, 550);
 }
 
 function rgb2hue(r, g, b) {

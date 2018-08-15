@@ -128,9 +128,12 @@
 
 <div class="md-modal md-effect-1" post-id="0" id="modal-8">
     <div id="more-post" class="md-content">
-        <button onclick="sign_out()"><?php echo $lang['sign_out'];?></button>
+        <a href="<?php echo $web; ?>/add"><button><?php echo $lang['add_post'];?></button></a>
         <a href="<?php echo $web; ?>/settings"><button><?php echo $lang['settings'];?></button></a>
+        <button onclick="sign_out()"><?php echo $lang['sign_out'];?></button>
         <button class="md-close"><?php echo $lang['cancel'];?></button>
     </div>
 </div>
+
+
 

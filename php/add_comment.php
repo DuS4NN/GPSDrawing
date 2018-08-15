@@ -2,7 +2,8 @@
     require '../config/db.php';
     session_start();
 
-    if(!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['text']) || empty($_POST['text'])|| !isset($_SESSION['id']) || empty($_SESSION['id'])){
+    if(!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['text']) || !isset($_SESSION['id']) || empty($_SESSION['id'])){
+        echo $_POST['id']." ".$_POST['text']." ".$_SESSION['id'];
         return;
     }
 
@@ -15,3 +16,4 @@
     $stmt = $db->prepare("INSERT INTO comments (id_user, id_post, comment, time) VALUES (?,?,?,?)");
     $stmt->bind_param("iiss", $_SESSION['id'], $id, $text, $date);
     $stmt->execute();
+    echo 'aaaaaa';

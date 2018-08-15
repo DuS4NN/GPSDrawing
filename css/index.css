@@ -285,6 +285,11 @@ input:focus, textarea:focus {
   display: table;
   clear: both;
 }
+
+.button{
+  cursor: pointer;
+}
+
 .top-row > div {
   float: left;
   width: 48%;

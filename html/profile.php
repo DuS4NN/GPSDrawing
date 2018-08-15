@@ -36,32 +36,47 @@
 
         <?php
             $stmt = $db->prepare("SELECT users.id, nick_name, about, first_name, last_name, date, profile_picture, aa.collabcount,
-                                        CASE WHEN EXISTS(SELECT * FROM followers WHERE followers.id_user = users.id  AND followers.follower = ?)
-                                        THEN '1'
-                                        ELSE '0'
-                                        END AS 'follow',
-                                        CASE WHEN EXISTS(SELECT * FROM blocked_users WHERE blocked_users.blocked = users.id  AND user_id = ?)
+                                          CASE WHEN EXISTS(SELECT * FROM followers WHERE followers.id_user = users.id  AND followers.follower = ?)
+                                            THEN '1'
+                                            ELSE '0'
+                                            END AS 'follow',
+                                          CASE WHEN EXISTS(SELECT * FROM blocked_users WHERE blocked_users.blocked = users.id  AND user_id = ?)
                                             THEN '1'
                                             ELSE '0'
                                             END AS 'blocked',
-                                        (SELECT COUNT(id) FROM posts WHERE posts.id_user = users.id) as 'postscount',
-                                        (SELECT COUNT(*) FROM `followers`  INNER JOIN users ON followers.id_user = users.id WHERE users.nick_name = ?)  as 'followcount'
+                                          (SELECT COUNT(id) FROM posts WHERE posts.id_user = users.id) as 'postscount',
+                                          (SELECT COUNT(*) FROM `followers`  INNER JOIN users ON followers.id_user = users.id WHERE users.nick_name = ?)  as 'followcount'
                                         
-                                        FROM users
-                                        JOIN (SELECT COUNT(DISTINCT id_collaboration) as collabcount 
-                                        FROM users_in_collab 
-                                        INNER JOIN users ON users.id = users_in_collab.id_user
-                                            WHERE users_in_collab.id_collaboration
-                                            NOT IN (SELECT collaboration 
-                                                FROM posts 
-                                                INNER JOIN users ON users.id = posts.id_user
-                                                WHERE users.nick_name = ?)) aa
-                                        WHERE nick_name = ?");
-            $stmt->bind_param("sssss",$_SESSION['id'], $_SESSION['id'], $_GET['user'], $_GET['user'], $_GET['user']);
+                                          FROM users
+                                          JOIN (SELECT COUNT(DISTINCT id_collaboration) as collabcount
+                                                FROM users_in_collab
+                                                INNER JOIN users ON users.id = users_in_collab.id_user
+                                                WHERE users_in_collab.id_collaboration
+                                                NOT IN (SELECT collaboration
+                                                        FROM posts
+                                                        INNER JOIN users ON users.id = posts.id_user
+                                                        WHERE users.nick_name = ?
+                                                        )
+                                                AND users.nick_name = ?
+                                               ) aa
+                                          WHERE nick_name = ?
+                                        
+                                        
+                                        ");
+            $stmt->bind_param("ssssss",$_SESSION['id'], $_SESSION['id'], $_GET['user'], $_GET['user'], $_GET['user'],$_GET['user'] );
             $stmt->execute();
             $result = $stmt->get_result();
             $row_u = $result->fetch_assoc();
 
+
+            $stmt = $db->prepare("SELECT badges.name, badges.rarity, badges.url
+                                        FROM users_badges 
+                                        INNER JOIN badges ON badges.id = users_badges.badge_id
+                                        WHERE users_badges.user_id = ?
+                                        ORDER BY badges.rarity");
+            $stmt->bind_param("i",$row_u['id']);
+            $stmt->execute();
+            $result3 = $stmt->get_result();
         ?>
 
 
@@ -144,20 +159,19 @@
             </div>
 
             <div id="profile-badges-content">
-                <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/1.png"> <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/3.png">
-                <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/2.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/4.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/5.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/6.png">
-                <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/7.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/8.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/9.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/10.png">
-                <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/11.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/12.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/13.png"><img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/14.png">
-                <img class="profile-badges-img" src="<?php echo $web; ?>/img/badge/15.png">
-            </div>
 
+                <?php
+                    while($row_b = $result3->fetch_assoc()){
+                        echo '<img class="profile-badges-img" src="'.$web.$row_b['url'].'">';
+                    }
+                ?>
+
+            </div>
 
             <div class="right" id="profile-scroll">
                 <img src="https://png.icons8.com/ios/96/000000/forward.png">
             </div>
         </div>
-
-
 
 
         <div id="profile-stats">
@@ -180,8 +194,15 @@
         </div>
 
         <script>
+            var old_item = "post";
             $(document).on('click','#profile-choose-item',function () {
+
                 var item = $(this).attr('item');
+                if(old_item==item){
+                    return;
+                }
+                old_item=item;
+
                 $(".body").load("<?php echo $web;?>/php/load_posts.php",{action:item,limit:0, user:'<?php echo $row_u['id'];?>'});
                 if(item=='post'){
                     $('.profile-choose-collaboration').removeClass('select');
@@ -223,7 +244,7 @@
                                 GROUP BY posts.id 
                                 HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
                                 AND nick_name = ?
-                                ORDER BY posts.date DESC");
+                                ORDER BY posts.date DESC LIMIT 1");
 
             $stmt->bind_param("ssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_GET['user']);
             $stmt->execute();
@@ -262,13 +283,69 @@
 
         <?php require '../html/modals.html'; ?>
 
+        <script>
+
+
+
+            function getDocHeight() {
+                var D = document;
+                return Math.max(
+                    D.body.scrollHeight, D.documentElement.scrollHeight,
+                    D.body.offsetHeight, D.documentElement.offsetHeight,
+                    D.body.clientHeight, D.documentElement.clientHeight
+                );
+            }
+
+            var limit = 1;
+            var select = "post";
+            $(window).scroll(function() {
+                if($(window).scrollTop() + window.innerHeight == getDocHeight()) {
+                    setTimeout(function () {
+                       if($(".profile-choose-post").hasClass('select')){
+                            if("post"!=select)limit=1;
+                            select="post";
+                        }else{
+                           if("collaboration"!=select)limit=1;
+                           select="collaboration";
+                       }
+
+                        $.ajax({
+                            type:"POST",
+                            url: "<?php echo $web; ?>/php/load_posts.php",
+                            data:{action:select,limit:limit,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                            cache:false,
+                            success:function(response){
+                                $("#body-post").append(response);
+                                limit++;
+                            }
+                        });
+
+                    },20);
+                }
+            });
+        </script>
 
 
         <script>
 
             var sirka = ($(window).width()/100)*54;
-            var pocet = parseInt((sirka)/120);
-            var medzera = parseInt((sirka-(100*pocet))/pocet);
+            var img,img_medzera;
+            if(sirka<=638.3 && sirka>405){
+                img = 80;
+                img_medzera=10;
+            }else if(sirka<=405){
+                img = 50;
+                img_medzera=1;
+                sirka = ($(window).width()/100)*85;
+            }else{
+                img = 120;
+                img_medzera=20
+            }
+
+
+
+            var pocet = parseInt((sirka)/img);
+            var medzera = parseInt((sirka-((img-img_medzera)*pocet))/pocet);
 
             $('.profile-badges-img').css('margin-left',medzera/2);
             $('.profile-badges-img').css('margin-right',medzera/2);
@@ -276,25 +353,48 @@
             $('#profile-scroll.left').click(function () {
 
                 var sirka = ($(window).width()/100)*54;
-                var pocet = parseInt((sirka)/120);
-                var medzera = parseInt((sirka-(100*pocet))/pocet);
-                var scroll = medzera+100;
+                var img,img_medzera;
+                if(sirka<=638.3 && sirka>405){
+                    img = 80;
+                    img_medzera=10;
+                }else if(sirka<=405){
+                    img = 50;
+                    img_medzera=4;
+                    sirka = ($(window).width()/100)*85;
+                }else{
+                    img = 120;
+                    img_medzera=20
+                }
+                var pocet = parseInt((sirka)/img);
+                var medzera = parseInt((sirka-((img-img_medzera)*pocet))/pocet);
+                var scroll = medzera+(img-img_medzera);
 
                 $('#profile-badges-content').animate({
                     scrollLeft: '-='+scroll
-                },500, 'easeOutQuad');
+                },300, 'easeOutQuad');
             });
 
             $('#profile-scroll.right').click(function () {
 
-                var sirka = ($(window).width()/100)*54;
-                var pocet = parseInt((sirka)/120);
-                var medzera = parseInt((sirka-(100*pocet))/pocet);
-                var scroll = medzera+100;
+                var img,img_medzera;
+                if(sirka<=638.3 && sirka>405){
+                    img = 80;
+                    img_medzera=10;
+                }else if(sirka<=405){
+                    img = 50;
+                    img_medzera=4;
+                    sirka = ($(window).width()/100)*85;
+                }else{
+                    img = 120;
+                    img_medzera=20
+                }
+                var pocet = parseInt((sirka)/img);
+                var medzera = parseInt((sirka-((img-img_medzera)*pocet))/pocet);
+                var scroll = medzera+(img-img_medzera);
 
                 $('#profile-badges-content').animate({
                     scrollLeft: '+='+scroll
-                },500, 'easeOutQuad');
+                },300, 'easeOutQuad');
             });
         </script>
 

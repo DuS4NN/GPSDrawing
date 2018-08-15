@@ -31,13 +31,16 @@
                         WHERE users.id = ?
                         GROUP BY posts.id 
                         HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                        ORDER BY posts.date DESC";
+                        ORDER BY posts.date DESC LIMIT ?,1";
              $stmt = $db->prepare($query);
-             $stmt->bind_param("ssis",$_SESSION['id'], $_SESSION['id'], $user, $_SESSION['id']);
+             $stmt->bind_param("ssisi",$_SESSION['id'], $_SESSION['id'], $user, $_SESSION['id'],$limit);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
-             if($num_rows==0){
+             if($num_rows==0 ){
+                 if($limit>0){
+                     return;
+                 }
                  echo '<div id="content-empty">
                   '.$lang['user_posts'].'  <br>  
                  <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
@@ -65,13 +68,16 @@
                                  WHERE users_in_collab.id_user = ?  AND posts.id_user != ?
                                  GROUP BY posts.id 
                                  HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                 ORDER BY posts.date DESC";
+                                 ORDER BY posts.date DESC LIMIT ?,1";
              $stmt = $db->prepare($query);
-             $stmt->bind_param("ssiis",$_SESSION['id'], $_SESSION['id'], $user, $user, $_SESSION['id']);
+             $stmt->bind_param("ssiisi",$_SESSION['id'], $_SESSION['id'], $user, $user, $_SESSION['id'],$limit);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
              if($num_rows==0){
+                 if($limit>0){
+                     return;
+                 }
                  echo '<div id="content-empty">
                   '.$lang['user_collaboration'].'  <br>  
                  <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
@@ -92,4 +98,8 @@
              $result2=null;
          }
          include("../html/main-post.php");
+
+         echo "<script> initMap(".$row['id'].",'".$row['points']."','".$_SESSION['color']."','".$_SESSION['color_of_collab']."','".$_SESSION['color_icon']."','".$_SESSION['show_icons']."','".$_SESSION['map_theme']."','".$row['activity']."') </script>";
+
+
      }

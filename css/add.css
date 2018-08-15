@@ -1,0 +1,393 @@
+
+body{
+    background: #fafafa;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    padding: 0;
+    margin: 0;
+}
+
+@media only screen and (min-width: 768px){
+
+
+
+    #add-container{
+        width: 50%;
+        margin-top: 100px;
+        margin-right: auto;
+        text-align: center;
+        margin-left: auto;
+    }
+
+
+    #add-desc-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 18px;
+    }
+
+    #add-desc textarea{
+        padding-left: 10px;
+        padding-top: 10px;
+        font-family: Text2;
+        font-size: 14px;
+        margin-top: 20px;
+        height: 100px;
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 8px;
+        resize: none;
+    }
+
+    #add-desc textarea:focus{
+       border: 2px solid #1ab188;
+    }
+
+    #add-activity{
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    #add-activity-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 18px;
+    }
+
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .container {
+        margin-top: 20px;
+        display: block;
+        font-size: 15px;
+        font-family: Text2;
+        font-weight: bold;
+        position: relative;
+        padding-left: 35px;
+        text-align: left;
+        margin-bottom: 12px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 0;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #1ab188;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    #add-upload{
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    #add-upload-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 18px;
+    }
+
+    #add-upload-file{
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    #file{
+        font-family: Text2;
+    }
+
+
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid black;
+        display: inline-block;
+        font-family: Text2;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 5px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+
+    #custom-file-name{
+        margin-left: 10px;
+        font-family: Text2;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    #add-submit{
+        margin-top: 50px;
+        width: 100%;
+        text-align: center;
+    }
+
+
+    #add-submit button{
+        height: 40px;
+        width: 25%;
+        font-family: Text;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 14px;
+        border: 2px solid #1ab188;
+        color: #1ab188;
+        background: white;
+        border-radius: 5px;
+        -webkit-transition: all .8s;
+        -moz-transition: all .8s;
+        -o-transition: all .8s;
+        transition: all .8s;
+    }
+
+    #add-submit button:hover{
+        background:  #1ab188;
+        color: white;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 767px){
+
+    #alerts-2{
+        margin-left: 10% !important;
+        margin-right: 10% !important;
+        width: 80% !important;
+    }
+
+    #add-container{
+        width: 90%;
+        margin-top: 80px;
+        margin-right: auto;
+        text-align: center;
+        margin-left: auto;
+    }
+
+
+    #add-desc-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 14px;
+    }
+
+    #add-desc textarea{
+        padding-left: 5px;
+        padding-top: 5px;
+        font-family: Text2;
+        font-size: 12px;
+        margin-top: 20px;
+        height: 60px;
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 8px;
+        resize: none;
+    }
+
+    #add-desc textarea:focus{
+        border: 2px solid #1ab188;
+    }
+
+    #add-activity{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #add-activity-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 14px;
+    }
+
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .container {
+        margin-top: 20px;
+        display: block;
+        font-size: 12px;
+        font-family: Text2;
+        font-weight: bold;
+        position: relative;
+        padding-left: 25px;
+        text-align: left;
+        margin-bottom: 10px;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: #eee;
+        border-radius: 0;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked ~ .checkmark {
+        background-color: #1ab188;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        left: 6px;
+        top: 3px;
+        width: 3px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    #add-upload{
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    #add-upload-text{
+        text-align: left;
+        font-family: Text;
+        font-size: 15px;
+    }
+
+    #add-upload-file{
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    #file{
+        font-family: Text2;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid black;
+        display: inline-block;
+        font-family: Text2;
+        font-weight: bold;
+        font-size: 12px;
+        border-radius: 5px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+
+    #custom-file-name{
+        margin-left: 10px;
+        font-family: Text2;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    #add-submit{
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+    }
+
+
+    #add-submit button{
+        height: 40px;
+        width: 50%;
+        font-family: Text;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 12px;
+        border: 2px solid #1ab188;
+        color: #1ab188;
+        background: white;
+        border-radius: 5px;
+        -webkit-transition: all .8s;
+        -moz-transition: all .8s;
+        -o-transition: all .8s;
+        transition: all .8s;
+    }
+
+    #add-submit button:hover{
+        background:  #1ab188;
+        color: white;
+    }
+}

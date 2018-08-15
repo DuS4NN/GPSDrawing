@@ -15,6 +15,12 @@
     .post{
         width: 99%;
     }
+    .em{
+       font-size: 8px;
+    }
+    #body{
+        margin-top: 90px;
+    }
     .post-description{
         font-size: 10px;
     }
@@ -109,6 +115,9 @@
 @media only screen and (min-width: 767px) {
     .post{
         width: 50%;
+    }
+    .em{
+        font-size: 11px;
     }
     #body{
         margin-top: 100px;
@@ -221,6 +230,7 @@ table{
     padding-top: 15%;
     padding-left: 15%;
 }
+
 
 #profile-nick{
     text-align: left;

@@ -46,6 +46,10 @@
             }
             break;
         case 2:
+
+            if($id == $_SESSION['id']){
+                return;
+            }
             $stmt = $db->prepare("INSERT INTO `blocked_users` (`user_id`, `blocked`) VALUES (?, ?);");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();

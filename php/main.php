@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
+    <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web ?>/js/load-map.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
@@ -77,6 +78,25 @@
     <div id="alerts-2">
 
     </div>
+
+
+
+    <script>
+        function getDocHeight() {
+            var D = document;
+            return Math.max(
+                D.body.scrollHeight, D.documentElement.scrollHeight,
+                D.body.offsetHeight, D.documentElement.offsetHeight,
+                D.body.clientHeight, D.documentElement.clientHeight
+            );
+        }
+
+        $(window).scroll(function() {
+            if($(window).scrollTop() + window.innerHeight == getDocHeight()) {
+
+            }
+        });
+    </script>
 
     <?php require '../html/modals.html'; ?>
 

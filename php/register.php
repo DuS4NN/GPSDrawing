@@ -73,6 +73,11 @@
         $stmt->execute();
 
 
+        $id_badge = 1;
+        $stmt = $db->prepare("INSERT INTO users_badges (user_id, badge_id, date) VALUES (?,?,?)");
+        $stmt->bind_param("iis", $lastID,$id_badge,$date);
+        $stmt->execute();
+
 
 
         //Send verify email
