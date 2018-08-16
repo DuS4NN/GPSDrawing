@@ -50,6 +50,7 @@ $(document).on('click','.md-trigger',function () {
         document.body.style.top = null;
         document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
         document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
+        document.getElementsByClassName('md-modal-really')[2].style.maxHeight=null;
         //document.body.style.overflowY = "auto";
         window.scrollTo(0,localStorage.getItem("top"));
     });
@@ -73,6 +74,7 @@ $(document).on('click','.md-trigger',function () {
         window.scrollTo(0,localStorage.getItem("top"));
         document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
         document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
+        document.getElementsByClassName('md-modal-really')[2].style.maxHeight=null;
     });
 
 });
@@ -87,6 +89,7 @@ function close_modal(id) {
     window.scrollTo(0,localStorage.getItem("top"));
     document.getElementsByClassName('md-modal-really')[0].style.maxHeight=null;
     document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
+    document.getElementsByClassName('md-modal-really')[2].style.maxHeight=null;
 }
 
 var coll = document.getElementsByClassName("md-modal-delete");

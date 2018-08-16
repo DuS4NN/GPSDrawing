@@ -11,8 +11,8 @@
     $id = $_POST['id'];
     $num = $_POST['num'];
 
-    $stmt = $db->prepare("SELECT comments.id as 'comid', comments.id_user, comments.id_post, comments.comment, comments.time, users.nick_name, users.profile_picture, 
-CASE WHEN EXISTS (SELECT * FROM comments WHERE comments.id_user = ? AND comments.id = comid) 
+    $stmt = $db->prepare("SELECT comments.id as 'comid', comments.id_user, comments.id_post, comments.comment, comments.time, users.nick_name, 
+                    CASE WHEN EXISTS (SELECT * FROM comments WHERE comments.id_user = ? AND comments.id = comid) 
                     THEN '1' 
                     ELSE '0'
                     END AS 'commented'
@@ -20,9 +20,9 @@ CASE WHEN EXISTS (SELECT * FROM comments WHERE comments.id_user = ? AND comments
                     INNER JOIN users ON users.id = comments.id_user 
                     WHERE comments.id_post = ? 
                     AND  comments.id NOT IN (SELECT id_comment FROM blocked_comments WHERE blocked_comments.id_user = ?)
-                    ORDER BY comments.time 
-                    DESC LIMIT ?");
-    $stmt->bind_param("iiii", $_SESSION['id'], $id, $_SESSION['id'],$num);
+                    ORDER BY comments.time  
+                    DESC LIMIT ?,5");
+    $stmt->bind_param("iiis", $_SESSION['id'], $id, $_SESSION['id'],$num);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -36,12 +36,17 @@ CASE WHEN EXISTS (SELECT * FROM comments WHERE comments.id_user = ? AND comments
 
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()){
-        if($row['count']<=$num){
+        if($row['count']-5<=$num){
             echo '<script>
                     var x = document.getElementById("loadmore-'.$id.'");
                    
                     x.style.display = "none";
-                  </script>
-';
+                  </script>';
+        }else{
+            echo '<script>
+                    var x = document.getElementById("loadmore-'.$id.'");
+                   
+                    x.style.display = "block";
+                  </script>';
         }
     }

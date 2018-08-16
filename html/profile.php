@@ -26,14 +26,14 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
+
+        <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
         <script src="<?php echo $web ?>/js/load-map.js"></script>
 
     </head>
 
     <body>
         <?php require '../html/header.html'; ?>
-
         <?php
             $stmt = $db->prepare("SELECT users.id, nick_name, about, first_name, last_name, date, profile_picture, aa.collabcount,
                                           CASE WHEN EXISTS(SELECT * FROM followers WHERE followers.id_user = users.id  AND followers.follower = ?)
@@ -195,15 +195,17 @@
 
         <script>
             var old_item = "post";
+            var limit = 1;
             $(document).on('click','#profile-choose-item',function () {
 
                 var item = $(this).attr('item');
                 if(old_item==item){
                     return;
                 }
+                limit = 1;
                 old_item=item;
 
-                $(".body").load("<?php echo $web;?>/php/load_posts.php",{action:item,limit:0, user:'<?php echo $row_u['id'];?>'});
+                $(".body").load("<?php echo $web;?>/php/load_posts.php",{action:item, limit:0, collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'});
                 if(item=='post'){
                     $('.profile-choose-collaboration').removeClass('select');
                     $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/bbbbbb/groups.png');
@@ -216,10 +218,38 @@
                     $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/bbbbbb/menu.png')
                 }
 
-
+                window.scrollTo(0,0);
             });
 
 
+
+            function getDocHeight() {
+                var D = document;
+                return Math.max(
+                    D.body.scrollHeight, D.documentElement.scrollHeight,
+                    D.body.offsetHeight, D.documentElement.offsetHeight,
+                    D.body.clientHeight, D.documentElement.clientHeight
+                );
+            }
+
+
+            $(window).scroll(function() {
+                if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
+                    setTimeout(function () {
+                        $.ajax({
+                            type:"POST",
+                            url: "<?php echo $web; ?>/php/load_posts.php",
+                            data:{action:old_item,limit:limit,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                            cache:false,
+                            success:function(response){
+                                $("#body-post").append(response);
+                                limit++;
+                            }
+                        });
+
+                    },20);
+                }
+            });
         </script>
 
 
@@ -283,47 +313,6 @@
 
         <?php require '../html/modals.html'; ?>
 
-        <script>
-
-
-
-            function getDocHeight() {
-                var D = document;
-                return Math.max(
-                    D.body.scrollHeight, D.documentElement.scrollHeight,
-                    D.body.offsetHeight, D.documentElement.offsetHeight,
-                    D.body.clientHeight, D.documentElement.clientHeight
-                );
-            }
-
-            var limit = 1;
-            var select = "post";
-            $(window).scroll(function() {
-                if($(window).scrollTop() + window.innerHeight == getDocHeight()) {
-                    setTimeout(function () {
-                       if($(".profile-choose-post").hasClass('select')){
-                            if("post"!=select)limit=1;
-                            select="post";
-                        }else{
-                           if("collaboration"!=select)limit=1;
-                           select="collaboration";
-                       }
-
-                        $.ajax({
-                            type:"POST",
-                            url: "<?php echo $web; ?>/php/load_posts.php",
-                            data:{action:select,limit:limit,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
-                            cache:false,
-                            success:function(response){
-                                $("#body-post").append(response);
-                                limit++;
-                            }
-                        });
-
-                    },20);
-                }
-            });
-        </script>
 
 
         <script>

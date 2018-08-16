@@ -3,16 +3,17 @@ function showCom(id) {
     if(x.style.display=="none"){
         x.style.display = "block";
         var com = document.getElementById("comment-section"+id);
-        if(com.innerHTML==""){
+        if(com.innerText==""){
             $(document).ready(function () {
                 setTimeout(function(){
-                    $("#comment-section"+id).load(localStorage.getItem("web")+"/php/load_comments.php", {id: id, num: 5})
-                }, 100);
+                    $("#comment-section"+id).load(localStorage.getItem("web")+"/php/load_comments.php", {id: id, num: 0})
+                }, 20);
             });
         }
     }else{
         x.style.display = "none";
-        document.getElementById("comment-section"+id).innerHTML = "";
+        document.getElementById("comment-section"+id).innerText = "";
+        document.getElementById("loadmore-"+id).setAttribute("load","5");
     }
 }
 
@@ -23,25 +24,48 @@ $(document).ready(function () {
         var count = document.getElementById("loadmore-"+id).getAttribute("load");
         var newcount = parseInt(count)+5;
         document.getElementById("loadmore-"+id).setAttribute("load",newcount);
-            $("#comment-section"+id).load(localStorage.getItem("web")+"/php/load_comments.php",{id: id, num: newcount});
+
+        $.ajax({
+           type:"POST",
+           url: localStorage.getItem("web")+"/php/load_comments.php",
+           data: {id: id,num: count},
+           success: function(response){
+               $("#comment-section"+id).append(response);
+           }
+        });
     });
 });
 
 $(document).ready(function () {
     $(".add-comment") .keypress(function (e) {
 
-    if(e.keyCode==13){
+    if(e.keyCode===13){
         var id = e.target.id.substring(12,e.target.id.length);
         var text = document.getElementById("add-comment-"+id).value
         if(document.getElementById("add-comment-"+id).getAttribute("edit")==0){
-            $(".add-comment").load(localStorage.getItem("web")+"/php/add_comment.php",{id: id, text: text});
+            //$(".add-comment").load(localStorage.getItem("web")+"/php/add_comment.php",{id: id, text: text});
+
+            $.ajax({
+                type:"POST",
+                url: localStorage.getItem("web")+"/php/add_comment.php",
+                data: {id: id, text: text},
+                success: function(response){
+                    var commentSection = document.getElementById("comment-section"+id);
+                    var text = commentSection.innerHTML;
+                    commentSection.innerHTML = response+text;
+
+                }
+            });
             document.getElementById("add-comment-"+id).value = "";
+
             setTimeout(function(){
-                var count = document.getElementById("loadmore-"+id).getAttribute("load");
-                $("#comment-section"+id).load(localStorage.getItem("web")+"/php/load_comments.php",{id: id, num: count});
+                //var count = document.getElementById("loadmore-"+id).getAttribute("load");
+                //$("#comment-section"+id).load(localStorage.getItem("web")+"/php/load_comments.php",{id: id, num: count});
+
                 var num = parseInt(document.getElementById("comment-number"+id).innerText)+1;
                 document.getElementById("comment-number"+id).innerHTML = num;
             }, 250);
+
         }else{
             var idCom = document.getElementById("add-comment-"+id).getAttribute("edit");
             var text = document.getElementById("add-comment-"+id).value;
@@ -51,7 +75,7 @@ $(document).ready(function () {
             document.getElementById("add-comment-"+id).setAttribute("edit","0");
             document.getElementById("cancel-edit"+id).style.visibility = "hidden";
         }
-    }else if(e.keyCode==27){
+    }else if(e.keyCode===27){
         var id = e.target.id.substring(12,e.target.id.length);
         document.getElementById("add-comment-"+id).value = "";
         document.getElementById("add-comment-"+id).setAttribute("edit","0");

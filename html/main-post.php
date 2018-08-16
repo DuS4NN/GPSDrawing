@@ -148,26 +148,28 @@
             </td>
         </tr>
         <tr>
-        <td colspan="3">
-            <div id="comments-body<?php echo $row['id']; ?>" style="display: none ">
-                <br>
-                <div id="comment-form">
-                    <div id="profile-picture-comment">
-                        <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
-                    </div>
-                    <div id="comment-input">
-                        <input edit="0" minlength="1" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
-                        <div style="visibility: hidden" onclick="cancel_edit(<?php echo $row['id']; ?>)" class="cancel-edit" id="cancel-edit<?php echo $row['id']; ?>"><i class="fas fa-times"></i>&nbsp;<?php echo $lang['cancel']; ?></div>
-                    </div>
+            <td colspan="3">
+                <div id="comments-body<?php echo $row['id']; ?>" style="display: none ">
                     <br>
-                </div>
+                    <div id="comment-form">
+                        <div id="profile-picture-comment">
+                            <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
+                        </div>
+                        <div id="comment-input">
+                            <input edit="0" minlength="1" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
+                            <div style="visibility: hidden" onclick="cancel_edit(<?php echo $row['id']; ?>)" class="cancel-edit" id="cancel-edit<?php echo $row['id']; ?>"><i class="fas fa-times"></i>&nbsp;<?php echo $lang['cancel']; ?></div>
+                        </div>
 
-                <div class="load-more" load="5" id="loadmore-<?php echo $row['id']; ?>">
-                    Load more
+                    </div>
+                    <div class="comment-section" style="width: 95%; margin: auto;" id="comment-section<?php echo $row['id']; ?>">
+                    </div>
+                <div style="width: 100%;float: left">
+                    <div class="load-more" load="5" id="loadmore-<?php echo $row['id']; ?>">
+                        <?php echo $lang['load_more']?>
+                    </div>
                 </div>
-
-                <div class="comment-section" style="width: 95%; margin: auto;" id="comment-section<?php echo $row['id']; ?>"></div>
-            </div>
+                </div>
+            </td>
         </tr>
         <tr>
             <td colspan="3">

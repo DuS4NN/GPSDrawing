@@ -410,9 +410,9 @@ hr{
 }
 
 .load-more{
-    float: left;
     cursor: pointer;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-top: 5px;
     font-family: Text2;
     color: #bbbbbb;
 }

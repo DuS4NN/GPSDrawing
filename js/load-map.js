@@ -232,6 +232,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                 }
             }
         } catch (e) {
+            console.log("Error with init map: "+e);
            // initMap(id,point,color,collab,color_icon,icons, theme,travelmode);
         }
     }, 550);

@@ -17,7 +17,9 @@
 
 
         //echo date("Y-m-d H:i", $milisec);
-        if($time-$milisec<60){
+        if($time-$milisec<0){
+            echo '1 '.$lang['sec'].'.';
+        }else if($time-$milisec<60){
             echo intval(($time-$milisec)).' '.$lang['sec'].'.';
         }else if($time-$milisec<3600){
             echo intval(($time-$milisec)/60) . ' min.';
