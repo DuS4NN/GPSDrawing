@@ -1,15 +1,10 @@
 <?php
     require '../config/db.php';
-require '../config/lang.php';
+    require '../config/lang.php';
     session_start();
 
-    if(!isset($_POST['points']) || empty($_POST['points']) ||  !isset($_POST['radio']) || empty($_POST['radio'])){
-        echo '
-            <div class="alert info" id="alert-main-post">
-                   <span class="closebtn">&times;</span> 
-                  '.$lang['error13'].' 
-                </div>      
-            ';
+    if(!isset($_POST['points']) || empty($_POST['points']) ||  !isset($_POST['radio'])){
+        echo 'dasdasdasdasd';
         return;
     }
 

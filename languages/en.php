@@ -87,6 +87,7 @@
         "select_activity" => "Select activity",
         "select_file" => "Select file",
         "browse" => "Browse",
+        "user_follow" => "It look empty. Search and follow users.",
         "error1" => "Invalid email or password.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Nick name already exists.",
@@ -111,5 +112,9 @@
         "info4" => "Post was hidden.",
         "info5" => "Thank you for your response.",
         "info6" => "The description of the post has been modified.",
-        "info7" => "User successfully blocked."
+        "info7" => "User successfully blocked.",
+        "info8" => "Comment was successfully deleted.",
+        "info9" => "The comment has been modified.",
+        "info10" => "Comment was hidden.",
+        "info11" => "User was blocked."
     );

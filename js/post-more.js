@@ -1,113 +1,134 @@
-function go_on_post(modalid){
-    var id = document.getElementById(modalid).getAttribute("post-id");
+function go_on_post(modal_id){
+    let id = document.getElementById(modal_id).getAttribute("post-id");
     window.location=localStorage.getItem("web")+"/posts/"+id;
 }
 
-function hide_post(modalid) {
-    var id = document.getElementById(modalid).getAttribute("post-id");
-
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-H-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-H-'+id+'-'+random);
-
-    $("#alert-H-"+id+"-"+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 0});
-    close_modal(modalid);
+function hide_post(modal_id) {
+    let id = document.getElementById(modal_id).getAttribute("post-id");
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 0},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
+    close_modal(modal_id);
     document.getElementById("post-"+id).style.display = "none";
 
 }
 
-function add_to_bookmarks(modalid) {
+function add_to_bookmarks(modal_id) {
 
-    var id = document.getElementById(modalid).getAttribute("post-id");
-    var data = document.getElementById(id).getAttribute("data-modal");
-    close_modal(modalid);
-    if(data=='modal-1') document.getElementById(id).setAttribute("data-modal", "modal-2");
+    let id = document.getElementById(modal_id).getAttribute("post-id");
+    let data = document.getElementById(id).getAttribute("data-modal");
+
+    if(data==='modal-1') document.getElementById(id).setAttribute("data-modal", "modal-2");
     else document.getElementById(id).setAttribute("data-modal", "modal-4");
 
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-ATB-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-ATB-'+id+'-'+random);
 
-    $('#alert-ATB-'+id+'-'+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 1});
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 1},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
+    close_modal(modal_id);
+
 }
 
-function remove_from_bookmarks(modalid) {
-    var id = document.getElementById(modalid).getAttribute("post-id");
-    var data = document.getElementById(id).getAttribute("data-modal");
-    close_modal(modalid);
-    if(data=='modal-2') document.getElementById(id).setAttribute("data-modal","modal-1");
+function remove_from_bookmarks(modal_id) {
+    let id = document.getElementById(modal_id).getAttribute("post-id");
+    let data = document.getElementById(id).getAttribute("data-modal");
+
+    if(data==='modal-2') document.getElementById(id).setAttribute("data-modal","modal-1");
     else document.getElementById(id).setAttribute("data-modal","modal-3");
 
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-RFB-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-RFB-'+id+'-'+random);
-
-    $("#alert-RFB-"+id+"-"+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 2});
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 2},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
+    close_modal(modal_id);
 }
 
-function delete_post(modalid) {
-    var id = document.getElementById(modalid).getAttribute("post-id");
+function delete_post(modal_id) {
+    let id = document.getElementById(modal_id).getAttribute("post-id");
 
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-D-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-D-'+id+'-'+random);
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 3},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
 
-
-    $("#alert-D-"+id+"-"+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 3});
     document.getElementById("post-"+id).style.display = "none";
-    close_modal(modalid);
+    close_modal(modal_id);
 }
 
 function report(reason) {
-    var id = document.getElementById('modal-report').getAttribute("post-id");
+    let id = document.getElementById('modal-report').getAttribute("post-id");
 
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-R-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-R-'+id+'-'+random);
-
-    $("#alert-R-"+id+"-"+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 4, reason: reason});
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 4, reason: reason},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
     close_modal('modal-report');
 }
 
 function edit_post() {
-    var id = document.getElementById('modal-edit').getAttribute("post-id");
-    var text = document.getElementById('md-modal-edit-input').value;
+    let id = document.getElementById('modal-edit').getAttribute("post-id");
+    let text = document.getElementById('md-modal-edit-input').value;
 
     document.getElementById("post-description-"+id).innerText = text;
 
-    var random = parseInt(Math.random()*1000);
-    var div = document.createElement('div');
-    div.id = 'alert-E-'+id+'-'+random;
-    var parentDiv = document.getElementById("alerts-2");
-    parentDiv.appendChild(div);
-    closeAlert('alert-E-'+id+'-'+random);
-
-    $("#alert-E-"+id+"-"+random).load(localStorage.getItem("web")+"/php/post-actions.php",{id: id, action: 5, text: text});
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/post-actions.php",
+        data: {id: id, action: 5, text: text},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
     close_modal('modal-edit');
 }
 
-function add_to_project(modalid) {
-    var id = document.getElementById(modalid).getAttribute("post-id");
+function add_to_project(modal_id) {
+    //let id = document.getElementById(modal_id).getAttribute("post-id");
 }
 
 $(document).ready(function () {
    $('#md-modal-edit-input').keypress(function (e) {
-      if(e.keyCode==13){
+      if(e.keyCode===13){
         edit_post();
       }
    });

@@ -29,6 +29,7 @@
 
         <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
         <script src="<?php echo $web ?>/js/load-map.js"></script>
+        <script src="<?php echo $web ?>/js/alerts-main.js"></script>
 
     </head>
 
@@ -224,7 +225,7 @@
 
 
             function getDocHeight() {
-                var D = document;
+                let D = document;
                 return Math.max(
                     D.body.scrollHeight, D.documentElement.scrollHeight,
                     D.body.offsetHeight, D.documentElement.offsetHeight,
@@ -246,8 +247,7 @@
                                 limit++;
                             }
                         });
-
-                    },20);
+                    },0);
                 }
             });
         </script>
@@ -303,12 +303,8 @@
 
         </div>
 
-        <div id="alerts">
-            <?php require '../php/alerts.php'; ?>
-        </div>
-
         <div id="alerts-2">
-
+            <?php require '../php/alerts.php'; ?>
         </div>
 
         <?php require '../html/modals.html'; ?>

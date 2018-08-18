@@ -136,11 +136,11 @@
                     </div>
                     <div id="footer-distance">
                         <img src="<?php echo $web ?>/img/distance.png" title="<?php echo $lang['distance']; ?>">
-                        <span id="post-footer-desc"><?php echo $lang['distance'] ?>:<br></span> <?php echo $row['distance']; ?> km
+                        <span id="post-footer-desc"><?php echo $lang['distance'] ?>:<br></span><span id="post-footer-distance-<?php echo $row['id']; ?>">0</span>
                     </div>
                     <div id="footer-time">
                         <img src="<?php echo $web ?>/img/stopwatch.png" title="<?php echo $lang['time']; ?>">
-                        <span id="post-footer-desc"><?php echo $lang['time'] ?>:<br></span> <?php echo $row['time']; ?> min
+                        <span id="post-footer-desc"><?php echo $lang['time'] ?>:<br></span><span id="post-footer-duration-<?php echo $row['id']; ?>">0</span>
                     </div>
                     <div id="post-footer-side">
                     </div>

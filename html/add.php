@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
+    <script src="<?php echo $web ?>/js/alerts-main.js"></script>
 
 
 
@@ -93,8 +93,8 @@
 
 <script>
     $('#upload-file').on('change',function () {
-        var fileInput = document.getElementById('upload-file');
-        var fileName = fileInput.value.split(/(\\|\/)/g).pop();
+        let fileInput = document.getElementById('upload-file');
+        let fileName = fileInput.value.split(/(\\|\/)/g).pop();
 
         if(!fileName.endsWith('.gpx')){
             document.getElementById('upload-file').value = "";
@@ -106,31 +106,31 @@
 
 
     function add_post(){
-        var file = document.getElementById('upload-file').files[0];
+        let file = document.getElementById('upload-file').files[0];
         if(!file){
-            document.getElementById('alerts-2').innerHTML =' <div class="alert" id="alert-main-post"> <span class="closebtn">&times;</span><?php echo $lang['error12']; ?></div>  ';
-            closeAlert('alert-main-post');
+            document.getElementById('alerts-2').innerHTML =' <div class="alert remove" id="alert-main-post"> <span class="closebtn">&times;</span><?php echo $lang['error12']; ?></div>  ';
+            closeAlert('remove');
             return;
         }
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.readAsText(file, "UTF-8");
 
         reader.onload = loaded;
     }
 
     function loaded(evt) {
-        var points="";
-        var fileString = evt.target.result;
-        var text = fileString.split(">");
-        for(var i=0; i<text.length;i++){
+        let points="";
+        let fileString = evt.target.result;
+        let text = fileString.split(">");
+        for(let i=0; i<text.length;i++){
             if(text[i].toString().includes('lat')){
-                var row = text[i].split("\"");
+                let row = text[i].split("\"");
                 points+=row[1]+";"+row[3]+";";
             }
         }
         points=points.substring(0,points.length-1);
-        var desc = document.getElementById('add-desc-textarea').value;
-        var radio = $('input[name=radio]:checked', '#radio').val();
+        let desc = document.getElementById('add-desc-textarea').value;
+        let radio = $('input[name=radio]:checked', '#radio').val();
         $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio});
         setTimeout(function () {
             window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
@@ -140,7 +140,6 @@
 
 </script>
 
-    <script src="<?php echo $web; ?>/js/alerts-main.js"></script>
     <script src="<?php echo $web ?>/js/classie.js"></script>
 
 </body>

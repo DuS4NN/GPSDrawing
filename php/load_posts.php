@@ -4,16 +4,20 @@
     require '../config/db.php';
     require '../config/lang.php';
 
-    if(!isset($_POST['user']) || empty($_POST['user']) || !isset($_POST['action']) || empty($_POST['action']) || !isset($_POST['limit'])){
+    if(!isset($_POST['action']) || empty($_POST['action']) || !isset($_POST['limit'])){
         return;
     }
-     $user = $_POST['user'];
+
      $action = $_POST['action'];
      $limit = $_POST['limit'];
 
 
      switch ($action){
          case 'post':
+             if(!isset($_POST['user']) || empty($_POST['user'])){
+                 return;
+             }
+             $user = $_POST['user'];
              $query = "SELECT posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, 
                         posts.distance, posts.points, posts.time, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                         CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
@@ -50,6 +54,10 @@
              break;
 
          case 'collaboration':
+             if(!isset($_POST['user']) || empty($_POST['user'])){
+                 return;
+             }
+             $user = $_POST['user'];
              $query = "SELECT posts.id,posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, posts.distance, posts.points, posts.time, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                  CASE WHEN EXISTS(SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
                                  THEN '1'
@@ -80,11 +88,47 @@
                  }
                  echo '<div id="content-empty">
                   '.$lang['user_collaboration'].'  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
+                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png"> 
                  </div>
              ';
              }
              break;
+         case 'main_post':
+             $stmt = $db->prepare("SELECT
+                                posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
+                                posts.distance, posts.points, posts.time, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'liked',
+                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'bookmark',
+                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                                FROM posts
+                                LEFT JOIN comments ON comments.id_post = posts.id
+                                INNER JOIN users ON users.id = posts.id_user
+                                GROUP BY posts.id
+                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                                AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                                AND posts.id_user IN (SELECT followers.id_user FROM followers WHERE followers.follower = ?)
+                                ORDER BY posts.date DESC LIMIT ?,1");
+
+             $stmt->bind_param("ssssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $limit);
+             $stmt->execute();
+             $result = $stmt->get_result();
+             $num_rows = mysqli_num_rows($result);
+             if($num_rows==0){
+                 if($limit>0){
+                     return;
+                 }
+                 echo '<div id="content-empty">
+                  '.$lang['user_follow'].'  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png"> 
+                 </div>
+             ';
+             }
      }
 
      while ($row = $result->fetch_assoc()) {
@@ -99,7 +143,7 @@
          }
          include("../html/main-post.php");
 
-         echo "<script> initMap(".$row['id'].",'".$row['points']."','".$_SESSION['color']."','".$_SESSION['color_of_collab']."','".$_SESSION['color_icon']."','".$_SESSION['show_icons']."','".$_SESSION['map_theme']."','".$row['activity']."') </script>";
+         //echo "<script> initMap(".$row['id'].",'".$row['points']."','".$_SESSION['color']."','".$_SESSION['color_of_collab']."','".$_SESSION['color_icon']."','".$_SESSION['show_icons']."','".$_SESSION['map_theme']."','".$row['activity']."') </script>";
 
 
      }

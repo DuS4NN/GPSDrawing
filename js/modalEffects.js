@@ -1,5 +1,5 @@
 $(document).on('click','.md-trigger',function () {
-	var id= $(this).attr('id');
+	const id= $(this).attr('id');
 	if(id.startsWith("report")) {
 	    if(id.endsWith("user")){
             var modal = document.getElementById("modal-report-user");
@@ -34,9 +34,21 @@ $(document).on('click','.md-trigger',function () {
 
 
 	$(".md-overlay").click(function () {
-	    if(id.startsWith("report")){
-	        var b = modal.className.split(" ");
-	        modal.className = b[0]+" "+b[1];
+	    close_modal();
+    });
+
+    $(document).keypress(function (e) {
+        if(id==null)return;
+
+        if(e.keyCode===27){
+            close_modal();
+        }
+    });
+
+    function close_modal() {
+        if(id.startsWith("report")){
+            var b = modal.className.split(" ");
+            modal.className = b[0]+" "+b[1];
         }else if(id.startsWith("md-edit")) {
             var b = modal.className.split(" ");
             modal.className = b[0]+" "+b[1];
@@ -53,7 +65,8 @@ $(document).on('click','.md-trigger',function () {
         document.getElementsByClassName('md-modal-really')[2].style.maxHeight=null;
         //document.body.style.overflowY = "auto";
         window.scrollTo(0,localStorage.getItem("top"));
-    });
+    }
+
 
 	$(close).click(function () {
         if(id.startsWith("report")) {
@@ -91,6 +104,7 @@ function close_modal(id) {
     document.getElementsByClassName('md-modal-really')[1].style.maxHeight=null;
     document.getElementsByClassName('md-modal-really')[2].style.maxHeight=null;
 }
+
 
 var coll = document.getElementsByClassName("md-modal-delete");
 var i;

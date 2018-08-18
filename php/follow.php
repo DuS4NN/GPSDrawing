@@ -14,6 +14,7 @@
 
 
     if($action==1){
+        if($id==$_SESSION['id'])return;
         $stmt = $db->prepare("INSERT INTO `followers` (`follower`, `id_user`, `date`) VALUES (?, ?, ?);");
         $stmt->bind_param("iis", $_SESSION['id'],$id, $date);
         $stmt->execute();

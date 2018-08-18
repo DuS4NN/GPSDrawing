@@ -36,22 +36,16 @@
                 $stmt = $db->prepare("INSERT INTO `reported_users` (`user_id`, `reported`, reason) VALUES (?, ?, ?);");
                 $stmt->bind_param("iis", $_SESSION['id'],$id, $_POST['reason']);
                 $stmt->execute();
-
-                echo '
-            <div class="alert info" id="alert-main-post">
-                   <span class="closebtn">&times;</span> 
-                  '.$lang['info5'].' 
-            </div>                       
-            ';
+                echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span>'.$lang['info5'].'</div>';
             }
             break;
         case 2:
-
             if($id == $_SESSION['id']){
                 return;
             }
             $stmt = $db->prepare("INSERT INTO `blocked_users` (`user_id`, `blocked`) VALUES (?, ?);");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
+            $_SESSION['alerts'] = "info:11";
             break;
     }

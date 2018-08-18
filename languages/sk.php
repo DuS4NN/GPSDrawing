@@ -87,6 +87,7 @@
         "select_activity" => "Vyberte aktivitu",
         "select_file" => "Vyberte súbor",
         "browse" => "Prehľadávať",
+        "user_follow" => "Vyzerá to prázdne. Vyhľadajte a sledujete užívateľov.",
         "error1" => "Meno alebo heslo je nesprávne.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Tento nick už existuje.",
@@ -111,5 +112,9 @@
         "info4" => "Príspevok bol skrytý.",
         "info5" => "Ďakujeme za Vašu odozvu.",
         "info6" => "Popis príspevku bol upravený.",
-        "info7" => "Používateľ úspešne zablokovaný."
+        "info7" => "Používateľ úspešne zablokovaný.",
+        "info8" => "Komentár bol úspešne odstránený.",
+        "info9" => "Komentár bol upravený.",
+        "info10" => "Komentár bol skrytý.",
+        "info11" => "Používateľ bol zablokovaný."
     );

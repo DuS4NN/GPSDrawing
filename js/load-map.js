@@ -61,7 +61,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                  };
 
 
-                if(collab==1){
+                if(collab===1){
                     var colorRGB = [parseInt(color.substring(1,3),16),parseInt(color.substring(3,5),16),parseInt(color.substring(5,7),16)];
                     var linecolors = [];
                     var hue = rgb2hue(colorRGB[0],colorRGB[1],colorRGB[2]);
@@ -70,7 +70,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                         var aa = 100 - i * add;
                         linecolors.push('hsl(' + hue.toString() + ',' + aa.toString() + '%,50%)');
                     }
-                }else if(collab==0){
+                }else if(collab===0){
                     var linecolors = [color];
                 }
                 var colorIdx = 0;
@@ -149,7 +149,6 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
             }else{
                 var points = point.split(";");
-
                 var stations = new Array();
                 var num=0;
                 for(var i=0; i<points.length;i+=2){
@@ -169,16 +168,35 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
 
                 // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
-                for (var i = 0, parts = [], max = 8 - 1; i < stations.length; i = i + max)
+                for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max)
                     parts.push(stations.slice(i, i + max + 1));
 
+
+                var count_dis = 0;
+                var count_time = 0;
                 // Callback function to process service results
                 var service_callback = function(response, status) {
                         if (status != 'OK') {
                             console.log('Directions request failed due to ' + status);
                             return;
                         }
-                        //console.log(id+": "+response.routes[0].legs[0].distance.value);
+
+
+                        let num_time = parseFloat(response.routes[0].legs[0].duration.value);
+                        count_time += num_time;
+                    
+                        if(count_time<=60){
+                            document.getElementById("post-footer-duration-"+id).innerText = count_time+" s";
+                        }else if(count_time>60 && count_time<3600){
+                            document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60)+" min";
+                        }else{
+                            document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60/60)+" h"+" "+parseInt(count_time/60%60)+" min";
+                        }
+
+                        let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
+                        count_dis += num_distance;
+                        document.getElementById("post-footer-distance-"+id).innerText = Math.round((count_dis/1000) * 10) / 10+" km";
+
 
                         var renderer = new google.maps.DirectionsRenderer;
                         renderer.setMap(map);
@@ -199,16 +217,16 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
                     var travel = 'WALKING';
                     switch (travelmode){
-                        case 0:
+                        case "0":
                             travel = 'WALKING';
                             break;
-                        case 1:
+                        case "1":
                             travel = 'WALKING';
                             break;
-                        case 2:
-                            travel = 'BICYCLING';
+                        case "2":
+                            travel = 'DRIVING';
                             break;
-                        case 3:
+                        case "3":
                             travel = 'DRIVING';
                             break;
                     }
@@ -224,19 +242,17 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                         travelMode: travel
                     };
                     // Send request
-
                      service.route(service_options, service_callback);
-
-
-
                 }
+
+
             }
         } catch (e) {
             console.log("Error with init map: "+e);
            // initMap(id,point,color,collab,color_icon,icons, theme,travelmode);
         }
     }, 550);
-}
+};
 
 function rgb2hue(r, g, b) {
     r /= 255;

@@ -1,14 +1,18 @@
 $(document).on("click", ".closebtn", function(){
-    var div = $(this).parent();
+    let div = $(this).parent();
     div.css('opacity','0');
-    setTimeout(function(){ div.css('display','none') }, 600);
+    setTimeout(function(){ div.css('display','none') }, 500);
 });
 
 
 function closeAlert(id) {
-    var div = document.getElementById(id);
+    let div = document.getElementsByClassName(id);
+    console.log(div);
+    let length = div.length-1;
     setTimeout(function () {
-    div.style.opacity = '0';
-    setTimeout(function(){ div.style.display='none'; }, 500);
+        div[length].style.opacity = '0';
+        setTimeout(function(){
+            div[length].style.display='none';
+        }, 500);
     },10000);
 }
