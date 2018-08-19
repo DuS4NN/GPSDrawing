@@ -19,66 +19,66 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');
 
+            if(point.includes("*")){
+                const array = point.split("*");
+                const map_points = [];
+                const stations = [];
+                const users = [];
+                const points = [];
 
-            if (point.includes("*")) {
-                var array = point.split("*");
-                var count = 0;
-                var users = new Array();
-                var points = new Array();
-
-                var stations = new Array();
-
-                for (var i = 0; i < array.length; i += 2) {
-                    users[count] = array[i];
-                    points[count] = array[i + 1];
-                    count++;
+                for(let i = 0; i<array.length;i+=2){
+                    users.push(array[i]);
+                    points.push(array[i+1]);
                 }
 
-                var map_points = [];
-                var count2=0;
-                for (var i = 0; i < points.length; i++) {
+                let count = 0;
+
+                for(let i = 0; i<points.length;i++){
                     map_points[i] = [];
-                    var array = points[i].split(";");
-                    var count = 0;
-                    for (var j = 0; j < array.length; j = j + 2) {
-                        map_points[i][count] = {
-                            lat: parseFloat(array[j]),
-                            lng: parseFloat(array[j + 1]),
-                            name: 'Station'
+                    let points_split = points[i].split(";");
+                    for(let j = 0; j < points_split.length; j+=2){
+                        map_points[i][j/2] = {
+                          lat: parseFloat(points_split[j]),
+                          lng: parseFloat(points_split[j+1]),
+                          name: 'Station'
                         };
-                        stations[count2]={
-                            lat: parseFloat(array[j]),
-                            lng: parseFloat(array[j + 1]),
+                        stations[count] = {
+                            lat: parseFloat(points_split[j]),
+                            lng: parseFloat(points_split[j+1]),
                             name: 'Station'
                         };
                         count++;
-                        count2++;
                     }
                 }
-                 var icon = {
+
+                const icon = {
                     url: 'https://png.icons8.com/ios-glyphs/40/'+color_icon.substring(1,color_icon.length)+'/user-location.png',
-                    scaledSize: new google.maps.Size(28, 28),
-                 };
+                    scaledSize: new google.maps.Size(28,28)
+                };
+
+                const line_colors = [];
+                const direction = [];
+                let colorIdx = 0;
 
 
-                if(collab===1){
-                    var colorRGB = [parseInt(color.substring(1,3),16),parseInt(color.substring(3,5),16),parseInt(color.substring(5,7),16)];
-                    var linecolors = [];
-                    var hue = rgb2hue(colorRGB[0],colorRGB[1],colorRGB[2]);
-                    var add = Math.round(100/users.length);
-                    for(var i=0;i<users.length;i++) {
-                        var aa = 100 - i * add;
-                        linecolors.push('hsl(' + hue.toString() + ',' + aa.toString() + '%,50%)');
+
+                if(collab==1){
+                    let color_RGB = [parseInt(color.substring(1,3),16),parseInt(color.substring(3,5),16),parseInt(color.substring(5,7),16)];
+                    let hue = rgb2hue(color_RGB[0],color_RGB[1],color_RGB[2]);
+                    let add = Math.round(100/users.length);
+
+                    for(let i=0; i<users.length;i++){
+                        let saturation = 100 - i*add;
+                        line_colors.push('hsl('+hue.toString()+','+saturation.toString()+'%,50%)');
                     }
-                }else if(collab===0){
-                    var linecolors = [color];
+                }else if(collab==0){
+                    line_colors.push(color);
                 }
-                var colorIdx = 0;
-                var direction = [];
 
 
-                var lngs = stations.map(function(station) { return station.lng; });
-                var lats = stations.map(function(station) { return station.lat; });
+
+                let lngs = stations.map(function(station) { return station.lng; });
+                let lats = stations.map(function(station) { return station.lat; });
 
                 map.fitBounds({
                     west: Math.min.apply(null, lngs),
@@ -87,65 +87,109 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                     south: Math.max.apply(null, lats),
                 });
 
-                for (var i = 0; i < map_points.length; i++) {
+                let count_dis = 0;
+                let count_time = 0;
 
-                    if(icons==1){
-                        var  marker = new google.maps.Marker({
+                for (let i=0; i<map_points.length; i++) {
+
+                    if (icons == 1) {
+                        let marker = new google.maps.Marker({
                             position: map_points[i][0],
                             icon: icon,
                             map: map
                         });
-                        var content = users[i];
 
-                        var infowindow = new google.maps.InfoWindow();
+                        let content = users[i];
+                        let info_window = new google.maps.InfoWindow();
 
-                        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
-                            return function() {
-                                infowindow.setContent(content);
-                                infowindow.open(map,marker);
+                        google.maps.event.addListener(marker, 'click', (function (marker, content, info_window) {
+                            return function () {
+                                info_window.setContent(content);
+                                info_window.open(map, marker);
                             };
-                        })(marker,content,infowindow));
+                        })(marker, content, info_window));
                     }
 
-                    for (var j = 0, parts = [], max = 8 - 1; j < map_points[i].length; j = j + max) {
+                    const parts = [];
+
+                    for (let j = 0, max = 25 - 1; j < map_points[i].length; j = j + max) {
                         parts.push(map_points[i].slice(j, j + max + 1));
                     }
 
-                    for (var j = 0; j < parts.length; j++) {
+                    let travel = 'WALKING';
+                    switch (travelmode){
+                        case "0":
+                            travel = 'WALKING';
+                            break;
+                        case "1":
+                            travel = 'WALKING';
+                            break;
+                        case "2":
+                            travel = 'DRIVING';
+                            break;
+                        case "3":
+                            travel = 'DRIVING';
+                            break;
+                    }
+
+                    for (let j = 0; j < parts.length; j++) {
                         // Waypoints does not include first station (origin) and last station (destination)
-                        var waypoints = [];
-                        for (var k = 1; k < parts[j].length - 1; k++)
+                        let waypoints = [];
+                        for (let k = 1; k < parts[j].length - 1; k++)
                             waypoints.push({location: parts[j][k], stopover: false});
                         // Service options
-                        var service_options = {
+                        let service_options = {
                             origin: parts[j][0],
                             destination: parts[j][parts[j].length - 1],
                             waypoints: waypoints,
-                            travelMode: 'WALKING'
+                            travelMode: travel
                         };
 
-                        // Send request
+
                         service.route(service_options,
-                            function(directions, status) {
+                            function(response, status) {
                                 direction.push(new google.maps.DirectionsRenderer({
                                     suppressInfoWindows: true,
                                     suppressMarkers: true,
                                     preserveViewport: true,
                                     polylineOptions: {
-                                        strokeColor: linecolors[colorIdx % color.length],
+                                        strokeColor: line_colors[colorIdx % color.length],
                                         strokeWeight: 3
                                     },
                                     map: map
                                 }));
+
+
                                 if(collab==1)colorIdx++;
-                                if (status == google.maps.DirectionsStatus.OK) {
-                                    direction[direction.length - 1].setDirections(directions);
+                                if (status !== 'OK') {
+                                    console.log('Directions request failed due to ' + status);
+                                    return;
                                 }
+
+
+                                let num_time = parseFloat(response.routes[0].legs[0].duration.value);
+                                count_time += num_time;
+
+                                if(count_time<=60){
+                                    document.getElementById("post-footer-duration-"+id).innerText = count_time+" s";
+                                }else if(count_time>60 && count_time<3600){
+                                    document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60)+" min";
+                                }else{
+                                    document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60/60)+" h"+" "+parseInt(count_time/60%60)+" min";
+                                }
+
+                                let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
+                                count_dis += num_distance;
+                                document.getElementById("post-footer-distance-"+id).innerText = Math.round((count_dis/1000) * 10) / 10+" km";
+
+
+                                direction[direction.length - 1].setDirections(response);
+
                             }
                         );
                     }
+
                 }
-                service.route(service_options);
 
             }else{
                 var points = point.split(";");
@@ -176,7 +220,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                 var count_time = 0;
                 // Callback function to process service results
                 var service_callback = function(response, status) {
-                        if (status != 'OK') {
+                        if (status !== 'OK') {
                             console.log('Directions request failed due to ' + status);
                             return;
                         }
@@ -184,7 +228,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
                         let num_time = parseFloat(response.routes[0].legs[0].duration.value);
                         count_time += num_time;
-                    
+
                         if(count_time<=60){
                             document.getElementById("post-footer-duration-"+id).innerText = count_time+" s";
                         }else if(count_time>60 && count_time<3600){

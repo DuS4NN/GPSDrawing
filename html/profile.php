@@ -381,6 +381,11 @@
                     scrollLeft: '+='+scroll
                 },300, 'easeOutQuad');
             });
+
+
+            if (window.performance) {
+                $( "body" ).scrollTop(0);
+            }
         </script>
 
         <div id="overlay" class="md-overlay"></div>

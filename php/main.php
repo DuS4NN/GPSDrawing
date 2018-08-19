@@ -112,6 +112,10 @@
                 },0);
             }
         });
+
+        if (window.performance) {
+            $( "body" ).scrollTop(0);
+        }
     </script>
 
     <div id="alerts-2">
