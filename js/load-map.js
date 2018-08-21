@@ -332,3 +332,24 @@ function rgb2hue(r, g, b) {
     }
     return Math.round(hue * 60); // hue is in [0,6], scale it up
 }
+
+
+function initMap2(id) {
+    var styledMapType = get_theme(id);
+
+
+    var map = new google.maps.Map(document.getElementById('settings-map'+id), {
+        mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                'styled_map']
+        },
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+
+    });
+
+    map.mapTypes.set('styled_map', styledMapType);
+    map.setMapTypeId('styled_map');
+
+
+}

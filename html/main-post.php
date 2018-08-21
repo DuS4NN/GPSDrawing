@@ -1,9 +1,9 @@
 <div id="post-<?php echo $row['id'];?>" class="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="60px">
-                <div id="profile-picture">
-                    <img id="picture" src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
+            <td width="50px">
+                <div id="profile-picture" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">
+
                 </div>
             </td>
             <td valign="bottom">

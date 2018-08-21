@@ -3,8 +3,7 @@
     require '../config/lang.php';
     session_start();
 
-    if(!isset($_POST['points']) || empty($_POST['points']) ||  !isset($_POST['radio'])){
-        echo 'dasdasdasdasd';
+    if(!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_POST['points']) || empty($_POST['points']) ||  !isset($_POST['radio'])){
         return;
     }
 

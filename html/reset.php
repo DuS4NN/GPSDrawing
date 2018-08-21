@@ -31,17 +31,17 @@
         <form action="<?php echo $web ?>/php/reset_password.php" method="post">
 
             <div class="field-wrap">
-                <label>
+                <label id="label-newpassword">
                     <?php echo $lang['new_password'] ?><span class="req">*</span>
                 </label>
-                <input type="password" minlength=5 required name="newpassword" autocomplete="off"/>
+                <input type="password" minlength=5 required name="newpassword" id="newpassword" autocomplete="off"/>
             </div>
 
             <div class="field-wrap">
-                <label>
+                <label id="label-confirmpassword">
                     <?php echo $lang['confirm_password'] ?><span class="req">*</span>
                 </label>
-                <input type="password" minlength=5 required name="confirmpassword" autocomplete="off"/>
+                <input type="password" minlength=5 required name="confirmpassword" id="confirmpassword" autocomplete="off"/>
             </div>
 
             <input type="hidden" name="email" value="<?= $email ?>">
@@ -61,6 +61,16 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="<?php echo $web?>/js/index.js"></script>
     <script>
+
+        if(document.getElementById("newpassword").value !=''){
+            document.getElementById("label-newpassword").className = 'active';
+        }
+        if(document.getElementById("confirmpassword").value !=''){
+            document.getElementById("label-confirmpassword").className = 'active';
+        }
+
+
+
         var close = document.getElementsByClassName("closebtn");
         var i;
 

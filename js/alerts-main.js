@@ -7,12 +7,11 @@ $(document).on("click", ".closebtn", function(){
 
 function closeAlert(id) {
     let div = document.getElementsByClassName(id);
-    console.log(div);
     let length = div.length-1;
     setTimeout(function () {
         div[length].style.opacity = '0';
         setTimeout(function(){
             div[length].style.display='none';
         }, 500);
-    },10000);
+    },7000);
 }

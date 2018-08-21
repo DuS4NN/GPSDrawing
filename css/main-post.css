@@ -12,6 +12,22 @@
 }
 
 @media only screen and (max-width: 767px) {
+
+    #profile-picture{
+        -webkit-border-radius: 100px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 100px;
+        -moz-background-clip: padding;
+        border-radius: 100px;
+        background-clip: padding-box;
+        background-size: cover;
+        background-position: center center;
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+
     .post{
         width: 99%;
     }
@@ -113,6 +129,22 @@
 }
 
 @media only screen and (min-width: 767px) {
+    #profile-picture{
+        -webkit-border-radius: 100px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 100px;
+        -moz-background-clip: padding;
+        border-radius: 100px;
+        background-clip: padding-box;
+        background-size: cover;
+        background-position: center center;
+       margin-left: 10px;
+        margin-top: 10px;
+        width: 45px;
+        margin-right: 10px;
+        height: 45px;
+    }
+
     .post{
         width: 50%;
     }
@@ -226,11 +258,6 @@ table{
     border: 1px solid rgba(0,0,0,0.0975);
 }
 
-#profile-picture{
-    padding-top: 15%;
-    padding-left: 15%;
-}
-
 
 #profile-nick{
     text-align: left;
@@ -252,7 +279,7 @@ a{
 
 .post-description{
     width: 100%;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-top: 5px;
     padding-bottom: 3px;
     text-align: left;

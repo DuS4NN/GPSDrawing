@@ -32,7 +32,7 @@
     </div>
     <form action="<?php echo $web ?>/php/forgot.php" method="post">
         <div class="field-wrap">
-            <label>
+            <label id="label-forgot">
                 <?php echo $lang['email_address'] ?><span class="req">*</span>
             </label>
             <input type="email"required autocomplete="off" name="email"/><br><br>
@@ -50,6 +50,12 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="<?php echo $web ?>/js/index.js"></script>
 <script>
+
+    if(document.getElementById("email").value !=''){
+        document.getElementById("label-forgot").className = 'active';
+    }
+
+
     var close = document.getElementsByClassName("closebtn");
     var i;
 

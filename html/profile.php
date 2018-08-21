@@ -16,7 +16,7 @@
 
 <html>
     <head>
-        <title><?php echo $lang['title_index'] ?></title>
+        <title><?php echo $lang['profile'] ?></title>
         <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/profile.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
@@ -80,10 +80,15 @@
             $result3 = $stmt->get_result();
         ?>
 
+        <script>
+            document.title = "<?php echo $row_u['nick_name'];?>";
+        </script>
 
         <div id="profile">
             <div id="profile-image-profile">
-                <img src="<?php echo $web ?>/<?php echo $row_u['profile_picture'] ?>" />
+                <div id="profile-image" style="background-image: url(<?php echo $web ?>/<?php echo $row_u['profile_picture'] ?>)">
+                </div>
+
                 <div id="profile-info-date">
 
                     <?php

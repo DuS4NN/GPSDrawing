@@ -45,7 +45,7 @@
         height: 0;
     }
     #nav-icons{
-        font-size: 0;
+        font-size: 0 !important;
     }
 
     #nav-logo{

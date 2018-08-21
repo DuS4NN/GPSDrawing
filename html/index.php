@@ -137,6 +137,23 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="<?php echo $web ?>/js/index.js"></script>
     <script>
+
+        $(document).ready(function () {
+            if(document.getElementById("form-login-nick").value != ''){
+                document.getElementById("label-login-nick").className = 'active';
+            }
+            if(document.getElementById("form-login-password").value !=''){
+                document.getElementById("label-login-password").className = 'active';
+            }
+            if(document.getElementById("form-register-nick").value !=''){
+                document.getElementById("label-register-nick").className = 'active';
+            }
+            if(document.getElementById("inputPassword").value !=''){
+                document.getElementById("label-register-password").className = 'active';
+            }
+        });
+
+
         var close = document.getElementsByClassName("closebtn");
         var i;
 

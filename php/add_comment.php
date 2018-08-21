@@ -4,7 +4,6 @@
     session_start();
 
     if(!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['text']) || !isset($_SESSION['id']) || empty($_SESSION['id'])){
-        echo $_POST['id']." ".$_POST['text']." ".$_SESSION['id'];
         return;
     }
 

@@ -17,6 +17,11 @@
                 $stmt->bind_param("is",$verify2, $_GET['email']);
                 $stmt->execute();
 
+                $hash2 = sha1( rand(0,9000000) );
+                $stmt2 = $db->prepare("UPDATE users SET hash= ? WHERE email = ?");
+                $stmt2->bind_param("ss",$hash2, $_GET['email']);
+                $stmt2->execute();
+
                 $_SESSION['alerts'] = "success:4";
                 header("location: ../welcome");
             }else{

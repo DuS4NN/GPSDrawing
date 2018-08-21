@@ -20,7 +20,6 @@
     $checknickname = true;
 
     if(!preg_match("/^[a-zA-Z0-9-.*_]+$/",$nick_name)==1){
-        echo 'zle je';
         $_SESSION['alerts'] = "error:10";
         header("location: ../welcome");
         return;
