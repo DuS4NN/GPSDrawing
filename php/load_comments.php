@@ -19,10 +19,11 @@
                     FROM comments 
                     INNER JOIN users ON users.id = comments.id_user 
                     WHERE comments.id_post = ? 
-                    AND  comments.id NOT IN (SELECT id_comment FROM blocked_comments WHERE blocked_comments.id_user = ?)
+                    AND comments.id NOT IN (SELECT id_comment FROM blocked_comments WHERE blocked_comments.id_user = ?)
+                    AND comments.id_user NOT IN (SELECT blocked FROM blocked_users WHERE user_id = ?)
                     ORDER BY comments.time  
                     DESC LIMIT ?,5");
-    $stmt->bind_param("iiis", $_SESSION['id'], $id, $_SESSION['id'],$num);
+    $stmt->bind_param("iiiis", $_SESSION['id'], $id, $_SESSION['id'],$_SESSION['id'],$num);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -30,8 +31,10 @@
         include("../html/comment.php");
     }
 
-    $stmt = $db->prepare("SELECT COUNT(*) as 'count' FROM comments WHERE comments.id_post = ? ");
-    $stmt->bind_param("i", $id);
+    $stmt = $db->prepare("SELECT COUNT(*) as 'count' FROM comments WHERE comments.id_post = ? 
+                                AND comments.id NOT IN (SELECT id_comment FROM blocked_comments WHERE blocked_comments.id_user = ?)
+                                 AND comments.id_user NOT IN (SELECT blocked FROM blocked_users WHERE user_id = ?)");
+    $stmt->bind_param("iii", $id,$_SESSION['id'],$_SESSION['id']);
     $stmt->execute();
 
     $result = $stmt->get_result();

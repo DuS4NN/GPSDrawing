@@ -289,7 +289,8 @@ body{
     }
 
     .profile textarea{
-        z-index: 999;
+        max-height: 230px;
+        position: relative;
         resize: vertical;
         overflow: hidden;
         padding-top: 3px;
@@ -298,6 +299,7 @@ body{
         font-family: Text2;
         font-weight: bold;
         font-size: 15px;
+        min-height: 45px;
         height: 45px;
         border: 1px solid #dddddd;
         border-radius: 20px;
@@ -345,6 +347,128 @@ body{
     #container-item-sett.profile{
         width: 49%;
     }
+
+    /*----BLOCKED USERS--------------*/
+    #blocked-users-arrows{
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    #blocked-comments-arrows{
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    #previous{
+        float: left;
+    }
+    #next{
+        float: right;
+    }
+
+    #blocked-users-arrows .fas{
+        cursor: pointer;
+    }
+
+    #blocked-comments-arrows .fas{
+        cursor: pointer;
+    }
+
+    #blocked-users-arrows .fas.disable{
+        color: #dddddd;
+    }
+
+    #blocked-comments-arrows .fas.disable{
+        color: #dddddd;
+    }
+
+    #blocked-users-item, #blocked-comments-item, #blocked-posts-item{
+        height: 50px;
+        width: 100%;
+        font-family: Text2;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    #blocked-users-nick{
+        float: left;
+        padding-left: 20px;
+        font-size: 17px;
+        margin-top: 14px;
+        font-family: Text;
+        width: 50%;
+
+    }
+    #blocked-users-date{
+        float: left;
+        margin-top: 15px;
+        font-size: 16px;
+        width: 30%;
+    }
+    .blocked-users-x, .blocked-posts-x{
+        margin-top: 17px;
+        margin-right: 30px;
+        text-align: right;
+        color: #dddddd;
+        float: right;
+    }
+
+    .blocked-users-x .fas, .blocked-posts-x .fas{
+        cursor: pointer;
+    }
+
+    .blocked-users-x .fas:hover, .blocked-posts-x .fas:hover{
+        color: black;
+    }
+
+    #content-empty{
+        margin-top: 25px;
+        font-size: 15px;
+        font-family: Text;
+        width: 100%;
+        text-align: center;
+    }
+
+    #blocked-comments-nick, #blocked-posts-nick{
+        width: 40%;
+        margin-left: 20px;
+        font-family: Text;
+        margin-top: 16px;
+        font-size: 13px;
+        float:left;
+    }
+
+    #blocked-comments-comment, #blocked-posts-desc{
+        margin-top: 17px;
+        float: left;
+        width: 40%;
+        font-family: text2;
+        font-size: 12px;
+    }
+
+    .blocked-comments-x{
+        margin-top: 17px;
+        margin-right: 30px;
+        text-align: right;
+        color: #dddddd;
+        float: right;
+    }
+
+    .blocked-comments-x .fas{
+        cursor: pointer;
+    }
+
+    .blocked-comments-x .fas:hover{
+        color: black;
+    }
+
+
+
 
 }
 

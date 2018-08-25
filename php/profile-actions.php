@@ -43,8 +43,12 @@
             if($id == $_SESSION['id']){
                 return;
             }
-            $stmt = $db->prepare("INSERT INTO `blocked_users` (`user_id`, `blocked`) VALUES (?, ?);");
-            $stmt->bind_param("ii", $_SESSION['id'],$id);
+
+            date_default_timezone_set('UTC');
+            $date = date("Y-m-d H:i");
+
+            $stmt = $db->prepare("INSERT INTO `blocked_users` (`user_id`, `blocked`, `date` ) VALUES (?, ?, ?);");
+            $stmt->bind_param("iis", $_SESSION['id'],$id, $date);
             $stmt->execute();
             $_SESSION['alerts'] = "info:11";
             break;

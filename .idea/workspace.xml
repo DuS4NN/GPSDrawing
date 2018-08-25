@@ -1,37 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5" />
     <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="Commit #5">
-      <change afterPath="$PROJECT_DIR$/css/settings.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/settings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/color-pixer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/change-profiledata.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/alerts-main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/alerts-main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main-post.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main-post.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/forgot.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/forgot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/settings.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/main-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/main-post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/reset.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/reset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/settings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/alerts-main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/alerts-main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/load-map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/load-map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/comments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/languages/en.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/languages/sk.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/sk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/add-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/add-post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/add_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/add_comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/verify.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/verify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/load_comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/load_comments.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/profile-actions.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/profile-actions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/settings.php" afterDir="false" />
     </list>
-    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,28 +44,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main-post.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/main-post.css">
+      <file leaf-file-name="sk.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/languages/sk.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="281" column="20" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="20" />
+            <state relative-caret-position="428">
+              <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="en.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/languages/en.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="353" column="79" selection-start-line="353" selection-start-column="79" selection-end-line="353" selection-end-column="79" />
+              <folding>
+                <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#16005#16010#0#PHP" />
+                <element signature="e#25086#25360#0#HTML" />
+                <element signature="e#25453#26306#0#HTML" />
+                <element signature="e#26385#26573#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="settings.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/html/settings.php">
+        <entry file="file://$PROJECT_DIR$/php/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="286" column="91" selection-start-line="286" selection-start-column="91" selection-end-line="286" selection-end-column="91" />
+            <state relative-caret-position="275">
+              <caret line="220" column="73" selection-start-line="220" selection-start-column="73" selection-end-line="220" selection-end-column="73" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#15051#15239#0#HTML" />
-                <element signature="e#15310#16236#0#HTML" />
+                <element signature="e#243#1315#0#PHP" />
+                <element signature="e#75#82#1" expanded="true" />
+                <element signature="e#1325#3109#0#PHP" />
+                <element signature="e#76#83#1" expanded="true" />
+                <element signature="e#76#83#1" expanded="true" />
+                <element signature="e#76#83#1" expanded="true" />
+                <element signature="e#76#83#1" expanded="true" />
+                <element signature="e#75#82#1" expanded="true" />
+                <element signature="e#3119#5215#0#PHP" />
+                <element signature="e#5228#5658#0#PHP" />
+                <element signature="e#75#82#1" expanded="true" />
+                <element signature="e#8671#9104#0#PHP" />
+                <element signature="e#75#82#1" expanded="true" />
+                <element signature="e#12365#12801#0#PHP" />
+                <element signature="e#75#82#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/settings.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="390" column="58" selection-start-line="390" selection-start-column="58" selection-end-line="390" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -97,20 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>//</find>
-      <find>linecolors</find>
-      <find>let</find>
-      <find>initMap</find>
-      <find>post-description</find>
-      <find>direction</find>
-      <find>follow</find>
-      <find>profile-follow-button</find>
-      <find>edit-map-color</find>
-      <find>settings-content-item</find>
-      <find>settings-content-item-text</find>
-      <find>container-edit-map</find>
-      <find>container-change-theme</find>
-      <find>container-item-sett</find>
       <find>browse-profile</find>
       <find>span</find>
       <find>fas</find>
@@ -127,6 +145,20 @@
       <find>profile-picture</find>
       <find>profile-nick</find>
       <find>des</find>
+      <find>te</find>
+      <find>container-item</find>
+      <find>This</find>
+      <find>content-empty</find>
+      <find>#blocked-users-</find>
+      <find>.</find>
+      <find>blocked-comments-co</find>
+      <find>add</find>
+      <find>comment-in</find>
+      <find>class=&quot;fas fa-chevron-left&quot;</find>
+      <find>fa-chevron-left</find>
+      <find>blocked-comments-x</find>
+      <find>blocked-users-x</find>
+      <find>bp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,17 +174,13 @@
         <option value="$PROJECT_DIR$/css/add.css" />
         <option value="$PROJECT_DIR$/css/index.css" />
         <option value="$PROJECT_DIR$/html/test.html" />
-        <option value="$PROJECT_DIR$/php/load_comments.php" />
         <option value="$PROJECT_DIR$/html/comment.php" />
         <option value="$PROJECT_DIR$/php/post-actions.php" />
-        <option value="$PROJECT_DIR$/php/delete_edit_hide_comments.php" />
         <option value="$PROJECT_DIR$/js/modalEffects.js" />
         <option value="$PROJECT_DIR$/js/profile-actions.js" />
         <option value="$PROJECT_DIR$/html/modals.html" />
         <option value="$PROJECT_DIR$/php/alerts.php" />
-        <option value="$PROJECT_DIR$/php/profile-actions.php" />
         <option value="$PROJECT_DIR$/js/post-more.js" />
-        <option value="$PROJECT_DIR$/js/comments.js" />
         <option value="$PROJECT_DIR$/php/follow.php" />
         <option value="$PROJECT_DIR$/php/load_posts.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
@@ -165,7 +193,6 @@
         <option value="$PROJECT_DIR$/html/add.php" />
         <option value="$PROJECT_DIR$/php/login.php" />
         <option value="$PROJECT_DIR$/php/login.php" />
-        <option value="$PROJECT_DIR$/js/alerts-main.js" />
         <option value="$PROJECT_DIR$/php/verify.php" />
         <option value="$PROJECT_DIR$/html/forgot.php" />
         <option value="$PROJECT_DIR$/html/reset.php" />
@@ -174,18 +201,23 @@
         <option value="$PROJECT_DIR$/php/register.php" />
         <option value="$PROJECT_DIR$/php/register.php" />
         <option value="$PROJECT_DIR$/html/header.html" />
-        <option value="$PROJECT_DIR$/php/settings.php" />
         <option value="$PROJECT_DIR$/php/change-profilepicture.php" />
-        <option value="$PROJECT_DIR$/languages/en.php" />
-        <option value="$PROJECT_DIR$/languages/en.php" />
-        <option value="$PROJECT_DIR$/languages/sk.php" />
         <option value="$PROJECT_DIR$/php/change-profiledata.php" />
+        <option value="$PROJECT_DIR$/js/alerts-main.js" />
+        <option value="$PROJECT_DIR$/php/profile-actions.php" />
         <option value="$PROJECT_DIR$/html/profile.php" />
         <option value="$PROJECT_DIR$/css/profile.css" />
-        <option value="$PROJECT_DIR$/css/settings.css" />
-        <option value="$PROJECT_DIR$/html/main-post.php" />
+        <option value="$PROJECT_DIR$/js/comments.js" />
+        <option value="$PROJECT_DIR$/php/load_comments.php" />
+        <option value="$PROJECT_DIR$/php/delete_edit_hide_comments.php" />
         <option value="$PROJECT_DIR$/css/main-post.css" />
+        <option value="$PROJECT_DIR$/html/main-post.php" />
+        <option value="$PROJECT_DIR$/languages/en.php" />
+        <option value="$PROJECT_DIR$/css/settings.css" />
+        <option value="$PROJECT_DIR$/languages/en.php" />
+        <option value="$PROJECT_DIR$/languages/sk.php" />
         <option value="$PROJECT_DIR$/html/settings.php" />
+        <option value="$PROJECT_DIR$/php/settings.php" />
       </list>
     </option>
   </component>
@@ -198,9 +230,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1275" />
+    <option name="width" value="652" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -209,7 +241,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,6 +277,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -342,7 +374,9 @@
       <workItem from="1534578944644" duration="26450000" />
       <workItem from="1534665982240" duration="17831000" />
       <workItem from="1534755225026" duration="26159000" />
-      <workItem from="1534853230540" duration="26539000" />
+      <workItem from="1534853230540" duration="27126000" />
+      <workItem from="1534942653647" duration="6228000" />
+      <workItem from="1535184654920" duration="25686000" />
     </task>
     <task id="LOCAL-00001" summary="Druhy commit">
       <created>1531764866546</created>
@@ -383,13 +417,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="699045000" />
+    <option name="totallyTimeSpent" value="731546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.16044776" />
+      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.16950959" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -413,19 +446,19 @@
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.32995737" />
       <window_info id="Structure" order="1" sideWeight="0.1269461" side_tool="true" weight="0.08770257" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -481,10 +514,17 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/css/main-post.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4777">
+          <caret line="281" column="20" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/add.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2360">
@@ -513,13 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/load_comments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -531,13 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/post-actions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -559,16 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="180" lean-forward="true" selection-start-line="13" selection-start-column="180" selection-end-line="13" selection-end-column="180" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile-actions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
-          <folding>
-            <element signature="e#283#1095#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,13 +630,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/toggle-button.js" />
-    <entry file="file://$PROJECT_DIR$/php/load_posts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -649,36 +658,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/comments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="78" column="15" lean-forward="true" selection-start-line="68" selection-start-column="12" selection-end-line="78" selection-end-column="15" />
-          <folding>
-            <element signature="n#!!block;n#showCom#0" />
-            <element signature="n#!!block;n#editComment#0" />
-            <element signature="n#!!block;n#cancel_edit#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/add_comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="131" selection-start-line="5" selection-start-column="131" selection-end-line="5" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/add-post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="21" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/delete_edit_hide_comments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -703,22 +686,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/alerts-main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/reset_password.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="29" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="20" selection-end-column="29" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/reset.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/php/forgot.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -745,16 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="57" />
-          <folding>
-            <element signature="n#script#2;n#body#0;n#html#0;n#HTML#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="153" column="11" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -793,36 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-          <folding>
-            <element signature="e#243#1315#0#PHP" />
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#1325#4429#0#PHP" />
-            <element signature="e#76#83#1" expanded="true" />
-            <element signature="e#81#88#1" expanded="true" />
-            <element signature="e#81#88#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/languages/sk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="128" column="47" selection-start-line="128" selection-start-column="47" selection-end-line="128" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/languages/en.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="123" selection-start-line="123" selection-end-line="128" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/change-profiledata.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
@@ -830,63 +763,197 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/alerts-main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile-actions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <folding>
+            <element signature="e#283#1095#0#PHP" />
+            <element signature="e#75#82#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/add-post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/load_posts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="120" column="13" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/post-actions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
+          <folding>
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="88" column="129" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="129" />
+        <state relative-caret-position="408">
+          <caret line="73" column="62" selection-start-line="73" selection-start-column="62" selection-end-line="73" selection-end-column="62" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/profile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="623" selection-start-line="623" selection-end-line="632" selection-end-column="21" />
+        <state relative-caret-position="492">
+          <caret line="593" column="27" lean-forward="true" selection-start-line="593" selection-start-column="27" selection-end-line="593" selection-end-column="27" />
           <folding>
             <element signature="e#167#472#0" />
             <element signature="e#474#578#0" />
             <element signature="e#580#692#0" />
+            <element signature="e#694#6125#0" />
+            <element signature="e#6127#11786#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="93" selection-start-line="8" selection-start-column="93" selection-end-line="8" selection-end-column="93" />
+          <folding>
+            <element signature="e#729#1336#0" />
+            <element signature="e#1370#3952#0" />
+            <element signature="n#!!block;n#deleteComment#0" />
+            <element signature="n#!!block;n#editComment#0" />
+            <element signature="n#!!block;n#cancel_edit#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/load_comments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/delete_edit_hide_comments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="102" lean-forward="true" selection-start-line="16" selection-start-column="102" selection-end-line="16" selection-end-column="102" />
+          <folding>
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main-post.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="377" column="23" selection-start-line="377" selection-start-column="23" selection-end-line="377" selection-end-column="23" />
+          <folding>
+            <element signature="e#11#93#0" />
+            <element signature="e#105#189#0" />
+            <element signature="e#201#285#0" />
+            <element signature="e#287#2424#0" />
+            <element signature="e#2426#4403#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/main-post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="148" column="13" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/settings.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        <state relative-caret-position="264">
+          <caret line="390" column="58" selection-start-line="390" selection-start-column="58" selection-end-line="390" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main-post.css">
+    <entry file="file://$PROJECT_DIR$/languages/en.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="281" column="20" selection-start-line="281" selection-start-column="20" selection-end-line="281" selection-end-column="20" />
+        <state relative-caret-position="224">
+          <caret line="121" column="9" lean-forward="true" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/languages/sk.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="286" column="91" selection-start-line="286" selection-start-column="91" selection-end-line="286" selection-end-column="91" />
+        <state relative-caret-position="720">
+          <caret line="353" column="79" selection-start-line="353" selection-start-column="79" selection-end-line="353" selection-end-column="79" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#15051#15239#0#HTML" />
-            <element signature="e#15310#16236#0#HTML" />
+            <element signature="e#16005#16010#0#PHP" />
+            <element signature="e#25086#25360#0#HTML" />
+            <element signature="e#25453#26306#0#HTML" />
+            <element signature="e#26385#26573#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="220" column="73" selection-start-line="220" selection-start-column="73" selection-end-line="220" selection-end-column="73" />
+          <folding>
+            <element signature="e#243#1315#0#PHP" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#1325#3109#0#PHP" />
+            <element signature="e#76#83#1" expanded="true" />
+            <element signature="e#76#83#1" expanded="true" />
+            <element signature="e#76#83#1" expanded="true" />
+            <element signature="e#76#83#1" expanded="true" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#3119#5215#0#PHP" />
+            <element signature="e#5228#5658#0#PHP" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#8671#9104#0#PHP" />
+            <element signature="e#75#82#1" expanded="true" />
+            <element signature="e#12365#12801#0#PHP" />
+            <element signature="e#75#82#1" expanded="true" />
           </folding>
         </state>
       </provider>

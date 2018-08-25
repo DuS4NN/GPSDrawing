@@ -13,5 +13,5 @@ function closeAlert(id) {
         setTimeout(function(){
             div[length].style.display='none';
         }, 500);
-    },7000);
+    },5000);
 }

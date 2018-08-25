@@ -156,7 +156,7 @@
                             <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
                         </div>
                         <div id="comment-input">
-                            <input edit="0" minlength="1" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
+                            <input edit="0" minlength="1" maxlength="300" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
                             <div style="visibility: hidden" onclick="cancel_edit(<?php echo $row['id']; ?>)" class="cancel-edit" id="cancel-edit<?php echo $row['id']; ?>"><i class="fas fa-times"></i>&nbsp;<?php echo $lang['cancel']; ?></div>
                         </div>
 

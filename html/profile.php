@@ -67,8 +67,13 @@
             $stmt->bind_param("ssssss",$_SESSION['id'], $_SESSION['id'], $_GET['user'], $_GET['user'], $_GET['user'],$_GET['user'] );
             $stmt->execute();
             $result = $stmt->get_result();
+            $num_rows = mysqli_num_rows($result);
             $row_u = $result->fetch_assoc();
 
+            if($row_u==0){
+                echo '<div id="content-empty" class="profile">'.$lang['error11'].'</div>';
+                exit();
+            }
 
             $stmt = $db->prepare("SELECT badges.name, badges.rarity, badges.url
                                         FROM users_badges 
@@ -78,7 +83,8 @@
             $stmt->bind_param("i",$row_u['id']);
             $stmt->execute();
             $result3 = $stmt->get_result();
-        ?>
+
+            ?>
 
         <script>
             document.title = "<?php echo $row_u['nick_name'];?>";

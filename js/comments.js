@@ -18,7 +18,7 @@ function showCom(id) {
 }
 
 $(document).ready(function () {
-    $(".load-more").click(function (event) {
+    $(document).on('click','.load-more',function (event) {
         let array = event.target.id.split("-");
         let id = array[1];
         let count = document.getElementById("loadmore-"+id).getAttribute("load");
@@ -37,7 +37,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $(".add-comment") .keypress(function (e) {
+    $(document).on('keypress','.add-comment', function (e) {
 
     if(e.keyCode===13){
         let id = e.target.id.substring(12,e.target.id.length);

@@ -18,7 +18,10 @@
         <link rel="stylesheet" href="<?php echo $web ?>/css/settings.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all">
         <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
+        <script src="<?php echo $web ?>/js/load-theme.js"></script>
         <script src="<?php echo $web ?>/js/load-map.js"></script>
         <script src="<?php echo $web ?>/js/alerts-main.js"></script>
     </head>
@@ -62,7 +65,7 @@
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['picture']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['picture_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
 
@@ -88,7 +91,7 @@
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['first_name']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['fname_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
                            <input type="text" required class="profile f-name" name="f-name" value="<?php echo $row['first_name']?>">
@@ -98,7 +101,7 @@
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['last_name']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['lname_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
                             <input type="text" required class="profile l-name" name="l-name" value="<?php echo $row['last_name']?>">
@@ -108,7 +111,7 @@
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['nick_name']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['nick_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
                             <input type="text" required class="profile nick" name="nick" value="<?php echo $row['nick_name']?>">
@@ -118,7 +121,7 @@
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['email_address']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['email_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
                             <input type="text" required class="profile email" name="email" value="<?php echo $row['email']?>">
@@ -128,7 +131,7 @@
                     <div id="container-item">
                         <div id="container-item-text">
                             <div id="title"><?php echo $lang['night_mode']; ?></div>
-                            <div id="small-title"><?php echo $lang['multi_color_lines_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['night_mode_desc']; ?></div>
                         </div>
                         <div id="container-item-sett">
                             <div id="container-toggle-button" class="night_mode button<?php echo $row['night_mode']; ?>">
@@ -140,9 +143,9 @@
                     <div id="container-item" class="profile-textarea">
                         <div id="container-item-text" class="profile">
                             <div id="title"><?php echo $lang['description']; ?></div>
-                            <div id="small-title"><?php echo $lang['icons_desc']; ?></div>
+                            <div id="small-title"><?php echo $lang['about_desc']; ?></div>
                         </div>
-                        <div id="container-item-sett" class="profile">
+                        <div id="container-item-sett" class="profile textarea">
                             <textarea name="about" maxlength="230" class="profile about"><?php echo $row['about']?></textarea>
                         </div>
                     </div>
@@ -157,8 +160,43 @@
 
                 </div>
                 <!-- CHANGE PASSWORD--->
+
                 <div id="container-change-password" class="container-right">
-                    Password
+                    <div id="container-item">
+                        <div id="container-item-text" class="profile">
+                            <div id="title"><?php echo $lang['old_password']; ?></div>
+                            <div id="small-title"><?php echo $lang['old_password_desc']; ?></div>
+                        </div>
+                        <div id="container-item-sett" class="profile">
+                            <input type="password" required class="profile old_password" name="old-pass">
+                        </div>
+                    </div>
+
+                    <div id="container-item">
+                        <div id="container-item-text" class="profile">
+                            <div id="title"><?php echo $lang['new_password']; ?></div>
+                            <div id="small-title"><?php echo $lang['new_password_desc']; ?></div>
+                        </div>
+                        <div id="container-item-sett" class="profile">
+                            <input type="password" minlength="5" required class="profile new_password" name="new-pass">
+                        </div>
+                    </div>
+
+                    <div id="container-item">
+                        <div id="container-item-text" class="profile">
+                            <div id="title"><?php echo $lang['confirm_password']; ?></div>
+                            <div id="small-title"><?php echo $lang['confirm_password_desc']; ?></div>
+                        </div>
+                        <div id="container-item-sett" class="profile">
+                            <input type="password" minlength="5" required class="profile confirm_password" name="confirm-pass">
+                        </div>
+                    </div>
+
+
+                    <div id="container-button">
+                        <button class="change-password-button"><?php echo $lang['save']; ?></button>
+                    </div>
+
                 </div>
                 <!-- CHANGE THEME--->
                 <div id="container-change-theme" class="container-right">
@@ -196,7 +234,7 @@
 
                    ?>
                 </div>
-                <!-- EDIT MAP hotovo--->
+                <!-- EDIT MAP--->
                 <div id="container-edit-map" class="container-right">
 
                     <div id="container-item">
@@ -251,18 +289,165 @@
                 </div>
             <!-- BLOCKED USERS--->
                 <div id="container-blocked-users" class="container-right ">
-                    users
+                    <?php
+                        $stmt = $db->prepare("SELECT blocked_users.id, blocked_users.date, users.nick_name,
+                                                    (SELECT COUNT(*) FROM blocked_users WHERE user_id = ?) as count
+                                                    FROM blocked_users
+                                                    INNER JOIN users ON users.id = blocked_users.blocked
+                                                    WHERE user_id = ? ORDER BY blocked_users.date DESC LIMIT 10");
+                        $stmt->bind_param("ii",$_SESSION['id'], $_SESSION['id']);
+                        $stmt->execute();
+                        $result3 = $stmt->get_result();
+                        $num_rows = mysqli_num_rows($result3);
+                        $count = 0;
+                        if($num_rows==0){
+                            echo '<div id="content-empty">'.$lang['no_blocked_users'].'</div>';
+                        }else{
+                            while($row_bu = $result3->fetch_assoc()){
+                                $count = $row_bu['count'];
+                                echo '<div id="blocked-users-item" class="blocked-users-'.$row_bu['id'].'">    
+                                    <div id="blocked-users-nick">
+                                    '.$row_bu['nick_name'].'
+                                    </div>
+                                    
+                                    <div id="blocked-users-date">
+                                    '.$row_bu['date'].'
+                                    </div>
+                                    
+                                    <div class="blocked-users-x"  id="'.$row_bu['id'].'">
+                                        <span class="fas fa-times"></span>
+                                    </div>
+                                </div>';
+                            };
+                            if($count>10){
+                                echo '
+                             <br>
+                            <div id="blocked-users-arrows">
+                                <div id="previous" class="blocked-users-previous">
+                                    <span class="fas fa-chevron-left user disable"></span>
+                                </div>
+                                <div id="next" class="blocked-users-next">
+                                    <span class="fas fa-chevron-right user '; if($count<=10)echo 'disable'; echo ' "></span>
+                                </div>
+                            </div>';
+                            }
+
+                        }
+                    ?>
                 </div>
 
                 <div id="container-blocked-posts" class="container-right ">
-                    posts
+                    <?php
+                    $stmt = $db->prepare("SELECT blocked_posts.id, posts.description, users.nick_name,
+                                                      (SELECT COUNT(*) FROM blocked_posts WHERE blocked_posts.id_user = ?) as count
+                                                    FROM blocked_posts
+                                                    INNER JOIN posts ON posts.id = blocked_posts.id_post
+                                                    INNER JOIN users ON posts.id_user = users.id
+                                                    WHERE blocked_posts.id_user = ? LIMIT 10");
+                    $stmt->bind_param("ii",$_SESSION['id'],$_SESSION['id']);
+                    $stmt->execute();
+                    $result5 = $stmt->get_result();
+                    $num_rows = mysqli_num_rows($result5);
+                    $count = 0;
+
+                    if($num_rows==0){
+                        echo '<div id="content-empty">'.$lang['no_blocked_posts'].'</div>';
+                    }else{
+                        while($row_bp = $result5->fetch_assoc()){
+                            $count = $row_bp['count'];
+                            echo '<div id="blocked-posts-item" class="blocked-posts-'.$row_bp['id'].'">    
+                                    <div id="blocked-posts-nick">
+                                    '.$row_bp['nick_name'].'
+                                    </div>
+                                    
+                                    <div id="blocked-posts-desc">';
+                                    if(strlen($row_bp['description'])>=30){
+                                        echo mb_substr($row_bp['description'],0,30,'utf-8')."..";
+                                    }else{
+                                        echo $row_bp['description'];
+                                    }
+                                    echo '</div>
+                                    
+                                    <div class="blocked-posts-x"  id="posts-'.$row_bp['id'].'">
+                                        <span class="fas fa-times"></span>
+                                    </div>
+                                </div>';
+                        };
+                        if($count>10){
+
+                            echo '
+                             <br>
+                            <div id="blocked-posts-arrows">
+                                <div id="previous" class="blocked-posts-previous">
+                                    <span class="fas fa-chevron-left posts disable"></span>
+                                </div>
+                                <div id="next" class="blocked-comments-next">
+                                    <span class="fas fa-chevron-right posts'; if($count<=10)echo 'disable'; echo ' "></span>
+                                </div>
+                            </div>';
+                        }
+
+                    }
+                    ?>
                 </div>
 
                 <div id="container-blocked-comments" class="container-right ">
-                    Com
+                    <?php
+                    $stmt = $db->prepare("SELECT blocked_comments.id as 'comid', blocked_comments.id_comment, comments.id_user, SUBSTRING(comments.comment,1,30) as comment, users.nick_name,
+                                                (SELECT COUNT(*) FROM blocked_comments WHERE id_user = ?) as count
+                                                FROM blocked_comments
+                                                INNER JOIN comments ON comments.id = blocked_comments.id_comment
+                                                INNER JOIN users ON users.id = comments.id_user
+                                                WHERE blocked_comments.id_user = ? LIMIT 10");
+                    $stmt->bind_param("ii",$_SESSION['id'],$_SESSION['id']);
+                    $stmt->execute();
+                    $result4 = $stmt->get_result();
+                    $num_rows = mysqli_num_rows($result4);
+                    $count = 0;
+
+                    if($num_rows==0){
+                        echo '<div id="content-empty">'.$lang['no_blocked_comments'].'</div>';
+                    }else{
+                        while($row_bc = $result4->fetch_assoc()){
+                            $count = $row_bc['count'];
+                            echo '<div id="blocked-comments-item" class="blocked-comments-'.$row_bc['comid'].'">    
+                                    <div id="blocked-comments-nick">
+                                    '.$row_bc['nick_name'].'
+                                    </div>
+                                    
+                                    <div id="blocked-comments-comment">
+                                    ';
+                            if(strlen($row_bc['comment'])>=30){
+                                echo mb_substr($row_bc['comment'],0,30,'utf-8')."..";
+                            }else{
+                                echo $row_bc['comment'];
+                            }
+
+                            echo '
+                                    </div>
+                                    
+                                    <div class="blocked-comments-x"  id="comments-'.$row_bc['comid'].'">
+                                        <span class="fas fa-times"></span>
+                                    </div>
+                                </div>';
+                        };
+                        if($count>10){
+
+                            echo '
+                             <br>
+                            <div id="blocked-comments-arrows">
+                                <div id="previous" class="blocked-comments-previous">
+                                    <span class="fas fa-chevron-left comment disable"></span>
+                                </div>
+                                <div id="next" class="blocked-comments-next">
+                                    <span class="fas fa-chevron-right comment'; if($count<=10)echo 'disable'; echo ' "></span>
+                                </div>
+                            </div>';
+                        }
+
+                    }
+                    ?>
                 </div>
-
-
             </div>
         </div>
 
@@ -271,6 +456,145 @@
 
 
         <script>
+            //post
+            var blocked_posts = 0;
+            $(document).on('click','.blocked-posts-x',function () {
+                let id = $(this).attr('id').split("-")[1];
+                $('.blocked-posts-'+id).css('display','none');
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/settings.php",
+                    data: {action:8,id: id},
+                    success: function(response){
+                        let alertSection = document.getElementById("alerts-2");
+                        let text = alertSection.innerHTML;
+                        alertSection.innerHTML = text + response;
+                        closeAlert('remove');
+                    }
+                });
+                setTimeout(function () {
+                    $("#container-blocked-posts").load("<?php echo $web?>/php/settings.php",{action:7,limit:0});
+                    blocked_posts=0;
+                },200);
+            });
+
+
+            $(document).on('click','.fa-chevron-left.posts',function () {
+                if($('.fa-chevron-left.comment').hasClass('disable')) return;
+                blocked_posts-=10;
+
+                $("#container-blocked-comments").load("<?php echo $web?>/php/settings.php",{action:7,limit:blocked_posts});
+            });
+            $(document).on('click','.fa-chevron-right.posts',function () {
+                if($('.fa-chevron-right.comment').hasClass('disable')) return;
+                blocked_posts+=10;
+
+                $("#container-blocked-comments").load("<?php echo $web?>/php/settings.php",{action:7,limit:blocked_posts});
+            });
+
+            //COMMENT
+            var blocked_comments = 0;
+            $(document).on('click','.blocked-comments-x',function () {
+                let id = $(this).attr('id').split("-")[1];
+                $('.blocked-comments-'+id).css('display','none');
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/settings.php",
+                    data: {action:6,id: id},
+                    success: function(response){
+                        let alertSection = document.getElementById("alerts-2");
+                        let text = alertSection.innerHTML;
+                        alertSection.innerHTML = text + response;
+                        closeAlert('remove');
+                    }
+                });
+                setTimeout(function () {
+                    $("#container-blocked-comments").load("<?php echo $web?>/php/settings.php",{action:5,limit:0});
+                    blocked_comments=0;
+                },200);
+            });
+
+
+            $(document).on('click','.fa-chevron-left.comment',function () {
+                if($('.fa-chevron-left.comment').hasClass('disable')) return;
+                blocked_comments-=10;
+
+                $("#container-blocked-comments").load("<?php echo $web?>/php/settings.php",{action:5,limit:blocked_comments});
+            });
+            $(document).on('click','.fa-chevron-right.comment',function () {
+                if($('.fa-chevron-right.comment').hasClass('disable')) return;
+                blocked_comments+=10;
+
+                $("#container-blocked-comments").load("<?php echo $web?>/php/settings.php",{action:5,limit:blocked_comments});
+            });
+
+
+            //USERS
+            var blocked_users = 0;
+            $(document).on('click','.blocked-users-x',function () {
+               let id = $(this).attr('id');
+               $('.blocked-users-'+id).css('display','none');
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/settings.php",
+                    data: {action:4,id: id},
+                    success: function(response){
+                        let alertSection = document.getElementById("alerts-2");
+                        let text = alertSection.innerHTML;
+                        alertSection.innerHTML = text + response;
+                        closeAlert('remove');
+                    }
+                });
+
+                setTimeout(function () {
+                    $("#container-blocked-users").load("<?php echo $web?>/php/settings.php", {action: 3,limit: 0});
+                    blocked_users=0;
+                },200);
+
+
+            });
+
+
+            $(document).on('click','.fa-chevron-left.user',function () {
+                if($('.fa-chevron-left.user').hasClass('disable')) return;
+                blocked_users-=10;
+                console.log(blocked_users);
+                $("#container-blocked-users").load("<?php echo $web?>/php/settings.php",{action:3,limit:blocked_users});
+            });
+            $(document).on('click','.fa-chevron-right.user',function () {
+                if($('.fa-chevron-right.user').hasClass('disable')) return;
+                blocked_users+=10;
+                console.log(blocked_users);
+                $("#container-blocked-users").load("<?php echo $web?>/php/settings.php",{action:3,limit:blocked_users});
+            });
+
+            //-----------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------
+            //-----------------------------------------------------------------------------------------------------------------
+
+
+
+            $(document).on('click','.change-password-button', function () {
+                let old_pass = $('.old_password').val();
+                let new_pass = $('.new_password').val();
+                let confirm_pass = $('.confirm_password').val();
+
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/settings.php",
+                    data: {action: 2,old_pass: old_pass, new_pass: new_pass, confirm_pass: confirm_pass},
+                    success: function(response){
+                        let alertSection = document.getElementById("alerts-2");
+                        let text = alertSection.innerHTML;
+                        alertSection.innerHTML = text + response;
+                        closeAlert('remove');
+                    }
+                });
+
+            });
+
             $('#upload-file').on('change',function () {
                 let fileInput = document.getElementById('upload-file');
                 let fileName = fileInput.value.split(/(\\|\/)/g).pop();
@@ -328,13 +652,12 @@
             });
         </script>
 
-
         <div id="alerts-2" class="settings">
             <?php require '../php/alerts.php'; ?>
         </div>
 
         <script src="<?php echo $web ?>/js/color-pixer.js"></script>
-        <script src="<?php echo $web ?>/js/load-theme.js"></script>
+
 
     </body>
 </html>
