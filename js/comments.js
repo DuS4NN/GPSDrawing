@@ -146,6 +146,9 @@ function hideComment() {
         }
     });
 
+    let count = parseInt(document.getElementById("loadmore-"+idPost[1]).getAttribute("load"))-1;
+    document.getElementById("loadmore-"+idPost[1]).setAttribute("load",count+"");
+
     document.getElementById("comment"+id[3]).style.display = "none";
     close_modal('modal-6');
 }

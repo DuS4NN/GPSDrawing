@@ -343,6 +343,7 @@ function initMap2(id) {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
                 'styled_map']
         },
+        disableDefaultUI: true,
         center: {lat: -34.397, lng: 150.644},
         zoom: 8
 

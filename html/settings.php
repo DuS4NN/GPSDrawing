@@ -152,6 +152,7 @@
 
                     <div id="container-button">
                         <button type="submit" name="submit" id="profile-save" class="profile-button"><?php echo $lang['save']; ?></button>
+                        <br>
                     </div>
 
                     </form>
@@ -160,7 +161,6 @@
 
                 </div>
                 <!-- CHANGE PASSWORD--->
-
                 <div id="container-change-password" class="container-right">
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
@@ -195,6 +195,7 @@
 
                     <div id="container-button">
                         <button class="change-password-button"><?php echo $lang['save']; ?></button>
+                        <br><br><br>
                     </div>
 
                 </div>
@@ -214,24 +215,21 @@
                            $class= "";
                        }
                        if($i%2!=0){
-                           echo '<div id="map-item-left" class="'.$class.'"> 
+                           echo '<div id="map-item-left" class="map-item-'.$row_mt['id'].'"> 
                                     <div class="settings-map" id="settings-map'.$row_mt['id'].'">
-                                        <img src="'.$web.'/img/load.png" onload="initMap2('.$row_mt['id'].')">
+                                        <img src="'.$web.'/img/load.png" onload="initMap2('.$row_mt['id'].');">
                                     </div>
                                     <div id="map-item-title">'.$row_mt['name'].'</div>
                                 </div>';
                        }else{
-                           echo '<div id="map-item-right" class="'.$class.'"> 
+                           echo '<div id="map-item-right"  class="map-item-'.$row_mt['id'].'">
                                      <div class="settings-map" id="settings-map'.$row_mt['id'].'">
                                         <img src="'.$web.'/img/load.png" onload="initMap2('.$row_mt['id'].')">
                                     </div>
                                     <div id="map-item-title">'.$row_mt['name'].'</div>
                                 </div>';
                        }
-
                    }
-
-
                    ?>
                 </div>
                 <!-- EDIT MAP--->
@@ -285,6 +283,7 @@
 
                     <div id="container-button">
                         <button class="edit-map-button"><?php echo $lang['save']; ?></button>
+                        <br>
                     </div>
                 </div>
             <!-- BLOCKED USERS--->
@@ -301,7 +300,7 @@
                         $num_rows = mysqli_num_rows($result3);
                         $count = 0;
                         if($num_rows==0){
-                            echo '<div id="content-empty">'.$lang['no_blocked_users'].'</div>';
+                           echo '<div id="content-empty">'.$lang['no_blocked_users'].'</div>';
                         }else{
                             while($row_bu = $result3->fetch_assoc()){
                                 $count = $row_bu['count'];
@@ -336,7 +335,7 @@
                     ?>
                 </div>
 
-                <div id="container-blocked-posts" class="container-right ">
+                <div id="container-blocked-posts" class="container-right">
                     <?php
                     $stmt = $db->prepare("SELECT blocked_posts.id, posts.description, users.nick_name,
                                                       (SELECT COUNT(*) FROM blocked_posts WHERE blocked_posts.id_user = ?) as count
@@ -456,7 +455,37 @@
 
 
         <script>
-            //post
+            var selectedMap = <?php echo $row['map_theme'];?>;
+            $(document).on('click','.nav-bar', function () {
+                let id = $(this).attr('id');
+                if(id==='nav-change-theme'){
+                    $('.map-item-'+selectedMap).addClass('selected');
+                }
+            });
+
+            $(document).on('click','#map-item-title', function () {
+                $('.map-item-'+selectedMap).removeClass('selected');
+                let id = $(this).parent().attr('class').split('-')[2];
+                $('.map-item-'+id).addClass('selected');
+                selectedMap = id;
+
+                setTimeout(function () {
+                    $.ajax({
+                        type:"POST",
+                        url: localStorage.getItem("web")+"/php/settings.php",
+                        data: {action:9,id: id},
+                        success: function(response){
+                            let alertSection = document.getElementById("alerts-2");
+                            let text = alertSection.innerHTML;
+                            alertSection.innerHTML = text + response;
+                            closeAlert('remove');
+                        }
+                    });
+                },200);
+            });
+
+
+            //POST
             var blocked_posts = 0;
             $(document).on('click','.blocked-posts-x',function () {
                 let id = $(this).attr('id').split("-")[1];
@@ -567,14 +596,6 @@
                 console.log(blocked_users);
                 $("#container-blocked-users").load("<?php echo $web?>/php/settings.php",{action:3,limit:blocked_users});
             });
-
-            //-----------------------------------------------------------------------------------------------------------------
-            //-----------------------------------------------------------------------------------------------------------------
-            //-----------------------------------------------------------------------------------------------------------------
-            //-----------------------------------------------------------------------------------------------------------------
-            //-----------------------------------------------------------------------------------------------------------------
-
-
 
             $(document).on('click','.change-password-button', function () {
                 let old_pass = $('.old_password').val();

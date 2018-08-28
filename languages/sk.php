@@ -164,5 +164,6 @@
         "info14" => "Heslo úspešne zmenené.",
         "info15" => "Používateľ bol úspešne odblokovaný.",
         "info16" => "Komentár bol úspešne odblokovaný.",
-        "info17" => "Príspevok bol úspešne odblokovaný."
+        "info17" => "Príspevok bol úspešne odblokovaný.",
+        "info18" => "Téma mapy úspešne zmenená."
     );

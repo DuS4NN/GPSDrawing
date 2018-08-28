@@ -164,5 +164,6 @@
         "info14" => "Password successfully changed.",
         "info15" => "User successfully unblocked.",
         "info16" => "Comment successfully unblocked.",
-        "info17" => "Post successfully unblocked."
+        "info17" => "Post successfully unblocked.",
+        "info18" => "The map theme successfully changed."
     );

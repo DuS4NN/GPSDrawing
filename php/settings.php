@@ -269,4 +269,18 @@
             echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info17'].'</div>';
 
             break;
+
+        case 9:
+            if(!isset($_POST['id'])){
+                return;
+            }
+
+            $stmt =  $db->prepare("UPDATE users_options SET map_theme = ? WHERE id_user = ?");
+            $stmt->bind_param("ii", $_POST['id'],$_SESSION['id']);
+            $stmt->execute();
+
+            echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info18'].'</div>';
+
+            $_SESSION['map_theme'] = $_POST['id'];
+            break;
     }
