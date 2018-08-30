@@ -245,7 +245,7 @@
             }
 
 
-            $(window).scroll(function() {
+            $(window).on('scroll DOMMouseScroll', function() {
                 if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
                     setTimeout(function () {
                         $.ajax({
@@ -255,9 +255,12 @@
                             cache:false,
                             success:function(response){
                                 $("#body-post").append(response);
-                                limit++;
+                                if(response.length<100){
+                                    $(window).unbind('scroll DOMMouseScroll');
+                                }
                             }
                         });
+                        limit++;
                     },0);
                 }
             });

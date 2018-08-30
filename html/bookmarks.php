@@ -89,7 +89,7 @@ header('Content-type: text/html; charset=UTF-8');
 </div>
 
 <script>
-    let limit = 2;
+    var limit = 2;
 
     function getDocHeight() {
         let D = document;
@@ -101,7 +101,7 @@ header('Content-type: text/html; charset=UTF-8');
     }
 
 
-    $(window).scroll(function() {
+    $(window).on('scroll DOMMouseScroll', function() {
         if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
             setTimeout(function () {
                 $.ajax({
@@ -111,13 +111,16 @@ header('Content-type: text/html; charset=UTF-8');
                     cache:false,
                     success:function(response){
                         $("#body").append(response);
-                        limit++;
-                        console.log(limit);
+                        if(response.length<100){
+                            $(window).unbind('scroll DOMMouseScroll');
+                        }
                     }
                 });
+                limit++;
             },0);
         }
     });
+
 
     if (window.performance) {
         $( "body" ).scrollTop(0);

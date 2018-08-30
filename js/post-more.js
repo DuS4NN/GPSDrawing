@@ -18,7 +18,7 @@ function hide_post(modal_id) {
     });
     close_modal(modal_id);
     document.getElementById("post-"+id).style.display = "none";
-
+    limit--;
 }
 
 function add_to_bookmarks(modal_id) {
@@ -67,6 +67,7 @@ function remove_from_bookmarks(modal_id) {
 
     if(window.location.href.includes("bookmarks")){
         document.getElementById("post-"+id).style.display = "none";
+        limit--;
     }
 
 }
@@ -88,6 +89,7 @@ function delete_post(modal_id) {
 
     document.getElementById("post-"+id).style.display = "none";
     close_modal(modal_id);
+    limit--;
 }
 
 function report(reason) {
