@@ -10,7 +10,7 @@
     $email = $_POST['email'];
 
     $stmt = $db->prepare("SELECT COUNT(*) AS count, verify, users.id, nick_name, users_options.color, users_options.show_icons, 
-                                users_options.color_of_collab, users_options.night_mode,users_options.map_theme, users_options.color_icon 
+                                users_options.color_of_collab, users_options.lang, users_options.night_mode,users_options.map_theme, users_options.color_icon 
                                 FROM users 
                                 INNER JOIN users_options ON users_options.id_user = users.id 
                                 WHERE users.email = ? AND password = ?");
@@ -27,6 +27,7 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['color'] = $row['color'];
                 $_SESSION['show_icons'] = $row['show_icons'];
+                $_SESSION['lang'] = $row['lang'];
                 $_SESSION['color_of_collab'] = $row['color_of_collab'];
                 $_SESSION['night_mode'] = $row['night_mode'];
                 $_SESSION['map_theme'] = $row['map_theme'];

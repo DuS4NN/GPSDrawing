@@ -45,7 +45,10 @@
 
         ?>
 
+        <div id="body" style="margin-left: auto;margin-right: auto;width: 100%">
+
         <div id="settings-container">
+
             <div id="settings-nav-bar">
                 <ul>
                     <li id="nav-edit-profile" class="nav-bar selected"><span class="fas fa-user-edit"></span> <?php echo $lang['edit_profile']; ?></li>
@@ -68,17 +71,11 @@
                             <div id="small-title"><?php echo $lang['picture_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
-
-
-                            <div style="width: 40px;margin-left:10px;float:left;">
+                            <div id="settings-profile-picture">
                                 <div id="profile-img" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">
-
                                 </div>
-
                             </div>
-
-                            <div style="width: 150px;float:left;padding-top: 20px">
-<!--- FOOOOOORM------------------>
+                            <div id="settings-profile-button">
                                 <form enctype="multipart/form-data" action="<?php echo $web?>/php/change-profiledata.php" method="post" id="uploadform">
                                     <label class="custom-file-upload">
                                         <input name="upload-file" id="upload-file" accept=".jpg, .jpeg, .png,.bmp ,.gif" type="file"/>
@@ -87,6 +84,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
@@ -138,6 +137,19 @@
                                 <div id="container-toogle-circle"></div>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="container-item">
+                        <div id="container-item-text" class="profile">
+                            <div id="title"><?php echo $lang['nick_name']; ?></div>
+                            <div id="small-title"><?php echo $lang['nick_desc']; ?></div>
+                        </div>
+                        <div id="container-item-sett" class="profile">
+                            <select name="lang">
+                                <option value="en" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="en")echo "selected"; ?> data-class="flag-sk"><?php echo $lang['en'] ?></option>
+                                <option value="sk" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="sk")echo "selected"; ?> data-class="flag-en"><?php echo $lang['sk'] ?></option>
+                            </select>
+                         </div>
                     </div>
 
                     <div id="container-item" class="profile-textarea">
@@ -221,6 +233,7 @@
                                     </div>
                                     <div id="map-item-title">'.$row_mt['name'].'</div>
                                 </div>';
+
                        }else{
                            echo '<div id="map-item-right"  class="map-item-'.$row_mt['id'].'">
                                      <div class="settings-map" id="settings-map'.$row_mt['id'].'">
@@ -679,6 +692,7 @@
 
         <script src="<?php echo $web ?>/js/color-pixer.js"></script>
 
+        </div>
 
     </body>
 </html>

@@ -269,7 +269,7 @@
 
             $stmt = $db->prepare("SELECT 
                                 posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, 
-                                posts.distance, posts.points, posts.time, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
                                 THEN '1' 
                                 ELSE '0'

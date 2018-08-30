@@ -6,5 +6,6 @@ RewriteRule ^reset html/reset.php [NC,L]
 RewriteRule ^home php/main.php [NC,L]
 RewriteRule ^add html/add.php [NC,L]
 RewriteRule ^settings html/settings.php [NC,L]
+RewriteRule ^bookmarks html/bookmarks.php [NC,L]
 RewriteRule ^user/([0-9a-zA-Z_*.-]+) html/profile.php?user=$1 [NC,L]
 DirectoryIndex html/index.php

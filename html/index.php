@@ -2,9 +2,14 @@
     session_start();
     require '../config/db.php';
     require '../config/lang.php';
+
+    if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+        header("location: ../GPSDrawing/home");
+    }
+
 ?>
 
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
     <head>
         <title><?php echo $lang['title_index'] ?></title>

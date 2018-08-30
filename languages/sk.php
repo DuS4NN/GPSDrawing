@@ -120,6 +120,8 @@
         "no_blocked_users" => "Nemáte žiadnych zablokovaných používateľov",
         "no_blocked_comments" => "Nemáte žiadne zablokované komentáre",
         "no_blocked_posts" => "Nemáte žiadne zablokované príspevky",
+        "title_bookmarks" => "Záložky",
+        "user_bookmarks" => "Vyzerá to prázdne. Pridajte príspevky do Vašich záložiek.",
         "error1" => "Meno alebo heslo je nesprávne.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Tento nick už existuje.",

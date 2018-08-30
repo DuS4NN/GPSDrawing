@@ -64,6 +64,11 @@ function remove_from_bookmarks(modal_id) {
         }
     });
     close_modal(modal_id);
+
+    if(window.location.href.includes("bookmarks")){
+        document.getElementById("post-"+id).style.display = "none";
+    }
+
 }
 
 function delete_post(modal_id) {

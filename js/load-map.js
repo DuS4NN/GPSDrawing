@@ -9,12 +9,51 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
             var styledMapType = get_theme(theme);
 
 
-            var map = new google.maps.Map(document.getElementById('map'+id), {
+            var map = new google.maps.Map(document.getElementById('map'+id));
+
+            var controlsOut={
+                disableDoubleClickZoom: true,
+                disableDefaultUI: true,
                 mapTypeControlOptions: {
                     mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
                         'styled_map']
                 }
-            });
+            };
+
+            var controlsIn={
+                disableDoubleClickZoom: true,
+                disableDefaultUI: false,
+                mapTypeControlOptions: {
+                    mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                        'styled_map']
+                }
+            };
+
+            map.setOptions(controlsOut);
+
+            google.maps.event.addDomListener(map.getDiv(),
+                'mouseover',
+                function(e)
+                {
+                    e.cancelBubble=true;
+                    if(!map.hover)
+                    {
+                        map.hover=true;
+                        map.setOptions(controlsIn);
+                    }
+                });
+
+            google.maps.event.addDomListener(document.getElementsByTagName('body')[0],
+                'mouseover',
+                function(e)
+                {
+                    if(map.hover)
+                    {
+                        map.setOptions(controlsOut);
+                        map.hover=false;
+                    }
+                });
+
 
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');

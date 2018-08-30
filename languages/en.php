@@ -120,6 +120,8 @@
         "no_blocked_users" => "You have no blocked users",
         "no_blocked_comments" => "You have no blocked comments",
         "no_blocked_posts" => "You have no blocked posts",
+        "title_bookmarks" => "Bookmarks",
+        "user_bookmarks" => "It look empty. Add posts to your bookmarks.",
         "error1" => "Invalid email or password.",
         "error2" => "To sign in, you need to activate your account by email.",
         "error3" => "Nick name already exists.",

@@ -136,15 +136,17 @@
     $stmt2 = $db->prepare("
                         UPDATE `users_options` 
                           SET 
-                          night_mode = ?
+                          night_mode = ?,
+                          lang = ?
                           WHERE `users_options`.`id_user` = ?");
-    $stmt2->bind_param("ss", $_POST['night_mode'],$_SESSION['id']);
+
+    $stmt2->bind_param("sss", $_POST['night_mode'],$_POST['lang'],$_SESSION['id']);
     $stmt2->execute();
 
+    $_SESSION['lang'] = $_POST['lang'];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['nickname'] = $_POST['nick'];
     $_SESSION['night_mode'] = $_POST['night_mode'];
-
 
     header("location: ../settings");
 

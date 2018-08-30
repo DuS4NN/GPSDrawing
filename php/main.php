@@ -37,7 +37,7 @@
 
     $stmt = $db->prepare("SELECT
                                 posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
-                                posts.distance, posts.points, posts.time, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
                                   THEN '1'
                                   ELSE '0'
@@ -54,7 +54,7 @@
                                 HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
                                 AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
                                 AND posts.id_user IN (SELECT followers.id_user FROM followers WHERE followers.follower = ?)
-                                ORDER BY posts.date DESC LIMIT 3");
+                                ORDER BY posts.date DESC LIMIT 2");
 
         $stmt->bind_param("sssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
         $stmt->execute();
@@ -84,7 +84,7 @@
     </div>
 
     <script>
-        var limit = 3;
+        var limit = 2;
 
         function getDocHeight() {
             let D = document;

@@ -67,8 +67,8 @@
 
         $lastID = mysqli_insert_id($db);
 
-        $stmt = $db->prepare("INSERT INTO users_options (id_user) VALUES (?)");
-        $stmt->bind_param("i", $lastID);
+        $stmt = $db->prepare("INSERT INTO users_options (id_user, lang) VALUES (?,?)");
+        $stmt->bind_param("is", $lastID,$_SESSION['lang']);
         $stmt->execute();
 
 
