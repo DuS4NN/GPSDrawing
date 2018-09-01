@@ -92,28 +92,35 @@
                 D.body.scrollHeight, D.documentElement.scrollHeight,
                 D.body.offsetHeight, D.documentElement.offsetHeight,
                 D.body.clientHeight, D.documentElement.clientHeight
-            );
+            )-150;
         }
 
-
+        let click =true;
         $(window).on('scroll DOMMouseScroll', function() {
-            if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
-                setTimeout(function () {
-                    $.ajax({
-                        type:"POST",
-                        url: "<?php echo $web; ?>/php/load_posts.php",
-                        data:{action:'main_post',limit:limit},
-                        cache:false,
-                        success:function(response){
-                            $("#body").append(response);
-                            if(response.length<100){
-                                $(window).unbind('scroll DOMMouseScroll');
-                            }
-                        }
-                    });
-                    limit++;
-                },0);
+
+            if(!click){
+                return;
             }
+                if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
+                    setTimeout(function () {
+                        $.ajax({
+                            type:"POST",
+                            url: "<?php echo $web; ?>/php/load_posts.php",
+                            data:{action:'main_post',limit:limit},
+                            success:function(response){
+                                $("#body").append(response);
+                                if(response.length<100){
+                                    $(window).unbind('scroll DOMMouseScroll');
+                                }
+                            }
+                        });
+                        limit++;
+                        click=false;
+                        setTimeout(function () {
+                            click=true;
+                        },100);
+                    },0);
+                }
         });
 
         if (window.performance) {

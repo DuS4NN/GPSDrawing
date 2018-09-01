@@ -241,33 +241,41 @@
                     D.body.scrollHeight, D.documentElement.scrollHeight,
                     D.body.offsetHeight, D.documentElement.offsetHeight,
                     D.body.clientHeight, D.documentElement.clientHeight
-                );
+                )-150;
             }
 
 
+            let click =true;
             $(window).on('scroll DOMMouseScroll', function() {
-                if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
+
+                if(!click){
+                    return;
+                }
+                if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
                     setTimeout(function () {
                         $.ajax({
                             type:"POST",
                             url: "<?php echo $web; ?>/php/load_posts.php",
                             data:{action:old_item,limit:limit,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
-                            cache:false,
                             success:function(response){
-                                $("#body-post").append(response);
+                                $("#body").append(response);
                                 if(response.length<100){
                                     $(window).unbind('scroll DOMMouseScroll');
                                 }
                             }
                         });
                         limit++;
+                        click=false;
+                        setTimeout(function () {
+                            click=true;
+                        },100);
                     },0);
                 }
             });
         </script>
 
 
-        <div id="body-post" class="body" style="width: 100%; margin-top: 10px; left:0;">
+        <div id="body" class="body" style="width: 100%; margin-top: 10px; left:0;">
             <?php
 
             $stmt = $db->prepare("SELECT 

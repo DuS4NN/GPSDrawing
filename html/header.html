@@ -10,10 +10,10 @@
             <div id="nav-links-text"><a href="<?php echo $web;?>/bookmarks"><img src="<?php echo $web;?>/img/icon-bookmarks.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/bookmarks"><?php echo $lang['bookmarks'];?></a></div></div>
             <div id="nav-links-text"><a href="<?php echo $web;?>/settings"><img src="<?php echo $web;?>/img/icon-settings.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/settings"><?php echo $lang['settings'];?></a></div></div>
             <div id="nav-icons">
-                <img src="<?php echo $web;?>/img/icon-notification.png">
-                <span class="nav-img-search"><img src="<?php echo $web; ?>/img/icon-search.png"></span>
+                <img onclick="showNotif()" src="<?php echo $web;?>/img/icon-notification.png">
+                <span class="nav-img-search"><img class="nav-icon-search" src="<?php echo $web; ?>/img/icon-search.png"></span>
                 <div id="nav-container-input">
-                    <input class="search" type="text" placeholder="<?php echo $lang['search']; ?>">
+                    <input id="nav-search-users" class="search" placeholder="<?php echo $lang['search']; ?>">
                 </div>
             </div>
         </div>
@@ -21,10 +21,96 @@
 </nav>
 
 
+<div id="search-container">
+    <div id="arrow"><div class="arrow-up"></div></div>
+    <div id="nav-search-container">
+    </div>
+</div>
+
+<div id="notification-container">
+    <div id="arrownotif"><div class="arrow-up notif"></div></div>
+    <div id="nav-notification-container">
+
+    </div>
+</div>
+
+
 <script>
+
+    function showNotif(){
+        if($('#notification-container').hasClass('show')){
+            $('#notification-container').removeClass('show');
+        }else{
+            $('#search-container').css('opacity','0');
+            setTimeout(function () {
+                $('#search-container').css('display','none');
+            },20);
+
+            setTimeout(function () {
+                $('#notification-container').addClass('show');
+            },5);
+
+            $.ajax({
+                type:"POST",
+                url: localStorage.getItem("web")+"/php/header.php",
+                data: {action: 2},
+                success: function(response){
+                    document.getElementById("nav-notification-container").innerHTML = response;
+                }
+            });
+
+        }
+    }
+
+    $(document).click(function (e) {
+        if(e.which!==1)return;
+        if($(this)[0]['activeElement']['id'] && $(this)[0]['activeElement']['id'].includes("nav-search-users")){
+            return;
+        }
+
+        $('.search').removeClass('expanded');
+        $('.nav-img-search').removeClass('expanded');
+
+        $('#notification-container').removeClass('show');
+
+        $('#search-container').css('opacity','0');
+        $('#nav-search-users').val("");
+
+        setTimeout(function () {
+            $('#search-container').css('display','none');
+        },100);
+
+    });
+
+    $('#nav-search-users').on('keypress',function () {
+        setTimeout(function () {
+            if($('#nav-search-users').val().length===0){
+                $('#search-container').css('opacity','0');
+                setTimeout(function () {
+                    $('#search-container').css('display','none');
+                },300);
+            }else{
+                $('#search-container').css('display','block');
+                $('#search-container').css('opacity','1');
+                let nick = $('#nav-search-users').val();
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/header.php",
+                    data: {nick: nick, action: 1},
+                    success: function(response){
+                        document.getElementById("nav-search-container").innerHTML = response;
+                    }
+                });
+            }
+        },300);
+    });
+
     $('.nav-img-search').click(function () {
-        $('.search').toggleClass('expanded');
-        $('.nav-img-search').toggleClass('expanded');
+        setTimeout(function () {
+            $('.search').toggleClass('expanded');
+            $('.nav-img-search').toggleClass('expanded');
+        },5);
+
     });
 
 
@@ -36,8 +122,6 @@
             $(this).removeClass('fas fa-caret-up').addClass('fas fa-caret-down');
             $('#nav-links').toggleClass('expanded');
         }
-
-        console.log(this);
     });
 
     $(document).ready(function() {
@@ -50,10 +134,16 @@
                 $('#container-nav').addClass('scrolled-nav');
                 $('#nav-logo').addClass('scrolled-nav');
                 $('#nav-links').addClass('scrolled-nav');
+
+                $('#search-container').addClass('scroll');
+                $('#notification-container').addClass('scroll');
             } else if (scrollTop < 100) {
                 $('#container-nav').removeClass('scrolled-nav');
                 $('#nav-logo').removeClass('scrolled-nav');
                 $('#nav-links').removeClass('scrolled-nav');
+
+                $('#search-container').removeClass('scroll');
+                $('#notification-container').removeClass('scroll');
             }
 
         });

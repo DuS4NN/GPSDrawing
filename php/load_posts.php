@@ -130,7 +130,7 @@
              }
              break;
          case 'bookmarks_post':
-             $stmt = $db->prepare("SELECT
+             $stmt = $db->prepare("SELECT DISTINCTROW
                                 posts.id, posts.id_user as 'userid', posts.description, posts.date, posts.points, posts.activity, posts.collaboration,
                                 users.profile_picture, users.nick_name,
                                 COUNT(comments.id) as countcomments,

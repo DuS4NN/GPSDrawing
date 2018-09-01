@@ -264,6 +264,10 @@ table{
     border: none;
 }
 
+#comment-like table{
+    margin-bottom: 5px;
+}
+
 .post{
     margin-left: auto;
     margin-right: auto;

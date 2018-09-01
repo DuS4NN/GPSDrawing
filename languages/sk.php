@@ -167,5 +167,9 @@
         "info15" => "Používateľ bol úspešne odblokovaný.",
         "info16" => "Komentár bol úspešne odblokovaný.",
         "info17" => "Príspevok bol úspešne odblokovaný.",
-        "info18" => "Téma mapy úspešne zmenená."
+        "info18" => "Téma mapy úspešne zmenená.",
+        "notif1" => "sa páči Váš príspevok",
+        "notif2" => "Vás sleduje",
+        "notif3" => "komentoval Váš príspevok",
+        "notif4" => "vitajte na GPS Drawing!"
     );

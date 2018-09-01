@@ -35,7 +35,7 @@ header('Content-type: text/html; charset=UTF-8');
 <div id="body" style="width: 100%; left:0;">
     <?php
 
-    $stmt = $db->prepare("SELECT
+    $stmt = $db->prepare("SELECT DISTINCTROW 
                                 posts.id, posts.id_user as 'userid', posts.description, posts.date, posts.points, posts.activity, posts.collaboration,
                                 users.profile_picture, users.nick_name,
                                 COUNT(comments.id) as countcomments,
@@ -97,18 +97,21 @@ header('Content-type: text/html; charset=UTF-8');
             D.body.scrollHeight, D.documentElement.scrollHeight,
             D.body.offsetHeight, D.documentElement.offsetHeight,
             D.body.clientHeight, D.documentElement.clientHeight
-        );
+        )-150;
     }
 
-
+    let click =true;
     $(window).on('scroll DOMMouseScroll', function() {
-        if($(window).scrollTop() + window.innerHeight === getDocHeight()) {
+
+        if(!click){
+            return;
+        }
+        if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
             setTimeout(function () {
                 $.ajax({
                     type:"POST",
                     url: "<?php echo $web; ?>/php/load_posts.php",
                     data:{action:'bookmarks_post',limit:limit},
-                    cache:false,
                     success:function(response){
                         $("#body").append(response);
                         if(response.length<100){
@@ -117,6 +120,10 @@ header('Content-type: text/html; charset=UTF-8');
                     }
                 });
                 limit++;
+                click=false;
+                setTimeout(function () {
+                    click=true;
+                },100);
             },0);
         }
     });

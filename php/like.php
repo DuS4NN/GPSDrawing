@@ -6,6 +6,9 @@
         return;
     }
 
+    date_default_timezone_set('UTC');
+    $date = date("Y-m-d H:i");
+
     $action = $_POST['action'];
     $id = $_POST['id'];
 
@@ -13,6 +16,12 @@
         $stmt = $db->prepare("INSERT INTO `likes` (id_user, `id_post` ) VALUES (?, ?);");
         $stmt->bind_param("ii", $_SESSION['id'],$id);
         $stmt->execute();
+
+        $action=1;$view=0;
+        $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES (?,?,?,?,?);");
+        $stmt->bind_param("iiiis", $_SESSION['id'],$action,$id,$view,$date);
+        $stmt->execute();
+
     }else{
         $stmt = $db->prepare("DELETE FROM likes WHERE id_user = ? AND id_post = ?");
         $stmt->bind_param("ii", $_SESSION['id'],$id );

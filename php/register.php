@@ -77,6 +77,11 @@
         $stmt->bind_param("iis", $lastID,$id_badge,$date);
         $stmt->execute();
 
+        $action=4;$view=0;
+        $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post-user_id`, `view`, `date`) VALUES (?,?,?,?,?);");
+        $stmt->bind_param("iiiis", $lastID,$action,$lastID,$view,$date);
+        $stmt->execute();
+
 
 
         //Send verify email

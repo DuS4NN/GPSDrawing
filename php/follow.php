@@ -18,6 +18,12 @@
         $stmt = $db->prepare("INSERT INTO `followers` (`follower`, `id_user`, `date`) VALUES (?, ?, ?);");
         $stmt->bind_param("iis", $_SESSION['id'],$id, $date);
         $stmt->execute();
+
+        $action=2;$view=0;
+        $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`,`date`) VALUES (?,?,?,?,?);");
+        $stmt->bind_param("iiiis", $_SESSION['id'],$action,$id,$view,$date);
+        $stmt->execute();
+
     }else{
         $stmt = $db->prepare("DELETE FROM followers WHERE follower = ? AND id_user = ?");
         $stmt->bind_param("ii", $_SESSION['id'],$id);

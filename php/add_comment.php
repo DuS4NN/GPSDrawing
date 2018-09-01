@@ -13,6 +13,11 @@
     date_default_timezone_set('UTC');
     $date = date("Y-m-d H:i");
 
+    $action=3;$view=0;
+    $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES (?,?,?,?,?);");
+    $stmt->bind_param("iiiis", $_SESSION['id'],$action,$id,$view, $date);
+    $stmt->execute();
+
     $stmt = $db->prepare("INSERT INTO comments (id_user, id_post, comment, time) VALUES (?,?,?,?)");
     $stmt->bind_param("iiss", $_SESSION['id'], $id, $text, $date);
     $stmt->execute();

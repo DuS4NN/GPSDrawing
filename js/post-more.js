@@ -1,6 +1,6 @@
 function go_on_post(modal_id){
     let id = document.getElementById(modal_id).getAttribute("post-id");
-    window.location=localStorage.getItem("web")+"/posts/"+id;
+    window.location=localStorage.getItem("web")+"/post/"+id;
 }
 
 function hide_post(modal_id) {
@@ -19,6 +19,24 @@ function hide_post(modal_id) {
     close_modal(modal_id);
     document.getElementById("post-"+id).style.display = "none";
     limit--;
+    let loc = window.location.href;
+    if(loc.endsWith("bookmarks")){
+        load_post('bookmarks_post');
+    }else if(loc.endsWith("home")){
+        load_post('main_post');
+    }
+}
+
+function load_post(action){
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/load_posts.php",
+        data:{action:action,limit:limit},
+        success:function(response){
+            $("#body").append(response);
+        }
+    });
+    limit++;
 }
 
 function add_to_bookmarks(modal_id) {
@@ -64,10 +82,15 @@ function remove_from_bookmarks(modal_id) {
         }
     });
     close_modal(modal_id);
-
+    let loc = window.location.href;
     if(window.location.href.includes("bookmarks")){
         document.getElementById("post-"+id).style.display = "none";
         limit--;
+        if(loc.endsWith("bookmarks")){
+            load_post('bookmarks_post');
+        }else if(loc.endsWith("home")){
+            load_post('main_post');
+        }
     }
 
 }
@@ -86,10 +109,15 @@ function delete_post(modal_id) {
             closeAlert('remove');
         }
     });
-
+    let loc = window.location.href;
     document.getElementById("post-"+id).style.display = "none";
     close_modal(modal_id);
     limit--;
+    if(loc.endsWith("bookmarks")){
+        load_post('bookmarks_post');
+    }else if(loc.endsWith("home")){
+        load_post('main_post');
+    }
 }
 
 function report(reason) {

@@ -132,7 +132,7 @@
         "error8" => "Account has already been activated or the URL is invalid!",
         "error9" => "You must log in to continue.",
         "error10" => "Allowed characters for nickname: A-Z 0-9  and &ldquo; - . _ * &ldquo;.",
-        "error11" => "This user does not exists.",
+        "error11" => "This user does not exist.",
         "error12" => "Please select file.",
         "error13" => "Something went wrong. Please try again.",
         "error14" => "One or more required information is not entered.",
@@ -167,5 +167,9 @@
         "info15" => "User successfully unblocked.",
         "info16" => "Comment successfully unblocked.",
         "info17" => "Post successfully unblocked.",
-        "info18" => "The map theme successfully changed."
+        "info18" => "The map theme successfully changed.",
+        "notif1" => "likol vas post",
+        "notif2" => "vas followuje",
+        "notif3" => "komentoval vas prispevok",
+        "notif4" => "vytajte na gps drawing!"
     );
