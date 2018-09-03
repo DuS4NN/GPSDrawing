@@ -32,7 +32,7 @@ header('Content-type: text/html; charset=UTF-8');
 
 <?php require '../html/header.html'; ?>
 
-<div id="body" style="width: 100%; left:0;">
+<div id="body" style="width: 100%; height: 100%; left:0;">
     <?php
 
     $stmt = $db->prepare("SELECT DISTINCTROW 

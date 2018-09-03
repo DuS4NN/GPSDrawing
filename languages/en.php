@@ -168,8 +168,8 @@
         "info16" => "Comment successfully unblocked.",
         "info17" => "Post successfully unblocked.",
         "info18" => "The map theme successfully changed.",
-        "notif1" => "likol vas post",
-        "notif2" => "vas followuje",
-        "notif3" => "komentoval vas prispevok",
-        "notif4" => "vytajte na gps drawing!"
+        "notif1" => "likes your post",
+        "notif2" => "is following you",
+        "notif3" => "commented your post",
+        "notif4" => "Welcome to GPS Drawing!"
     );

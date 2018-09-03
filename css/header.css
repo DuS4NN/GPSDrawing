@@ -13,6 +13,43 @@
 
 @media only screen and (min-width: 1200px){
 
+    #notification-count{
+        display: none;
+        z-index: 9999;
+        position: fixed;
+        right: 0;
+        top:0;
+        margin-right: calc(10% + 52px);
+        margin-top: 20px;
+        background: red;
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        font-size: 8px;
+        font-family: Text;
+        text-align: center;
+        color: white;
+    }
+
+    #notification-count.expanded {
+        margin-right: calc(10% + 192px);
+        -webkit-transition: margin-right .4s;
+        -moz-transition: margin-right .4s;
+        -o-transition: margin-right .4s;
+        transition: margin-right .4s;
+    }
+
+    #notification-count.scroll{
+        margin-top: 15px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
 
     #nav-notif-time{
         float: left;
@@ -40,6 +77,7 @@
     }
 
     #nav-notif-image{
+        margin-top: 5px;
         height: 40px;
         width: 40px;
         float: left;
@@ -47,7 +85,7 @@
 
     #nav-notif-content{
         width: calc(100% - 40px);
-        height: 40px;
+        height: 50px;
         float: left;
     }
 
@@ -55,6 +93,10 @@
         height: 50px;
         border-top: 1px solid #eeeeee;
         cursor: pointer;
+    }
+
+    #nav-notif-item.unseen{
+        background: #f9f9f9;
     }
 
     #nav-notif-item.first{
@@ -72,8 +114,9 @@
     }
 
     #nav-notification-container{
+        max-height: 254px;
         z-index: 9999;
-        height: auto;
+        overflow-y: scroll;
         width: 20%;
         position: fixed;
         right: 0;
@@ -222,7 +265,7 @@
         transition: all .4s;
     }
 
-
+/*--------------------------------*/
     #container-nav{
         position: fixed;
         top: 0;
@@ -391,7 +434,7 @@
     .search{
         z-index: 0;
         height: 28px;
-        max-width: 0px;
+        max-width: 0;
         opacity: 0;
         padding-left: 10px;
         -webkit-transition: all .5s;
@@ -408,12 +451,265 @@
 }
 
 @media (max-width:1199px) and (min-width:768px) {
+
+
+    #notification-count{
+        display: none;
+        z-index: 9999;
+        position: fixed;
+        right: 0;
+        top:0;
+        margin-right: calc(5% + 37px);
+        margin-top: 25px;
+        background: red;
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        font-size: 8px;
+        font-family: Text;
+        text-align: center;
+        color: white;
+    }
+
+    #notification-count.expanded {
+        margin-right: calc(5% + 150px);
+    }
+
+    #notification-count.scroll{
+        margin-top: 20px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #nav-notif-time{
+        float: left;
+        margin-left: 15px;
+        font-size: 8px;
+        font-family: Text2;
+        color: #aaaaaa;
+    }
+
+    #nav-notif-nick{
+        margin-top: 3px;
+        float: left;
+        margin-left: 5px;
+        font-size: 13px;
+        font-family: Text;
+    }
+
+    #nav-notif-text{
+        min-width: 90%;
+        float: left;
+        margin-left: 8px;
+        font-family: Text2;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    #nav-notif-image{
+        margin-top: 5px;
+        height: 30px;
+        width: 30px;
+        float: left;
+    }
+
+    #nav-notif-content{
+        width: calc(100% - 30px);
+        height: 50px;
+        float: left;
+    }
+
+    #nav-notif-item{
+        height: 50px;
+        border-top: 1px solid #eeeeee;
+        cursor: pointer;
+    }
+
+    #nav-notif-item.unseen{
+        background: #f9f9f9;
+    }
+
+    #nav-notif-item.first{
+        border-top: none;
+    }
+
+    #notification-container{
+        opacity: 0;
+        display: none;
+    }
+
+    #notification-container.show{
+        opacity: 1;
+        display: block;
+    }
+
+    #nav-notification-container{
+        max-height: 254px;
+        z-index: 9999;
+        overflow-y: scroll;
+        width: 30%;
+        position: fixed;
+        right: 0;
+        top:0;
+        background: white;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        margin-top: 85px;
+        margin-right: 2.5%;
+        box-shadow: 2px 2px 4px #aaaaaa;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #notification-container.scroll  #nav-notification-container{
+        z-index: 9999;
+        height: auto;
+        width: 30%;
+        position: fixed;
+        right: 0;
+        top:0;
+        background: white;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        margin-top: 75px;
+        margin-right: 2.5%;
+        box-shadow: 2px 2px 4px #aaaaaa;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #notification-container.scroll .arrow-up.notif{
+        margin-top: 67px;
+    }
+
+    #nav-search-item{
+        height: 40px;
+        width: 100%;
+        border-top: 1px solid #eeeeee;
+        cursor: pointer;
+    }
+
+    #nav-search-item:hover{
+        background: #efefef;
+    }
+
+    #nav-search-item.first{
+        border-top: none;
+    }
+
+    #search-user-empty{
+        font-family: Text;
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    #nav-search-item-nick{
+        margin-left: 5px;
+        line-height: 40px;
+        float: left;
+        font-size: 12px;
+        font-family: Text;
+    }
+
+    #nav-search-item-img{
+        margin-top: 10px;
+        float: left;
+        margin-left: 5px;
+        -webkit-border-radius: 100px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 100px;
+        -moz-background-clip: padding;
+        border-radius: 100px;
+        background-clip: padding-box;
+        background-size: cover;
+        background-position: center center;
+        height: 20px;
+        width: 20px;
+    }
+
+    #nav-search-container{
+        z-index: 9999;
+        height: auto;
+        width: 30%;
+        position: fixed;
+        right: 0;
+        top:0;
+        background: white;
+        border: 1px solid #dddddd;
+        border-radius: 5px;
+        margin-top: 85px;
+        margin-right: 2.5%;
+        box-shadow: 2px 2px 4px #aaaaaa;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #search-container{
+        opacity: 0;
+        display: none;
+    }
+
+    .arrow-up.notif{
+        margin-right: calc(10% + 59px);
+    }
+
+    .arrow-up {
+        position: fixed;
+        float: right;
+        right: 0;
+        top: 0;
+        margin-top: 77px;
+        margin-right: 15%;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #dddddd;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #search-container.scroll .arrow-up{
+        margin-top: 67px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #search-container.scroll  #nav-search-container{
+        margin-top: 75px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+
+    /*KONIEC*/
+
     #container-nav{
+        z-index: 9999;
+        background: white;
         position: fixed;
         top: 0;
-        z-index: 100;
         width: 100%;
-        background: white;
         height: 70px;
         border-bottom: 1px solid rgba(0,0,0,0.0975);
         -webkit-transition: all .4s;

@@ -10,6 +10,9 @@
             <div id="nav-links-text"><a href="<?php echo $web;?>/bookmarks"><img src="<?php echo $web;?>/img/icon-bookmarks.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/bookmarks"><?php echo $lang['bookmarks'];?></a></div></div>
             <div id="nav-links-text"><a href="<?php echo $web;?>/settings"><img src="<?php echo $web;?>/img/icon-settings.png"></a><div id="nav-text"><a  href="<?php echo $web;?>/settings"><?php echo $lang['settings'];?></a></div></div>
             <div id="nav-icons">
+                <div id="notification-count">
+
+                </div>
                 <img onclick="showNotif()" src="<?php echo $web;?>/img/icon-notification.png">
                 <span class="nav-img-search"><img class="nav-icon-search" src="<?php echo $web; ?>/img/icon-search.png"></span>
                 <div id="nav-container-input">
@@ -37,10 +40,71 @@
 
 <script>
 
+    var limit_notification = 0;
+
+    $('#nav-notification-container').scroll(function () {
+
+        if($("#nav-notification-container").scrollTop() + $("#nav-notification-container").innerHeight() === document.getElementById("nav-notification-container").scrollHeight) {
+
+            $.ajax({
+                type:"POST",
+                url: localStorage.getItem("web")+"/php/header.php",
+                data: {action: 2, limit: limit_notification},
+                success:function(response){
+                    $("#nav-notification-container").append(response);
+                }
+            });
+            limit_notification+=8;
+        }
+    });
+
+    setInterval(function () {
+        $.ajax({
+            type:"POST",
+            url: localStorage.getItem("web")+"/php/header.php",
+            data: {action: 3},
+            success: function(response){
+                let count = response.split("row_count_notification:")[1];
+                if(count==="0"){
+                    $('#notification-count').css('display','none');
+                }else{
+                    $('#notification-count').css('display','block');
+                    document.getElementById('notification-count').innerText = count;
+                }
+            }
+        });
+    },30000);
+
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/header.php",
+        data: {action: 3},
+        success: function(response){
+            let count = response.split("row_count_notification:")[1];
+            if(count==="0"){
+                $('#notification-count').css('display','none');
+            }else{
+                if(parseInt(count)>99){
+                    document.getElementById('notification-count').innerText = "99";
+                }else{
+                    document.getElementById('notification-count').innerText = count;
+                }
+                $('#notification-count').css('display','block');
+
+            }
+        }
+    });
+
     function showNotif(){
         if($('#notification-container').hasClass('show')){
             $('#notification-container').removeClass('show');
         }else{
+
+            $("#nav-notification-container").scroll(0);
+            document.getElementById("nav-notification-container").innerText="";
+
+            $('#notification-count').css('display','none');
+
             $('#search-container').css('opacity','0');
             setTimeout(function () {
                 $('#search-container').css('display','none');
@@ -53,23 +117,29 @@
             $.ajax({
                 type:"POST",
                 url: localStorage.getItem("web")+"/php/header.php",
-                data: {action: 2},
+                data: {action: 2, limit: 0},
                 success: function(response){
                     document.getElementById("nav-notification-container").innerHTML = response;
                 }
             });
-
+            limit_notification = 8;
         }
     }
 
+    var img_clicked=0;
+
     $(document).click(function (e) {
+
         if(e.which!==1)return;
         if($(this)[0]['activeElement']['id'] && $(this)[0]['activeElement']['id'].includes("nav-search-users")){
             return;
         }
+        if(img_clicked===0){
+            $('.search').removeClass('expanded');
+            $('.nav-img-search').removeClass('expanded');
+            $('#notification-count').removeClass('expanded');
 
-        $('.search').removeClass('expanded');
-        $('.nav-img-search').removeClass('expanded');
+        }
 
         $('#notification-container').removeClass('show');
 
@@ -79,7 +149,7 @@
         setTimeout(function () {
             $('#search-container').css('display','none');
         },100);
-
+        img_clicked=0;
     });
 
     $('#nav-search-users').on('keypress',function () {
@@ -106,16 +176,17 @@
     });
 
     $('.nav-img-search').click(function () {
+        img_clicked=1;
         setTimeout(function () {
+            $('#notification-count').toggleClass('expanded');
             $('.search').toggleClass('expanded');
             $('.nav-img-search').toggleClass('expanded');
         },5);
-
     });
 
 
     $('#icon-caret').click(function () {
-        if(document.getElementById('icon-caret').className=='fas fa-caret-down'){
+        if(document.getElementById('icon-caret').className==='fas fa-caret-down'){
             $(this).removeClass('fas fa-caret-down').addClass('fas fa-caret-up');
             $('#nav-links').toggleClass('expanded');
         }else{
@@ -137,6 +208,7 @@
 
                 $('#search-container').addClass('scroll');
                 $('#notification-container').addClass('scroll');
+                $('#notification-count').addClass('scroll');
             } else if (scrollTop < 100) {
                 $('#container-nav').removeClass('scrolled-nav');
                 $('#nav-logo').removeClass('scrolled-nav');
@@ -144,6 +216,7 @@
 
                 $('#search-container').removeClass('scroll');
                 $('#notification-container').removeClass('scroll');
+                $('#notification-count').removeClass('scroll');
             }
 
         });

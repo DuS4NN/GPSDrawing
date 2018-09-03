@@ -90,7 +90,7 @@
             document.title = "<?php echo $row_u['nick_name'];?>";
         </script>
 
-        <div id="profile">
+        <div id="profile" >
             <div id="profile-image-profile">
                 <div id="profile-image" style="background-image: url(<?php echo $web ?>/<?php echo $row_u['profile_picture'] ?>)">
                 </div>
@@ -207,30 +207,43 @@
 
         <script>
             var old_item = "post";
-            var limit = 1;
+            let limit = 1;
             $(document).on('click','#profile-choose-item',function () {
 
-                var item = $(this).attr('item');
+                let item = $(this).attr('item');
                 if(old_item==item){
                     return;
                 }
+                window.scrollTo(0,0);
                 limit = 1;
                 old_item=item;
 
-                $(".body").load("<?php echo $web;?>/php/load_posts.php",{action:item, limit:0, collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'});
-                if(item=='post'){
-                    $('.profile-choose-collaboration').removeClass('select');
-                    $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/bbbbbb/groups.png');
-                    $('.profile-choose-post').addClass('select');
-                    $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/000000/menu.png')
-                }else{
-                    $('.profile-choose-collaboration').addClass('select');
-                    $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/000000/groups.png');
-                    $('.profile-choose-post').removeClass('select');
-                    $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/bbbbbb/menu.png')
-                }
 
-                window.scrollTo(0,0);
+
+                    if(old_item==='post'){
+                        $('.profile-choose-collaboration').removeClass('select');
+                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/bbbbbb/groups.png');
+                        $('.profile-choose-post').addClass('select');
+                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/000000/menu.png')
+                    }else{
+                        $('.profile-choose-collaboration').addClass('select');
+                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/000000/groups.png');
+                        $('.profile-choose-post').removeClass('select');
+                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/bbbbbb/menu.png')
+                    }
+
+                setTimeout(function () {
+                    $.ajax({
+                        type:"POST",
+                        url: "<?php echo $web; ?>/php/load_posts.php",
+                        data:{action:old_item,limit:0,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                        success:function(response){
+                            document.getElementById("body").innerHTML = response;
+                        }
+                    });
+                },0);
+                $(window).bind('scroll DOMMouseScroll', onscroll);
+
             });
 
 
@@ -244,14 +257,14 @@
                 )-150;
             }
 
-
-            let click =true;
-            $(window).on('scroll DOMMouseScroll', function() {
-
+            let click = true;
+            function onscroll() {
                 if(!click){
                     return;
                 }
+
                 if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
+                    console.log(old_item);
                     setTimeout(function () {
                         $.ajax({
                             type:"POST",
@@ -260,7 +273,7 @@
                             success:function(response){
                                 $("#body").append(response);
                                 if(response.length<100){
-                                    $(window).unbind('scroll DOMMouseScroll');
+                                    $(window).unbind('scroll DOMMouseScroll', onscroll);
                                 }
                             }
                         });
@@ -271,7 +284,10 @@
                         },100);
                     },0);
                 }
-            });
+            }
+
+
+            $(window).on('scroll DOMMouseScroll', onscroll);
         </script>
 
 
@@ -409,6 +425,7 @@
                 $( "body" ).scrollTop(0);
             }
         </script>
+
 
         <div id="overlay" class="md-overlay"></div>
         <script src="<?php echo $web ?>/js/classie.js"></script>

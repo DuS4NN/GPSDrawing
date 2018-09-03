@@ -61,8 +61,8 @@
                                         END AS 'idto'
                                         FROM notification
                                         INNER JOIN users ON users.id = notification.id_user
-                                        HAVING idto = ? ORDER BY notification.id DESC LIMIT 8");
-            $stmt->bind_param("i", $_SESSION['id']);
+                                        HAVING idto = ? ORDER BY notification.id DESC LIMIT ?,8");
+            $stmt->bind_param("is", $_SESSION['id'],$_POST['limit']);
             $stmt->execute();
             $result = $stmt->get_result();
             $num_rows = mysqli_num_rows($result);
@@ -70,14 +70,14 @@
             while ($row = $result->fetch_assoc()){
                 echo '
                     <div id="nav-notif-item"';
-                if($count==0)echo ' class="first"';
-                echo '">
-                        <div id="nav-notif-image">
-                             <a href = "'.$web.'/user/'.$row['nick_name'].'"><div id="nav-search-item-img" style="background-image: url( '.$web.'/'.$row['profile_picture'].'"></div></a>
-                        </div> 
-                        
-                        <div id="nav-notif-content">
-                            <div id="nav-notif-nick"><a href ="'.$web.'/user/'.$row['nick_name'].'">'.$row['nick_name'].'</a></div>';
+                if($count==0 && $_POST['limit']==0 && $row['view']==0)echo ' class="first unseen"';
+                else if($count==0 && $_POST['limit']==0)echo ' class="first"';
+                else if($row['view']==0)echo 'class="unseen"';
+
+                echo '>
+                        <a href = "'.$web.'/user/'.$row['nick_name'].'"><div id="nav-notif-image">
+                             <div id="nav-search-item-img" style="background-image: url( '.$web.'/'.$row['profile_picture'].'"></div>
+                        </div></a>';
                 
                             echo '
                             <a href="'.$web.'/';
@@ -86,7 +86,12 @@
                             else if($row['action']==2 || $row['action']==4)echo 'user/'.$row['nick_name'];
 
 
-                            echo '"><div id="nav-notif-text">'.$lang['notif'.$row['action']].'</div>
+
+                            echo '">
+                                 <div id="nav-notif-content">
+                            <div id="nav-notif-nick">'.$row['nick_name'].'</div>
+
+                            <div id="nav-notif-text">'.$lang['notif'.$row['action']].'</div>
 
                            <div id="nav-notif-time">';
 
@@ -117,11 +122,40 @@
                                 }
                             }
 
-                            echo '</div></a>
+                            echo '</div>
 
-                        </div>
+                        </div></a>
                     </div>';
                 $count++;
             }
+
+            $stmt = $db->prepare("UPDATE notification SET view = 1 WHERE view = 0 AND notification.id IN (SELECT id FROM (SELECT id,
+                                            CASE WHEN notification.action = 1 OR notification.action = 3
+                                              THEN (SELECT posts.id_user FROM posts WHERE id = notification.post_user_id)
+                                              ELSE notification.post_user_id
+                                              END AS 'idto'
+                                            FROM notification
+                                            HAVING idto = ?) as aa
+                                            )");
+            $stmt->bind_param("i", $_SESSION['id']);
+            $stmt->execute();
+            break;
+        case 3:
+            $query = "  SELECT notification.id,
+                        CASE WHEN notification.action = 1 OR notification.action = 3
+                        THEN (SELECT posts.id_user FROM posts WHERE id = notification.post_user_id)
+                        ELSE notification.post_user_id
+                        END AS 'idto'
+                        FROM notification
+                        WHERE view = 0
+                        HAVING idto = ?";
+            $stmt = $db->prepare($query);
+            $stmt->bind_param("i",$_SESSION['id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $num_rows = mysqli_num_rows($result);
+
+            echo 'row_count_notification:'.$num_rows;
+
             break;
     }

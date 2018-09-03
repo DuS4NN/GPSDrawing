@@ -45,7 +45,7 @@
 
         ?>
 
-        <div id="body" style="margin-left: auto;margin-right: auto;width: 100%">
+        <div id="body" style="width: 100%">
 
         <div id="settings-container">
 

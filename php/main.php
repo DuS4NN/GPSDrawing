@@ -101,26 +101,26 @@
             if(!click){
                 return;
             }
-                if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
-                    setTimeout(function () {
-                        $.ajax({
-                            type:"POST",
-                            url: "<?php echo $web; ?>/php/load_posts.php",
-                            data:{action:'main_post',limit:limit},
-                            success:function(response){
-                                $("#body").append(response);
-                                if(response.length<100){
-                                    $(window).unbind('scroll DOMMouseScroll');
-                                }
+            if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
+                setTimeout(function () {
+                    $.ajax({
+                        type:"POST",
+                        url: "<?php echo $web; ?>/php/load_posts.php",
+                        data:{action:'main_post',limit:limit},
+                        success:function(response){
+                            $("#body").append(response);
+                            if(response.length<100){
+                                $(window).unbind('scroll DOMMouseScroll');
                             }
-                        });
-                        limit++;
-                        click=false;
-                        setTimeout(function () {
-                            click=true;
-                        },100);
-                    },0);
-                }
+                        }
+                    });
+                    limit++;
+                    click=false;
+                    setTimeout(function () {
+                        click=true;
+                    },100);
+                },0);
+            }
         });
 
         if (window.performance) {

@@ -171,5 +171,5 @@
         "notif1" => "sa páči Váš príspevok",
         "notif2" => "Vás sleduje",
         "notif3" => "komentoval Váš príspevok",
-        "notif4" => "vitajte na GPS Drawing!"
+        "notif4" => "vitajte na webe GPS Kreslenie!"
     );
