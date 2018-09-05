@@ -5,15 +5,7 @@
     <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="Commit #5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/bookmarks.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languages/en.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/languages/sk.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/sk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/main.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,14 +36,11 @@
       <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+            <state relative-caret-position="391">
+              <caret line="182" column="54" selection-start-line="182" selection-start-column="54" selection-end-line="182" selection-end-column="54" />
               <folding>
-                <element signature="e#2523#3356#0" />
-                <element signature="e#2085#2101#0" />
-                <element signature="e#2430#2726#0" />
-                <element signature="e#2082#2857#0" />
-                <element signature="e#5862#6874#0" />
+                <element signature="e#4115#5134#0" />
+                <element signature="e#5195#5869#0" />
               </folding>
             </state>
           </provider>
@@ -60,12 +49,45 @@
       <file leaf-file-name="header.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/header.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+            <state relative-caret-position="745">
+              <caret line="1065" column="41" selection-start-line="1065" selection-start-column="41" selection-end-line="1065" selection-end-column="41" />
               <folding>
                 <element signature="e#11#93#0" />
                 <element signature="e#105#189#0" />
                 <element signature="e#201#285#0" />
+                <element signature="e#287#10382#0" />
+                <element signature="e#355#861#0" />
+                <element signature="e#10384#20345#0" />
+                <element signature="e#20381#20803#0" />
+                <element signature="e#20942#20958#0" />
+                <element signature="e#21223#21354#0" />
+                <element signature="e#21375#21506#0" />
+                <element signature="e#21527#21685#0" />
+                <element signature="e#21707#21803#0" />
+                <element signature="e#21827#21911#0" />
+                <element signature="e#21932#22025#0" />
+                <element signature="e#22053#22089#0" />
+                <element signature="e#22116#22149#0" />
+                <element signature="e#22178#22228#0" />
+                <element signature="e#22262#22313#0" />
+                <element signature="e#22346#22826#0" />
+                <element signature="e#22891#23338#0" />
+                <element signature="e#23445#23559#0" />
+                <element signature="e#23587#23623#0" />
+                <element signature="e#23651#23684#0" />
+                <element signature="e#23708#23844#0" />
+                <element signature="e#23871#24004#0" />
+                <element signature="e#24030#24455#0" />
+                <element signature="e#24952#25002#0" />
+                <element signature="e#25788#25953#0" />
+                <element signature="e#20437#20608#0" />
+                <element signature="e#20689#20986#0" />
+                <element signature="e#21738#21919#0" />
+                <element signature="e#21936#21972#0" />
+                <element signature="e#21993#22042#0" />
+                <element signature="e#22083#22206#0" />
+                <element signature="e#27919#27935#0" />
+                <element signature="e#22276#22354#0" />
               </folding>
             </state>
           </provider>
@@ -84,10 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>blocked-users-x</find>
-      <find>bp</find>
-      <find>settings-container</find>
-      <find>button</find>
       <find>map-item-left</find>
       <find>input</find>
       <find>input{</find>
@@ -114,6 +132,10 @@
       <find>profile{</find>
       <find>red</find>
       <find>expanded</find>
+      <find>nav-search-users</find>
+      <find>arrow-up.notif</find>
+      <find>nav-container-input</find>
+      <find>nav-img-search</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,11 +190,11 @@
         <option value="$PROJECT_DIR$/html/settings.php" />
         <option value="$PROJECT_DIR$/html/profile.php" />
         <option value="$PROJECT_DIR$/php/header.php" />
-        <option value="$PROJECT_DIR$/css/header.css" />
-        <option value="$PROJECT_DIR$/html/header.html" />
         <option value="$PROJECT_DIR$/languages/sk.php" />
         <option value="$PROJECT_DIR$/languages/en.php" />
         <option value="$PROJECT_DIR$/languages/en.php" />
+        <option value="$PROJECT_DIR$/html/header.html" />
+        <option value="$PROJECT_DIR$/css/header.css" />
       </list>
     </option>
   </component>
@@ -185,9 +207,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1312" />
+    <option name="width" value="615" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -196,6 +218,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,7 +260,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -346,6 +368,8 @@
       <workItem from="1535716150875" duration="11425000" />
       <workItem from="1535789597713" duration="19424000" />
       <workItem from="1535962463290" duration="19116000" />
+      <workItem from="1535988228812" duration="6000" />
+      <workItem from="1536151183092" duration="6935000" />
     </task>
     <task id="LOCAL-00001" summary="Druhy commit">
       <created>1531764866546</created>
@@ -386,12 +410,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="817706000" />
+    <option name="totallyTimeSpent" value="824647000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.0" />
+      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.09168444" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" visible="true" weight="0.0" />
@@ -629,10 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="659">
           <caret line="149" column="81" selection-start-line="149" selection-start-column="81" selection-end-line="149" selection-end-column="81" />
-          <folding>
-            <element signature="n#!!block;n#deleteComment#0" />
-            <element signature="n#!!block;n#editComment#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -671,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/change-profiledata.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="745">
@@ -710,11 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="297" column="16" selection-start-line="297" selection-start-column="16" selection-end-line="297" selection-end-column="16" />
-          <folding>
-            <element signature="e#287#2424#0" />
-            <element signature="e#2426#4403#0" />
-            <element signature="e#4616#4713#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -729,14 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!block;n#hide_post#0" />
-            <element signature="n#!!block;n#add_to_bookmarks#0" />
-            <element signature="n#!!block;n#remove_from_bookmarks#0" />
-            <element signature="n#!!block;n#report#0" />
-            <element signature="n#!!block;n#edit_post#0" />
-            <element signature="n#!!block;n#add_to_project#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,18 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1437">
           <caret line="272" column="15" selection-start-line="272" selection-start-column="15" selection-end-line="272" selection-end-column="15" />
-          <folding>
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#76#83#1" expanded="true" />
-            <element signature="e#76#83#1" expanded="true" />
-            <element signature="e#76#83#1" expanded="true" />
-            <element signature="e#76#83#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-            <element signature="e#75#82#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -805,9 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -815,9 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,10 +815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-151">
           <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="e#4886#7230#0#PHP" />
-            <element signature="e#7240#9729#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -843,10 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#2196#6762#0#PHP" />
-            <element signature="e#6771#7519#0#PHP" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -868,37 +843,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
           <caret line="259" column="29" selection-start-line="259" selection-start-column="29" selection-end-line="259" selection-end-column="29" />
-          <folding>
-            <element signature="e#1770#1775#0#PHP" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#11943#12266#0#HTML" />
-            <element signature="n#script#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+        <state relative-caret-position="391">
+          <caret line="182" column="54" selection-start-line="182" selection-start-column="54" selection-end-line="182" selection-end-column="54" />
           <folding>
-            <element signature="e#2523#3356#0" />
-            <element signature="e#2085#2101#0" />
-            <element signature="e#2430#2726#0" />
-            <element signature="e#2082#2857#0" />
-            <element signature="e#5862#6874#0" />
+            <element signature="e#4115#5134#0" />
+            <element signature="e#5195#5869#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/header.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+        <state relative-caret-position="745">
+          <caret line="1065" column="41" selection-start-line="1065" selection-start-column="41" selection-end-line="1065" selection-end-column="41" />
           <folding>
             <element signature="e#11#93#0" />
             <element signature="e#105#189#0" />
             <element signature="e#201#285#0" />
+            <element signature="e#287#10382#0" />
+            <element signature="e#355#861#0" />
+            <element signature="e#10384#20345#0" />
+            <element signature="e#20381#20803#0" />
+            <element signature="e#20942#20958#0" />
+            <element signature="e#21223#21354#0" />
+            <element signature="e#21375#21506#0" />
+            <element signature="e#21527#21685#0" />
+            <element signature="e#21707#21803#0" />
+            <element signature="e#21827#21911#0" />
+            <element signature="e#21932#22025#0" />
+            <element signature="e#22053#22089#0" />
+            <element signature="e#22116#22149#0" />
+            <element signature="e#22178#22228#0" />
+            <element signature="e#22262#22313#0" />
+            <element signature="e#22346#22826#0" />
+            <element signature="e#22891#23338#0" />
+            <element signature="e#23445#23559#0" />
+            <element signature="e#23587#23623#0" />
+            <element signature="e#23651#23684#0" />
+            <element signature="e#23708#23844#0" />
+            <element signature="e#23871#24004#0" />
+            <element signature="e#24030#24455#0" />
+            <element signature="e#24952#25002#0" />
+            <element signature="e#25788#25953#0" />
+            <element signature="e#20437#20608#0" />
+            <element signature="e#20689#20986#0" />
+            <element signature="e#21738#21919#0" />
+            <element signature="e#21936#21972#0" />
+            <element signature="e#21993#22042#0" />
+            <element signature="e#22083#22206#0" />
+            <element signature="e#27919#27935#0" />
+            <element signature="e#22276#22354#0" />
           </folding>
         </state>
       </provider>

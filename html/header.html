@@ -13,7 +13,7 @@
                 <div id="notification-count">
 
                 </div>
-                <img onclick="showNotif()" src="<?php echo $web;?>/img/icon-notification.png">
+                <img id="nav-img-notification" onclick="showNotif()" src="<?php echo $web;?>/img/icon-notification.png">
                 <span class="nav-img-search"><img class="nav-icon-search" src="<?php echo $web; ?>/img/icon-search.png"></span>
                 <div id="nav-container-input">
                     <input id="nav-search-users" class="search" placeholder="<?php echo $lang['search']; ?>">
@@ -189,9 +189,11 @@
         if(document.getElementById('icon-caret').className==='fas fa-caret-down'){
             $(this).removeClass('fas fa-caret-down').addClass('fas fa-caret-up');
             $('#nav-links').toggleClass('expanded');
+            $('#notification-count').toggleClass('view');
         }else{
             $(this).removeClass('fas fa-caret-up').addClass('fas fa-caret-down');
             $('#nav-links').toggleClass('expanded');
+            $('#notification-count').toggleClass('view');
         }
     });
 

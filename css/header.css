@@ -14,9 +14,8 @@
 @media only screen and (min-width: 1200px){
 
     #notification-count{
-        display: none;
-        z-index: 9999;
-        position: fixed;
+        z-index: 999;
+        position: absolute;
         right: 0;
         top:0;
         margin-right: calc(10% + 52px);
@@ -452,9 +451,7 @@
 
 @media (max-width:1199px) and (min-width:768px) {
 
-
     #notification-count{
-        display: none;
         z-index: 9999;
         position: fixed;
         right: 0;
@@ -664,7 +661,7 @@
     }
 
     .arrow-up.notif{
-        margin-right: calc(10% + 59px);
+        margin-right: calc(5% + 46px);
     }
 
     .arrow-up {
@@ -673,7 +670,7 @@
         right: 0;
         top: 0;
         margin-top: 77px;
-        margin-right: 15%;
+        margin-right: calc(5% + 125px);
         width: 0;
         height: 0;
         border-left: 10px solid transparent;
@@ -893,6 +890,203 @@
 
 @media only screen and (max-width: 767px){
 
+    #notification-count{
+        visibility: hidden;
+        opacity: 0;
+        background: red;
+        width: 12px;
+        position: absolute;
+        margin-left: 30px;
+        margin-top: 5px;
+        height: 12px;
+        border-radius: 2px;
+        font-size: 8px;
+        font-family: Text;
+        text-align: center;
+        color: white;
+    }
+
+    #notification-count.view{
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+
+    #nav-notif-time{
+        float: left;
+        margin-left: 15px;
+        font-size: 8px;
+        font-family: Text2;
+        color: #aaaaaa;
+    }
+
+    #nav-notif-nick{
+        margin-top: 3px;
+        float: left;
+        margin-left: 5px;
+        font-size: 13px;
+        font-family: Text;
+    }
+
+    #nav-notif-text{
+        width: calc(100% - 40px);
+        float: left;
+        margin-left: 8px;
+        font-family: Text2;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    #nav-notif-image{
+        margin-top: 5px;
+        height: 30px;
+        width: 30px;
+        float: left;
+    }
+
+    #nav-notif-content{
+        width: calc(100% - 30px);
+        height: 50px;
+        float: left;
+    }
+
+    #nav-notif-item{
+        height: 50px;
+        border-top: 1px solid #eeeeee;
+        cursor: pointer;
+    }
+
+    #nav-notif-item.unseen{
+        background: #f9f9f9;
+    }
+
+    #nav-notif-item.first{
+        border-top: none;
+    }
+
+    #notification-container{
+        opacity: 0;
+        display: none;
+    }
+
+    #notification-container.show{
+        opacity: 1;
+        display: block;
+    }
+
+    #nav-notification-container{
+        max-height: 254px;
+        z-index: 9999;
+        border-bottom: 1px solid #dddddd;
+        overflow-y: scroll;
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top:0;
+        background: white;
+        margin-top: 265px;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+
+    #notification-container.scroll  #nav-notification-container{
+        max-height: 254px;
+        z-index: 9999;
+        overflow-y: scroll;
+        width: 100%;
+        position: fixed;
+        right: 0;
+        top:0;
+        background: white;
+        margin-top: 252px;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }
+
+    #nav-search-item{
+        height: 40px;
+        width: 100%;
+        border-top: 1px solid #eeeeee;
+        cursor: pointer;
+    }
+
+    #nav-search-item:hover{
+        background: #efefef;
+    }
+
+    #nav-search-item.first{
+        border-top: none;
+    }
+
+    #search-user-empty{
+        font-family: Text;
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    #nav-search-item-nick{
+        margin-left: 5px;
+        line-height: 40px;
+        float: left;
+        font-size: 12px;
+        font-family: Text;
+    }
+
+    #nav-search-item-img{
+        margin-top: 10px;
+        float: left;
+        margin-left: 5px;
+        -webkit-border-radius: 100px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 100px;
+        -moz-background-clip: padding;
+        border-radius: 100px;
+        background-clip: padding-box;
+        background-size: cover;
+        background-position: center center;
+        height: 20px;
+        width: 20px;
+    }
+
+    #nav-search-container{
+        z-index: 9999;
+        height: auto;
+        width: 100%;
+        position: fixed;
+        background: white;
+        border-bottom: 1px solid #dddddd;
+        top: 0;
+        margin-top: 265px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    #search-container{
+        opacity: 0;
+        display: none;
+    }
+
+    #search-container.scroll  #nav-search-container{
+        margin-top: 252px;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    /* ------------------------------------------ */
+
     #container-nav{
         width: 100%;
         background: white;
@@ -934,8 +1128,9 @@
     }
 
     #nav-links{
-        display: none;
-        opacity: 0;
+        max-height: 0;
+        height: auto;
+        overflow: hidden;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
         -o-transition: all .4s;
@@ -943,8 +1138,8 @@
     }
 
     #nav-links.expanded{
-        display: block;
-        opacity: 1;
+        max-height: 300px;
+        height: auto;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
         -o-transition: all .4s;
@@ -965,8 +1160,16 @@
 
     }
 
+    .nav-icon-search{
+        border-bottom: 1px solid  #1ab188;
+        border-top: 1px solid  #1ab188;
+        border-bottom-left-radius: 30px;
+        border-top-left-radius: 30px;
+        background: #1ab188;
+    }
+
     .nav-img-search{
-        width: 100%;
+        width: 50px;
         float: left;
     }
 
@@ -979,12 +1182,28 @@
     }
 
     #nav-container-input{
+        width: 40%;
+        margin-top: 5px;
+        margin-left: -10px;
         float: left;
+        margin-bottom: 5px;
+    }
+
+    #nav-icons img{
+        cursor: pointer;
+    }
+
+    #nav-container-input input{
+        padding-left: 10px;
+        border: 1px solid #1ab188;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        float: left;
+        height: 32px;
     }
 
     #nav-icons{
         width: 100%;
-        background: #66131c;
         float: left;
     }
 }
