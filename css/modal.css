@@ -7,6 +7,10 @@
     src: url('../fonts/text2.otf') format('opentype');
 }
 
+
+
+
+
 .md-modal {
 	position: fixed;
 	top: 50%;
@@ -43,6 +47,12 @@
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
+}
+
+.md-overlay.visible{
+	opacity: 1;
+	background: rgba(0,0,0,.5);
+	visibility: visible;
 }
 
 .md-show ~ .md-overlay {
@@ -99,7 +109,25 @@
 	display: inline !important;
 }
 
-#md-modal-edit-input {
+.md-modal select{
+	margin-top: 10px;
+	font-family: Text2;
+	padding-left: 10px;
+	padding-right: 10px;
+	cursor: pointer;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	width: 80%;
+	border: solid 1px #aaaaaa;
+	border-radius: 15px;
+	height: 30px;
+}
+
+.md-modal select:focus{
+	border: solid 1px #333333;
+}
+
+#md-modal-edit-input, #md-modal-project-input {
 	margin-top: 10px;
 	font-family: Text2;
 	padding: 10px;
@@ -109,7 +137,7 @@
 	height: 30px;
 }
 
-#md-modal-edit-input:focus{
+#md-modal-edit-input:focus, #md-modal-project-input:focus{
 	border: solid 1px #333333;
 }
 

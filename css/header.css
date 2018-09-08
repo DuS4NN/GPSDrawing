@@ -14,6 +14,7 @@
 @media only screen and (min-width: 1200px){
 
     #notification-count{
+        display: none;
         z-index: 999;
         position: absolute;
         right: 0;
@@ -452,6 +453,7 @@
 @media (max-width:1199px) and (min-width:768px) {
 
     #notification-count{
+        display: none;
         z-index: 9999;
         position: fixed;
         right: 0;

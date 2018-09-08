@@ -28,6 +28,11 @@
         height: 30px;
     }
 
+
+    .comment img{
+        visibility: visible;
+    }
+
     .post{
         width: 99%;
     }
@@ -143,6 +148,11 @@
         width: 45px;
         margin-right: 10px;
         height: 45px;
+    }
+
+
+    .comment img{
+        visibility: hidden;
     }
 
     .post{
@@ -421,10 +431,6 @@ hr{
 
 .comment:hover img{
     visibility: visible;
-}
-
-.comment img{
-    visibility: hidden;
 }
 
 .comment{

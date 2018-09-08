@@ -58,6 +58,12 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');
 
+
+            /* --------------------------------------------------------------------------------------------- */
+            /* --------------------------------------------------------------------------------------------- */
+            /* --------------------------------------------START-------------------------------------------- */
+            /* --------------------------------------------------------------------------------------------- */
+            /* --------------------------------------------------------------------------------------------- */
             if(point.includes("*")){
                 const array = point.split("*");
                 const map_points = [];
@@ -131,104 +137,121 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
                 for (let i=0; i<map_points.length; i++) {
 
-                    if (icons == 1) {
-                        let marker = new google.maps.Marker({
-                            position: map_points[i][0],
-                            icon: icon,
-                            map: map
-                        });
-
-                        let content = users[i];
-                        let info_window = new google.maps.InfoWindow();
-
-                        google.maps.event.addListener(marker, 'click', (function (marker, content, info_window) {
-                            return function () {
-                                info_window.setContent(content);
-                                info_window.open(map, marker);
-                            };
-                        })(marker, content, info_window));
-                    }
-
-                    const parts = [];
-
-                    for (let j = 0, max = 25 - 1; j < map_points[i].length; j = j + max) {
-                        parts.push(map_points[i].slice(j, j + max + 1));
-                    }
-
-                    let travel = 'WALKING';
-                    switch (travelmode){
-                        case "0":
-                            travel = 'WALKING';
-                            break;
-                        case "1":
-                            travel = 'WALKING';
-                            break;
-                        case "2":
-                            travel = 'DRIVING';
-                            break;
-                        case "3":
-                            travel = 'DRIVING';
-                            break;
-                    }
-
-                    for (let j = 0; j < parts.length; j++) {
-                        // Waypoints does not include first station (origin) and last station (destination)
-                        let waypoints = [];
-                        for (let k = 1; k < parts[j].length - 1; k++)
-                            waypoints.push({location: parts[j][k], stopover: false});
-                        // Service options
-                        let service_options = {
-                            origin: parts[j][0],
-                            destination: parts[j][parts[j].length - 1],
-                            waypoints: waypoints,
-                            travelMode: travel
-                        };
 
 
-                        service.route(service_options,
-                            function(response, status) {
-                                direction.push(new google.maps.DirectionsRenderer({
-                                    suppressInfoWindows: true,
-                                    suppressMarkers: true,
-                                    preserveViewport: true,
-                                    polylineOptions: {
-                                        strokeColor: line_colors[colorIdx % color.length],
-                                        strokeWeight: 3
-                                    },
-                                    map: map
-                                }));
+                        if (icons === 1) {
+                            let marker = new google.maps.Marker({
+                                position: map_points[i][0],
+                                icon: icon,
+                                map: map
+                            });
+
+                            let content = users[i];
+                            let info_window = new google.maps.InfoWindow();
+
+                            google.maps.event.addListener(marker, 'click', (function (marker, content, info_window) {
+                                return function () {
+                                    info_window.setContent(content);
+                                    info_window.open(map, marker);
+                                };
+                            })(marker, content, info_window));
+                        }
+
+                        const parts = [];
+
+                        for (let j = 0, max = 25 - 1; j < map_points[i].length; j = j + max) {
+                            parts.push(map_points[i].slice(j, j + max + 1));
+                        }
+
+                        let travel = 'WALKING';
+                        switch (travelmode){
+                            case "0":
+                                travel = 'WALKING';
+                                break;
+                            case "1":
+                                travel = 'WALKING';
+                                break;
+                            case "2":
+                                travel = 'DRIVING';
+                                break;
+                            case "3":
+                                travel = 'DRIVING';
+                                break;
+                        }
+
+                        for (let j = 0; j < parts.length; j++) {
+
+                                // Waypoints does not include first station (origin) and last station (destination)
+                                let waypoints = [];
+                                for (let k = 1; k < parts[j].length - 1; k++)
+                                    waypoints.push({location: parts[j][k], stopover: false});
+                                // Service options
+                                let service_options = {
+                                    origin: parts[j][0],
+                                    destination: parts[j][parts[j].length - 1],
+                                    waypoints: waypoints,
+                                    travelMode: travel
+                                };
 
 
-                                if(collab==1)colorIdx++;
-                                if (status !== 'OK') {
-                                    console.log('Directions request failed due to ' + status);
-                                    return;
-                                }
+
+                                    service.route(service_options,
+                                        function(response, status) {
 
 
-                                let num_time = parseFloat(response.routes[0].legs[0].duration.value);
-                                count_time += num_time;
 
-                                if(count_time<=60){
-                                    document.getElementById("post-footer-duration-"+id).innerText = count_time+" s";
-                                }else if(count_time>60 && count_time<3600){
-                                    document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60)+" min";
-                                }else{
-                                    document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60/60)+" h"+" "+parseInt(count_time/60%60)+" min";
-                                }
-
-                                let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
-                                count_dis += num_distance;
-                                document.getElementById("post-footer-distance-"+id).innerText = Math.round((count_dis/1000) * 10) / 10+" km";
+                                            direction.push(new google.maps.DirectionsRenderer({
+                                                suppressInfoWindows: true,
+                                                suppressMarkers: true,
+                                                preserveViewport: true,
+                                                polylineOptions: {
+                                                    strokeColor: line_colors[colorIdx % color.length],
+                                                    strokeWeight: 3
+                                                },
+                                                map: map
+                                            }));
 
 
-                                direction[direction.length - 1].setDirections(response);
+                                            if(collab===1)colorIdx++;
+                                            if (status !== 'OK') {
+                                                console.log('Directions request failed due to ' + status);
+                                                return;
+                                            }
 
-                            }
-                        );
-                    }
+
+                                            let num_time = parseFloat(response.routes[0].legs[0].duration.value);
+                                            count_time += num_time+"";
+
+                                            if(count_time<=60){
+                                                document.getElementById("post-footer-duration-"+id).innerText = count_time+" s";
+                                            }else if(count_time>60 && count_time<3600){
+                                                document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60)+" min";
+                                            }else{
+                                                document.getElementById("post-footer-duration-"+id).innerText = parseInt(count_time/60/60)+" h"+" "+parseInt(count_time/60%60)+" min";
+                                            }
+
+                                            let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
+                                            count_dis += num_distance+"";
+                                            document.getElementById("post-footer-distance-"+id).innerText = Math.round((count_dis/1000) * 10) / 10+" km";
+
+                                            direction[direction.length - 1].setDirections(response);
+
+                                        }
+                                    );
+
+
+                        }
+
+
+
 
                 }
+
+                /* --------------------------------------------------------------------------------------------- */
+                /* --------------------------------------------------------------------------------------------- */
+                /* ---------------------------------------------END--------------------------------------------- */
+                /* --------------------------------------------------------------------------------------------- */
+                /* --------------------------------------------------------------------------------------------- */
 
             }else{
                 var points = point.split(";");

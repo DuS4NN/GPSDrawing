@@ -1,9 +1,41 @@
+<div class="md-modal md-effect-1" post-id="0" id="modal-add-project">
+    <div  id="more-post" class="md-content">
+            <div id="modal-report-title">
+                <span id="report-title"><?php echo $lang['choose_project'];?></span>
+            </div>
+            <div id="report-desc">
+                <?php echo $lang['choose_project_desc'];?>
+            </div>
+                <?php
+                $stmt =  $db->prepare("SELECT * FROM  projects WHERE id_user = ?");
+                $stmt->bind_param("i",$_SESSION['id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $num_rows = mysqli_num_rows($result);
+                if($num_rows==0){
+                    echo '<br>'.$lang['no_projects'].'<br>';
+                }else{
+                    echo '<select id="project-id-select">';
+                    while($row = $result->fetch_assoc()){
+                    echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                    }
+                    echo '</select>
+
+                     <button onclick="add_to_project()">'.$lang['add_to_projekt'].'</button>
+                    ';
+                }
+                ?>
+
+
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
 
 <div class="md-modal md-effect-1" post-id="0" id="modal-1">
     <div  id="more-post" class="md-content">
         <button onclick="go_on_post('modal-1')"><?php echo $lang['go_to_post'];?></button>
-        <button onclick="add_to_project('modal-1')" ><?php echo $lang['add_to_projekt'];?></button>
-        <button class="md-trigger" id="report-1" data-modal="modal-report"onclick="close_modal('modal-1'); getID('modal-1','modal-report');"><?php echo $lang['report_inappropriate'];?></button>
+        <button class="md-trigger" id="project-1" data-modal="modal-add-project" onclick="close_modal('modal-1'); getID('modal-1','modal-add-project');"><?php echo $lang['add_to_projekt'];?></button>
+        <button class="md-trigger" id="report-1" data-modal="modal-report" onclick="close_modal('modal-1'); getID('modal-1','modal-report');"><?php echo $lang['report_inappropriate'];?></button>
         <button onclick="hide_post('modal-1')"><?php echo $lang['hide_post'];?></button>
         <button onclick="add_to_bookmarks('modal-1')"><?php echo $lang['add_to_bookmarks'];?></button>
         <button class="md-close"><?php echo $lang['cancel'];?></button>
@@ -13,7 +45,7 @@
 <div class="md-modal md-effect-1" post-id="0" id="modal-2">
     <div  id="more-post" class="md-content">
         <button onclick="go_on_post('modal-2')"><?php echo $lang['go_to_post'];?></button>
-        <button onclick="add_to_project('modal-2')"><?php echo $lang['add_to_projekt'];?></button>
+        <button class="md-trigger" id="project-2" data-modal="modal-add-project" onclick="close_modal('modal-2'); getID('modal-2','modal-add-project');"><?php echo $lang['add_to_projekt'];?></button>
         <button class="md-trigger" id="report-2" data-modal="modal-report" onclick="close_modal('modal-2'); getID('modal-2','modal-report');"><?php echo $lang['report_inappropriate'];?></button>
         <button onclick="hide_post('modal-2')"><?php echo $lang['hide_post'];?></button>
         <button onclick="remove_from_bookmarks('modal-2')"><?php echo $lang['remove_from_bookmarks'];?></button>
@@ -24,7 +56,7 @@
 <div class="md-modal md-effect-1" post-id="0" id="modal-3">
     <div  id="more-post" class="md-content">
         <button onclick="go_on_post('modal-3')"><?php echo $lang['go_to_post'];?></button>
-        <button onclick="add_to_project('modal-3')"><?php echo $lang['add_to_projekt'];?></button>
+        <button class="md-trigger" id="project-3" data-modal="modal-add-project" onclick="close_modal('modal-3'); getID('modal-3','modal-add-project');"><?php echo $lang['add_to_projekt'];?></button>
         <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
         <div class="md-modal-really">
             <button class="md-modal-really-yes" onclick="delete_post('modal-3')"><?php echo $lang['delete'];?></button>
@@ -39,7 +71,7 @@
 <div class="md-modal md-effect-1" post-id="0" id="modal-4">
     <div id="more-post" class="md-content">
         <button onclick="go_on_post('modal-4')"><?php echo $lang['go_to_post'];?></button>
-        <button onclick="add_to_project('modal-4')"><?php echo $lang['add_to_projekt'];?></button>
+        <button class="md-trigger" id="project-4" data-modal="modal-add-project" onclick="close_modal('modal-4'); getID('modal-4','modal-add-project');"><?php echo $lang['add_to_projekt'];?></button>
         <button class="md-modal-delete"><?php echo $lang['delete_post'];?></button>
         <div class="md-modal-really">
             <button class="md-modal-really-yes" onclick="delete_post('modal-4')"><?php echo $lang['delete'];?></button>
@@ -132,6 +164,32 @@
         <a href="<?php echo $web; ?>/add"><button><?php echo $lang['add_post'];?></button></a>
         <a href="<?php echo $web; ?>/settings"><button><?php echo $lang['settings'];?></button></a>
         <button onclick="sign_out()"><?php echo $lang['sign_out'];?></button>
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
+
+
+<div class="md-modal md-effect-1" post-id="0" id="modal-create-new-projects">
+    <div  id="more-post" class="md-content">
+        <div id="modal-report-title">
+            <span id="report-title"><?php echo $lang['create_new_project'];?></span>
+        </div>
+        <div id="report-desc">
+            <?php echo $lang['name_of_project'];?>
+        </div>
+        <input maxlength="20" minlength="1" id="md-modal-project-input" type="text">
+        <button onclick="create_new_project()"><?php echo $lang['create'] ?></button>
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
+
+<div class="md-modal md-effect-1" post-id="0" id="modal-delete-project">
+    <div id="more-post" class="md-content">
+        <button class="md-modal-delete"><?php echo $lang['delete_project'];?></button>
+        <div class="md-modal-really">
+            <button class="md-modal-really-yes" onclick="deleteProject()"><?php echo $lang['delete'];?></button>
+            <button class="md-modal-really-no" onclick=document.getElementsByClassName('md-modal-really')[3].style.maxHeight=null; ><?php echo $lang['cancel'];?></button>
+        </div>
         <button class="md-close"><?php echo $lang['cancel'];?></button>
     </div>
 </div>

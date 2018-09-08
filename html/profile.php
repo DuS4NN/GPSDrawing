@@ -264,7 +264,6 @@
                 }
 
                 if($(window).scrollTop() + window.innerHeight >= getDocHeight()) {
-                    console.log(old_item);
                     setTimeout(function () {
                         $.ajax({
                             type:"POST",

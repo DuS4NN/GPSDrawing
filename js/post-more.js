@@ -157,8 +157,22 @@ function edit_post() {
     close_modal('modal-edit');
 }
 
-function add_to_project(modal_id) {
-    //let id = document.getElementById(modal_id).getAttribute("post-id");
+function add_to_project() {
+    let id = document.getElementById("modal-add-project").getAttribute("post-id");
+    let select = document.getElementById('project-id-select');
+    var strUser = select.options[select.selectedIndex].value;
+    $.ajax({
+        type:"POST",
+        url: localStorage.getItem("web")+"/php/projects.php",
+        data: {id_project: strUser, id_post:id, action: 4},
+        success: function(response){
+            let alertSection = document.getElementById("alerts-2");
+            let text = alertSection.innerHTML;
+            alertSection.innerHTML = text + response;
+            closeAlert('remove');
+        }
+    });
+    close_modal("modal-add-project");
 }
 
 $(document).ready(function () {

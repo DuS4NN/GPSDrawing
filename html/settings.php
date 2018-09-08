@@ -32,7 +32,7 @@
 
         <?php
         $stmt = $db->prepare("SELECT
-                                    color, color_of_collab, night_mode, show_icons, map_theme, color_icon, users.password, users.nick_name,
+                                    color, color_of_collab, collab, night_mode, show_icons, map_theme, color_icon, users.password, users.nick_name,
                                     users.first_name, users.last_name, users.profile_picture, users.email, users.about
                                     FROM users
                                     INNER JOIN users_options ON users.id = users_options.id_user
@@ -124,6 +124,20 @@
                         </div>
                         <div id="container-item-sett" class="profile">
                             <input type="text" required class="profile email" name="email" value="<?php echo $row['email']?>">
+                        </div>
+                    </div>
+
+                    <div id="container-item">
+                        <div id="container-item-text" class="profile">
+                            <div id="title"><?php echo $lang['creating_collab']; ?></div>
+                            <div id="small-title"><?php echo $lang['creating_collab_desc']; ?></div>
+                        </div>
+                        <div id="container-item-sett" class="profile">
+                            <select name="collab">
+                                <option value="1" <?php if($row['collab'] =="1")echo "selected"; ?>><?php echo $lang['nobody'] ?></option>
+                                <option value="2" <?php if($row['collab'] =="2")echo "selected"; ?>><?php echo $lang['following_c'] ?></option>
+                                <option value="3" <?php if($row['collab'] =="3")echo "selected"; ?>><?php echo $lang['everybody'] ?></option>
+                            </select>
                         </div>
                     </div>
 
