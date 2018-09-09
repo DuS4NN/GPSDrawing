@@ -163,6 +163,7 @@
         "error27" => "Collaboration can not be added to the project.",
         "error28" => "This post is already in the selected project.",
         "error29" => "The maximum number of posts in the project is 20.",
+        "error30" => "The post or user is blocked.",
         "success1" => "Account successfully created. Verification email sent.",
         "success2" => "The password change email was sent.",
         "success3" => "Your password has been reset successfully!",

@@ -152,8 +152,8 @@
                 <div id="comments-body<?php echo $row['id']; ?>" style="display: none ">
                     <br>
                     <div id="comment-form">
-                        <div id="profile-picture-comment">
-                            <img  src="<?php echo $web ?>/<?php echo $row['profile_picture'] ?>" />
+                        <div id="profile-picture-comment" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">
+
                         </div>
                         <div id="comment-input">
                             <input edit="0" minlength="1" maxlength="300" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">

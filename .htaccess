@@ -9,4 +9,5 @@ RewriteRule ^settings html/settings.php [NC,L]
 RewriteRule ^bookmarks html/bookmarks.php [NC,L]
 RewriteRule ^projects html/projects.php [NC,L]
 RewriteRule ^user/([0-9a-zA-Z_*.-]+) html/profile.php?user=$1 [NC,L]
+RewriteRule ^post/([0-9]+) html/post.php?post=$1 [NC,L]
 DirectoryIndex html/index.php

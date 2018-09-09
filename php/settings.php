@@ -283,4 +283,14 @@
 
             $_SESSION['map_theme'] = $_POST['id'];
             break;
+
+        case 10:
+            if(isset($_POST['mode'])){
+                $stmt =  $db->prepare("UPDATE users_options SET night_mode = ? WHERE id_user = ?");
+                $stmt->bind_param("ii", $_POST['mode'],$_SESSION['id']);
+                $stmt->execute();
+
+                $_SESSION['night_mode'] = $_POST['mode'];
+            }
+            break;
     }

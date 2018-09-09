@@ -577,7 +577,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         width: 80%;
         display: block;
         position:absolute;
-        min-height: 680px;
+        min-height: 760px;
         height:auto;
         background: white;
         border: 1px solid rgba(0,0,0,0.0975);

@@ -663,8 +663,24 @@
             });
 
             $(document).on('click', '#container-toggle-button',function () {
-                if($(this).hasClass('button0')) $(this).removeClass('button0').addClass('button1');
-                else $(this).removeClass('button1').addClass('button0');
+                let mode=0;
+
+                if($(this).hasClass('button0')){
+                    $(this).removeClass('button0').addClass('button1');
+                    mode=1;
+                }else{
+                    $(this).removeClass('button1').addClass('button0');
+                    mode = 0;
+                }
+
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/settings.php",
+                    data: {action: 10,mode:mode}
+                });
+
+
+
             });
 
             $(document).on('click','.edit-map-button', function () {
