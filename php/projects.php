@@ -1,7 +1,8 @@
 <?php
+    session_start();
     require '../config/db.php';
     require '../config/lang.php';
-    session_start();
+
 
     if(!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_POST['action'])){
         return;
@@ -112,12 +113,12 @@
 
                 if($row_c['id_user']==$_SESSION['id'] || $row_c['collaboration']!=0 || ($row_c['collab']==2 && $row_c['follower']==1) || $row_c['collab']==3){
 
-                    $stmt2 = $db->prepare("INSERT INTO projects_posts (projects_posts.id_project, projects_posts.id_post) VALUES (?,?)");
-                    $stmt2->bind_param("ss",$_POST['id_project'],$_POST['id_post']);
-                    $stmt2->execute();
-
                     date_default_timezone_set('UTC');
                     $date = date("Y-m-d H:i");
+
+                    $stmt2 = $db->prepare("INSERT INTO projects_posts (projects_posts.id_project, projects_posts.id_post, projects_posts.id_user, projects_posts.date) VALUES (?,?,?,?)");
+                    $stmt2->bind_param("ssss",$_POST['id_project'],$_POST['id_post'],$_SESSION['id'],$date);
+                    $stmt2->execute();
 
                     $action=5;$view=0;
                     $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES (?,?,?,?,?);");
@@ -131,7 +132,7 @@
         case 5:
             if(isset($_POST['id_project']) && !empty($_POST['id_project'])){
 
-                $stmt = $db->prepare("SELECT projects_posts.*, users.nick_name, posts.points, projects.name
+                $stmt = $db->prepare("SELECT projects_posts.*,posts.id as postid, posts.description, users.nick_name, users.profile_picture, posts.points, projects.name
                                             FROM projects_posts
                                             INNER JOIN posts ON posts.id = projects_posts.id_post
                                             INNER JOIN users ON posts.id_user = users.id
@@ -144,21 +145,102 @@
                 $points = "";
 
                 while ($row = $result->fetch_assoc()){
-                    if($row['id']==null)return;
-
                     $points = $points.'*'.$row['nick_name'].'*'.$row['points'];
                 }
 
                 mysqli_data_seek($result, 0);
                 $row = $result->fetch_assoc();
 
-                include("../html/project-post.php");
+                echo '<div id="projects-content-title">
+                        '.$lang['collaboration_project'].'
+                      </div>';
+
+                if($row['id']!=null){
+                    include("../html/project-post.php");
+                }else{
+                    echo '<div class="map" id="settings-map'.$_SESSION['map_theme'].'">  <img src="'.$web.'/img/load.png" onload="initMap2('.$_SESSION['map_theme'].');"> </div>';
+                }
 
 
-               /* echo '
-                    <div id="map'.$row['id_project'].'" class="map">
-                        <img style="width: 1px; height: 1px" onload="initMap(\''.$row['id_project'].','.substr($points,1,strlen($points)).','.$_SESSION['color'].','.$_SESSION['color_of_collab'].','.$_SESSION['color_icon'].','.$_SESSION['show_icons'].','.$_SESSION['map_theme'].',1)" src="'.$web.'/img/load.png"/>
-                    </div>';*/
+                echo '<div id="projects-content-title">
+                            '.$lang['posts_in_project'].'
+                      </div>';
+
+                mysqli_data_seek($result, 0);
+
+                while($row = $result->fetch_assoc()){
+                    if($row['id']==null)return;
+
+                    echo '
+                        <div id="projects-content-item" class="postid-'.$row['postid'].'">
+                            <div id="projects-content-item-profile-picture"  style="background-image: url('.$web.'/'.$row['profile_picture'].')"></div>    
+                            <div id="projects-content-item-nick"><a href="'.$web.'/user/'.$row['nick_name'].'">'.$row['nick_name'].'</a></div>
+                            <div id="projects-content-post"><a href="'.$web.'/post/'.$row['postid'].'">';
+
+                            if(strlen($row['description'])>20){
+                                echo mb_substr($row['description'],0,20,'utf-8')."..";
+                            }else{
+                                echo $row['description'];
+                            }
+
+                            echo'</a></div>
+                            
+                            <div id="projects-content-delete"><span class="fas fa-times"></span></div>
+                            
+                            <div id="projects-content-date">';
+
+                        $date = $row['date'];
+                        $newd = date_create_from_format('Y-m-d H:i',$date);
+                        $milisec = ($newd->getTimestamp()+$_SESSION['time']);
+                        $time = time();
+
+
+                        //echo date("Y-m-d H:i", $milisec);
+                        if($time-$milisec<0){
+                            echo '1 '.$lang['sec'].'.';
+                        }else if($time-$milisec<60){
+                            echo intval(($time-$milisec)).' '.$lang['sec'].'.';
+                        }else if($time-$milisec<3600){
+                            echo intval(($time-$milisec)/60) . ' min.';
+                        }else if($time-$milisec<86400){
+                            echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
+                        }else if($time-$milisec<2592000){
+                            echo date("d. M H:i",$milisec);
+                        }else{
+                            $date1 = date("Y",$time);
+                            $date2 = date("Y",$milisec);
+                            if($date1==$date2){
+                                echo date("d. M",$milisec);
+                            }else{
+                                echo date("d. M. Y",$milisec);
+                            }
+                        }
+                        echo'</div>
+                        </div>
+                    ';
+                }
+                echo '<div id="projects-content-button">
+
+                        <button class="projects-content-button-add">'.$lang['publish'].'</button>
+
+                      </div>';
+
+            }
+            break;
+        case 6:
+            if(isset($_POST['id_project']) && !empty($_POST['id_project']) && isset($_POST['id_post']) && !empty($_POST['id_post'])){
+                $stmt =  $db->prepare("DELETE FROM projects_posts WHERE id_user = ? AND id_project = ? AND id_post = ?");
+                $stmt->bind_param("sss",$_SESSION['id'],$_POST['id_project'],$_POST['id_post']);
+                $stmt->execute();
+
+                echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info22'].'</div>';
+            }
+            break;
+        case 7:
+            if(isset($_POST['id_project']) && !empty($_POST['id_project'])){
+               /* $stmt =  $db->prepare("");
+                $stmt->bind_param("",);
+                $stmt->execute();*/
             }
             break;
     }

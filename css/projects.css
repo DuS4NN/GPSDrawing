@@ -12,20 +12,41 @@ body{
 
 
 @media only screen and (min-width: 1200px ){
-    #projects-container{
+    #projects-container {
         width: 60%;
-        height: 860px;
-        background: white;
         margin-left: 20%;
+        height: auto;
+        min-height: 500px;
+        position: absolute;
+        display: block;
+        background: white;
         border: 1px solid rgba(0,0,0,0.0975);
-        margin-bottom: 30px;
+    }
+
+    .map{
+        height: 500px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     #projects-list{
-        height: 860px;
+
+        height: 100%;
+        background: white;
         float: left;
         width: 25%;
-        border-right: 1px solid rgba(0,0,0,0.0975);
+
+    }
+
+    #projects-content{
+        min-height: 860px;
+        height: auto;
+        float: left;
+        border-left:1px solid rgba(0,0,0,0.0975);
+        width: -webkit-calc(75% - 3px);
+        width:    -moz-calc(75% - 3px);
+        width:         calc(75% - 3px);
     }
 
     #projects-list-item{
@@ -67,14 +88,118 @@ body{
         color: black;
     }
 
-    #projects-content{
-        min-height: 700px;
-        height: auto;
-        float: left;
-        width: -webkit-calc(75% - 2px);
-        width:    -moz-calc(75% - 2px);
-        width:         calc(75% - 2px);
+
+
+    #projects-content-title{
+        margin-left: 5%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-family: Text;
     }
+
+    #projects-content-item{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 50px;
+        border-bottom: 1px solid rgba(0,0,0,0.0975);;
+    }
+
+    #projects-content-item-profile-picture{
+        float: left;
+        -webkit-border-radius: 100px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 100px;
+        -moz-background-clip: padding;
+        border-radius: 100px;
+        background-clip: padding-box;
+        background-size: cover;
+        background-position: center center;
+        width: 30px;
+        margin-left: 10px;
+        margin-top: 10px;
+        height: 30px;
+    }
+
+    #projects-content-item-nick{
+        width: 200px;
+        float: left;
+        margin-left: 5px;
+        line-height: 50px;
+        font-family: Text;
+        font-size: 14px;
+    }
+
+    #projects-content-post{
+        margin-left: 5px;
+        float: left;
+        font-family: Text2;
+        font-size: 12px;
+        line-height: 50px;
+    }
+
+    #projects-content-date{
+        margin-right: 15px;
+        line-height: 50px;
+        float: right;
+        margin-left: 10px;
+        font-size: 10px;
+        font-family: Text2;
+        color:gray;
+    }
+
+    #projects-content-item:hover #projects-content-delete{
+        visibility: visible;
+    }
+
+    #projects-content-delete{
+        visibility: hidden;
+        cursor: pointer;
+        float: right;
+        font-size: 14px;
+        margin-right: 5px;
+        margin-top: 18px;
+        color: #aaaaaa;
+    }
+
+    #projects-content-delete:hover{
+        color: black;
+    }
+
+
+    #projects-content-button{
+        width: 100%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    #projects-content-button button{
+        width: 200px;
+        cursor: pointer;
+        height: 40px;
+        border-radius: 30px;
+        border: 2px solid #1ab188;
+        color: #1ab188;
+        background: white;
+        font-size: 15px;
+        font-family: Text;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    #projects-content-button button:hover{
+       color:white;
+        background: #1ab188;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
 
 }
 

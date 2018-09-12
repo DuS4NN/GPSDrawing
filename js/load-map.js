@@ -130,22 +130,25 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
         let service_callback = function (response, status) {
             if (status === 'OK') {
 
-                //Nastavenie èasu a vzdialenosti k príspevku
-                let num_time = parseFloat(response.routes[0].legs[0].duration.value);
-                count_time = count_time + num_time;
 
-                let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
-                count_dis = count_dis + num_distance;
+                if(!window.location.href.includes('projects')){
+                    //Nastavenie èasu a vzdialenosti k príspevku
+                    let num_time = parseFloat(response.routes[0].legs[0].duration.value);
+                    count_time = count_time + num_time;
 
-                if (count_time <= 60) {
-                    $('#post-footer-duration-' + id).text(count_time + " s");
-                } else if (count_time > 60 && count_time < 3600) {
-                    $('#post-footer-duration-' + id).text(parseInt(count_time / 60) + " min");
-                } else {
-                    $('#post-footer-duration-' + id).text(parseInt(count_time / 60 / 60) + " h" + " " + parseInt(count_time / 60 % 60) + " min");
+                    let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
+                    count_dis = count_dis + num_distance;
+
+                    if (count_time <= 60) {
+                        $('#post-footer-duration-' + id).text(count_time + " s");
+                    } else if (count_time > 60 && count_time < 3600) {
+                        $('#post-footer-duration-' + id).text(parseInt(count_time / 60) + " min");
+                    } else {
+                        $('#post-footer-duration-' + id).text(parseInt(count_time / 60 / 60) + " h" + " " + parseInt(count_time / 60 % 60) + " min");
+                    }
+
+                    $('#post-footer-distance-' + id).text(Math.round((count_dis / 1000) * 10) / 10 + " km");
                 }
-
-                $('#post-footer-distance-' + id).text(Math.round((count_dis / 1000) * 10) / 10 + " km");
 
                 //Nastavenie pre renderer - vykreslovanie èiar na mapu
                 const renderer = new google.maps.DirectionsRenderer;
@@ -334,23 +337,25 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                     return;
                 }
 
-                let num_time = parseFloat(response.routes[0].legs[0].duration.value);
-                count_time = count_time+num_time;
+
+                if(!window.location.href.includes('projects')){
+                    let num_time = parseFloat(response.routes[0].legs[0].duration.value);
+                    count_time = count_time+num_time;
 
 
-                let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
-                count_dis = count_dis+num_distance;
+                    let num_distance = parseFloat(response.routes[0].legs[0].distance.value);
+                    count_dis = count_dis+num_distance;
 
-                 if (count_time <= 60) {
-                     document.getElementById("post-footer-duration-" + id).innerText = count_time + " s";
-                 } else if (count_time > 60 && count_time < 3600) {
-                     document.getElementById("post-footer-duration-" + id).innerText = parseInt(count_time / 60) + " min";
-                 } else {
-                     document.getElementById("post-footer-duration-" + id).innerText = parseInt(count_time / 60 / 60) + " h" + " " + parseInt(count_time / 60 % 60) + " min";
-                 }
+                    if (count_time <= 60) {
+                        document.getElementById("post-footer-duration-" + id).innerText = count_time + " s";
+                    } else if (count_time > 60 && count_time < 3600) {
+                        document.getElementById("post-footer-duration-" + id).innerText = parseInt(count_time / 60) + " min";
+                    } else {
+                        document.getElementById("post-footer-duration-" + id).innerText = parseInt(count_time / 60 / 60) + " h" + " " + parseInt(count_time / 60 % 60) + " min";
+                    }
 
-                 document.getElementById("post-footer-distance-" + id).innerText = Math.round((count_dis / 1000) * 10) / 10 + " km";
-
+                    document.getElementById("post-footer-distance-" + id).innerText = Math.round((count_dis / 1000) * 10) / 10 + " km";
+                }
 
 
                 direction.push(new google.maps.DirectionsRenderer({

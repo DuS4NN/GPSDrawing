@@ -1,6 +1,5 @@
 $(document).on('click','.md-trigger',function () {
 	var id= $(this).attr('id');
-	console.log(id);
 	var modal="";
 	if(id.startsWith("report")) {
 	    if(id.endsWith("user")){
@@ -26,23 +25,23 @@ $(document).on('click','.md-trigger',function () {
         document.body.style.position = "fixed";
         document.body.style.top = "-"+top;
         localStorage.setItem("top",top+"");
-    }else if(id.startsWith("project-")){
+    }else if(id.startsWith("project-")) {
 
-	    let id_post = $('#modal-add-project').attr('post-id');
+        let id_post = $('#modal-add-project').attr('post-id');
         $.ajax({
-            type:"POST",
-            url: localStorage.getItem("web")+"/php/projects.php",
-            data: {id: id_post,action:3},
-            success: function(response){
-                if(response.includes("SUCCESS:ADD:TO:PROJECT")){
+            type: "POST",
+            url: localStorage.getItem("web") + "/php/projects.php",
+            data: {id: id_post, action: 3},
+            success: function (response) {
+                if (response.includes("SUCCESS:ADD:TO:PROJECT")) {
                     modal = document.getElementById(id);
-                    document.getElementById(modal.getAttribute("data-modal")).className = document.getElementById(modal.getAttribute("data-modal")).className+ " md-show";
+                    document.getElementById(modal.getAttribute("data-modal")).className = document.getElementById(modal.getAttribute("data-modal")).className + " md-show";
 
                     var top = window.pageYOffset;
                     document.body.style.position = "fixed";
-                    document.body.style.top = "-"+top;
-                    localStorage.setItem("top",top+"");
-                }else{
+                    document.body.style.top = "-" + top;
+                    localStorage.setItem("top", top + "");
+                } else {
                     let alertSection = document.getElementById("alerts-2");
                     let text = alertSection.innerHTML;
                     alertSection.innerHTML = text + response;

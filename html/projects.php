@@ -15,8 +15,8 @@ header('Content-type: text/html; charset=UTF-8');
 <head>
     <title><?php echo $lang['title_index'] ?></title>
     <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
-    <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
+    <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/projects.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -32,14 +32,14 @@ header('Content-type: text/html; charset=UTF-8');
 
 <?php require '../html/header.html'; ?>
 
-<div id="body" style="width: 100%; left:0;">
+<div id="body" style="width: 100%; left:0">
 
 
 
     <div id="projects-container">
         <div id="projects-list">
             <div id="projects-list-item" class="md-trigger"  data-modal="modal-create-new-projects">
-                <div id="projects-list-item-text">Create new project</div>
+                <div id="projects-list-item-text" class="add-project">Create new project</div>
                 <div id="projects-list-item-more"></div>
             </div>
 
@@ -58,26 +58,69 @@ header('Content-type: text/html; charset=UTF-8');
             ?>
         </div>
         <div id="projects-content">
-
+            Tu nieco bude
         </div>
     </div>
-
-
-
 </div>
 
 <script>
-    $(document).on('click','#projects-list-item',function () {
-        if($(this).hasClass('md-trigger'))return;
-       let id_project = $(this).attr('class').split('-')[1];
-       $.ajax({
+
+
+    $(document).on('click',"#projects-content-delete", function () {
+        let id_project = $('.map').attr('id').replace('map','');
+        let id_post = $(this).parent().attr('class').split('-')[1];
+        $.ajax({
+            type: 'POST',
+            url:  localStorage.getItem("web")+"/php/projects.php",
+            data: {action: 6, id_project: id_project, id_post: id_post},
+            success: function(response) {
+                let alertSection = document.getElementById("alerts-2");
+                let text = alertSection.innerHTML;
+                alertSection.innerHTML = text + response;
+                closeAlert('remove');
+            }
+        });
+
+        setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url:  localStorage.getItem("web")+"/php/projects.php",
+                data: {action: 5, id_project: id_project},
+                success: function(response) {
+                    $('#projects-content').html(response);
+                }
+            });
+        },200);
+    });
+
+    $(document).on('click','.projects-content-button-add',function () {
+        let id_project = $('.map').attr('id').replace('map','');
+        console.log("Dssda");
+        $.ajax({
+            type: 'POST',
+            //url:  localStorage.getItem("web")+"/php/projects.php",
+            data: {action: 7, id_project: id_project},
+            success: function(response) {
+                let alertSection = document.getElementById("alerts-2");
+                let text = alertSection.innerHTML;
+                alertSection.innerHTML = text + response;
+                closeAlert('remove');
+            }
+        });
+    });
+
+
+    $(document).on('click','#projects-list-item-text',function () {
+        if($(this).hasClass('add-project'))return;
+        let id_project = $(this).parent().attr('class').split('-')[1];
+        $.ajax({
             type: 'POST',
             url:  localStorage.getItem("web")+"/php/projects.php",
             data: {action: 5, id_project: id_project},
             success: function(response) {
                $('#projects-content').html(response);
             }
-       });
+        });
     });
 
 </script>
