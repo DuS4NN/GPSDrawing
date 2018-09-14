@@ -114,7 +114,7 @@
     }
 
     #nav-notification-container{
-        min-width: 250px;
+        min-width: 280px;
         max-height: 254px;
         z-index: 9999;
         overflow-y: scroll;
@@ -550,6 +550,7 @@
     }
 
     #nav-notification-container{
+        min-width: 250px;
         max-height: 254px;
         z-index: 9999;
         overflow-y: scroll;
@@ -990,7 +991,7 @@
         right: 0;
         top:0;
         background: white;
-        margin-top: 265px;
+        margin-top: 263px;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
         -o-transition: all .5s;
@@ -1006,7 +1007,7 @@
         right: 0;
         top:0;
         background: white;
-        margin-top: 252px;
+        margin-top: 251px;
         -webkit-transition: all .3s;
         -moz-transition: all .3s;
         -o-transition: all .3s;
@@ -1068,7 +1069,7 @@
         background: white;
         border-bottom: 1px solid #dddddd;
         top: 0;
-        margin-top: 265px;
+        margin-top: 263px;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
         -o-transition: all .4s;
@@ -1081,7 +1082,7 @@
     }
 
     #search-container.scroll  #nav-search-container{
-        margin-top: 252px;
+        margin-top: 251px;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
         -o-transition: all .4s;

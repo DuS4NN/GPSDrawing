@@ -195,5 +195,30 @@
 </div>
 
 
+<div class="md-modal md-effect-1" post-id="0" id="publish-projects">
+    <div id="more-post" class="md-content">
+        <div id="modal-report-title">
+            <span id="report-title"><?php echo $lang['publish_project'];?></span>
+        </div>
+
+        <div id="report-desc">
+            <?php echo $lang['description_of_post'];?>
+        </div>
+        <input maxlength="300" minlength="0" id="md-modal-publish-project-input" type="text">
+
+        <div id="report-desc">
+            <?php echo $lang['choose_activity'];?>
+        </div>
+        <select id="publish-project-select">
+            <option value="0"><?php echo $lang['walking'] ;?></option>
+            <option value="1"><?php echo $lang['running'] ;?></option>
+            <option value="2"><?php echo $lang['cycling'] ;?></option>
+            <option value="3"><?php echo $lang['driving'] ;?></option>
+        </select>
+        <button  onclick="add_post_project()"><?php echo $lang['publish'];?></button>
+        <button class="md-close"><?php echo $lang['cancel'];?></button>
+    </div>
+</div>
+
 
 

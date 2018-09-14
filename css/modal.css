@@ -127,7 +127,7 @@
 	border: solid 1px #333333;
 }
 
-#md-modal-edit-input, #md-modal-project-input {
+#md-modal-edit-input, #md-modal-project-input, #md-modal-publish-project-input {
 	margin-top: 10px;
 	font-family: Text2;
 	padding: 10px;
@@ -137,7 +137,7 @@
 	height: 30px;
 }
 
-#md-modal-edit-input:focus, #md-modal-project-input:focus{
+#md-modal-edit-input:focus, #md-modal-project-input:focus, #md-modal-publish-project-input:focus{
 	border: solid 1px #333333;
 }
 

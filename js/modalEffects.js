@@ -15,7 +15,8 @@ $(document).on('click','.md-trigger',function () {
         localStorage.setItem("top",top+"");
 
 
-    }else if(id.startsWith("md-edit")) {
+    }
+    else if(id.startsWith("md-edit")) {
 	    modal = document.getElementById("modal-edit");
         modal.className = modal.className + " md-show";
         var text = document.getElementById("post-description-" + modal.getAttribute("post-id")).innerText;
@@ -25,7 +26,8 @@ $(document).on('click','.md-trigger',function () {
         document.body.style.position = "fixed";
         document.body.style.top = "-"+top;
         localStorage.setItem("top",top+"");
-    }else if(id.startsWith("project-")) {
+    }
+    else if(id.startsWith("project-")) {
 
         let id_post = $('#modal-add-project').attr('post-id');
         $.ajax({
@@ -49,7 +51,21 @@ $(document).on('click','.md-trigger',function () {
                 }
             }
         });
-    }else{
+    }
+    else if(id.startsWith("publish")){
+
+	    let id_project = id.split('-')[2];
+
+        modal = document.getElementById("publish-projects");
+        modal.className = modal.className + " md-show";
+        modal.setAttribute('post-id',id_project);
+
+        var top = window.pageYOffset;
+        document.body.style.position = "fixed";
+        document.body.style.top = "-"+top;
+        localStorage.setItem("top",top+"");
+    }
+    else{
         modal = document.getElementById(id);
         document.getElementById(modal.getAttribute("data-modal")).className = document.getElementById(modal.getAttribute("data-modal")).className+ " md-show";
 
@@ -75,11 +91,16 @@ $(document).on('click','.md-trigger',function () {
 
     function close_modal() {
         if(id.startsWith("report")){
-            var b = modal.className.split(" ");
-            modal.className = b[0]+" "+b[1];
+            $(modal).removeClass('md-show');
+            //var b = modal.className.split(" ");
+            //modal.className = b[0]+" "+b[1];
         }else if(id.startsWith("md-edit")) {
-            var b = modal.className.split(" ");
-            modal.className = b[0]+" "+b[1];
+            $(modal).removeClass('md-show');
+            //console.log("Dsssssssssssssssssssssssss");
+            //var b = modal.className.split(" ");
+            //modal.className = b[0] + " " + b[1];
+        }else if(id.startsWith("publish")){
+            $('#publish-projects').removeClass('md-show');
         }else{
             var aa = document.getElementById(modal.getAttribute("data-modal"));
             var b = aa.className.split(" ");

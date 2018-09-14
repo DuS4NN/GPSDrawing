@@ -93,21 +93,23 @@ header('Content-type: text/html; charset=UTF-8');
         },200);
     });
 
-    $(document).on('click','.projects-content-button-add',function () {
+    function add_post_project() {
         let id_project = $('.map').attr('id').replace('map','');
-        console.log("Dssda");
+        let activity = $('#publish-project-select').find(":selected").val();
+        let desc = $('#md-modal-publish-project-input').val();
         $.ajax({
             type: 'POST',
-            //url:  localStorage.getItem("web")+"/php/projects.php",
-            data: {action: 7, id_project: id_project},
-            success: function(response) {
-                let alertSection = document.getElementById("alerts-2");
-                let text = alertSection.innerHTML;
-                alertSection.innerHTML = text + response;
-                closeAlert('remove');
-            }
+            url:  localStorage.getItem("web")+"/php/projects.php",
+            data: {action: 7, id_project: id_project, desc: desc,activity:activity},
         });
-    });
+
+        setTimeout(function () {
+            window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
+        },100);
+
+
+    }
+
 
 
     $(document).on('click','#projects-list-item-text',function () {

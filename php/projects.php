@@ -144,6 +144,8 @@
                 $result = $stmt->get_result();
                 $points = "";
 
+                $project_id = 0;
+
                 while ($row = $result->fetch_assoc()){
                     $points = $points.'*'.$row['nick_name'].'*'.$row['points'];
                 }
@@ -156,6 +158,7 @@
                       </div>';
 
                 if($row['id']!=null){
+                    $project_id = $row['id_project'];
                     include("../html/project-post.php");
                 }else{
                     echo '<div class="map" id="settings-map'.$_SESSION['map_theme'].'">  <img src="'.$web.'/img/load.png" onload="initMap2('.$_SESSION['map_theme'].');"> </div>';
@@ -221,7 +224,7 @@
                 }
                 echo '<div id="projects-content-button">
 
-                        <button class="projects-content-button-add">'.$lang['publish'].'</button>
+                        <button class="md-trigger" id="publish-projects-'.$project_id.'" data-modal="publish-projects">'.$lang['publish'].'</button>
 
                       </div>';
 
@@ -237,10 +240,63 @@
             }
             break;
         case 7:
-            if(isset($_POST['id_project']) && !empty($_POST['id_project'])){
-               /* $stmt =  $db->prepare("");
-                $stmt->bind_param("",);
-                $stmt->execute();*/
+            if(isset($_POST['id_project']) && !empty($_POST['id_project']) && isset($_POST['activity']) && isset($_POST['desc'])){
+
+                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`collaboration` (`id_post`) VALUES (0)");
+                $stmt->execute();
+                $id_collaboration = mysqli_insert_id($db);
+
+
+                $stmt =  $db->prepare("SELECT id_post, posts.id_user, users.nick_name,posts.points
+                                                FROM projects
+                                                INNER JOIN  projects_posts ON projects.id = projects_posts.id_project
+                                                INNER JOIN posts ON posts.id = projects_posts.id_post
+                                                INNER JOIN users ON posts.id_user = users.id
+                                                WHERE projects.id = ?
+                                                AND projects.id_user = ?");
+                $stmt->bind_param("ss",$_POST['id_project'], $_SESSION['id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $points="";
+                $query = "INSERT INTO users_in_collab (id_collaboration, id_user) VALUES";
+
+                $query_notif = "INSERT INTO `gps_drawing`.`notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES";
+
+                date_default_timezone_set('UTC');
+                $date = date("Y-m-d H:i");
+
+                while ($row = $result->fetch_assoc()){
+                    $points = $points."*".$row['nick_name']."*".$row['points'];
+
+                    $query = $query." (".$id_collaboration.",".$row['id_user']."),";
+
+                    if($row['id_user']!=$_SESSION['id']){
+                        $query_notif = $query_notif. " ('".$_SESSION['id']."','6','".$row['id_post']."','0','".$date."'),";
+                    }
+                }
+
+                $query = substr($query,0,strlen($query)-1);
+                $query_notif = substr($query_notif,0,strlen($query_notif)-1);
+
+                //pridat post
+                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("ssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration);
+                $stmt->execute();
+                $id_post = mysqli_insert_id($db);
+
+                $stmt =  $db->prepare($query_notif);
+                $stmt->execute();
+
+                $stmt =  $db->prepare($query);
+                $stmt->execute();
+
+                //pridat users in collab
+                $stmt =  $db->prepare("UPDATE `gps_drawing`.`collaboration` t SET t.`id_post` = ? WHERE t.`id` = ?");
+                $stmt->bind_param("ss",$id_post,$id_collaboration);
+                $stmt->execute();
+
+                $_SESSION['alerts'] = "info:23";
+
             }
             break;
     }

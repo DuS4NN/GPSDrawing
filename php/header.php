@@ -55,7 +55,7 @@
             break;
         case 2:
             $stmt = $db->prepare("SELECT notification.*, users.nick_name, users.profile_picture,
-                                        CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5
+                                        CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5 OR notification.action = 6
                                         THEN (SELECT posts.id_user FROM posts WHERE id = notification.post_user_id)
                                         ELSE notification.post_user_id
                                         END AS 'idto'
@@ -84,7 +84,7 @@
                             echo '
                             <a href="'.$web.'/';
 
-                            if($row['action']==1 || $row['action']==3 || $row['action']==5)echo 'post/'.$row['post_user_id'];
+                            if($row['action']==1 || $row['action']==3 || $row['action']==5 || $row['action']==6)echo 'post/'.$row['post_user_id'];
                             else if($row['action']==2 || $row['action']==4)echo 'user/'.$row['nick_name'];
 
 
@@ -132,7 +132,7 @@
             }
 
             $stmt = $db->prepare("UPDATE notification SET view = 1 WHERE view = 0 AND notification.id IN (SELECT id FROM (SELECT id,
-                                            CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5
+                                            CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5 OR notification.action = 6
                                               THEN (SELECT posts.id_user FROM posts WHERE id = notification.post_user_id)
                                               ELSE notification.post_user_id
                                               END AS 'idto'
@@ -144,7 +144,7 @@
             break;
         case 3:
             $query = "  SELECT notification.id, notification.action, notification.id_user,
-                        CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5
+                        CASE WHEN notification.action = 1 OR notification.action = 3 OR notification.action = 5 OR notification.action = 6
                         THEN (SELECT posts.id_user FROM posts WHERE id = notification.post_user_id)
                         ELSE notification.post_user_id
                         END AS 'idto'

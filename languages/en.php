@@ -137,6 +137,9 @@
         "publish" => "Publish",
         "posts_in_project" => "Posts in the project",
         "collaboration_project" => "Collaboration",
+        "publish_project" => "Publish the project",
+        "description_of_post" => "Enter the description of the post",
+        "choose_activity" => "Choose activity",
         "error1" => "Invalid email or password.",
         "error2" => "To sign in, you need to activate your account by email.",
         "error3" => "Nick name already exists.",
@@ -194,9 +197,11 @@
         "info20" => "The project successfully deleted.",
         "info21" => "The post successfully added to the project.",
         "info22" => "The post successfully deleted from the project.",
+        "info23" => "The post successfully publish.",
         "notif1" => "likes your post",
         "notif2" => "is following you",
         "notif3" => "commented your post",
         "notif4" => "Welcome to GPS Drawing!",
-        "notif5" => "added your post to the project"
+        "notif5" => "added your post to the project",
+        "notif6" => "published a project with your post",
     );

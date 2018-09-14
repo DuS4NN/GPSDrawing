@@ -137,6 +137,9 @@
         "publish" => "Uverejniť",
         "posts_in_project" => "Príspevky v projekte",
         "collaboration_project" => "Spolupráca",
+        "publish_project" => "Uverejniť projekt",
+        "description_of_post" => "Zadajte popis príspevku",
+        "choose_activity" => "Vyberte aktivitu",
         "error1" => "Meno alebo heslo je nesprávne.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Tento nick už existuje.",
@@ -194,9 +197,11 @@
         "info20" => "Projekt úspešne odstránený.",
         "info21" => "Príspevok úspešne pridaný do projektu.",
         "info22" => "Príspevok úspešne odstránený z projektu.",
+        "info23" => "Príspevok úspešne uverejnený.",
         "notif1" => "sa páči Váš príspevok",
         "notif2" => "Vás sleduje",
         "notif3" => "komentoval Váš príspevok",
         "notif4" => "vitajte na webe GPS Kreslenie!",
-        "notif5" => "pridal Váš príspevok do projektu"
+        "notif5" => "pridal Váš príspevok do projektu",
+        "notif6" => "uverejnil projekt s Vašim príspevkom",
     );
