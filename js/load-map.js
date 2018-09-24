@@ -123,6 +123,109 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                 break;
         }
 
+
+        if(window.location.href.includes('/post/')) {
+            var chartDiv = document.getElementById('elevation_chart');
+            var elevator = new google.maps.ElevationService;
+            var elevStations = [];
+
+            displayPathElevation(stations,elevator, map);
+
+            function displayPathElevation(stations, elevator, map) {
+                // Display a polyline of the elevation path.
+                new google.maps.Polyline({
+                    path: stations,
+                    strokeColor: color,
+                    strokeOpacity: 1,
+                    map: map
+                });
+
+                // Create a PathElevationRequest object using this array.
+                // Ask for 256 samples along that path.
+                // Initiate the path request.
+                elevator.getElevationAlongPath({
+                    'path': stations,
+                    'samples': 256
+                }, plotElevation);
+            }
+
+
+
+            function plotElevation(elevations, status) {
+
+                if (status !== 'OK') {
+                    // Show the error code inside the chartDiv.
+                    chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+                        status;
+                    return;
+                }
+
+                var chart = new google.visualization.AreaChart(chartDiv);
+
+                // Extract the data from which to populate the chart.
+                // Because the samples are equidistant, the 'Sample'
+                // column here does double duty as distance along the
+                // X axis.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Sample');
+                data.addColumn('number', 'Elevation');
+                for (var i = 0; i < elevations.length; i++) {
+
+                    elevStations.push({lat: elevations[i].location.lat(), lng: elevations[i].location.lng()});
+                    data.addRow(['', elevations[i].elevation]);
+                }
+
+                const icon = {
+                    url: 'https://png.icons8.com/ios/40/' + color_icon.substring(1, color_icon.length) + '/filled-circle-filled.png',
+                    scaledSize: new google.maps.Size(12, 12),
+                    anchor: new google.maps.Point(7, 6)
+                };
+
+                marker = new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                });
+
+                google.visualization.events.addListener(chart, 'onmouseover', function(e) {
+                    marker.setPosition(elevStations[e.row]);
+                });
+
+                chart.draw(data, {
+                    vAxis: {
+                        textPosition: 'none',
+                        textStyle:{
+                            color: '#000000',
+                            fontName: 'Text2',
+                            bold: true,
+                            fontSize: '13',
+                        },
+                        gridlines:{
+                            color:'transparent',
+                            count:3
+                        }
+                         },
+                    hAxis:{
+                        gridlines:{
+                            color:'transparent',
+                            count:0
+                        }
+                    },
+                    backgroundColor: 'transparent',
+                    height: 120,
+                    chartArea: {
+                        width: '100%',
+                        height: '100%',
+                    },
+                    width: $('.map').width(),
+                    pointSize: 0,
+                    legend: 'none',
+                    colors: [color]
+                });
+
+            }
+        }
+
+
         //Odpoveï serveru
         let count_dis = 0;
         let count_time = 0;

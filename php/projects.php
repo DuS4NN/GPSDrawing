@@ -178,15 +178,11 @@
                         <div id="projects-content-item" class="postid-'.$row['postid'].'">
                             <div id="projects-content-item-profile-picture"  style="background-image: url('.$web.'/'.$row['profile_picture'].')"></div>    
                             <div id="projects-content-item-nick"><a href="'.$web.'/user/'.$row['nick_name'].'">'.$row['nick_name'].'</a></div>
-                            <div id="projects-content-post"><a href="'.$web.'/post/'.$row['postid'].'">';
+                            <div id="projects-content-post"><a href="'.$web.'/post/'.$row['postid'].'">
+                             '.$row['description'].'
+                            
 
-                            if(strlen($row['description'])>20){
-                                echo mb_substr($row['description'],0,20,'utf-8')."..";
-                            }else{
-                                echo $row['description'];
-                            }
-
-                            echo'</a></div>
+                            </a></div>
                             
                             <div id="projects-content-delete"><span class="fas fa-times"></span></div>
                             

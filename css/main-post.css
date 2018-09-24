@@ -11,6 +11,11 @@
     src: url('../fonts/text3.otf') format('opentype');
 }
 
+
+rect{
+    fill:transparent;
+}
+
 @media only screen and (max-width: 767px) {
 
     #profile-picture{
@@ -371,7 +376,7 @@ a{
     font-family: Text;
     width: 90%;
     margin: auto;
-    margin-top: 5px;
+    margin-top: 12px;
     text-align: center;
     color: black;
 }

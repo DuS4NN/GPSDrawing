@@ -21,6 +21,7 @@ header('Content-type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web ?>/js/load-map.js"></script>
+
     <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="<?php echo $web ?>/js/alerts-main.js"></script>
@@ -32,7 +33,7 @@ header('Content-type: text/html; charset=UTF-8');
 <body>
 
 <script>
-    google.load('visualization', '1', {packages: ['columnchart']});
+    google.load('visualization', '1', {packages: ['corechart']});
 </script>
 
 <?php require '../html/header.html'; ?>
@@ -67,8 +68,7 @@ header('Content-type: text/html; charset=UTF-8');
     if($num_rows==0){
         echo '<div id="content-empty">
                 '.$lang['error30'].'  
-              </div>
-';
+              </div>';
         return;
     }
 
@@ -86,7 +86,7 @@ header('Content-type: text/html; charset=UTF-8');
 
     ?>
 
-    <div id="elevation_chart"></div>
+    <div id="elevation_chart" style="margin-left: 25%"></div>
 
 
     <div id="alerts-2">

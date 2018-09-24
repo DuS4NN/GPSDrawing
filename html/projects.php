@@ -58,7 +58,10 @@ header('Content-type: text/html; charset=UTF-8');
             ?>
         </div>
         <div id="projects-content">
-            Tu nieco bude
+            <div id="main-text"><?php echo $lang['create_with_friends']; ?></div>
+            <div id="main-img"><img src="https://png.icons8.com/dotty/96/000000/task.png"></div>
+            <div id="main-desc"><?php echo $lang['create_project_desc']; ?></div>
+            <div id="main-desc-s"><?php echo $lang['create_project_desc_small']; ?></div>
         </div>
     </div>
 </div>

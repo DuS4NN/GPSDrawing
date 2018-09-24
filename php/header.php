@@ -21,7 +21,7 @@
                           users.nick_name, users.profile_picture
                           FROM users
                           WHERE users.nick_name LIKE ?
-                          AND users.id NOT IN (SELECT blocked FROM blocked_users WHERE blocked_users.id = ?)
+                          AND users.id NOT IN (SELECT blocked FROM blocked_users WHERE blocked_users.user_id = ?)
                           ORDER BY
                           CASE
                             WHEN nick_name LIKE ? THEN 1

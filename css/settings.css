@@ -499,7 +499,8 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-nick, #blocked-posts-nick{
-        width: 40%;
+        width: 200px;
+        overflow: hidden;
         margin-left: 20px;
         font-family: Text;
         margin-top: 16px;
@@ -508,9 +509,13 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-comment, #blocked-posts-desc{
-        margin-top: 17px;
+        height: 50px;
+        line-height: 50px;
+        overflow: hidden;
+        width: -webkit-calc(100% - 270px);
+        width:    -moz-calc(100% - 270px);
+        width:         calc(100% - 270px);
         float: left;
-        width: 40%;
         font-family: text2;
         font-size: 12px;
     }
@@ -1004,7 +1009,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-nick, #blocked-posts-nick{
-        width: 40%;
+        width: 200px;
         margin-left: 20px;
         font-family: Text;
         margin-top: 16px;
@@ -1013,10 +1018,14 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-comment, #blocked-posts-desc{
-        margin-top: 17px;
+        height: 50px;
+        line-height: 50px;
+        overflow: hidden;
+        width: -webkit-calc(100% - 270px);
+        width:    -moz-calc(100% - 270px);
+        width:         calc(100% - 270px);
         float: left;
         margin-left: 5px;
-        width: 40%;
         font-family: text2;
         font-size: 12px;
     }
@@ -1481,8 +1490,8 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         width: 80%;
     }
     .blocked-users-x, .blocked-posts-x{
-        width: 10%;
-        margin-top: -10px;
+        width: 20px;
+        margin-top: -7px;
         margin-right: 10px;
         text-align: right;
         color: #dddddd;
@@ -1506,7 +1515,9 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-nick, #blocked-posts-nick{
-        width: 80%;
+        width: -webkit-calc(100% - 50px);
+        width:    -moz-calc(100% - 50px);
+        width:         calc(100% - 50px);
         margin-top: 10px;
         margin-left: 10px;
         font-family: Text;
@@ -1515,15 +1526,20 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     }
 
     #blocked-comments-comment, #blocked-posts-desc{
+        height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+        width: -webkit-calc(100% - 50px);
+        width:    -moz-calc(100% - 50px);
+        width:         calc(100% - 50px);
         float: left;
-        width: 80%;
         margin-left: 10px;
         font-family: text2;
         font-size: 10px;
     }
 
     .blocked-comments-x{
-        margin-top: -10px;
+        margin-top: -7px;
         margin-right: 10px;
         text-align: right;
         color: #dddddd;

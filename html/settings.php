@@ -387,11 +387,9 @@
                                     </div>
                                     
                                     <div id="blocked-posts-desc">';
-                                    if(strlen($row_bp['description'])>=30){
-                                        echo mb_substr($row_bp['description'],0,30,'utf-8')."..";
-                                    }else{
+
                                         echo $row_bp['description'];
-                                    }
+
                                     echo '</div>
                                     
                                     <div class="blocked-posts-x"  id="posts-'.$row_bp['id'].'">
@@ -443,11 +441,8 @@
                                     
                                     <div id="blocked-comments-comment">
                                     ';
-                            if(strlen($row_bc['comment'])>=30){
-                                echo mb_substr($row_bc['comment'],0,30,'utf-8')."..";
-                            }else{
                                 echo $row_bc['comment'];
-                            }
+
 
                             echo '
                                     </div>
