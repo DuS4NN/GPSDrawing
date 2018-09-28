@@ -1,7 +1,7 @@
 <div id="post-<?php echo $row['id'];?>" class="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="50px">
+            <td class="td-profile-picture">
                 <div id="profile-picture" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">
 
                 </div>
@@ -41,9 +41,9 @@
                     ?>
                 </div>
             </td>
-            <td rowspan="2" valign="top">
+            <td valign="top">
                 <div  id="comment-like">
-                    <table align="right" style="margin-right: 10px; margin-top: 5px">
+                    <table border="0" align="right" style="margin-right: 10px; margin-top: 5px">
                         <tr>
                             <td>
                                 <div id="like-image">
@@ -74,7 +74,7 @@
 
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="3">
                 <div class="post-description" id="post-description-<?php echo $row['id'];?>">
                     <?php echo $row['description']; ?>
                 </div>
@@ -149,7 +149,7 @@
         </tr>
         <tr>
             <td colspan="3">
-                <div id="comments-body<?php echo $row['id']; ?>" style="display: none ">
+                <div id="comments-body<?php echo $row['id']; ?>" style="display: none">
                     <br>
                     <div id="comment-form">
                         <div id="profile-picture-comment" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">

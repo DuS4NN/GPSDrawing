@@ -16,13 +16,13 @@ header('Content-type: text/html; charset=UTF-8');
 <head>
     <title><?php echo $lang['title_index'] ?></title>
     <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
-    <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
+    <link rel="stylesheet" href="<?php echo $web ?>/css/post-view.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web ?>/js/load-map.js"></script>
 
-    <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8"></script>
+    <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=<?php echo $_SESSION['lang']?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="<?php echo $web ?>/js/alerts-main.js"></script>
     <script src="https://www.google.com/jsapi"></script>
@@ -82,12 +82,9 @@ header('Content-type: text/html; charset=UTF-8');
     }else{
         $result2=null;
     }
-    include("../html/main-post.php");
+    include("../html/post-view.php");
 
     ?>
-
-    <div id="elevation_chart" style="margin-left: 25%"></div>
-
 
     <div id="alerts-2">
     <?php require '../php/alerts.php'; ?>

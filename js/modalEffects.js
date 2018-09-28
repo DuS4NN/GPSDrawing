@@ -81,7 +81,7 @@ $(document).on('click','.md-trigger',function () {
 	    close_modal();
     });
 
-    $(document).keypress(function (e) {
+    $('body').keypress(function (e) {
         if(id==null)return;
 
         if(e.keyCode===27){
@@ -102,7 +102,7 @@ $(document).on('click','.md-trigger',function () {
         }else if(id.startsWith("publish")){
             $('#publish-projects').removeClass('md-show');
         }else{
-            $(document).unbind('keypress');
+            $('body').unbind('keypress');
             var aa = document.getElementById(modal.getAttribute("data-modal"));
             var b = aa.className.split(" ");
             aa.className = b[0]+" "+b[1];
@@ -126,7 +126,7 @@ $(document).on('click','.md-trigger',function () {
 
 function close_modal(id) {
     $(".md-overlay").removeClass('visible');
-    $(document).unbind('keypress');
+    $('body').unbind('keypress',);
     var modal = document.getElementById(id);
     var classmodal = modal.className.split(" ");
     modal.className = classmodal[0]+" "+classmodal[1];

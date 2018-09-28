@@ -36,12 +36,12 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $(document).on('keypress','.add-comment', function (e) {
+$(document).on('keypress','.add-comment', function (e) {
 
     if(e.keyCode===13){
         let id = e.target.id.substring(12,e.target.id.length);
         let text = document.getElementById("add-comment-"+id).value;
+        if(text.length<1)return;
         if(document.getElementById("add-comment-"+id).getAttribute("edit")==="0"){
 
             $.ajax({
@@ -65,6 +65,7 @@ $(document).ready(function () {
         }else{
             let idCom = document.getElementById("add-comment-"+id).getAttribute("edit");
             let text = document.getElementById("add-comment-"+id).value;
+            if(text.length<1)return;
 
             $.ajax({
                 type:"POST",
@@ -89,8 +90,8 @@ $(document).ready(function () {
         document.getElementById("add-comment-"+id).setAttribute("edit","0");
         document.getElementById("cancel-edit"+id).style.visibility = "hidden";
     }
-   });
 });
+
 
 function deleteComment() {
     let string = document.getElementById('modal-5').getAttribute('post-id');
