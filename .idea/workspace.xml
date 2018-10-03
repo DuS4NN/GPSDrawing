@@ -3,20 +3,12 @@
   <component name="ChangeListManager">
     <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5" />
     <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="Commit #5">
-      <change afterPath="$PROJECT_DIR$/css/post-view.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/html/post-view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main-post.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main-post.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/bookmarks.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/bookmarks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/main-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/main-post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/projects.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/projects.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/post-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/post-view.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/post-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/post-view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/load-map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/load-map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/modalEffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/modalEffects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/main.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +39,25 @@
       <file leaf-file-name="post-view.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/post-view.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+            <state relative-caret-position="298">
+              <caret line="354" column="17" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
+              <folding>
+                <element signature="e#887#1282#0" />
+                <element signature="e#1304#1411#0" />
+                <element signature="e#1428#1492#0" />
+                <element signature="e#1509#1577#0" />
+                <element signature="e#1596#1843#0" />
+                <element signature="e#2729#2756#0" />
+                <element signature="e#2782#3107#0" />
+                <element signature="e#3129#3433#0" />
+                <element signature="e#3468#3503#0" />
+                <element signature="e#3546#3581#0" />
+                <element signature="e#3624#3659#0" />
+                <element signature="e#3700#3737#0" />
+                <element signature="e#3787#3821#0" />
+                <element signature="e#3871#3905#0" />
+                <element signature="e#3931#3974#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,12 +65,15 @@
       <file leaf-file-name="load-map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/load-map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="515" column="39" lean-forward="true" selection-start-line="515" selection-start-column="39" selection-end-line="515" selection-end-column="39" />
+            <state relative-caret-position="-1723">
+              <caret line="502" column="50" lean-forward="true" selection-start-line="502" selection-start-column="50" selection-end-line="502" selection-end-column="50" />
               <folding>
                 <element signature="e#1933#11835#0" />
                 <element signature="e#3528#7978#0" />
                 <element signature="e#5032#6093#0" />
+                <element signature="e#15091#16053#0" />
+                <element signature="n#!!block;n#rgb2hue#0" />
+                <element signature="n#!!block;n#initMap2#0" />
               </folding>
             </state>
           </provider>
@@ -70,8 +82,11 @@
       <file leaf-file-name="post-view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/post-view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1717">
-              <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+            <state relative-caret-position="163">
+              <caret line="150" column="44" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,16 +104,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.load-more</find>
-      <find>comment-comment</find>
-      <find>profile-picture-comment</find>
-      <find>comment-section</find>
-      <find>add-comment</find>
-      <find>unbind</find>
-      <find>cancel-edit</find>
-      <find>post-footer</find>
-      <find>post-footer-side</find>
-      <find>footer-activity</find>
       <find>chart</find>
       <find>elevation_chart</find>
       <find>footer-distance</find>
@@ -107,7 +112,6 @@
       <find>comment-form</find>
       <find>info</find>
       <find>console</find>
-      <find>post-coop</find>
       <find>desc</find>
       <find>descri</find>
       <find>edit</find>
@@ -119,6 +123,17 @@
       <find>.post-description</find>
       <find>load-more</find>
       <find>calc</find>
+      <find>comment</find>
+      <find>#comment-</find>
+      <find>info-about</find>
+      <find>profile-info-about</find>
+      <find>#comment-comment</find>
+      <find>comment-section</find>
+      <find>stations</find>
+      <find>c+</find>
+      <find>c</find>
+      <find>post-start</find>
+      <find>post-coop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,7 +158,6 @@
         <option value="$PROJECT_DIR$/php/add_comment.php" />
         <option value="$PROJECT_DIR$/php/follow.php" />
         <option value="$PROJECT_DIR$/php/like.php" />
-        <option value="$PROJECT_DIR$/css/profile.css" />
         <option value="$PROJECT_DIR$/js/projects.js" />
         <option value="$PROJECT_DIR$/php/change-profiledata.php" />
         <option value="$PROJECT_DIR$/js/post-more.js" />
@@ -175,6 +189,7 @@
         <option value="$PROJECT_DIR$/html/settings.php" />
         <option value="$PROJECT_DIR$/html/main-post.php" />
         <option value="$PROJECT_DIR$/css/main-post.css" />
+        <option value="$PROJECT_DIR$/css/profile.css" />
         <option value="$PROJECT_DIR$/html/post-view.php" />
         <option value="$PROJECT_DIR$/css/post-view.css" />
         <option value="$PROJECT_DIR$/js/load-map.js" />
@@ -201,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,7 +258,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,6 +383,9 @@
       <workItem from="1537954483417" duration="3030000" />
       <workItem from="1538120264998" duration="16040000" />
       <workItem from="1538137035412" duration="603000" />
+      <workItem from="1538139980959" duration="40000" />
+      <workItem from="1538293581225" duration="4008000" />
+      <workItem from="1538571602937" duration="10554000" />
     </task>
     <task id="LOCAL-00001" summary="Druhy commit">
       <created>1531764866546</created>
@@ -408,12 +426,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="975710000" />
+    <option name="totallyTimeSpent" value="990312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.1684435" />
+      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.1641791" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.0" />
@@ -438,19 +457,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.15565032" />
       <window_info id="Structure" order="1" sideWeight="0.1269461" side_tool="true" weight="0.08770257" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="right" id="Database" order="3" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="8" />
@@ -505,7 +524,7 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="55" />
+      <option name="time" value="57" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -740,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/profile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="351" column="20" selection-start-line="351" selection-start-column="20" selection-end-line="351" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/modalEffects.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
@@ -824,13 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main-post.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="348" column="18" selection-start-line="348" selection-start-column="18" selection-end-line="348" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/load_comments.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
@@ -845,28 +850,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/post-view.css">
+    <entry file="file://$PROJECT_DIR$/css/profile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+        <state relative-caret-position="213">
+          <caret line="681" column="26" lean-forward="true" selection-start-line="681" selection-start-column="26" selection-end-line="681" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main-post.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="484" column="4" lean-forward="true" selection-start-line="484" selection-start-column="4" selection-end-line="484" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html/post-view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="37" selection-start-line="101" selection-start-column="37" selection-end-line="101" selection-end-column="37" />
+        <state relative-caret-position="163">
+          <caret line="150" column="44" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/post-view.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="354" column="17" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
+          <folding>
+            <element signature="e#887#1282#0" />
+            <element signature="e#1304#1411#0" />
+            <element signature="e#1428#1492#0" />
+            <element signature="e#1509#1577#0" />
+            <element signature="e#1596#1843#0" />
+            <element signature="e#2729#2756#0" />
+            <element signature="e#2782#3107#0" />
+            <element signature="e#3129#3433#0" />
+            <element signature="e#3468#3503#0" />
+            <element signature="e#3546#3581#0" />
+            <element signature="e#3624#3659#0" />
+            <element signature="e#3700#3737#0" />
+            <element signature="e#3787#3821#0" />
+            <element signature="e#3871#3905#0" />
+            <element signature="e#3931#3974#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/load-map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="515" column="39" lean-forward="true" selection-start-line="515" selection-start-column="39" selection-end-line="515" selection-end-column="39" />
+        <state relative-caret-position="-1723">
+          <caret line="502" column="50" lean-forward="true" selection-start-line="502" selection-start-column="50" selection-end-line="502" selection-end-column="50" />
           <folding>
             <element signature="e#1933#11835#0" />
             <element signature="e#3528#7978#0" />
             <element signature="e#5032#6093#0" />
+            <element signature="e#15091#16053#0" />
+            <element signature="n#!!block;n#rgb2hue#0" />
+            <element signature="n#!!block;n#initMap2#0" />
           </folding>
         </state>
       </provider>

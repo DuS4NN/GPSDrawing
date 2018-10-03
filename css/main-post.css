@@ -482,6 +482,7 @@ hr{
 }
 
 #comment-comment{
+    overflow-wrap: break-word;
     width: 95%;
     float: left;
     font-family: Text2;

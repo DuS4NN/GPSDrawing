@@ -83,31 +83,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <?php
-                            if(isset($result2)){
-                                echo "<div id='post-coop'>";
-
-                                echo $lang['collaboration'];
-                                $row_cnt = sizeof($result2);
-                                $loop_cnt = 0;
-                                while($row2 = $result2->fetch_assoc()){
-                                    if($row2['nick_name']==$row['nick_name']){
-                                        continue;
-                                    }
-                                    echo
-                                        " <a href='".$web."/user/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
-                                    if($loop_cnt<$row_cnt){
-                                        echo ",";
-                                    }
-                                    $loop_cnt++;
-                                }
-                                echo "</div>";
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="comments">
                             <!-- KOMENTARE -->
                             <div class="comments-body" id="comments-body<?php echo $row['id']; ?>">
@@ -171,14 +146,37 @@
 
         <tr>
             <td style="border-right: 1px solid rgba(0,0,0,0.0975)">
-                <div id="post-start">
+                <?php
+                if(isset($result2)){
+                    echo "<div id='post-coop'>";
+
+                    echo $lang['collaboration'];
+                    $row_cnt = sizeof($result2);
+                    $loop_cnt = 0;
+                    while($row2 = $result2->fetch_assoc()){
+                        if($row2['nick_name']==$row['nick_name']){
+                            continue;
+                        }
+                        echo
+                            " <a href='".$web."/user/".$row2['nick_name']."'>".$row2['nick_name']."</a>";
+                        if($loop_cnt<$row_cnt){
+                            echo ",";
+                        }
+                        $loop_cnt++;
+                    }
+                    echo "</div>";
+                }else{
+                    echo '<div id="post-start">
                     <img src="https://png.icons8.com/metro/52/000000/marker.png">
                     <span id="post-start-location"></span>
                 </div>
                 <div  id=post-end>
                     <img src="https://png.icons8.com/ios-glyphs/100/000000/finish-flag.png">
                     <span id="post-end-location"></span>
-                </div>
+                </div>';
+                }
+                ?>
+
 
             </td>
         </tr>

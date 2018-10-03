@@ -447,95 +447,103 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
 
         //----------------------------------------------------
         if(window.location.href.includes('/post/')) {
-            var chartDiv = document.getElementById('elevation_chart');
-            var elevator = new google.maps.ElevationService;
-            var elevStations = [];
+            const chartDiv = document.getElementById('elevation_chart');
+            const elevator = new google.maps.ElevationService;
 
-            displayPathElevation(stations,elevator, map);
+            const chart = new google.visualization.AreaChart(chartDiv);
 
-            function displayPathElevation(stations, elevator, map) {
-                // Display a polyline of the elevation path.
+
+
+            let colorChart = line_colors[0].replace(/[hsl()%]/g,'').split(',');
+            let color_RGB = hslToRgb(colorChart[0],colorChart[1],colorChart[2]);
+            console.log(color_RGB);
+
+            const options = {
+                vAxis: {
+                    textPosition: 'none',
+                    textStyle:{
+                        color: '#000000',
+                        fontName: 'Text2',
+                        bold: true,
+                        fontSize: '13',
+                    },
+                    gridlines:{
+                        color:'transparent',
+                        count:3
+                    }
+                },
+                hAxis:{
+                    gridlines:{
+                        color:'transparent',
+                        count:0
+                    }
+                },
+                backgroundColor: 'transparent',
+                height: 120,
+                chartArea: {
+                    height: '100%',
+                    width: '100%',
+                    left:'0'
+                },
+                legend: 'none',
+                isStacked: true,
+                pointSize: 0,
+                colors: ['red','green','blue']
+            };
+            let data = new google.visualization.DataTable();
+
+            const elevStations = [];
+            const elevArray = [];
+
+
+            let count=0;
+
+            data.addColumn('string','Elevation');
+
+            for(let i=0; i<map_points.length;i++){
                 new google.maps.Polyline({
-                    path: stations,
-                    strokeColor: color,
+                    path: map_points[i],
+                    strokeColor: line_colors[i],
                     strokeOpacity: 1,
                     map: map
                 });
 
-                // Create a PathElevationRequest object using this array.
-                // Ask for 256 samples along that path.
-                // Initiate the path request.
+                elevArray[i] = [];
+                elevStations[i] = [];
+
                 elevator.getElevationAlongPath({
-                    'path': stations,
+                    'path': map_points[i],
                     'samples': 256
-                }, plotElevation);
-            }
-
-
-
-            function plotElevation(elevations, status) {
-
-                if (status !== 'OK') {
-                    // Show the error code inside the chartDiv.
-                    chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
-                        status;
-                    return;
-                }
-
-                //let geocoder = new google.maps.Geocoder;
-                /*geocoder.geocode({'location': }, function(results, status) {
-                    if(status==='OK'){
-
+                }, function (elevations,status) {
+                    if (status === 'OK') {
+                        for (let j = 0; j < elevations.length; j++) {
+                            elevStations[count].push({lat: elevations[j].location.lat(), lng: elevations[j].location.lng()});
+                            elevArray[count].push(elevations[j].elevation);
+                        }
+                        count++;
+                        if(count===users.length){
+                            drawChart();
+                        }
                     }
 
-                });*/
+                });
+            }
 
-                const options = {
-                    vAxis: {
-                        textPosition: 'none',
-                        textStyle:{
-                            color: '#000000',
-                            fontName: 'Text2',
-                            bold: true,
-                            fontSize: '13',
-                        },
-                        gridlines:{
-                            color:'transparent',
-                            count:3
-                        }
-                    },
-                    hAxis:{
-                        gridlines:{
-                            color:'transparent',
-                            count:0
-                        }
-                    },
-                    backgroundColor: 'transparent',
-                    height: 120,
-                    chartArea: {
-                        height: '100%',
-                        width: '100%',
-                        left:'0'
-                    },
-                    legend: 'none',
-                    pointSize: 0,
-                    colors: [color]
-                };
+            function drawChart() {
+                for(let i=0;i<users.length;i++){
+                    data.addColumn('number',users[i]);
+                }
+                console.log(data);
+
+                for(let i=0;i<elevArray[0].length;i++){
+                    let row = ['Elevation'];
+
+                    for(let j=0; j<elevArray.length;j++){
+                        row.push(elevArray[j][i]);
+                    }
 
 
-                var chart = new google.visualization.AreaChart(chartDiv);
-
-                // Extract the data from which to populate the chart.
-                // Because the samples are equidistant, the 'Sample'
-                // column here does double duty as distance along the
-                // X axis.
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Sample');
-                data.addColumn('number', 'Elevation');
-                for (var i = 0; i < elevations.length; i++) {
-
-                    elevStations.push({lat: elevations[i].location.lat(), lng: elevations[i].location.lng()});
-                    data.addRow(['', elevations[i].elevation]);
+                    data.addRow(row);
                 }
 
                 const icon = {
@@ -550,7 +558,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                 });
 
                 google.visualization.events.addListener(chart, 'onmouseover', function(e) {
-                    marker.setPosition(elevStations[e.row]);
+                    marker.setPosition(elevStations[e.column-1][e.row]);
                 });
 
 
@@ -566,10 +574,12 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                     chart.draw(data,options);
                 });
 
-
-
                 chart.draw(data, options);
+
+
+
             }
+
         }
         //----------------------------------------------------
 
@@ -686,6 +696,32 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
     }
 
 };
+
+function hslToRgb(h, s, l) {
+    var r, g, b;
+
+    if (s == 0) {
+        r = g = b = l; // achromatic
+    } else {
+        function hue2rgb(p, q, t) {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        }
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+
+    return [ r * 255, g * 255, b * 255 ];
+}
 
 function rgb2hue(r, g, b) {
     r /= 255;
