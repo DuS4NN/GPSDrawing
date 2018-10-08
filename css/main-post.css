@@ -78,6 +78,7 @@
         font-size: 9px;
     }
     #time{
+        margin-bottom: 12px;
         font-size: 7px;
     }
     .comment{
@@ -231,6 +232,7 @@
         font-size: 16px;
     }
     #time{
+        margin-bottom: 10px;
         font-size: 10px;
     }
     #comment-input input{

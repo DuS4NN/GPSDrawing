@@ -1,13 +1,13 @@
 <div id="post-<?php echo $row['id'];?>" class="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="60%">
+            <td class="map-right" width="60%">
                 <!-- MAPA -->
                 <div id="map<?php echo $row['id'] ?>" class="map">
                     <img style="width: 1px; height: 1px" onload="initMap(<?php echo $row['id']; ?> , '<?php echo $row['points']; ?>','<?php echo $_SESSION['color']; ?>', '<?php echo $_SESSION['color_of_collab']; ?>','<?php echo $_SESSION['color_icon'];?>','<?php echo $_SESSION['show_icons']; ?>',<?php echo $_SESSION['map_theme'];?>,'<?php echo $row['activity']; ?>')" src="<?php echo $web; ?>/img/load.png"/>
                 </div>
             </td>
-            <td width="40%" rowspan="4" valign="top">
+            <td class="info-left" width="40%" rowspan="4" valign="top">
                 <table class="table-info" style="height: 100%" width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>
@@ -253,9 +253,8 @@
 
 
 <script>
-    let height = $('.post-description').height()+7;
-    let maxh = $('.post').height();
-    $('.comments-body').height(maxh-height);
-
-
+    let maxh = $('.post').height()+120;
+    let desc = $('.post-description').height();
+    let other = $('#post-user-info').height()+7 + $('.post-like-comment').height() + 100 + $('.load-more').height() ;
+    $('.comment-section').height(maxh - desc - other);
 </script>

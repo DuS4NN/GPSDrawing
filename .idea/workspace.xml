@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5" />
     <list default="true" id="aeaa09a3-f5ab-4f52-b7bb-b5af4fa5678f" name="Default" comment="Commit #5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/main-post.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main-post.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/post-view.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/post-view.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/post-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/post-view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/load-map.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/load-map.js" afterDir="false" />
     </list>
+    <list id="c870d073-602c-4b01-850c-ae65034af234" name="Tretí commit" comment="Commit #5" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,56 +36,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="post-view.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/post-view.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="354" column="17" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
-              <folding>
-                <element signature="e#887#1282#0" />
-                <element signature="e#1304#1411#0" />
-                <element signature="e#1428#1492#0" />
-                <element signature="e#1509#1577#0" />
-                <element signature="e#1596#1843#0" />
-                <element signature="e#2729#2756#0" />
-                <element signature="e#2782#3107#0" />
-                <element signature="e#3129#3433#0" />
-                <element signature="e#3468#3503#0" />
-                <element signature="e#3546#3581#0" />
-                <element signature="e#3624#3659#0" />
-                <element signature="e#3700#3737#0" />
-                <element signature="e#3787#3821#0" />
-                <element signature="e#3871#3905#0" />
-                <element signature="e#3931#3974#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="load-map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/load-map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1723">
-              <caret line="502" column="50" lean-forward="true" selection-start-line="502" selection-start-column="50" selection-end-line="502" selection-end-column="50" />
+            <state relative-caret-position="302">
+              <caret line="374" column="99" selection-start-line="374" selection-start-column="99" selection-end-line="374" selection-end-column="99" />
               <folding>
-                <element signature="e#1933#11835#0" />
-                <element signature="e#3528#7978#0" />
-                <element signature="e#5032#6093#0" />
-                <element signature="e#15091#16053#0" />
+                <element signature="e#441#661#0" />
+                <element signature="e#686#907#0" />
+                <element signature="e#1813#2116#0" />
+                <element signature="e#3617#4558#0" />
+                <element signature="e#4721#4976#0" />
+                <element signature="e#5112#5205#0" />
+                <element signature="e#8915#9105#0" />
+                <element signature="e#14542#14797#0" />
+                <element signature="e#13910#14899#0" />
+                <element signature="e#14965#14997#0" />
+                <element signature="e#15167#15199#0" />
+                <element signature="e#15233#15320#0" />
+                <element signature="e#15600#15632#0" />
+                <element signature="n#!!block;n#hslToRgb#0" />
                 <element signature="n#!!block;n#rgb2hue#0" />
                 <element signature="n#!!block;n#initMap2#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post-view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/html/post-view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="150" column="44" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,12 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chart</find>
-      <find>elevation_chart</find>
-      <find>footer-distance</find>
-      <find>#post-more img {</find>
-      <find>#post-more img</find>
-      <find>comment-form</find>
       <find>info</find>
       <find>console</find>
       <find>desc</find>
@@ -134,6 +100,12 @@
       <find>c</find>
       <find>post-start</find>
       <find>post-coop</find>
+      <find>console.</find>
+      <find>profile-nick</find>
+      <find>time</find>
+      <find>elevator</find>
+      <find>path</find>
+      <find>load-theme</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,8 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/php/verify.php" />
-        <option value="$PROJECT_DIR$/html/forgot.php" />
         <option value="$PROJECT_DIR$/html/reset.php" />
         <option value="$PROJECT_DIR$/js/index.js" />
         <option value="$PROJECT_DIR$/php/change-profilepicture.php" />
@@ -184,14 +154,16 @@
         <option value="$PROJECT_DIR$/html/post.php" />
         <option value="$PROJECT_DIR$/php/main.php" />
         <option value="$PROJECT_DIR$/html/bookmarks.php" />
-        <option value="$PROJECT_DIR$/html/profile.php" />
         <option value="$PROJECT_DIR$/html/projects.php" />
         <option value="$PROJECT_DIR$/html/settings.php" />
         <option value="$PROJECT_DIR$/html/main-post.php" />
-        <option value="$PROJECT_DIR$/css/main-post.css" />
         <option value="$PROJECT_DIR$/css/profile.css" />
-        <option value="$PROJECT_DIR$/html/post-view.php" />
+        <option value="$PROJECT_DIR$/css/main-post.css" />
         <option value="$PROJECT_DIR$/css/post-view.css" />
+        <option value="$PROJECT_DIR$/html/post-view.php" />
+        <option value="$USER_HOME$/Desktop/Nový textový dokument (2).txt" />
+        <option value="$USER_HOME$/Desktop/Nový textový dokument.txt" />
+        <option value="$PROJECT_DIR$/html/profile.php" />
         <option value="$PROJECT_DIR$/js/load-map.js" />
       </list>
     </option>
@@ -205,7 +177,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -385,7 +357,10 @@
       <workItem from="1538137035412" duration="603000" />
       <workItem from="1538139980959" duration="40000" />
       <workItem from="1538293581225" duration="4008000" />
-      <workItem from="1538571602937" duration="10554000" />
+      <workItem from="1538571602937" duration="11153000" />
+      <workItem from="1538904264770" duration="11963000" />
+      <workItem from="1538924715772" duration="4657000" />
+      <workItem from="1539008252338" duration="11237000" />
     </task>
     <task id="LOCAL-00001" summary="Druhy commit">
       <created>1531764866546</created>
@@ -426,13 +401,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="990312000" />
+    <option name="totallyTimeSpent" value="1018768000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.1641791" />
+      <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.03391685" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.0" />
@@ -457,19 +432,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" x="1632" y="76" width="262" height="918" id="Project" order="0" sideWeight="0.8730539" visible="true" weight="0.15565032" />
       <window_info id="Structure" order="1" sideWeight="0.1269461" side_tool="true" weight="0.08770257" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="right" id="Database" order="3" weight="0.0" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="8" />
@@ -524,24 +499,10 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="57" />
+      <option name="time" value="59" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/reset.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/verify.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/post-actions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -595,13 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/profile-actions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -696,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/load_posts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1865">
-          <caret line="186" column="9" selection-start-line="186" selection-start-column="9" selection-end-line="186" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/settings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
@@ -794,13 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="184" selection-start-line="29" selection-start-column="184" selection-end-line="29" selection-end-column="184" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html/bookmarks.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
@@ -852,61 +792,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/profile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="681" column="26" lean-forward="true" selection-start-line="681" selection-start-column="26" selection-end-line="681" selection-end-column="26" />
+        <state relative-caret-position="429">
+          <caret line="592" selection-start-line="592" selection-end-line="592" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/main-post.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="484" column="4" lean-forward="true" selection-start-line="484" selection-start-column="4" selection-end-line="484" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/post-view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="150" column="44" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="254">
+          <caret line="234" column="27" selection-start-line="234" selection-start-column="27" selection-end-line="234" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/post-view.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="354" column="17" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
+        <state relative-caret-position="660">
+          <caret line="387" column="20" selection-start-line="387" selection-start-column="20" selection-end-line="387" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/post-view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="711">
+          <caret line="257" column="117" selection-start-line="257" selection-start-column="117" selection-end-line="257" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Nový textový dokument (2).txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-205">
+          <caret line="277" column="73" lean-forward="true" selection-start-line="277" selection-start-column="73" selection-end-line="277" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Nový textový dokument.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/load_posts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="55" column="67" lean-forward="true" selection-start-line="55" selection-start-column="67" selection-end-line="55" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/profile-actions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding>
-            <element signature="e#887#1282#0" />
-            <element signature="e#1304#1411#0" />
-            <element signature="e#1428#1492#0" />
-            <element signature="e#1509#1577#0" />
-            <element signature="e#1596#1843#0" />
-            <element signature="e#2729#2756#0" />
-            <element signature="e#2782#3107#0" />
-            <element signature="e#3129#3433#0" />
-            <element signature="e#3468#3503#0" />
-            <element signature="e#3546#3581#0" />
-            <element signature="e#3624#3659#0" />
-            <element signature="e#3700#3737#0" />
-            <element signature="e#3787#3821#0" />
-            <element signature="e#3871#3905#0" />
-            <element signature="e#3931#3974#0" />
+            <element signature="e#75#82#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/load-map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1723">
-          <caret line="502" column="50" lean-forward="true" selection-start-line="502" selection-start-column="50" selection-end-line="502" selection-end-column="50" />
+        <state relative-caret-position="302">
+          <caret line="374" column="99" selection-start-line="374" selection-start-column="99" selection-end-line="374" selection-end-column="99" />
           <folding>
-            <element signature="e#1933#11835#0" />
-            <element signature="e#3528#7978#0" />
-            <element signature="e#5032#6093#0" />
-            <element signature="e#15091#16053#0" />
+            <element signature="e#441#661#0" />
+            <element signature="e#686#907#0" />
+            <element signature="e#1813#2116#0" />
+            <element signature="e#3617#4558#0" />
+            <element signature="e#4721#4976#0" />
+            <element signature="e#5112#5205#0" />
+            <element signature="e#8915#9105#0" />
+            <element signature="e#14542#14797#0" />
+            <element signature="e#13910#14899#0" />
+            <element signature="e#14965#14997#0" />
+            <element signature="e#15167#15199#0" />
+            <element signature="e#15233#15320#0" />
+            <element signature="e#15600#15632#0" />
+            <element signature="n#!!block;n#hslToRgb#0" />
             <element signature="n#!!block;n#rgb2hue#0" />
             <element signature="n#!!block;n#initMap2#0" />
           </folding>

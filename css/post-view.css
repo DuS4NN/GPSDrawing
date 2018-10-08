@@ -44,6 +44,14 @@ table{
     border: 1px solid rgba(0,0,0,0.0975);
 }
 
+td.map-right{
+  width: 60%;
+}
+
+td.info-left{
+    width: 40%;
+}
+
 .map{
     width: 100%;
     height: 500px;
@@ -82,7 +90,7 @@ table{
     margin-left: 10px;
     float: left;
     margin-top: 17px;
-    overflow-x: hidden;
+
 }
 
 #post-user-nick{
@@ -166,8 +174,8 @@ td.info{
 }
 
 #comment-input{
-    margin-right: 15px;
-}
+     margin-right: 15px;
+ }
 
 #profile-picture-comment{
     float: left;
@@ -318,9 +326,9 @@ td.info{
 
 #post-footer{
     font-family: Text;
-    font-family: Text;
     width: 90%;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 12px;
     text-align: center;
     color: black;
@@ -377,10 +385,182 @@ td.info{
     float:left;
     overflow: hidden;
     line-height: 20px;
+    min-height: 20px;
     margin-top: 5px;
     font-size: 13px;
     font-family: Text2;
     font-weight: bold;
+}
+
+@media  only screen and (max-width: 767px) {
+    .post{
+        margin-top: 100px;
+        margin-left: 0.5%;
+        width: 99%;
+    }
+
+    td.map-right{
+        width: 50%;
+    }
+
+    td.info-left{
+        width: 50%;
+    }
+
+    .map{
+        width: 100%;
+        height: 300px;
+    }
+
+    #post-user-info{
+        height: 35px;
+    }
+
+    #post-user-picture{
+        margin-left: 7px;
+        margin-top: 7px;
+        width: 25px;
+        height: 25px;
+    }
+
+    #post-user-nick-date{
+        height: 25px;
+        margin-left: 7px;
+        margin-top: 8px;
+    }
+
+    #post-user-nick{
+        font-size: 11px;
+    }
+
+    #post-user-date{
+        font-size: 8px;
+    }
+
+    .post-description{
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-bottom: 3px;
+        font-size: 11px;
+        min-height: 18px;
+    }
+    #post-like, #post-comment{
+        margin-top: 0px;
+        padding-bottom: 5px;
+    }
+
+    #post-comment{
+        margin-left: 7px;
+    }
+
+    #like-image img, #comment-image img{
+        width: 15px;
+        margin-left: 7px;
+    }
+
+    #like-number, #comment-number{
+        line-height: 15px;
+        font-size: 10px;
+        margin-left: 5px;
+    }
+
+    #post-more img {
+        height: 12px;
+        width: 12px;
+    }
+
+    #comment-input{
+        margin-right: 15px;
+    }
+
+    #profile-picture-comment{
+        height: 20px;
+        width: 20px;
+    }
+
+    #comment-input input{
+        margin-left: 7px;
+        width: -webkit-calc(100% - 40px);
+        width:    -moz-calc(100% - 40px);
+        width:         calc(100% - 40px);
+        height: 20px;
+        font-size: 9px;
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 15px;
+    }
+
+    #profile-picture-comment{
+        margin-left: 7px;
+    }
+
+    #comment-comment{
+        font-size: 10px;
+        width: -webkit-calc(100% - 20px);
+        width:    -moz-calc(100% - 20px);
+        width:         calc(100% - 20px);
+    }
+
+    .comment-more{
+        height: 10px;
+        width: 20px;
+    }
+
+    .comment-more img {
+        height: 7px;
+        width: 7px;
+    }
+
+    #comment-time{
+        font-size: 7px;
+    }
+
+    .load-more{
+        font-size: 9px;
+        padding-left: 7px;
+        padding-top: 5px;
+    }
+
+    .cancel-edit{
+        font-size: 9px;
+        margin-right: 11px;
+    }
+
+    #post-footer img{
+        width: 17px;
+        height: 17px;
+    }
+
+    #post-footer{
+        margin-top: 8px;
+    }
+
+    #post-coop{
+        font-size: 10px;
+    }
+
+    #post-start img, #post-end img{
+        width: 15px;
+        height: 15px;
+        vertical-align: middle;
+    }
+
+    #post-start, #post-end{
+        width: 100%;
+        line-height: 17px;
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    #footer-distance, #footer-time, #footer-activity{
+        width: 32.8%;
+        font-size: 7px;
+    }
+
+    #post-footer-desc{
+        font-size: 0;
+    }
+
 
 }
 

@@ -27,6 +27,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 
+        <script src="<?php echo $web; ?>/js/load-theme.js"></script>
         <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=<?php echo $_SESSION['lang']?>"></script>
         <script src="<?php echo $web ?>/js/load-map.js"></script>
         <script src="<?php echo $web ?>/js/alerts-main.js"></script>
@@ -434,7 +435,6 @@
         <script src="<?php echo $web ?>/js/post-more.js"></script>
         <script src="<?php echo $web ?>/js/like.js"></script>
         <script src="<?php echo $web ?>/js/follow.js"></script>
-        <script src="<?php echo $web; ?>/js/load-theme.js"></script>
         <script src="<?php echo $web; ?>/js/alerts-main.js"></script>
     </body>
 </html>
