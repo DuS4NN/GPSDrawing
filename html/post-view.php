@@ -214,11 +214,26 @@
                     </div>
                     <div id="footer-distance">
                         <img src="<?php echo $web ?>/img/distance.png" title="<?php echo $lang['distance']; ?>">
-                        <span id="post-footer-desc"><?php echo $lang['distance'] ?>:<br></span><span id="post-footer-distance-<?php echo $row['id']; ?>">0</span>
+                        <span id="post-footer-desc"><?php echo $lang['distance'] ?>:<br></span><span id="post-footer-distance-<?php echo $row['id']; ?>">
+                             <?php
+                             echo round($row['length']/1000,2) ." km";
+                             ?>
+                        </span>
                     </div>
                     <div id="footer-time">
                         <img src="<?php echo $web ?>/img/stopwatch.png" title="<?php echo $lang['time']; ?>">
-                        <span id="post-footer-desc"><?php echo $lang['time'] ?>:<br></span><span id="post-footer-duration-<?php echo $row['id']; ?>">0</span>
+                        <span id="post-footer-desc"><?php echo $lang['time'] ?>:<br></span><span id="post-footer-duration-<?php echo $row['id']; ?>">
+                            <?php
+                            $duration = round($row['duration']/1000);
+                            if ($duration <= 60) {
+                                echo $duration." s";
+                            } else if ($duration > 60 && $duration < 3600) {
+                                echo round($duration/60) ." min";
+                            } else {
+                                echo round($duration/60/60) ." h ". round($duration/60%60) ." min";
+                            }
+                            ?>
+                        </span>
                     </div>
                     <div id="post-footer-side">
                     </div>

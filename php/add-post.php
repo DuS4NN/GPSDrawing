@@ -14,8 +14,8 @@
     date_default_timezone_set('UTC');
     $date = date("Y-m-d H:i");
     $collab =0;
-    $stmt = $db->prepare("INSERT INTO posts (id_user, date, activity, description, points,collaboration) VALUES (?,?,?,?,?,?)");
-    $stmt->bind_param("isssss", $_SESSION['id'], $date, $_POST['radio'], $_POST['desc'], $_POST['points'], $collab);
+    $stmt = $db->prepare("INSERT INTO posts (id_user, date, activity, description, points,collaboration,duration,length) VALUES (?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("isssssss", $_SESSION['id'], $date, $_POST['radio'], $_POST['desc'], $_POST['points'], $collab,$_POST['duration'],$_POST['length']);
     $stmt->execute();
 
     $_SESSION['alerts'] = "success:5";

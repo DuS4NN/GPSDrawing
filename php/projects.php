@@ -243,7 +243,7 @@
                 $id_collaboration = mysqli_insert_id($db);
 
 
-                $stmt =  $db->prepare("SELECT id_post, posts.id_user, users.nick_name,posts.points
+                $stmt =  $db->prepare("SELECT id_post, posts.id_user, posts.duration, posts.length, users.nick_name,posts.points
                                                 FROM projects
                                                 INNER JOIN  projects_posts ON projects.id = projects_posts.id_project
                                                 INNER JOIN posts ON posts.id = projects_posts.id_post
@@ -262,6 +262,8 @@
                 $date = date("Y-m-d H:i");
 
                 while ($row = $result->fetch_assoc()){
+                    $duration = $duration+$row['duration'];
+                    $length =  $length+$row['length'];
                     $points = $points."*".$row['nick_name']."*".$row['points'];
 
                     $query = $query." (".$id_collaboration.",".$row['id_user']."),";
@@ -275,8 +277,8 @@
                 $query_notif = substr($query_notif,0,strlen($query_notif)-1);
 
                 //pridat post
-                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration);
+                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`, `duration`, `length`) VALUES (?, ?, ?, ?, ?, ?,?,?)");
+                $stmt->bind_param("ssssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration,$duration,$length);
                 $stmt->execute();
                 $id_post = mysqli_insert_id($db);
 

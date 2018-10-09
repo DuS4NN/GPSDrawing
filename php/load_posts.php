@@ -18,7 +18,7 @@
                  return;
              }
              $user = $_POST['user'];
-             $query = "SELECT posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, 
+             $query = "SELECT posts.id, posts.id_user as 'userid', users.profile_picture, posts.duration, posts.length, users.nick_name, posts.description, posts.date, 
                        posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                         CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
                         THEN '1' 
@@ -57,7 +57,7 @@
                  return;
              }
              $user = $_POST['user'];
-             $query = "SELECT posts.id,posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
+             $query = "SELECT posts.id,posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, posts.duration, posts.length, posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                  CASE WHEN EXISTS(SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
                                  THEN '1'
                                  ELSE '0'
@@ -95,7 +95,7 @@
          case 'main_post':
              $stmt = $db->prepare("SELECT
                                 posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
-                                posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
                                   THEN '1'
                                   ELSE '0'
@@ -131,7 +131,7 @@
              break;
          case 'bookmarks_post':
              $stmt = $db->prepare("SELECT DISTINCTROW
-                                posts.id, posts.id_user as 'userid', posts.description, posts.date, posts.points, posts.activity, posts.collaboration,
+                                posts.id, posts.id_user as 'userid', posts.description, posts.duration, posts.length, posts.date, posts.points, posts.activity, posts.collaboration,
                                 users.profile_picture, users.nick_name,
                                 COUNT(comments.id) as countcomments,
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)

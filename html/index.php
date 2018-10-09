@@ -4,7 +4,7 @@
     require '../config/lang.php';
 
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
-        header("location: ../GPSDrawing/home");
+        header("location: ../home");
     }
 
 ?>
@@ -139,7 +139,7 @@
         <?php require '../php/alerts.php'; ?>
     </div>
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="<?php echo $web ?>/js/index.js"></script>
     <script>
 

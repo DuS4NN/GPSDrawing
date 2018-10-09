@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
 
         <script src="<?php echo $web; ?>/js/load-theme.js"></script>
         <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=<?php echo $_SESSION['lang']?>"></script>
@@ -295,7 +295,7 @@
             <?php
 
             $stmt = $db->prepare("SELECT 
-                                posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, 
+                                posts.id, posts.id_user as 'userid', users.profile_picture, posts.duration, posts.length, users.nick_name, posts.description, posts.date, 
                                 posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
                                 THEN '1' 

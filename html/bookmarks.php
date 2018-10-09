@@ -37,7 +37,7 @@ header('Content-type: text/html; charset=UTF-8');
     <?php
 
     $stmt = $db->prepare("SELECT DISTINCTROW 
-                                posts.id, posts.id_user as 'userid', posts.description, posts.date, posts.points, posts.activity, posts.collaboration,
+                                posts.id, posts.id_user as 'userid', posts.description, posts.duration, posts.length, posts.date, posts.points, posts.activity, posts.collaboration,
                                 users.profile_picture, users.nick_name,
                                 COUNT(comments.id) as countcomments,
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)

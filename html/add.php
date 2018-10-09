@@ -122,16 +122,25 @@
         let points="";
         let fileString = evt.target.result;
         let text = fileString.split(">");
+        let duration = "";
+        let length = "";
+
         for(let i=0; i<text.length;i++){
             if(text[i].toString().includes('lat')){
                 let row = text[i].split("\"");
                 points+=row[1]+";"+row[3]+";";
             }
+            if(text[i].toString().includes('length')){
+                length =text[i].replace("<length","").replace("</length","");
+            }
+            if(text[i].toString().includes('duration')){
+                duration = text[i].replace("<duration","").replace("</duration","");
+            }
         }
         points=points.substring(0,points.length-1);
         let desc = document.getElementById('add-desc-textarea').value;
         let radio = $('input[name=radio]:checked', '#radio').val();
-        $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio});
+       $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length});
         setTimeout(function () {
             window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
         },100);
