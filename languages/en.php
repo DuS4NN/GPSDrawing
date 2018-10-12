@@ -106,6 +106,8 @@
         "description" => "Description",
         "picture" => "Profile image",
         "night_mode" => "Night mode",
+        "language" => "Language",
+        "language_desc" => "Change language",
         "picture_desc" => "Change your profile image",
         "nick_desc" => "Change your nick name",
         "fname_desc" => "Change your first name",

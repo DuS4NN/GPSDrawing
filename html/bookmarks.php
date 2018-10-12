@@ -60,7 +60,7 @@ header('Content-type: text/html; charset=UTF-8');
                                 AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
                                 
                                 ORDER BY bookmarks.id DESC
-                                LIMIT 2;");
+                                LIMIT 5;");
 
     $stmt->bind_param("sssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
     $stmt->execute();
@@ -90,7 +90,7 @@ header('Content-type: text/html; charset=UTF-8');
 </div>
 
 <script>
-    var limit = 2;
+    var limit = 5;
 
     function getDocHeight() {
         let D = document;

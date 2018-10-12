@@ -121,30 +121,68 @@
     function loaded(evt) {
         let points="";
         let fileString = evt.target.result;
-        let text = fileString.split(">");
-        let duration = "";
-        let length = "";
+        let text = fileString.split("\n");
+        let duration = 0;
+        let length = 0;
+        let time = [];
+        let first = false;
+
+        let lastLat=0;
+        let lastLon=0;
 
         for(let i=0; i<text.length;i++){
             if(text[i].toString().includes('lat')){
                 let row = text[i].split("\"");
                 points+=row[1]+";"+row[3]+";";
+
+                if(first){
+                    length = length+getDistanceFromLatLonInKm(lastLat,lastLon,row[1],row[3]);
+                }
+
+                lastLat=row[1];
+                lastLon=row[3];
+                first=true;
             }
-            if(text[i].toString().includes('length')){
-                length =text[i].replace("<length","").replace("</length","");
-            }
-            if(text[i].toString().includes('duration')){
-                duration = text[i].replace("<duration","").replace("</duration","");
+            if(text[i].toString().includes('<time>')){
+                time.push(text[i].replace(/[ ]/g,'').replace("<time>","").replace("</time>\r","").split(".")[0]);
             }
         }
+
+        length=Math.round(length*1000);
+
+        if(time.length>2){
+            let date1 = new Date(time[0]);
+            let date2 = new Date(time[time.length-1]);
+            duration=date2-date1;
+        }
+
+
         points=points.substring(0,points.length-1);
         let desc = document.getElementById('add-desc-textarea').value;
         let radio = $('input[name=radio]:checked', '#radio').val();
-       $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length});
+        $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length});
         setTimeout(function () {
             window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
-        },100);
+        },200);
 
+    }
+
+    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1);
+        var a =
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+        ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
     }
 
 </script>

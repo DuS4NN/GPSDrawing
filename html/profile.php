@@ -105,7 +105,13 @@
                     $milisec = ($newd->getTimestamp()+$_SESSION['time']);
                     $time = time();
 
+                    if($_SESSION['lang']=='sk'){
+                        setlocale(LC_TIME, 'sk-SK');
+                    }else{
+                        setlocale(LC_TIME, 'en-EN');
+                    }
 
+                    //echo date("Y-m-d H:i", $milisec);
                     if($time-$milisec<60){
                         echo intval(($time-$milisec)).' '.$lang['sec'].'.';
                     }else if($time-$milisec<3600){
@@ -113,14 +119,15 @@
                     }else if($time-$milisec<86400){
                         echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
                     }else if($time-$milisec<2592000){
-                        echo date("d. M H:i",$milisec);
+                        echo utf8_encode(ucwords(strftime("%#d. %b %H:%M",$milisec)));
+
                     }else{
                         $date1 = date("Y",$time);
                         $date2 = date("Y",$milisec);
                         if($date1==$date2){
-                            echo date("d. M",$milisec);
+                            echo utf8_encode(ucwords(strftime("%#d. %b",$milisec)));
                         }else{
-                            echo date("d. M. Y",$milisec);
+                            echo utf8_encode(ucwords(strftime("%#d. %b %Y",$milisec)));
                         }
                     }
 
@@ -208,7 +215,7 @@
 
         <script>
             var old_item = "post";
-            let limit = 1;
+            let limit = 5;
             $(document).on('click','#profile-choose-item',function () {
 
                 let item = $(this).attr('item');
@@ -312,7 +319,7 @@
                                 GROUP BY posts.id 
                                 HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
                                 AND nick_name = ?
-                                ORDER BY posts.date DESC LIMIT 1");
+                                ORDER BY posts.date DESC LIMIT 5");
 
             $stmt->bind_param("ssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_GET['user']);
             $stmt->execute();

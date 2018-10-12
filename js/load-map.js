@@ -577,6 +577,27 @@ function initMap2(id) {
 
     });
 
+    map.addListener('click', function() {
+        $('.map-item-'+selectedMap).removeClass('selected');
+        let id = map['__gm']['$']['id'].replace('settings-map','')
+        $('.map-item-'+id).addClass('selected');
+        setTimeout(function () {
+            $.ajax({
+                type:"POST",
+                url: localStorage.getItem("web")+"/php/settings.php",
+                data: {action:9,id: id},
+                success: function(response){
+                    let alertSection = document.getElementById("alerts-2");
+                    let text = alertSection.innerHTML;
+                    alertSection.innerHTML = text + response;
+                    closeAlert('remove');
+                }
+            });
+        },200);
+    });
+
+
+
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
 }

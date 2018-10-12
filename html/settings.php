@@ -155,8 +155,8 @@
 
                     <div id="container-item">
                         <div id="container-item-text" class="profile">
-                            <div id="title"><?php echo $lang['nick_name']; ?></div>
-                            <div id="small-title"><?php echo $lang['nick_desc']; ?></div>
+                            <div id="title"><?php echo $lang['language']; ?></div>
+                            <div id="small-title"><?php echo $lang['language_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
                             <select name="lang">

@@ -188,32 +188,35 @@
                             
                             <div id="projects-content-date">';
 
-                        $date = $row['date'];
-                        $newd = date_create_from_format('Y-m-d H:i',$date);
-                        $milisec = ($newd->getTimestamp()+$_SESSION['time']);
-                        $time = time();
+                    $date = $row['date'];
+                    $newd = date_create_from_format('Y-m-d H:i',$date);
+                    $milisec = ($newd->getTimestamp()+$_SESSION['time']);
+                    $time = time();
 
+                    if($_SESSION['lang']=='sk'){
+                        setlocale(LC_TIME, 'sk-SK');
+                    }else{
+                        setlocale(LC_TIME, 'en-EN');
+                    }
+                    //echo date("Y-m-d H:i", $milisec);
+                    if($time-$milisec<60){
+                        echo intval(($time-$milisec)).' '.$lang['sec'].'.';
+                    }else if($time-$milisec<3600){
+                        echo intval(($time-$milisec)/60) . ' min.';
+                    }else if($time-$milisec<86400){
+                        echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
+                    }else if($time-$milisec<2592000){
+                        echo utf8_encode(ucwords(strftime("%#d. %b %H:%M",$milisec)));
 
-                        //echo date("Y-m-d H:i", $milisec);
-                        if($time-$milisec<0){
-                            echo '1 '.$lang['sec'].'.';
-                        }else if($time-$milisec<60){
-                            echo intval(($time-$milisec)).' '.$lang['sec'].'.';
-                        }else if($time-$milisec<3600){
-                            echo intval(($time-$milisec)/60) . ' min.';
-                        }else if($time-$milisec<86400){
-                            echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
-                        }else if($time-$milisec<2592000){
-                            echo date("d. M H:i",$milisec);
+                    }else{
+                        $date1 = date("Y",$time);
+                        $date2 = date("Y",$milisec);
+                        if($date1==$date2){
+                            echo utf8_encode(ucwords(strftime("%#d. %b",$milisec)));
                         }else{
-                            $date1 = date("Y",$time);
-                            $date2 = date("Y",$milisec);
-                            if($date1==$date2){
-                                echo date("d. M",$milisec);
-                            }else{
-                                echo date("d. M. Y",$milisec);
-                            }
+                            echo utf8_encode(ucwords(strftime("%#d. %b %Y",$milisec)));
                         }
+                    }
                         echo'</div>
                         </div>
                     ';
