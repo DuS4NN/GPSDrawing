@@ -4,7 +4,7 @@
             <a href="<?php echo $web; ?>/user/<?php echo $row['nick_name']; ?>"><?php echo $row['nick_name']; ?></a><span id="comment-text-<?php echo $row['comid']?>"> <?php echo $row['comment']; ?></span>
         </div>
         <div class="comment-more" id="comment-more-<?php echo $row['comid']; ?>">
-            <img class="md-trigger" data-modal="<?php if($_SESSION['id']==$row['id_user'])echo 'modal-5';  else echo 'modal-6';?>"  id="comment-more-menu-<?php echo $row['comid']; ?>:<?php echo $row['id_post'] ; ?>" src="<?php echo $web; ?>/img/more.png" />
+            <img class="md-trigger" data-modal="<?php if($_SESSION['id']==$row['id_user'])echo 'modal-5';  else echo 'modal-6';?>"  id="comment-more-menu-<?php echo $row['comid']; ?>:<?php echo $row['id_post'] ; ?>" src="https://png.icons8.com/android/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/more.png" />
         </div>
     </div>
 
@@ -23,7 +23,9 @@
         }
 
         //echo date("Y-m-d H:i", $milisec);
-        if($time-$milisec<60){
+        if($time-$milisec<=0){
+            echo '1 '.$lang['sec'].'.';
+        }else if($time-$milisec<60){
             echo intval(($time-$milisec)).' '.$lang['sec'].'.';
         }else if($time-$milisec<3600){
             echo intval(($time-$milisec)/60) . ' min.';

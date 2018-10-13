@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
-        <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" >
+        <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
@@ -149,7 +149,7 @@
             ?>
             <div id="profile-info">
                 <div id="profile-info-nick">
-                    <h5><?php echo $row_u['nick_name'];?></h5><?php if($row_u['blocked']=='1') exit();  ?> <img class="md-trigger" id="<?php echo $row_u['id'];?>" data-modal="<?php if($row_u['id']==$_SESSION['id'])echo 'modal-8'; else echo 'modal-7'; ?>" src="<?php echo $web; ?>/img/more.png" />
+                    <h5><?php echo $row_u['nick_name'];?></h5><?php if($row_u['blocked']=='1') exit();  ?> <img class="md-trigger" id="<?php echo $row_u['id'];?>" data-modal="<?php if($row_u['id']==$_SESSION['id'])echo 'modal-8'; else echo 'modal-7'; ?>" src="https://png.icons8.com/android/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/more.png" />
                 </div>
                 <div id="profile-info-name">
                     <?php echo $row_u['first_name']. ' '. $row_u['last_name']; ?>
@@ -175,7 +175,7 @@
 
         <div id="profile-badges">
             <div class="left" id="profile-scroll">
-                <img src="https://png.icons8.com/ios/96/000000/back.png">
+                <img src="https://png.icons8.com/ios/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/back.png">
             </div>
 
             <div id="profile-badges-content">
@@ -189,7 +189,7 @@
             </div>
 
             <div class="right" id="profile-scroll">
-                <img src="https://png.icons8.com/ios/96/000000/forward.png">
+                <img src="https://png.icons8.com/ios/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/forward.png">
             </div>
         </div>
 
@@ -208,8 +208,8 @@
 
         <div id="profile-choose">
             <div id="profile-choose-icons">
-                <div id="profile-choose-item" class="profile-choose-post select" item="post"><img id="profile-choose-post" src="https://png.icons8.com/ios-glyphs/90/000000/menu.png"> <?php echo $lang['users_posts'];?></div>
-                <div id="profile-choose-item" class="profile-choose-collaboration" item="collaboration"> <img id="profile-choose-collaboration" src="https://png.icons8.com/windows/100/bbbbbb/groups.png"> <?php echo $lang['collaborations'];?></div>
+                <div id="profile-choose-item" class="profile-choose-post select" item="post"><img id="profile-choose-post" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/menu.png"> <?php echo $lang['users_posts'];?></div>
+                <div id="profile-choose-item" class="profile-choose-collaboration" item="collaboration"> <img id="profile-choose-collaboration" src="https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/groups.png"> <?php echo $lang['collaborations'];?></div>
             </div>
         </div>
 
@@ -230,14 +230,14 @@
 
                     if(old_item==='post'){
                         $('.profile-choose-collaboration').removeClass('select');
-                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/bbbbbb/groups.png');
+                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/groups.png');
                         $('.profile-choose-post').addClass('select');
-                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/000000/menu.png')
+                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/menu.png')
                     }else{
                         $('.profile-choose-collaboration').addClass('select');
-                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/000000/groups.png');
+                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/groups.png');
                         $('.profile-choose-post').removeClass('select');
-                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/bbbbbb/menu.png')
+                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/menu.png')
                     }
 
                 setTimeout(function () {
@@ -328,7 +328,7 @@
             if($num_rows==0){
                 echo '<div id="content-empty">
                          '.$lang['user_posts'].'  <br>  
-                        <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
+                        <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
                         </div>
                     ';
             }

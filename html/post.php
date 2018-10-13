@@ -18,6 +18,7 @@ header('Content-type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/post-view.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
+    <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web ?>/js/load-map.js"></script>

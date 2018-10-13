@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
-    <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';
-          else echo '<link rel="stylesheet" href="'.$web.'/css/bright_mode.css">';
-    ?>
+    <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web; ?>/js/load-theme.js"></script>
@@ -66,7 +64,7 @@
         if($num_rows==0){
             echo '<div id="content-empty">
                          '.$lang['user_follow'].'  <br>  
-                        <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
+                        <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
                         </div>
                     ';
         }

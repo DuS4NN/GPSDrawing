@@ -47,7 +47,7 @@
                  }
                  echo '<div id="content-empty">
                   ' . $lang['user_posts'] . '  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
                  </div>
              ';
              }
@@ -87,7 +87,7 @@
                  }
                  echo '<div id="content-empty">
                   ' . $lang['user_collaboration'] . '  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png"> 
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
                  </div>
              ';
              }
@@ -124,7 +124,7 @@
                  }
                  echo '<div id="content-empty">
                   ' . $lang['user_follow'] . '  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png"> 
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
                  </div>
              ';
              }
@@ -166,9 +166,7 @@
                  }
                  echo '<div id="content-empty">
                   ' . $lang['user_bookmarks'] . '  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png"> 
-                 </div>
-             ';
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> </div>';
                  break;
 
              }

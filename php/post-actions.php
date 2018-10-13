@@ -29,9 +29,23 @@
             echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span>'.$lang['info2'].'</div>';
             break;
         case 3:
+            //Odstranit uzivatelov v kolaboracii
+            $stmt = $db->prepare("DELETE FROM users_in_collab WHERE id_collaboration = (SELECT collaboration.id FROM collaboration INNER JOIN posts ON collaboration.id_post = posts.id WHERE id_post = ? AND posts.id_user = ?)");
+            $stmt->bind_param("ii", $id,$_SESSION['id']);
+            $stmt->execute();
+
+            //Odstranit collab
+            $stmt = $db->prepare("DELETE FROM collaboration WHERE id_post = (SELECT id FROM posts WHERE posts.id=? AND posts.id_user= ?)");
+            $stmt->bind_param("ii", $id,$_SESSION['id']);
+            $stmt->execute();
+
+
+            //Odstranit post
             $stmt = $db->prepare("DELETE FROM `posts` WHERE posts.id_user = ? AND posts.id = ?");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
+
+
             echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span>'.$lang['info3'].'</div>';
             break;
         case 4:

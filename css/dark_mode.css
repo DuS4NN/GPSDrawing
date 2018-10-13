@@ -1,3 +1,268 @@
-html{
-    background: red !important;
+:root {
+    --main-dark-color: rgb(36,36,36);
+    --main-light-color: rgb(32,32,32);
+    --main-border-color: rgba(80,80,80,0.5);
+    --main-gray-color: #a0b3b0;;
 }
+
+#container-nav{
+    background: var(--main-dark-color)!important;
+    border-bottom: 1px solid var(--main-border-color) !important;
+}
+#nav-logo a{
+    color: white !important;
+}
+html{
+    background: var(--main-light-color) !important;
+}
+body{
+    background: var(--main-light-color) !important;
+}
+
+#nav-text{
+    color: white !important;
+}
+
+.nav-img-search img{
+    background-color: var(--main-dark-color) !important;
+}
+
+.nav-img-search.expanded img{
+    background-color: #1ab188 !important;
+}
+
+h7{
+    color: white !important;
+}
+
+table{
+    background: var(--main-dark-color) !important;
+}
+
+#like-number,#comment-number{
+    color: white !important;
+}
+
+.post-description{
+    color: white !important;
+}
+
+.post{
+    background: transparent;
+    border: 1px solid var(--main-border-color)!important;
+}
+
+#post-footer{
+    color:white;
+}
+
+#post-footer-desc{
+    color: var(--main-gray-color);
+}
+
+#nav-icons{
+    border-left: 1px solid var(--main-border-color)!important;
+}
+
+#footer-distance{
+    border-left: 1px solid var(--main-border-color)!important;
+    border-right: 1px solid var(--main-border-color)!important;
+}
+
+#post-coop{
+    color: var(--main-gray-color);
+}
+
+#post-coop a{
+    color: white;
+}
+
+#profile-info-date{
+    color: var(--main-gray-color)!important;
+}
+
+#profile-info-nick,#profile-info-name,#profile-info-about{
+    color: white !important;
+}
+
+#profile-stat-item{
+    color: var(--main-gray-color)!important;
+}
+
+.profile-stat-item-numbers{
+    color:white;
+}
+
+#profile-stats{
+    border-top: 1px solid var(--main-border-color)!important;
+    border-bottom: 1px solid var(--main-border-color)!important;
+}
+
+#profile-choose-item{
+    color: var(--main-border-color);
+}
+
+#profile-choose-item.select{
+    color: white;
+}
+
+.profile-follow-button.follow{
+    background: transparent;
+}
+
+.profile-follow-button{
+    color: white;
+    border: 1px solid var(--main-border-color);
+    background: #1ab188;
+}
+
+#add-desc-text,#add-activity-text,#add-upload-text{
+    color: white;
+}
+
+#add-submit button{
+    background: transparent;
+}
+
+#add-desc-textarea{
+    color: white;
+    background: var(--main-light-color);
+    border: 2px solid var(--main-border-color) !important;
+}
+
+#add-desc-textarea:focus{
+    border: 2px solid #1ab188 !important;
+}
+
+#comment-comment{
+    color: white;
+}
+
+#comment-comment a{
+    color: white;
+}
+
+#comment-time{
+    color: var(--main-gray-color);
+}
+
+.load-more{
+    color: var(--main-gray-color);
+}
+
+.add-comment{
+    color: white;
+    background: var(--main-dark-color);
+    border: 1px solid var(--main-border-color);
+}
+
+#comment-input input::placeholder{
+    color: white !important;
+}
+#comment-input input:-ms-input-placeholder{
+    color: white!important;
+}
+#comment-input input:-ms-input-placeholder{
+    color: white!important;
+}
+
+#comment-input input:focus::placeholder{
+    color: rgba(255,255,255,0.6) !important;
+}
+#comment-input input:focus :-ms-input-placeholder{
+    color: rgba(255,255,255,0.6) !important;
+}
+#comment-input input:focus :-ms-input-placeholder{
+    color: rgba(255,255,255,0.6) !important;
+}
+
+.container{
+    color: white;
+}
+
+.checkmark{
+    background: var(--main-border-color);
+}
+
+.container:hover input ~ .checkmark {
+    background-color: rgba(26,177,136,0.3);
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #1ab188;
+}
+
+.custom-file-upload{
+    color:white;
+    border: 1px solid white;
+}
+
+#custom-file-name{
+    color:white;
+}
+
+#content-empty{
+    color:white;
+}
+
+@media only screen and (max-width: 767px) {
+    .nav-img-search img{
+        background-color: #1ab188 !important;
+    }
+}
+
+#icon-caret{
+    color: white;
+}
+
+#post-end-location,#post-start-location{
+    color:white;
+}
+
+td.post-like-comment{
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+td.border-right{
+    border-right: 1px solid var(--main-border-color);
+}
+
+#nav-notif-item,#nav-search-item{
+    border-top: 1px solid var(--main-border-color)!important;
+}
+
+#nav-search-item.first:hover, #nav-search-item:hover{
+    background: var(--main-dark-color)!important;
+}
+
+#nav-notif-item.first,#nav-search-item.first{
+    border-top:none !important;
+}
+
+#nav-notification-container,#nav-search-container{
+    background: var(--main-dark-color) !important;
+    border: 1px solid var(--main-border-color) !important;
+    box-shadow: none !important;
+}
+
+#nav-notif-nick,#nav-notif-text, #nav-search-item-nick{
+    color:white;
+}
+#nav-notif-time{
+    color: var(--main-gray-color) !important;
+}
+
+.arrow-up {
+    border-bottom:10px solid var(--main-border-color) !important;
+}
+
+#nav-search-users{
+    background: var(--main-dark-color);
+    color: white;
+}
+
+#search-user-empty{
+    color:white;
+}
+
+

@@ -71,7 +71,7 @@
                         <td class="post-like-comment">
                             <div id="post-like">
                                 <div id="like-image">
-                                    <img src="<?php echo $web ?>/img/<?php if($row['liked']==0) echo 'unlike'; else echo 'like'  ?>.png" id="like<?php echo $row['id'] ?>" class="like" onclick="like(<?php echo $row['id'] ?>)">
+                                    <img src="<?php echo $web ?>/img/<?php if($row['liked']==0){echo 'unlike';}else{echo 'like';}if($_SESSION['night_mode']==1) echo '-w'; ?>.png" id="like<?php echo $row['id'] ?>" class="like" onclick="like(<?php echo $row['id'] ?>)">
                                 </div>
                                 <div id="like-number">
                                     <b id="countlikes<?php echo $row['id'] ?>"> <?php echo $row['countlikes'] ?></b><br>
@@ -80,7 +80,7 @@
 
                             <div id="post-comment">
                                 <div id="comment-image">
-                                    <img src="<?php echo $web ?>/img/comment.png" class="commicon">
+                                    <img src="https://png.icons8.com/ios/100/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/speech-bubble-with-dots.png" class="commicon">
                                 </div>
                                 <div id="comment-number">
                                     <b id="comment-number<?php echo $row['id'] ?>"><?php echo $row['countcomments'] ?></b>
@@ -151,7 +151,7 @@
         </tr>
 
         <tr>
-            <td style="border-right: 1px solid rgba(0,0,0,0.0975)">
+            <td class="border-right"">
                 <?php
                 if(isset($result2)){
                     echo "<div id='post-coop'>";
@@ -173,11 +173,11 @@
                     echo "</div>";
                 }else{
                     echo '<div id="post-start">
-                    <img src="https://png.icons8.com/metro/52/000000/marker.png">
+                    <img src="https://png.icons8.com/metro/52/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; echo'/marker.png">
                     <span id="post-start-location"></span>
                 </div>
                 <div  id=post-end>
-                    <img src="https://png.icons8.com/ios-glyphs/100/000000/finish-flag.png">
+                    <img src="https://png.icons8.com/ios-glyphs/100/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; echo'/finish-flag.png">
                     <span id="post-end-location"></span>
                 </div>';
                 }
@@ -188,7 +188,7 @@
         </tr>
 
         <tr>
-            <td style="border-right: 1px solid rgba(0,0,0,0.0975)">
+            <td class="border-right"">
                 <!-- GRAF -->
                 <div id="elevation_chart"></div>
             </td>
@@ -196,7 +196,7 @@
         </tr>
 
         <tr>
-            <td style="border-right: 1px solid rgba(0,0,0,0.0975)">
+            <td class="border-right"">
               <!-- INFO -->
                 <div id="post-footer">
                     <div id="post-footer-side">
@@ -248,7 +248,7 @@
         </tr>
 
         <tr>
-            <td style="border-right: 1px solid rgba(0,0,0,0.0975)">
+            <td class="border-right">
             </td>
             <td>
                 <div class="post-more-<?php echo $row['id']; ?>"  id="post-more">
@@ -263,7 +263,7 @@
                     }
 
                     ?>"
-                         src="<?php echo $web; ?>/img/more.png" />
+                         src="https://png.icons8.com/android/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/more.png" />
                 </div>
             </td>
         </tr>

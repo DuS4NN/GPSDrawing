@@ -338,6 +338,7 @@ table{
 }
 
 #time{
+    margin-top: 2px;
     font-family: Text2;
     color: #a0b3b0;
     text-align: left;
@@ -349,6 +350,7 @@ a{
 }
 
 .post-description{
+    min-height: 10px;
     width: 90%;
     overflow-wrap: break-word;
     padding-left: 15px;

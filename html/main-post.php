@@ -53,7 +53,7 @@
                         <tr>
                             <td>
                                 <div id="like-image">
-                                    <img src="<?php echo $web ?>/img/<?php if($row['liked']==0) echo 'unlike'; else echo 'like'  ?>.png" id="like<?php echo $row['id'] ?>" class="like" onclick="like(<?php echo $row['id'] ?>)">
+                                    <img src="<?php echo $web ?>/img/<?php if($row['liked']==0){echo 'unlike';}else{echo 'like';} if($_SESSION['night_mode']==1) echo '-w';?>.png" id="like<?php echo $row['id'] ?>" class="like" onclick="like(<?php echo $row['id'] ?>)">
                                 </div>
                             </td>
                             <td>
@@ -65,7 +65,7 @@
                         <tr>
                             <td valign="baseline">
                                 <div id="comment-image">
-                                    <img src="<?php echo $web ?>/img/comment.png" class="commicon" onclick="showCom(<?php echo $row['id']; ?>)">
+                                    <img src="https://png.icons8.com/ios/100/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/speech-bubble-with-dots.png" class="commicon" onclick="showCom(<?php echo $row['id']; ?>)">
                                 </div>
                             </td>
                             <td valign="middle">
@@ -195,18 +195,17 @@
         <tr>
             <td colspan="3">
                 <div class="post-more-<?php echo $row['id']; ?>"  id="post-more">
-                    <img class="md-trigger" id="<?php echo $row['id']?>" data-modal=
+                    <img src="https://png.icons8.com/android/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000'; ?>/more.png" class="md-trigger" id="<?php echo $row['id']?>" data-modal=
                     "<?php
-                        if($row['userid']==$_SESSION['id']){
-                            if($row['bookmark']==0) echo 'modal-3';
-                            else echo 'modal-4';
-                        }else{
-                            if($row['bookmark']==0) echo 'modal-1';
-                            else echo 'modal-2';
-                        }
+                    if($row['userid']==$_SESSION['id']){
+                        if($row['bookmark']==0) echo 'modal-3';
+                        else echo 'modal-4';
+                    }else{
+                        if($row['bookmark']==0) echo 'modal-1';
+                        else echo 'modal-2';
+                    }
 
-                     ?>"
-                     src="<?php echo $web; ?>/img/more.png" />
+                    ?>">
                 </div>
             </td>
         </tr>

@@ -18,6 +18,7 @@ header('Content-type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
+    <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
     <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web; ?>/js/load-theme.js"></script>
@@ -69,7 +70,7 @@ header('Content-type: text/html; charset=UTF-8');
     if($num_rows==0){
         echo '<div id="content-empty">
                          '.$lang['user_bookmarks'].'  <br>  
-                        <img src="https://png.icons8.com/ios-glyphs/90/000000/sad.png">                
+                        <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
                         </div>
                     ';
     }
