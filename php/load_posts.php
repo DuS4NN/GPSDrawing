@@ -92,43 +92,6 @@
              ';
              }
              break;
-         case 'main_post':
-             $stmt = $db->prepare("SELECT
-                                posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
-                                posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
-                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
-                                  THEN '1'
-                                  ELSE '0'
-                                  END AS 'liked',
-                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
-                                  THEN '1'
-                                  ELSE '0'
-                                  END AS 'bookmark',
-                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
-                                FROM posts
-                                LEFT JOIN comments ON comments.id_post = posts.id
-                                INNER JOIN users ON users.id = posts.id_user
-                                GROUP BY posts.id
-                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
-                                AND posts.id_user IN (SELECT followers.id_user FROM followers WHERE followers.follower = ?)
-                                ORDER BY posts.date DESC LIMIT ?,1");
-
-             $stmt->bind_param("ssssss", $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $limit);
-             $stmt->execute();
-             $result = $stmt->get_result();
-             $num_rows = mysqli_num_rows($result);
-             if ($num_rows == 0) {
-                 if ($limit > 0) {
-                     return;
-                 }
-                 echo '<div id="content-empty">
-                  ' . $lang['user_follow'] . '  <br>  
-                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
-                 </div>
-             ';
-             }
-             break;
          case 'bookmarks_post':
              $stmt = $db->prepare("SELECT DISTINCTROW
                                 posts.id, posts.id_user as 'userid', posts.description, posts.duration, posts.length, posts.date, posts.points, posts.activity, posts.collaboration,
@@ -167,9 +130,85 @@
                  echo '<div id="content-empty">
                   ' . $lang['user_bookmarks'] . '  <br>  
                  <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> </div>';
-                 break;
-
              }
+             break;
+         case 'following':
+             $stmt = $db->prepare("SELECT
+                                posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
+                                posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'liked',
+                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'bookmark',
+                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                                FROM posts
+                                LEFT JOIN comments ON comments.id_post = posts.id
+                                INNER JOIN users ON users.id = posts.id_user
+                                GROUP BY posts.id
+                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                                AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                                AND posts.id_user IN (SELECT followers.id_user FROM followers WHERE followers.follower = ?)
+                                ORDER BY posts.date DESC LIMIT ?,?");
+
+             $stmt->bind_param("sssssss", $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $limit,$_POST['end_limit']);
+             $stmt->execute();
+             $result = $stmt->get_result();
+             $num_rows = mysqli_num_rows($result);
+             if ($num_rows == 0) {
+                 if ($limit > 0) {
+                     return;
+                 }
+                 echo '<div id="content-empty">
+                  ' . $lang['user_follow'] . '  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+             }
+             break;
+         case 'new':
+             $stmt = $db->prepare("SELECT
+                                posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
+                                posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'liked',
+                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                  THEN '1'
+                                  ELSE '0'
+                                  END AS 'bookmark',
+                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                                FROM posts
+                                LEFT JOIN comments ON comments.id_post = posts.id
+                                INNER JOIN users ON users.id = posts.id_user
+                                GROUP BY posts.id
+                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                                AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                                ORDER BY posts.date DESC LIMIT ?,?");
+
+             $stmt->bind_param("ssssss", $_SESSION['id'], $_SESSION['id'], $_SESSION['id'],$_SESSION['id'], $limit,$_POST['end_limit']);
+             $stmt->execute();
+             $result = $stmt->get_result();
+             $num_rows = mysqli_num_rows($result);
+             if ($num_rows == 0) {
+                 if ($limit > 0) {
+                     return;
+                 }
+                 echo '<div id="content-empty">
+                  ' . $lang['user_follow'] . '  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+             }
+             break;
+         case 'trends':
+             echo 'bbb';
+             break;
+         case 'recommended':
+             echo 'aacca';
+             break;
      }
 
      while ($row = $result->fetch_assoc()) {

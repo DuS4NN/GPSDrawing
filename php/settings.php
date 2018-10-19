@@ -1,7 +1,8 @@
 <?php
+session_start();
 require '../config/db.php';
 require '../config/lang.php';
-session_start();
+
 
 if(!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_POST['action'])){
     return;
@@ -273,10 +274,9 @@ switch ($_POST['action']){
         $stmt =  $db->prepare("UPDATE users_options SET map_theme = ? WHERE id_user = ?");
         $stmt->bind_param("ii", $_POST['id'],$_SESSION['id']);
         $stmt->execute();
+        $_SESSION['map_theme'] = $_POST['id'];
 
         echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info18'].'</div>';
-
-        $_SESSION['map_theme'] = $_POST['id'];
         break;
 
     case 10:

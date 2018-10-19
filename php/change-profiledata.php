@@ -1,8 +1,7 @@
 <?php
-
+    session_start();
     require '../config/db.php';
     require '../config/lang.php';
-    session_start();
 
     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
         return;

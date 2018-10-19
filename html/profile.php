@@ -208,7 +208,7 @@
 
         <div id="profile-choose">
             <div id="profile-choose-icons">
-                <div id="profile-choose-item" class="profile-choose-post select" item="post"><img id="profile-choose-post" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/menu.png"> <?php echo $lang['users_posts'];?></div>
+                <div id="profile-choose-item" class="profile-choose-post select" item="post"><img id="profile-choose-post" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '1ab188'; else echo '1ab188'; ?>/menu.png"> <?php echo $lang['users_posts'];?></div>
                 <div id="profile-choose-item" class="profile-choose-collaboration" item="collaboration"> <img id="profile-choose-collaboration" src="https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/groups.png"> <?php echo $lang['collaborations'];?></div>
             </div>
         </div>
@@ -232,10 +232,10 @@
                         $('.profile-choose-collaboration').removeClass('select');
                         $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/groups.png');
                         $('.profile-choose-post').addClass('select');
-                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/menu.png')
+                        $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '1ab188'; else echo '1ab188'; ?>/menu.png')
                     }else{
                         $('.profile-choose-collaboration').addClass('select');
-                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo 'FFFFFF'; else echo '000000'; ?>/groups.png');
+                        $('#profile-choose-collaboration').attr('src','https://png.icons8.com/windows/100/<?php if($_SESSION['night_mode']==1)echo '1ab188'; else echo '1ab188'; ?>/groups.png');
                         $('.profile-choose-post').removeClass('select');
                         $('#profile-choose-post').attr('src','https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/menu.png')
                     }

@@ -33,72 +33,94 @@
 
     <?php require '../html/header.html'; ?>
 
+    <table id="main-nav-bar" border="0">
+        <tr>
+            <td align="bottom">
+                <div id="main-nav-item" class="following selected">
+                    <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '1ab188'; else echo '1ab188'; ?>/following.png"><span id="main-nav-text"><?php echo $lang['following'];?></span>
+                </div>
+            </td>
+            <td>
+                <div id="main-nav-item" class="trends">
+                    <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/gas.png"><span id="main-nav-text"><?php echo $lang['trends'];?></span>
+                </div>
+            </td>
+            <td>
+                <div id="main-nav-item" class="recommended">
+                    <img id="main-nav-img" src="https://png.icons8.com/material-outlined/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/star.png"> <span id="main-nav-text"><?php echo $lang['recommended'];?></span>
+                </div>
+            </td>
+            <td>
+                <div id="main-nav-item" class="new">
+                    <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/activity-feed-2.png"><span id="main-nav-text"><?php echo $lang['new'];?></span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
     <div id="body" style="width: 100%; left:0;">
-        <?php
 
-    $stmt = $db->prepare("SELECT
-                                posts.id, posts.id_user as 'userid', users.profile_picture, posts.duration, posts.length, users.nick_name, users.first_name, posts.description, posts.date,
-                                posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
-                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
-                                  THEN '1'
-                                  ELSE '0'
-                                  END AS 'liked',
-                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
-                                  THEN '1'
-                                  ELSE '0'
-                                  END AS 'bookmark',
-                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
-                                FROM posts
-                                LEFT JOIN comments ON comments.id_post = posts.id
-                                INNER JOIN users ON users.id = posts.id_user
-                                GROUP BY posts.id
-                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
-                                AND posts.id_user IN (SELECT followers.id_user FROM followers WHERE followers.follower = ?)
-                                ORDER BY posts.date DESC LIMIT 5");
 
-        $stmt->bind_param("sssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $num_rows = mysqli_num_rows($result);
-        if($num_rows==0){
-            echo '<div id="content-empty">
-                         '.$lang['user_follow'].'  <br>  
-                        <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
-                        </div>
-                    ';
-        }
-        while ($row = $result->fetch_assoc()) {
-
-            if($row['collaboration']!=0){
-                $stmt2 = $db->prepare("SELECT DISTINCT users.nick_name FROM `users_in_collab` INNER JOIN users ON users_in_collab.id_user = users.id WHERE users_in_collab.id_collaboration = ?");
-                $stmt2->bind_param("i", $row['collaboration']);
-                $stmt2->execute();
-                $result2 = $stmt2->get_result();
-            }else{
-                $result2=null;
-            }
-            include("../html/main-post.php");
-        }
-    ?>
+        <script>
+            $.ajax({
+                type:"POST",
+                url: "<?php echo $web; ?>/php/load_posts.php",
+                data:{action:'following',limit:0,end_limit:5},
+                success:function(response){
+                    $("#body").append(response);
+                    if(response.length<100){
+                        $(window).unbind('scroll DOMMouseScroll');
+                    }
+                }
+            });
+        </script>
 
     </div>
 
     <script>
-        var limit = 5;
+        let limit = 5;
+        let old_item_class = "following";
+        let click = true;
 
-        function getDocHeight() {
-            let D = document;
-            return Math.max(
-                D.body.scrollHeight, D.documentElement.scrollHeight,
-                D.body.offsetHeight, D.documentElement.offsetHeight,
-                D.body.clientHeight, D.documentElement.clientHeight
-            )-150;
-        }
+        $(document).on('click','#main-nav-item',function (e) {
+            if(e.target.id === 'main-nav-item')return;
+            let new_item_class = e['target'].parentElement.className.replace(" selected","");
+            if(new_item_class===old_item_class)return;
 
-        let click =true;
-        $(window).on('scroll DOMMouseScroll', function() {
+            let new_item = $('.'+new_item_class);
+            let old_item = $('.'+old_item_class);
 
+            let new_item_src = $(new_item).children().attr('src');
+            let old_item_src = $(old_item).children().attr('src');
+
+            $(new_item).children().attr('src',new_item_src.replace('<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>','1ab188'));
+            $(old_item).children().attr('src',old_item_src.replace('1ab188','<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>'));
+
+
+            $('.selected').removeClass('selected');
+            $(new_item).addClass('selected');
+            old_item_class=new_item_class;
+
+            $.ajax({
+                type:"POST",
+                url: "<?php echo $web; ?>/php/load_posts.php",
+                data:{action:new_item_class,limit:0,end_limit:5},
+                success:function(response){
+                    $("#body").html(response);
+                    if(response.length<100){
+                        $(window).unbind('scroll DOMMouseScroll');
+                    }
+                }
+            });
+
+            $(window).bind('scroll DOMMouseScroll', onscroll);
+            limit=5;
+
+        });
+
+        $(window).bind('scroll DOMMouseScroll', onscroll);
+
+        function onscroll() {
             if(!click){
                 return;
             }
@@ -107,7 +129,7 @@
                     $.ajax({
                         type:"POST",
                         url: "<?php echo $web; ?>/php/load_posts.php",
-                        data:{action:'main_post',limit:limit},
+                        data:{action:old_item_class,limit:limit,end_limit:1},
                         success:function(response){
                             $("#body").append(response);
                             if(response.length<100){
@@ -122,7 +144,16 @@
                     },100);
                 },0);
             }
-        });
+        }
+
+        function getDocHeight() {
+            let D = document;
+            return Math.max(
+                D.body.scrollHeight, D.documentElement.scrollHeight,
+                D.body.offsetHeight, D.documentElement.offsetHeight,
+                D.body.clientHeight, D.documentElement.clientHeight
+            )-150;
+        }
 
         if (window.performance) {
             $( "body" ).scrollTop(0);

@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="<?php echo $web ?>/css/alerts-main.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
         <link rel="stylesheet" href="<?php echo $web ?>/css/settings.css">
+        <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>

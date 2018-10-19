@@ -13,6 +13,23 @@
 
 @media only screen and (max-width: 767px) {
 
+    #main-nav-bar{
+        margin-right: 0!important;
+        margin-left:  0 !important;
+        width: 100% !important;
+        font-size: 10px !important;
+    }
+
+    #main-nav-text{
+        display: block;
+    }
+
+    #main-nav-img{
+
+        width: 12px !important;
+        height: 12px !important;
+    }
+
     td.td-profile-picture{
         width: 50px;
     }
@@ -147,6 +164,17 @@
 
 @media (max-width:1199px) and (min-width:768px){
 
+    #main-nav-bar{
+        width: 80% !important;
+        margin-left: 10% !important;
+        font-size: 13px !important;
+    }
+
+    #main-nav-img{
+        width: 15px !important;
+        height: 15px !important;
+    }
+
     td.td-profile-picture{
         width: 60px;
     }
@@ -163,6 +191,7 @@
 }
 
 @media only screen and (min-width: 767px) {
+
 
     td.td-profile-picture{
         width: 60px;
@@ -290,6 +319,42 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .gmnoprint a, .gmnoprint span, .gm-style-cc {
     display:none;
 }
+
+#main-nav-bar{
+    margin-top: 110px;
+    background: transparent;
+    margin-bottom: -50px !important;
+    border-bottom: 1px solid #dddddd;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 60%;
+    margin-left: 20%;
+    padding-bottom: 7px;
+    font-family: Text;
+    text-align: center;
+    color: #bbbbbb;
+}
+
+#main-nav-item.selected{
+    color:black;
+}
+
+#main-nav-text{
+    cursor: pointer;
+}
+
+td img {
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
+#main-nav-img{
+    padding-right: 5px;
+    height: 18px;
+    width: 18px;
+}
+
 
 #content-empty{
     font-family: Text;

@@ -18,6 +18,7 @@ header('Content-type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/main-post.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/projects.css">
+    <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web ?>/js/load-map.js"></script>
@@ -59,7 +60,7 @@ header('Content-type: text/html; charset=UTF-8');
         </div>
         <div id="projects-content">
             <div id="main-text"><?php echo $lang['create_with_friends']; ?></div>
-            <div id="main-img"><img src="https://png.icons8.com/dotty/96/000000/task.png"></div>
+            <div id="main-img"><img src="https://png.icons8.com/dotty/96/<?php if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';?>/task.png"></div>
             <div id="main-desc"><?php echo $lang['create_project_desc']; ?></div>
             <div id="main-desc-s"><?php echo $lang['create_project_desc_small']; ?></div>
         </div>
