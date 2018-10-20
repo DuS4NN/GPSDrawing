@@ -35,9 +35,9 @@
                         WHERE users.id = ?
                         GROUP BY posts.id 
                         HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                        ORDER BY posts.date DESC LIMIT ?,1";
+                        ORDER BY posts.date DESC LIMIT ?,?";
              $stmt = $db->prepare($query);
-             $stmt->bind_param("ssisi", $_SESSION['id'], $_SESSION['id'], $user, $_SESSION['id'], $limit);
+             $stmt->bind_param("ssisii", $_SESSION['id'], $_SESSION['id'], $user, $_SESSION['id'], $limit,$_POST['end_limit']);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
@@ -75,9 +75,9 @@
                                  WHERE users_in_collab.id_user = ?  AND posts.id_user != ?
                                  GROUP BY posts.id 
                                  HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                 ORDER BY posts.date DESC LIMIT ?,1";
+                                 ORDER BY posts.date DESC LIMIT ?,?";
              $stmt = $db->prepare($query);
-             $stmt->bind_param("ssiisi", $_SESSION['id'], $_SESSION['id'], $user, $user, $_SESSION['id'], $limit);
+             $stmt->bind_param("ssiisii", $_SESSION['id'], $_SESSION['id'], $user, $user, $_SESSION['id'], $limit,$_POST['end_limit']);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
@@ -198,16 +198,94 @@
                      return;
                  }
                  echo '<div id="content-empty">
-                  ' . $lang['user_follow'] . '  <br>  
+                  ' . $lang['empty_all'] . '  <br>  
                  <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
                  </div>';
              }
              break;
          case 'trends':
-             echo 'bbb';
+             if($limit+1>20)return;
+             $stmt = $db->prepare("SELECT
+                                          posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, users.first_name, posts.description, posts.date,
+                                          posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                          CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                          THEN '1'
+                                          ELSE '0'
+                                          END AS 'liked',
+                                          CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                          THEN '1'
+                                          ELSE '0'
+                                          END AS 'bookmark',
+                                          (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                                          FROM posts
+                                          LEFT JOIN comments ON comments.id_post = posts.id
+                                          INNER JOIN users ON users.id = posts.id_user
+                                          GROUP BY posts.id
+                                          HAVING posts.id IN (
+                                            SELECT id_post
+                                            FROM likes
+                                            WHERE DATEDIFF(CURRENT_TIMESTAMP, date)<=14
+                                            GROUP BY id_post
+                                            )
+                                          ORDER BY countlikes DESC,posts.date DESC LIMIT ?,?");
+
+             $stmt->bind_param("ssss", $_SESSION['id'], $_SESSION['id'], $limit,$_POST['end_limit']);
+             $stmt->execute();
+             $result = $stmt->get_result();
+             $num_rows = mysqli_num_rows($result);
+             if ($num_rows == 0) {
+                 if ($limit > 0) {
+                     return;
+                 }
+                 echo '<div id="content-empty">
+                  ' . $lang['user_follow'] . '  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+             }
              break;
          case 'recommended':
-             echo 'aacca';
+             $stmt = $db->prepare("SELECT
+                                            posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date,
+                                            posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                                            CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                            THEN '1'
+                                            ELSE '0'
+                                            END AS 'liked',
+                                            CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                            THEN '1'
+                                            ELSE '0'
+                                            END AS 'bookmark',
+                                            (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                                            FROM posts
+                                            LEFT JOIN comments ON comments.id_post = posts.id
+                                            INNER JOIN users ON users.id = posts.id_user
+                                            WHERE posts.id IN (SELECT MAX(id) FROM posts GROUP BY id_user)
+                                            AND posts.id_user IN (
+                                              SELECT
+                                                DISTINCT followers.id_user
+                                              FROM followers
+                                              WHERE follower IN (SELECT followers.id_user FROM followers WHERE follower = ?)
+                                              AND followers.id_user NOT IN (SELECT id_user FROM followers WHERE follower = ?)
+                                              AND followers.id_user != ?
+                                            )
+                                            GROUP BY posts.id
+                                            HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                                            AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                                            ORDER BY posts.date DESC LIMIT ?,?");
+
+             $stmt->bind_param("sssssssss", $_SESSION['id'], $_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'], $_SESSION['id'],$_SESSION['id'], $limit,$_POST['end_limit']);
+             $stmt->execute();
+             $result = $stmt->get_result();
+             $num_rows = mysqli_num_rows($result);
+             if ($num_rows == 0) {
+                 if ($limit > 0) {
+                     return;
+                 }
+                 echo '<div id="content-empty">
+                  ' . $lang['user_follow'] . '  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+             }
              break;
      }
 

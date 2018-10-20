@@ -142,10 +142,10 @@
     $stmt2->bind_param("sss",$_POST['lang'],$_POST['collab'],$_SESSION['id']);
     $stmt2->execute();
 
+
     $_SESSION['lang'] = $_POST['lang'];
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['nickname'] = $_POST['nick'];
-
 
     header("location: ../settings");
 

@@ -13,8 +13,8 @@
     $id = $_POST['id'];
 
     if($action==0){
-        $stmt = $db->prepare("INSERT INTO `likes` (id_user, `id_post` ) VALUES (?, ?);");
-        $stmt->bind_param("ii", $_SESSION['id'],$id);
+        $stmt = $db->prepare("INSERT INTO `likes` (id_user, `id_post`, `date` ) VALUES (?, ?, ?);");
+        $stmt->bind_param("iis", $_SESSION['id'],$id,$date);
         $stmt->execute();
 
         $action=1;$view=0;

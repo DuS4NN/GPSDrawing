@@ -87,6 +87,7 @@
         "select_file" => "Vyberte súbor",
         "browse" => "Prehľadávať",
         "user_follow" => "Vyzerá to prázdne. Vyhľadajte a sledujete užívateľov.",
+        "empty_all" => "Vyzerá to tu prázdne.",
         "edit_profile" => "Upraviť profil",
         "change_password" => "Zmeniť heslo",
         "blocked_users" => "Zablokovaní používatelia",

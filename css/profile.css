@@ -46,6 +46,33 @@ html{
 
 @media only screen and (min-width: 1200px ){
 
+    .add_new_post:hover {
+        border: dashed 1px #bbbbbb;
+        color: #1ab188;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    .add_new_post {
+        border: dashed 1px #bbbbbb;
+        width: 170px;
+        color: #505050;
+        font-size: 13px;
+        text-align: center;
+        height: 35px;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 50px;
+        font-family: Text;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+
 
     #profile-badges-info{
         text-align: right;
@@ -317,6 +344,32 @@ html{
 }
 
 @media (max-width:1199px) and (min-width:768px) {
+
+    .add_new_post:hover {
+        border: dashed 1px #bbbbbb;
+        color: #1ab188;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    .add_new_post {
+        border: dashed 1px #bbbbbb;
+        width: 170px;
+        color: #505050;
+        font-size: 13px;
+        text-align: center;
+        height: 35px;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 50px;
+        font-family: Text;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
 
     #profile-badges-info{
         text-align: right;
@@ -591,6 +644,32 @@ html{
 }
 
 @media  only screen and (max-width: 767px) {
+
+    .add_new_post:hover {
+        border: dashed 1px #bbbbbb;
+        color: #1ab188;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
+
+    .add_new_post {
+        border: dashed 1px #bbbbbb;
+        width: 170px;
+        color: #505050;
+        font-size: 13px;
+        text-align: center;
+        height: 35px;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 50px;
+        font-family: Text;
+        -webkit-transition: all .4s;
+        -moz-transition: all .4s;
+        -o-transition: all .4s;
+        transition: all .4s;
+    }
 
     #content-empty.profile{
         font-size: 20px;

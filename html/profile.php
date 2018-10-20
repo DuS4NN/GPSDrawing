@@ -167,6 +167,10 @@
                     }else{
                         echo '<input onmousedown="return false;" onselectstart="return false;" onclick=follow('.$row_u['id'].') class="profile-follow-button" type="button" value="'.$lang['follow'].'">';
                     }
+                }else{
+                        echo '<form action="';echo $web; echo'/add">
+                               <input onmousedown="return false;" onselectstart="return false;" value="'; echo $lang['add_post'];  echo'" class="add_new_post" type="submit">
+                              </form>';
                 }
                 ?>
 
@@ -223,7 +227,7 @@
                     return;
                 }
                 window.scrollTo(0,0);
-                limit = 1;
+                limit = 5;
                 old_item=item;
 
 
@@ -244,7 +248,7 @@
                     $.ajax({
                         type:"POST",
                         url: "<?php echo $web; ?>/php/load_posts.php",
-                        data:{action:old_item,limit:0,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                        data:{action:old_item,limit:0,end_limit:5,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                         success:function(response){
                             document.getElementById("body").innerHTML = response;
                         }
@@ -276,7 +280,7 @@
                         $.ajax({
                             type:"POST",
                             url: "<?php echo $web; ?>/php/load_posts.php",
-                            data:{action:old_item,limit:limit,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                            data:{action:old_item,limit:limit,end_limit:1,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                             success:function(response){
                                 $("#body").append(response);
                                 if(response.length<100){
@@ -299,9 +303,22 @@
 
 
         <div id="body" class="body" style="width: 100%; margin-top: 10px; left:0;">
-            <?php
 
-            $stmt = $db->prepare("SELECT 
+            <script>
+            $.ajax({
+                type:"POST",
+                url: "<?php echo $web; ?>/php/load_posts.php",
+                data:{action:'post',limit:0,end_limit:5,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                success:function(response){
+                    $("#body").append(response);
+                    if(response.length<100){
+                        $(window).unbind('scroll DOMMouseScroll', onscroll);
+                    }
+                }
+            });
+            </script>
+            <?php
+            /*$stmt = $db->prepare("SELECT
                                 posts.id, posts.id_user as 'userid', users.profile_picture, posts.duration, posts.length, users.nick_name, posts.description, posts.date, 
                                 posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
                                 CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
@@ -343,7 +360,7 @@
                     $result2=null;
                 }
                 include("../html/main-post.php");
-            }
+            }*/
             ?>
 
         </div>
