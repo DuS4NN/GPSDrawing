@@ -186,7 +186,7 @@
 
                 <?php
                     while($row_b = $result3->fetch_assoc()){
-                        echo '<img class="profile-badges-img" src="'.$web.$row_b['url'].'">';
+                        echo '<img class="profile-badges-img" title="'.$lang[$row_b['name']].'" src="'.$web.$row_b['url'].'">';
                     }
                 ?>
 

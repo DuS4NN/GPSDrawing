@@ -24,6 +24,28 @@
         $stmt->bind_param("iiiis", $_SESSION['id'],$action,$id,$view,$date);
         $stmt->execute();
 
+        $stmt = $db->prepare("INSERT INTO users_badges (user_id, badge_id, date)
+                                        SELECT
+                                            ?,
+                                            (SELECT
+                                                 CASE
+                                                    WHEN (SELECT COUNT(*) FROM followers WHERE id_user=1) >= 1000
+                                                     THEN '13'
+                                                     WHEN (SELECT COUNT(*) FROM followers WHERE id_user=1) >= 100
+                                                     THEN '9'
+                                                      WHEN (SELECT COUNT(*) FROM followers WHERE id_user=1) >= 20
+                                                     THEN '5'
+                                                  END as 'badge_id'
+                                            ) as bb,
+                                            ?
+                                        FROM dual
+                                        HAVING NOT EXISTS(SELECT * FROM users_badges WHERE user_id = ? AND badge_id = bb)
+                                        AND bb IS NOT NULL;
+                                    ");
+        $stmt->bind_param("isi",$id,$date, $id);
+        $stmt->execute();
+
+
     }else{
         $stmt = $db->prepare("DELETE FROM followers WHERE follower = ? AND id_user = ?");
         $stmt->bind_param("ii", $_SESSION['id'],$id);
