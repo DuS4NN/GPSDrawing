@@ -219,7 +219,7 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
                    //Vypísanie adresy
                    divStart.append(result[0].formatted_address);
 
-                   //Hover na aresu - ukáže na na mape
+                   //Hover na adresu - ukáže na na mape
                    divStart.mouseover(function() {
                        marker.setPosition(elevStations[0]);
                    });
@@ -229,10 +229,10 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
             //Odoslanie a odchytenie požiadavky na získanie koncovej adresy kresby
             serviceGeocoder.geocode({'location': stations[stations.length-1]},function (result,status) {
                 if(status === 'OK') {
-                    //Vypísanie aresy
+                    //Vypísanie adresy
                     divEnd.append(result[0].formatted_address);
 
-                    //Hover na aresu - ukáže na na mape
+                    //Hover na adresu - ukáže na na mape
                     divEnd.mouseover(function() {
                         marker.setPosition(elevStations[elevStations.length-1]);
                     });

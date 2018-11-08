@@ -26,7 +26,7 @@
         "strong" => "Silné",
         "walking" => "Chôdza",
         "running" => "Beh",
-        "cycling" => "Byciklovanie",
+        "cycling" => "Bicyklovanie",
         "driving" => "Šoférovanie",
         "activity" => "Aktivita",
         "time" => "Čas",

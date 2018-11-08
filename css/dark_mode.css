@@ -405,6 +405,10 @@ td.border-right{
     color:white;
 }
 
+#nav-notif-item.unseen{
+    background: var(--main-light-color)!important;
+}
+
 #main-nav-item.selected{
     color:white!important;
 }

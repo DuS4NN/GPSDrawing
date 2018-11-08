@@ -22,8 +22,11 @@
     <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=en"></script>
     <script src="<?php echo $web ?>/js/alerts-main.js"></script>
 
+    <link rel="stylesheet" href="<?php echo $web ?>/css/emojionearea.css">
+    <script src="<?php echo $web ?>/js/emojionearea.js"></script>
 
 
 </head>
@@ -32,6 +35,7 @@
 
 
     <div id="add-container">
+
 
         <div id="add-desc">
             <div id="add-desc-text"><?php echo $lang['posts_description'];?></div>
@@ -156,15 +160,27 @@
             duration=date2-date1;
         }
 
+        if(duration<0){
+            duration=0;
+        }
 
-        points=points.substring(0,points.length-1);
-        let desc = document.getElementById('add-desc-textarea').value;
-        let radio = $('input[name=radio]:checked', '#radio').val();
-        $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length});
-        setTimeout(function () {
-            window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
-        },200);
+        const serviceGeocoder = new google.maps.Geocoder;
+        let place = "";
+        let stations = {lat: parseFloat(lastLat), lng: parseFloat(lastLon), name: 'Station '};
 
+        serviceGeocoder.geocode({'location': stations},function (result,status) {
+            if(status === 'OK') {
+                place = result[result.length-3].formatted_address+"";
+
+                points=points.substring(0,points.length-1);
+                let desc = document.getElementById('add-desc-textarea').value;
+                let radio = $('input[name=radio]:checked', '#radio').val();
+                $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length, place:place});
+                setTimeout(function () {
+                    window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
+                },200);
+            }
+        });
     }
 
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {

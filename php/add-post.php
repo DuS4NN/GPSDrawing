@@ -15,8 +15,30 @@
     date_default_timezone_set('UTC');
     $date = date("Y-m-d H:i");
     $collab =0;
-    $stmt = $db->prepare("INSERT INTO posts (id_user, date, activity, description, points,collaboration,duration,length) VALUES (?,?,?,?,?,?,?,?)");
-    $stmt->bind_param("isssssss", $_SESSION['id'], $date, $_POST['radio'], $_POST['desc'], $_POST['points'], $collab,$_POST['duration'],$_POST['length']);
+
+    $stmt = $db->prepare("INSERT INTO posts (id_user, date, activity, description, points, collaboration, duration, length, place) VALUES (?,?,?,?,?,?,?,?,?)");
+    $stmt->bind_param("issssssss", $_SESSION['id'], $date, $_POST['radio'], $_POST['desc'], $_POST['points'], $collab,$_POST['duration'],$_POST['length'],$_POST['place']);
+    $stmt->execute();
+
+    $stmt = $db->prepare("INSERT INTO users_badges (user_id, badge_id, date)
+                                    SELECT
+                                        ?,
+                                        (SELECT
+                                             CASE
+                                                WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration=0) >= 100
+                                                 THEN '11'
+                                                 WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration=0) >= 50
+                                                 THEN '7'
+                                                  WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration=0) >= 10
+                                                 THEN '3'
+                                              END as 'badge_id'
+                                        ) as bb,
+                                        ?
+                                    FROM dual
+                                    HAVING NOT EXISTS(SELECT * FROM users_badges WHERE user_id = ? AND badge_id = bb)
+                                    AND bb IS NOT NULL;
+                                ");
+    $stmt->bind_param("iiiisi",$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$date, $_SESSION['id']);
     $stmt->execute();
 
     $_SESSION['alerts'] = "success:5";

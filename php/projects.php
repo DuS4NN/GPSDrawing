@@ -296,6 +296,27 @@
                 $stmt->bind_param("ss",$id_post,$id_collaboration);
                 $stmt->execute();
 
+                $stmt = $db->prepare("INSERT INTO users_badges (user_id, badge_id, date)
+                                                SELECT
+                                                    ?,
+                                                    (SELECT
+                                                         CASE
+                                                            WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration!=0) >= 20
+                                                             THEN '12'
+                                                             WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration!=0) >= 10
+                                                             THEN '8'
+                                                              WHEN (SELECT COUNT(*) FROM posts WHERE id_user=? AND collaboration!=0) >= 3
+                                                             THEN '4'
+                                                          END as 'badge_id'
+                                                    ) as bb,
+                                                    ?
+                                                FROM dual
+                                                HAVING NOT EXISTS(SELECT * FROM users_badges WHERE user_id = ? AND badge_id = bb)
+                                                AND bb IS NOT NULL;");
+                $stmt->bind_param("iiiisi",$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$date, $_SESSION['id']);
+                $stmt->execute();
+
+
                 $_SESSION['alerts'] = "info:23";
 
             }

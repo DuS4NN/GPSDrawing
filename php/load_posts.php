@@ -244,36 +244,62 @@
              }
              break;
          case 'recommended':
-             $stmt = $db->prepare("SELECT
-                                            posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date,
-                                            posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
-                                            CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
-                                            THEN '1'
-                                            ELSE '0'
-                                            END AS 'liked',
-                                            CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
-                                            THEN '1'
-                                            ELSE '0'
-                                            END AS 'bookmark',
-                                            (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
-                                            FROM posts
-                                            LEFT JOIN comments ON comments.id_post = posts.id
-                                            INNER JOIN users ON users.id = posts.id_user
-                                            WHERE posts.id IN (SELECT MAX(id) FROM posts GROUP BY id_user)
-                                            AND posts.id_user IN (
-                                              SELECT
-                                                DISTINCT followers.id_user
-                                              FROM followers
-                                              WHERE follower IN (SELECT followers.id_user FROM followers WHERE follower = ?)
-                                              AND followers.id_user NOT IN (SELECT id_user FROM followers WHERE follower = ?)
-                                              AND followers.id_user != ?
-                                            )
-                                            GROUP BY posts.id
-                                            HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                            AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
-                                            ORDER BY posts.date DESC LIMIT ?,?");
+         $stmt = $db->prepare("SELECT
+                                        posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, posts.place,
+                                        posts.points, posts.activity, posts.duration, posts.length, posts.collaboration,
+                                        CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                        THEN '1'
+                                        ELSE '0'
+                                        END AS 'liked',
+                                        CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                        THEN '1'
+                                        ELSE '0'
+                                        END AS 'bookmark',
+                                        (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes',
+                                        (SELECT COUNT(*) FROM comments WHERE comments.id_post = posts.id) as 'countcomments'
+                                        FROM posts
+                                        LEFT JOIN comments ON comments.id_post = posts.id
+                                        INNER JOIN users ON users.id = posts.id_user
+                                        WHERE posts.id IN (SELECT MAX(id) FROM posts GROUP BY id_user)
+                                        AND posts.id_user IN (
+                                        SELECT
+                                        DISTINCT followers.id_user
+                                        FROM followers
+                                        WHERE follower IN (SELECT followers.id_user FROM followers WHERE follower = ?)
+                                        AND followers.id_user NOT IN (SELECT id_user FROM followers WHERE follower = ?)
+                                        AND followers.id_user != ?
+                                        )
+                                        
+                                        UNION DISTINCT
+                                        
+                                        SELECT DISTINCT
+                                        posts.id, posts.id_user as 'userid', users.profile_picture, users.nick_name, posts.description, posts.date, posts.place,
+                                        posts.points, posts.activity, posts.duration, posts.length, posts.collaboration,
+                                        CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                                        THEN '1'
+                                        ELSE '0'
+                                        END AS 'liked',
+                                        CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                                        THEN '1'
+                                        ELSE '0'
+                                        END AS 'bookmark',
+                                        (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes',
+                                        (SELECT COUNT(*) FROM comments WHERE comments.id_post = posts.id) as 'countcomments'
+                                        FROM posts
+                                        LEFT JOIN comments ON comments.id_post = posts.id
+                                        INNER JOIN users ON users.id = posts.id_user
+                                        WHERE place IN (SELECT DISTINCT place FROM posts WHERE id_user = ?)
+                                        AND posts.id IN (SELECT MAX(id) FROM posts WHERE  place IN (SELECT DISTINCT place FROM posts WHERE id_user = ?) GROUP BY posts.id_user)
+                                        
+                                        
+                                        HAVING posts.id_user!=?
+                                        AND posts.id_user NOT IN (SELECT followers.id_user FROM followers WHERE followers.follower=?)
+                                        AND posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                                        AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                                        ORDER BY date DESC
+                                        LIMIT ?,?;");
 
-             $stmt->bind_param("sssssssss", $_SESSION['id'], $_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'], $_SESSION['id'],$_SESSION['id'], $limit,$_POST['end_limit']);
+             $stmt->bind_param("sssssssssssssss", $_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'], $_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'], $_SESSION['id'],$_SESSION['id'], $limit,$_POST['end_limit']);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
