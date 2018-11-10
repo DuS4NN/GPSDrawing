@@ -141,7 +141,12 @@ header('Content-type: text/html; charset=UTF-8');
 
 
 <div id="overlay" class="md-overlay"></div>
-
+<script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+<script>
+    (() => {
+        new MeteorEmoji()
+    })()
+</script>
 
 <script src="<?php echo $web ?>/js/classie.js"></script>
 <script src="<?php echo $web ?>/js/projects.js"></script>

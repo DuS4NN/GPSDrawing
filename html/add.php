@@ -25,10 +25,6 @@
     <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=en"></script>
     <script src="<?php echo $web ?>/js/alerts-main.js"></script>
 
-    <link rel="stylesheet" href="<?php echo $web ?>/css/emojionearea.css">
-    <script src="<?php echo $web ?>/js/emojionearea.js"></script>
-
-
 </head>
 <body>
     <?php require '../html/header.html'; ?>
@@ -39,7 +35,7 @@
 
         <div id="add-desc">
             <div id="add-desc-text"><?php echo $lang['posts_description'];?></div>
-            <textarea id="add-desc-textarea" maxlength="300" placeholder="<?php echo $lang['type_description'];?>"></textarea>
+            <textarea id="add-desc-textarea" data-meteor-emoji="true" maxlength="300" placeholder="<?php echo $lang['type_description'];?>"></textarea>
         </div>
 
         <div id="add-activity">
@@ -203,6 +199,12 @@
 
 </script>
 
+    <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+    <script>
+        (() => {
+            new MeteorEmoji()
+        })()
+    </script>
     <script src="<?php echo $web ?>/js/classie.js"></script>
 
 </body>

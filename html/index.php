@@ -19,6 +19,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-select.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-skin-elastic.css" />
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     </head>
 
     <body>
@@ -62,7 +64,7 @@
 
                     <p class="forgot"><a href="forgot"><?php echo $lang['forgot_password'] ?></a></p>
 
-                    <button class="button button-block" name="login" /><?php echo $lang['log_in'] ?></button>
+                    <button class="button button-block" id="welcome-button-login" name="login" /><?php echo $lang['log_in'] ?></button>
 
                 </form>
 
@@ -124,7 +126,7 @@
                     </div>
                     <br>
                     <div>
-                        <button type="submit" class="button button-block" name="register" /><?php echo $lang['sign_up'] ?></button>
+                        <button type="submit" class="button button-block" id="welcome-button-register" name="register"><?php echo $lang['sign_up'] ?></button>
                     </div>
                 </form>
 
@@ -139,7 +141,6 @@
         <?php require '../php/alerts.php'; ?>
     </div>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="<?php echo $web ?>/js/index.js"></script>
     <script>
 
@@ -197,6 +198,12 @@
             $("#timezone").load(localStorage.getItem("web")+"/php/timezone.php", {date: date});
         });
 
+    </script>
+    <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+    <script>
+        (() => {
+            new MeteorEmoji()
+        })()
     </script>
     </body>
 

@@ -288,4 +288,11 @@ switch ($_POST['action']){
             $_SESSION['night_mode'] = $_POST['mode'];
         }
         break;
+    case 11:
+        if(isset($_POST['about'])){
+            $stmt =  $db->prepare("UPDATE users SET about = ? WHERE id = ?");
+            $stmt->bind_param("si", $_POST['about'],$_SESSION['id']);
+            $stmt->execute();
+        }
+        break;
 }

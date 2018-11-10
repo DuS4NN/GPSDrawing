@@ -1,13 +1,13 @@
 <?php
-session_start();
-if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-    $_SESSION['alerts'] = "error:9";
-    header("location: ../GPSDrawing/welcome");
-}
-require '../config/db.php';
-require '../config/lang.php';
-ini_set("default_charset", "UTF-8");
-header('Content-type: text/html; charset=UTF-8');
+    session_start();
+    if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+        $_SESSION['alerts'] = "error:9";
+        header("location: ../GPSDrawing/welcome");
+    }
+    require '../config/db.php';
+    require '../config/lang.php';
+    ini_set("default_charset", "UTF-8");
+    header('Content-type: text/html; charset=UTF-8');
 
 ?>
 
@@ -19,7 +19,6 @@ header('Content-type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="<?php echo $web ?>/css/modal.css">
     <link rel="stylesheet" href="<?php echo $web ?>/css/header.css">
     <?php if($_SESSION['night_mode']==1)echo '<link rel="stylesheet" href="'.$web.'/css/dark_mode.css">';?>
-    <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <script src="<?php echo $web; ?>/js/load-theme.js"></script>
     <script src="<?php echo $web ?>/js/load-map.js"></script>
@@ -116,7 +115,8 @@ header('Content-type: text/html; charset=UTF-8');
                     data:{action:'bookmarks_post',limit:limit},
                     success:function(response){
                         $("#body").append(response);
-                        if(response.length<100){
+                        new MeteorEmoji();
+                        if(response.length<200){
                             $(window).unbind('scroll DOMMouseScroll');
                         }
                     }
@@ -145,7 +145,12 @@ header('Content-type: text/html; charset=UTF-8');
 
 
 <div id="overlay" class="md-overlay"></div>
-
+<script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+<script>
+    (() => {
+        new MeteorEmoji()
+    })()
+</script>
 
 <script src="<?php echo $web ?>/js/classie.js"></script>
 <script src="<?php echo $web ?>/js/modalEffects.js"></script>

@@ -430,3 +430,25 @@ td.border-right{
 .add_new_post:hover{
     border: 1px dashed white !important;
 }
+
+.emojiPicker-table{
+    background: var(--main-light-color) !important;
+    border: 1px solid var(--main-border-color);
+}
+
+.emojiPicker-table ul{
+
+}
+
+.emojiPicker-table ul #sport img,.emojiPicker-table ul #faces img,
+.emojiPicker-table ul #animals img, .emojiPicker-table ul #food img,
+.emojiPicker-table ul #transport img,.emojiPicker-table ul #objects img{
+    border: none;
+}
+
+.emojiPicker-table ul #sport, .emojiPicker-table ul #faces,
+.emojiPicker-table ul #animals,.emojiPicker-table ul #food,
+.emojiPicker-table ul #transport, .emojiPicker-table ul #objects{
+    border-bottom: 1px solid var(--main-border-color);
+    background: var(--main-light-color) !important;
+}

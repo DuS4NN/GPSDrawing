@@ -354,24 +354,30 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         border: 1px solid #1ab188;
     }
 
+    #container-item-sett.textarea{
+        margin-left: 6px;
+        float: left;
+        padding-top: 8px !important;
+        width: 45% !important;
+    }
+
     .profile textarea{
-        position: relative;
-        resize: none;
+        resize: vertical;
         overflow: hidden;
-        padding-top: 3px;
+        padding-top: 5px;
         padding-left: 15px;
-        margin-top: 8px;
+        padding-right: 30px;
+        min-height: 83px;
         font-family: Text2;
         font-weight: bold;
         font-size: 15px;
-        height: 83px;
         border: 1px solid #dddddd;
         border-radius: 20px;
         margin-right: 30px;
-        width: 90%;
+
     }
 
-    .profile img{
+   #settings-profile-picture img{
         float: right;
         margin-top: 15px;
         height: 40px;
@@ -682,6 +688,8 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         height: 70px;
     }
 
+
+
     #title{
         letter-spacing: 0.3px;
         padding-left: 20px;
@@ -864,13 +872,20 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         border: 1px solid #1ab188;
     }
 
+    #container-item-sett.textarea{
+        margin-left: 6px;
+        float: left;
+        padding-top: 8px !important;
+        width: 45% !important;
+    }
+
     .profile textarea{
-        position: relative;
-        resize: none;
+        resize: vertical;
         overflow: hidden;
-        padding-top: 3px;
+        padding-top: 5px;
         padding-left: 15px;
-        margin-top: 8px;
+        padding-right: 30px;
+        min-height: 83px;
         font-family: Text2;
         font-weight: bold;
         font-size: 13px;
@@ -881,7 +896,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         width: 90%;
     }
 
-    .profile img{
+    #settings-profile-picture img{
         float: right;
         margin-top: 15px;
         height: 40px;
@@ -1359,21 +1374,25 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
         border: 1px solid #1ab188;
     }
 
+    #container-item-sett.textarea{
+        float: left;
+        margin-left: 15px;
+        width: 80% !important;
+    }
+
     .profile textarea{
-        position: relative;
-        resize: none;
+        resize: vertical;
         overflow: hidden;
         padding-top: 3px;
+        min-height: 62px;
         padding-left: 10px;
-        padding-right: 10px;
-        margin-top: 2px;
+        padding-right: 30px;
         font-family: Text2;
         font-weight: bold;
         font-size: 11px;
-        height: 63px;
         border: 1px solid #dddddd;
         border-radius: 20px;
-        margin-left: 15px;
+
         width: 80%;
     }
 

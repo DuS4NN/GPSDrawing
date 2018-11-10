@@ -8,8 +8,7 @@
     }
 
     if(!isset($_POST['f-name']) || empty($_POST['f-name']) || !isset($_POST['l-name']) || empty($_POST['l-name'])
-        || !isset($_POST['nick']) || empty($_POST['nick']) || !isset($_POST['email']) || empty($_POST['email']) ||
-        !isset($_POST['about']) ){
+        || !isset($_POST['nick']) || empty($_POST['nick']) || !isset($_POST['email']) || empty($_POST['email']) ){
         $_SESSION['alerts'] = "info:14";
         header("location: ../settings");
         return;
@@ -126,10 +125,9 @@
                           nick_name = ?, 
                           first_name = ?, 
                           last_name = ?,
-                          about = ?,
                           verify = ?
                           WHERE id = ? ");
-    $stmt->bind_param("sssssss", $_POST['email'], $_POST['nick'], $_POST['f-name'], $_POST['l-name'], $_POST['about'],$verify,$_SESSION['id']);
+    $stmt->bind_param("sssssss", $_POST['email'], $_POST['nick'], $_POST['f-name'], $_POST['l-name'],$verify,$_SESSION['id']);
     $stmt->execute();
 
     $stmt2 = $db->prepare("

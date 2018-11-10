@@ -127,11 +127,29 @@
 	border: solid 1px #333333;
 }
 
-#md-modal-edit-input, #md-modal-project-input, #md-modal-publish-project-input {
-	margin-top: 10px;
+#md-modal-project-input{
 	font-family: Text2;
-	padding: 10px;
+	background: white;
+	color: black;
+	padding: 5px;
+	height: 30px;
 	width: 80%;
+	border: solid 1px #aaaaaa;
+	border-radius: 15px;
+}
+
+#md-modal-edit-input, #md-modal-publish-project-input {
+	font-family: Text2;
+	background: white;
+	overflow: hidden;
+	min-height: 70px;
+	resize: vertical;
+	color: black;
+	font-size: 14px;
+	padding-left: 10px;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 10px;
 	border: solid 1px #aaaaaa;
 	border-radius: 15px;
 	height: 30px;
@@ -184,6 +202,7 @@
 }
 
 #report-desc{
+	margin-bottom: 10px;
 	color: #aaaaaa;
 	padding-top: 10px;
 	font-size: 0.8em;
@@ -807,6 +826,15 @@
 	transition: all 0.5s 0.1s;
 }
 
+@media screen and (max-width: 767px){
+	textarea, input,select{
+		font-size: 12px;
+	}
+}
+
 @media screen and (max-width: 32em) {
+
+
+
 	body { font-size: 75%; }
 }

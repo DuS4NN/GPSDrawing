@@ -14,35 +14,40 @@
                     <?php
 
                     $date = $row['date'];
-                    $newd = date_create_from_format('Y-m-d H:i',$date);
-                    $milisec = ($newd->getTimestamp()+$_SESSION['time']);
-                    $time = time();
+                    if($newd = date_create_from_format('Y-m-d H:i',$date)){
 
-                    if($_SESSION['lang']=='sk'){
-                        setlocale(LC_TIME, 'sk-SK');
-                    }else{
-                        setlocale(LC_TIME, 'en-EN');
-                    }
+                        $milisec = $newd->getTimestamp()+$_SESSION['time'];
+                        $time = time();
 
-                    //echo date("Y-m-d H:i", $milisec);
-                    if($time-$milisec<60){
-                        echo intval(($time-$milisec)).' '.$lang['sec'].'.';
-                    }else if($time-$milisec<3600){
-                        echo intval(($time-$milisec)/60) . ' min.';
-                    }else if($time-$milisec<86400){
-                        echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
-                    }else if($time-$milisec<2592000){
-                        echo utf8_encode(ucwords(strftime("%#d. %b %H:%M",$milisec)));
-
-                    }else{
-                        $date1 = date("Y",$time);
-                        $date2 = date("Y",$milisec);
-                        if($date1==$date2){
-                            echo utf8_encode(ucwords(strftime("%#d. %b",$milisec)));
+                        if($_SESSION['lang']=='sk'){
+                            setlocale(LC_TIME, 'sk-SK');
                         }else{
-                            echo utf8_encode(ucwords(strftime("%#d. %b %Y",$milisec)));
+                            setlocale(LC_TIME, 'en-EN');
                         }
+
+                        //echo date("Y-m-d H:i", $milisec);
+                        if($time-$milisec<60){
+                            echo intval(($time-$milisec)).' '.$lang['sec'].'.';
+                        }else if($time-$milisec<3600){
+                            echo intval(($time-$milisec)/60) . ' min.';
+                        }else if($time-$milisec<86400){
+                            echo intval(($time-$milisec)/3600).' '.$lang['hod'].'.';
+                        }else if($time-$milisec<2592000){
+                            echo utf8_encode(ucwords(strftime("%#d. %b %H:%M",$milisec)));
+
+                        }else{
+                            $date1 = date("Y",$time);
+                            $date2 = date("Y",$milisec);
+                            if($date1==$date2){
+                                echo utf8_encode(ucwords(strftime("%#d. %b",$milisec)));
+                            }else{
+                                echo utf8_encode(ucwords(strftime("%#d. %b %Y",$milisec)));
+                            }
+                        }
+                    }else{
+                        echo $date;
                     }
+
 
                     ?>
                 </div>
@@ -177,7 +182,7 @@
 
                         </div>
                         <div id="comment-input">
-                            <input edit="0" minlength="1" maxlength="300" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
+                            <input edit="0" minlength="1" maxlength="300" data-meteor-emoji="true" class="add-comment" id="add-comment-<?php echo $row['id']; ?>" type="text" placeholder="<?php echo $lang['write_comment']; ?>">
                             <div style="visibility: hidden" onclick="cancel_edit(<?php echo $row['id']; ?>)" class="cancel-edit" id="cancel-edit<?php echo $row['id']; ?>"><i class="fas fa-times"></i>&nbsp;<?php echo $lang['cancel']; ?></div>
                         </div>
 

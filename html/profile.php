@@ -251,6 +251,7 @@
                         data:{action:old_item,limit:0,end_limit:5,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                         success:function(response){
                             document.getElementById("body").innerHTML = response;
+                            new MeteorEmoji();
                         }
                     });
                 },0);
@@ -283,7 +284,8 @@
                             data:{action:old_item,limit:limit,end_limit:1,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                             success:function(response){
                                 $("#body").append(response);
-                                if(response.length<100){
+                                new MeteorEmoji();
+                                if(response.length<200){
                                     $(window).unbind('scroll DOMMouseScroll', onscroll);
                                 }
                             }
@@ -311,57 +313,13 @@
                 data:{action:'post',limit:0,end_limit:5,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                 success:function(response){
                     $("#body").append(response);
-                    if(response.length<100){
+                    new MeteorEmoji();
+                    if(response.length<200){
                         $(window).unbind('scroll DOMMouseScroll', onscroll);
                     }
                 }
             });
             </script>
-            <?php
-            /*$stmt = $db->prepare("SELECT
-                                posts.id, posts.id_user as 'userid', users.profile_picture, posts.duration, posts.length, users.nick_name, posts.description, posts.date, 
-                                posts.points, posts.activity, posts.collaboration, COUNT(comments.id) as 'countcomments',
-                                CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id) 
-                                THEN '1' 
-                                ELSE '0'
-                                END AS 'liked',
-                                CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
-                                THEN '1'
-                                ELSE '0'
-                                END AS 'bookmark',
-                                (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
-                                FROM posts 
-                                LEFT JOIN comments ON comments.id_post = posts.id 
-                                INNER JOIN users ON users.id = posts.id_user 
-                                GROUP BY posts.id 
-                                HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
-                                AND nick_name = ?
-                                ORDER BY posts.date DESC LIMIT 5");
-
-            $stmt->bind_param("ssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_GET['user']);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $num_rows = mysqli_num_rows($result);
-            if($num_rows==0){
-                echo '<div id="content-empty">
-                         '.$lang['user_posts'].'  <br>  
-                        <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png">                
-                        </div>
-                    ';
-            }
-            while ($row = $result->fetch_assoc()) {
-
-                if($row['collaboration']!=0){
-                    $stmt2 = $db->prepare("SELECT DISTINCT users.nick_name FROM `users_in_collab` INNER JOIN users ON users_in_collab.id_user = users.id WHERE users_in_collab.id_collaboration = ?");
-                    $stmt2->bind_param("i", $row['collaboration']);
-                    $stmt2->execute();
-                    $result2 = $stmt2->get_result();
-                }else{
-                    $result2=null;
-                }
-                include("../html/main-post.php");
-            }*/
-            ?>
 
         </div>
 
@@ -449,7 +407,10 @@
                 $( "body" ).scrollTop(0);
             }
         </script>
-
+        <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+        <script>
+                new MeteorEmoji();
+        </script>
 
         <div id="overlay" class="md-overlay"></div>
         <script src="<?php echo $web ?>/js/classie.js"></script>

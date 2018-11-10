@@ -134,7 +134,7 @@
                             <div id="small-title"><?php echo $lang['creating_collab_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
-                            <select name="collab">
+                            <select name="collab" id="collab">
                                 <option value="1" <?php if($row['collab'] =="1")echo "selected"; ?>><?php echo $lang['nobody'] ?></option>
                                 <option value="2" <?php if($row['collab'] =="2")echo "selected"; ?>><?php echo $lang['following_c'] ?></option>
                                 <option value="3" <?php if($row['collab'] =="3")echo "selected"; ?>><?php echo $lang['everybody'] ?></option>
@@ -160,7 +160,7 @@
                             <div id="small-title"><?php echo $lang['language_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile">
-                            <select name="lang">
+                            <select name="lang" id="lang">
                                 <option value="en" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="en")echo "selected"; ?> data-class="flag-sk"><?php echo $lang['en'] ?></option>
                                 <option value="sk" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="sk")echo "selected"; ?> data-class="flag-en"><?php echo $lang['sk'] ?></option>
                             </select>
@@ -173,17 +173,33 @@
                             <div id="small-title"><?php echo $lang['about_desc']; ?></div>
                         </div>
                         <div id="container-item-sett" class="profile textarea">
-                            <textarea name="about" maxlength="230" class="profile about"><?php echo $row['about']?></textarea>
+                            <label for="about">
+                                <textarea name="about" maxlength="230" data-meteor-emoji="true" class="profile about"><?php echo $row['about']?></textarea>
+                            </label>
                         </div>
                     </div>
 
                     <div id="container-button">
-                        <button type="submit" name="submit" id="profile-save" class="profile-button"><?php echo $lang['save']; ?></button>
+                        <button type="button"  id="profile-save" class="profile-button"><?php echo $lang['save']; ?></button>
                         <br>
                     </div>
 
                     </form>
 
+                  <script>
+                      $(document).on('click','.profile-button',function () {
+
+                          let about = $('.profile.about').val();
+                          $.ajax({
+                              type:"POST",
+                              url: localStorage.getItem("web")+"/php/settings.php",
+                              data:{action:11,about:about},
+                              success:function(){
+                                  $('#uploadform').submit();
+                              }
+                          });
+                      });
+                  </script>
 
 
                 </div>
@@ -717,7 +733,10 @@
         </div>
 
         <script src="<?php echo $web ?>/js/color-pixer.js"></script>
-
+            <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
+            <script>
+                new MeteorEmoji();
+            </script>
         </div>
 
     </body>

@@ -125,7 +125,13 @@
         <div id="report-desc">
             <?php echo $lang['edit_your_post'];?>
         </div>
-        <input maxlength="300" id="md-modal-edit-input" type="text">
+
+        <div style="width: 80%;margin: auto">
+            <textarea maxlength="300" data-meteor-emoji="true" minlength="0" id="md-modal-edit-input" type="text"></textarea>
+
+        </div>
+
+
         <button onclick="edit_post()"><?php echo $lang['edit'] ?></button>
         <button class="md-close"><?php echo $lang['cancel'];?></button>
     </div>
@@ -204,7 +210,10 @@
         <div id="report-desc">
             <?php echo $lang['description_of_post'];?>
         </div>
-        <input maxlength="300" minlength="0" id="md-modal-publish-project-input" type="text">
+        <div style="width: 80%;margin: auto">
+            <textarea maxlength="300" data-meteor-emoji="true" minlength="0" id="md-modal-publish-project-input" type="text"></textarea>
+
+        </div>
 
         <div id="report-desc">
             <?php echo $lang['choose_activity'];?>
