@@ -94,7 +94,7 @@
                             <div class="comments-body" id="comments-body<?php echo $row['id']; ?>">
                                 <br>
                                 <div id="comment-form">
-                                    <div id="profile-picture-comment" style="background-image: url(<?php echo $web ?>/<?php echo $row['profile_picture'] ?>)">
+                                    <div id="profile-picture-comment" style="background-image: url(<?php echo $web ?>/<?php echo $_SESSION['p_picture'] ?>)">
 
                                     </div>
                                     <div id="comment-input">

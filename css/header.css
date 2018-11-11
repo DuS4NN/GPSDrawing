@@ -14,7 +14,7 @@
 @media only screen and (min-width: 1200px){
 
     .emojiPicker-table{
-        max-width: 80% !important;
+        max-width: 100% !important;
     }
 
     .emojiPicker-table ul a{
@@ -461,7 +461,7 @@
 @media (max-width:1199px) and (min-width:768px) {
 
     .emojiPicker-table{
-        max-width: 80% !important;
+        max-width: 90% !important;
     }
 
     .emojiPicker-table ul a{
@@ -1006,7 +1006,7 @@
         right: 0;
         top:0;
         background: white;
-        margin-top: 263px;
+        margin-top: 272px;
         -webkit-transition: all .5s;
         -moz-transition: all .5s;
         -o-transition: all .5s;
@@ -1084,7 +1084,7 @@
         background: white;
         border-bottom: 1px solid #dddddd;
         top: 0;
-        margin-top: 263px;
+        margin-top: 272px;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
         -o-transition: all .4s;
@@ -1158,6 +1158,7 @@
 
     #nav-links.expanded{
         max-height: 300px;
+        margin-top: 10px;
         height: auto;
         -webkit-transition: all .4s;
         -moz-transition: all .4s;
@@ -1193,10 +1194,11 @@
     }
 
     #nav-links-text img, #nav-icons img{
-        margin-top: 5px;
+        margin-top: 5px !important;
         float: left;
         width: 30px;
-        margin-left: 10px;
+        margin-left: 10px !important;
+        margin-right: 10px;
         height: 30px;
     }
 

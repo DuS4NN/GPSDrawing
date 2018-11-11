@@ -452,3 +452,50 @@ td.border-right{
     border-bottom: 1px solid var(--main-border-color);
     background: var(--main-light-color) !important;
 }
+
+.md-content{
+    border: 1px solid var(--main-border-color)!important;
+    background: var(--main-light-color) !important;
+}
+
+.md-modal button.md-close, .md-modal button.md-modal-delete{
+    border: none !important;
+}
+
+.md-modal button{
+    border-bottom: 1px solid var(--main-border-color) !important;
+    color: white;
+    background: var(--main-light-color) !important;
+}
+
+.md-modal select{
+    background: var(--main-light-color)!important;
+    border: 1px solid var(--main-border-color);
+    color:white;
+}
+
+.md-modal #report-title{
+    color:white;
+}
+.md-modal #report-desc{
+    color: var(--main-gray-color);
+}
+
+.md-modal button.md-modal-really-yes{
+    border-bottom: none !important;
+    color: red !important;
+}
+
+.md-modal button.md-modal-really-no{
+    border: none !important;
+}
+
+.md-modal .md-modal-really{
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+.md-modal textarea, .md-modal input{
+    color: white !important;
+    background: var(--main-light-color) !important;
+    border: 1px solid var(--main-border-color) !important;
+}

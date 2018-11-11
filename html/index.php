@@ -64,7 +64,7 @@
 
                     <p class="forgot"><a href="forgot"><?php echo $lang['forgot_password'] ?></a></p>
 
-                    <button class="button button-block" id="welcome-button-login" name="login" /><?php echo $lang['log_in'] ?></button>
+                    <button class="button button-block" id="welcome-button-login" name="login" ><?php echo $lang['log_in'] ?></button>
 
                 </form>
 
@@ -198,12 +198,6 @@
             $("#timezone").load(localStorage.getItem("web")+"/php/timezone.php", {date: date});
         });
 
-    </script>
-    <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
-    <script>
-        (() => {
-            new MeteorEmoji()
-        })()
     </script>
     </body>
 

@@ -41,7 +41,7 @@ $(document).on('keypress','.add-comment', function (e) {
     if(e.keyCode===13){
         let id = e.target.id.substring(12,e.target.id.length);
         let text = document.getElementById("add-comment-"+id).value;
-        if(text.length<1)return;
+        if(text.length<1 ||!text.replace(/\s/g, '').length)return;
         if(document.getElementById("add-comment-"+id).getAttribute("edit")==="0"){
 
             $.ajax({
@@ -65,7 +65,7 @@ $(document).on('keypress','.add-comment', function (e) {
         }else{
             let idCom = document.getElementById("add-comment-"+id).getAttribute("edit");
             let text = document.getElementById("add-comment-"+id).value;
-            if(text.length<1)return;
+            if(text.length<1 ||!text.replace(/\s/g, '').length)return;
 
             $.ajax({
                 type:"POST",

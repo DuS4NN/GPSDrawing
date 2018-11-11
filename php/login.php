@@ -9,7 +9,7 @@
     $password = sha1($_POST['password']);
     $email = $_POST['email'];
 
-    $stmt = $db->prepare("SELECT COUNT(*) AS count, verify, users.id, nick_name, users_options.color, users_options.show_icons, 
+    $stmt = $db->prepare("SELECT COUNT(*) AS count, verify, users.id, profile_picture, nick_name, users_options.color, users_options.show_icons,  
                                 users_options.color_of_collab, users_options.lang, users_options.night_mode,users_options.map_theme, users_options.color_icon 
                                 FROM users 
                                 INNER JOIN users_options ON users_options.id_user = users.id 
@@ -22,6 +22,7 @@
         if($row['count']>0){
             if($row['verify']==1){
                 $_SESSION['email'] = $email;
+                $_SESSION['p_picture'] = $row['profile_picture'];
                 $_SESSION['verify'] = $row['verify'];
                 $_SESSION['nickname'] = $row['nick_name'];
                 $_SESSION['id'] = $row['id'];

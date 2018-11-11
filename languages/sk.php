@@ -2,6 +2,7 @@
     $lang = array(
         "title_index" => "GPS Kreslenie",
         "email_address" => "Emailová Adresa",
+        "about" => "O nás",
         "log_in" => "Prihlásiť sa",
         "sign_up" => "Registrovať sa",
         "password" => "Heslo",
@@ -36,7 +37,7 @@
         "load_more" => "Načítať dalšie",
         "collaboration" => "Spolupráca s: ",
         "hide_comment" => "Skryť komentár",
-        "delete_comment" => "Zmazať komentár",
+        "delete_comment" => "Odstrániť komentár",
         "edit_comment" => "Upraviť komentár",
         "block_user" => "Zablokovať použivateľa ",
         "edit_comment_desc" => "Upraviť tento komentár",

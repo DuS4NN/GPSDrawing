@@ -2,6 +2,7 @@
     $lang = array(
         "title_index" => "GPS Drawing",
         "email_address" => "Email Address",
+        "about" => "About",
         "log_in" => "Log In",
         "sign_up" => "Sign Up",
         "password" => "Password",
