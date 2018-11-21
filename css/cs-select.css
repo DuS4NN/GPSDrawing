@@ -1,8 +1,14 @@
 /* Default custom select styles */
 @media screen and (max-width: 30em) {
 	div.cs-select {
-		max-width: 120px;
+		width: 90px !important;
 	}
+
+	.cs-options li{
+		font-size: 10px !important;
+		margin-left: -10px !important;
+	}
+
 }
 
 @media screen and (min-width: 31em) {

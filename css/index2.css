@@ -16,6 +16,13 @@ html{
     margin: 0;
     padding: 0;
     overflow-y: scroll;
+    background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.1),
+                    rgba(0, 0, 0, 0.1)
+            ),
+            url(../img/bg8-dark3.png) no-repeat center center fixed;
+    background-size: cover;
 }
 
 body{
@@ -23,191 +30,1063 @@ body{
     padding: 0;
 }
 
+#main-page-header-links a{
+    color:white;
+    text-decoration: none;
+}
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+
 #container-main-page {
-    width: 100%;
     height: 100%;
-    background:
-            linear-gradient(
-                    rgba(0, 0, 0, 0.3),
-                    rgba(0, 0, 0, 0.3)
-            ),
-            url(../img/bg8.jpg) no-repeat center center fixed;
-    background-size: cover;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
 }
 
-#main-page-header{
-    width: 100%;
-    height: 100px;
+#main-page-header, #main-page-content{
+    z-index: 100;
+    position: relative;
 }
 
-#main-page-header-logo{
-    margin-left: 0.5%;
-    float: left;
-    width: 33%;
-    height: 100%;
+.main-title a{
     color:white;
-    font-size: 25px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-#main-page-header-logo i{
-    line-height: 100px;
-    padding-left: 5%;
+#main-page-login-reg-desc a{
+    text-decoration: none;
+    color: #179b77;
 }
 
-#main-page-header-title{
-    float: left;
-    width: 33%;
-    height: 100%;
-    color:white;
-    font-size: 40px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-family: Text;
-    line-height: 100px;
-    text-align: center;
+@media only screen and (min-width: 1920px) {
+    #register-button{
+        font-size: 20px !important;
+    }
 }
 
-#main-page-header-links{
-    float: left;
-    width: 33%;
-    height: 100%;
-    font-family: Text;
-    text-align: right;
-    font-size: 18px;
-    color:white;
-    line-height: 100px;
-    text-transform: uppercase;
+@media only screen and (min-width: 1200px ){
+
+    #register-form-line{
+        width: 100%;
+    }
+
+    #nickname{
+        margin-left: 10%;
+    }
+
+    #main-page-login-button.reg{
+        margin-left: 5%;
+    }
+
+
+    #register-form-a,#register-form-b{
+        width: 50%;
+        margin-top: 10px;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+    #register-form-a.last, #register-form-b.last{
+        margin-bottom: 40px;
+    }
+
+    #register-form-line input{
+        margin-top: 7px;
+        width: 80%;
+        margin-right: 10%;
+        margin-left: 10%;
+        border: 1px solid #dddddd;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 15px;
+        font-family: Text2;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    #register-form-line input:focus{
+        border: 1px solid #1ab188;
+    }
+
+
+    #main-page-header{
+        width: 100%;
+        height: 100px;
+    }
+
+    #main-page-header-logo{
+        margin-left: 0.5%;
+        float: left;
+        width: 33%;
+        height: 100%;
+        color:white;
+        font-size: 25px;
+    }
+
+    #main-page-header-logo i{
+        line-height: 100px;
+        padding-left: 5%;
+    }
+
+    #main-page-header-title{
+        float: left;
+        width: 33%;
+        height: 100%;
+        color:white;
+        font-size: 40px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: Text;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .main-title a{
+        color:white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #main-page-header-links{
+        float: left;
+        width: 33%;
+        height: 100%;
+        font-family: Text;
+        text-align: right;
+        font-size: 18px;
+        color:white;
+        line-height: 100px;
+        text-transform: uppercase;
+    }
+
+    .info-button{
+        cursor: pointer;
+        margin-left: 20px;
+    }
+
+    .info-button.about{
+        margin-right: 5%;
+    }
+
+    #main-page-content{
+        margin-bottom: 5%;
+        width: 60%;
+        height: 530px;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    #main-page-login.form{
+        background: rgba(255,255,255,0.9) !important;
+        float: left;
+        width: 70%;
+        height: 100%;
+        background: white;
+    }
+
+    #main-page-login.side{
+        float: left;
+        width: 30%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
+
+    #main-page-login-reg-title{
+        text-transform: uppercase;
+        width: 90%;
+        padding-top: 15%;
+        padding-left: 10%;
+        padding-right: 0%;
+        text-align: left;
+        font-size: 30px;
+        color:white;
+        font-family: Text;
+    }
+
+    #main-page-login-reg-desc{
+        width: 80%;
+        padding-top: 15%;
+        padding-left: 10%;
+        padding-right: 5%;
+        text-align: left;
+        font-size: 14px;
+        color:white;
+        font-family: Text2;
+    }
+
+    #main-page-login-reg-button{
+        width: 80%;
+        margin-top: 15%;
+        margin-bottom: 15%;
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+
+    #lang{
+        margin-left: 5%;
+        margin-top: 21px;
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .cs-select{
+        font-size: 18px !important;
+        color:white !important;
+        font-family: Text;
+    }
+
+    #register-button{
+        cursor: pointer;
+        line-height: 60px;
+        text-transform: uppercase;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-left: 1px solid white;
+        float: left;
+        width: calc(80% - 1px);
+        height: 60px;
+        max-font-size: 15px;
+        font-size: 1.10vw;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+
+    }
+
+    #register-button-arrow{
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        float: left;
+        width: calc(20% - 1px);
+        height: 60px;
+        font-size: 18px;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+    }
+
+    #register-button-arrow i{
+        line-height: 60px;
+    }
+
+    #main-page-login-title{
+        margin-top: 7%;
+        letter-spacing: 2px;
+        margin-left: 10%;
+        font-family: Text;
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+
+    #main-page-login-form{
+        width: 90%;
+        margin-top: 30px;
+        margin-left: 10%;
+    }
+
+    #email,#password,#nickname{
+        font-weight: bold;
+        font-family: Text2;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+    input:invalid{
+        box-shadow: none;
+    }
+
+    #main-page-login-form input{
+        margin-top: 7px;
+        width: 70%;
+        border: 1px solid #dddddd;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 15px;
+        font-family: Text2;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    #main-page-login-form input:focus{
+        border: 1px solid #1ab188;
+    }
+
+
+
+    #register-button.login-button-form{
+        background: #179b77;
+        border: none;
+    }
+
+    #register-button-arrow.login-button-form{
+        background: #179b77;
+        border: none;
+    }
+
+    #main-page-login-button{
+        width: 35%;
+        margin-top: 60px;
+        margin-left: 10%;
+    }
+
+    .round, .round2 {
+        position: absolute;
+        width: 30px;
+        height: 60px;
+    }
+
+    #cta, #cta2{
+        width:100%; cursor: pointer; position: absolute;
+    }
+
+    #cta .arrow, #cta2 .arrow2{left: 5px;}
+    .arrow, .arrow2 {position: absolute; bottom: 0;  margin-left:0; width: 14px; height: 14px; background-size: contain; top:23px;}
+    .segunda, .segunda2{margin-left: 8px;}
+    .next, .next2 {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+    }
+
+    @keyframes bounceAlpha {
+        0% {opacity: 1; transform: translateX(0px) scale(1);}
+        25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+        26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+        55% {opacity: 1; transform: translateX(0px) scale(1);}
+    }
+
+    .bounceAlpha, .bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    .arrow.primera.bounceAlpha, .arrow2.primera2.bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-login-button:hover .arrow, #main-page-login-reg-button:hover .arrow2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+    #main-page-login-button:hover .arrow.primera, #main-page-login-reg-button:hover .arrow2.primera2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-forgot a{
+        color:black;
+        text-decoration: none;
+    }
+
+    #main-page-forgot{
+        color:black;
+        font-size: 13px;
+        margin-top: 5px;
+        font-weight: bold;
+        font-family: Text2;
+        margin-left: 10%;
+    }
 }
 
-.info-button{
-    margin-left: 20px;
+@media (max-width:1199px) and (min-width:768px){
+    #main-page-header{
+        width: 100%;
+        height: 100px;
+    }
+
+    #main-page-header-logo{
+        float: left;
+        width: 30%;
+        height: 100%;
+        color:white;
+        font-size: 20px !important;
+    }
+
+    #main-page-header-logo i{
+        line-height: 100px;
+        padding-left: 5%;
+    }
+
+    #main-page-header-title{
+        float: left;
+        width: 40%;
+        height: 100%;
+        color:white;
+        font-size: 30px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: Text;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    #main-page-header-links{
+        float: left;
+        width: 30%;
+        height: 100%;
+        font-family: Text;
+        text-align: right;
+        font-size: 12px;
+        color:white;
+        line-height: 100px;
+        text-transform: uppercase;
+    }
+
+    .info-button{
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+    .info-button.about{
+        margin-right: 5% !important;
+    }
+
+    #main-page-content{
+        margin-bottom: 5%;
+        width: 80%;
+        height: 480px;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    #main-page-login.form{
+        background: rgba(255,255,255,0.9) !important;
+        float: left;
+        width: 65%;
+        height: 100%;
+        background: white;
+    }
+
+    #main-page-login.side{
+        float: left;
+        width: 35%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
+
+    #main-page-login-reg-title{
+        text-transform: uppercase;
+        width: 90%;
+        padding-top: 15%;
+        padding-left: 10%;
+        padding-right: 0;
+        text-align: left;
+        font-size: 25px;
+        color:white;
+        font-family: Text;
+    }
+
+    #main-page-login-reg-desc{
+        width: 80%;
+        padding-top: 15%;
+        padding-left: 10%;
+        padding-right: 5%;
+        text-align: left;
+        font-size: 14px;
+        color:white;
+        font-family: Text2;
+    }
+
+    #main-page-login-reg-button{
+        width: 76%;
+        margin-top: 15%;
+        margin-bottom: 15%;
+        margin-right: 12%;
+        margin-left: 12%;
+    }
+
+    #lang{
+        margin-left: 5%;
+        margin-top: 26px;
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .cs-placeholder{
+        color:white !important;
+    }
+
+    .cs-select{
+        font-size: 15px !important;
+        color:black !important;
+        font-family: Text;
+    }
+
+    #register-button{
+        cursor: pointer;
+        line-height: 60px;
+        text-transform: uppercase;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-left: 1px solid white;
+        float: left;
+        width: calc(80% - 1px);
+        height: 60px;
+        max-font-size: 15px;
+        font-size: 14px;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+    }
+
+    #register-button-arrow{
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        float: left;
+        width: calc(20% - 1px);
+        height: 60px;
+        font-size: 18px;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+    }
+
+    #register-button-arrow i{
+        line-height: 60px;
+    }
+
+    #main-page-login-title{
+        margin-top: 9%;
+        letter-spacing: 2px;
+        margin-left: 10%;
+        font-family: Text;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+
+    #main-page-login-form{
+        width: 90%;
+        margin-top: 30px;
+        margin-left: 10%;
+    }
+
+    #email,#password{
+        font-weight: bold;
+        font-family: Text2;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    input:invalid{
+        box-shadow: none;
+    }
+
+    #main-page-login-form input{
+        margin-top: 7px;
+        width: 70%;
+        border: 1px solid #dddddd;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 13px;
+        font-family: Text2;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    #main-page-login-form input:focus{
+        border: 1px solid #1ab188;
+    }
+
+    #main-page-login-button{
+        width: 40%;
+        margin-top: 60px;
+        margin-left: 10%;
+    }
+
+    #register-button.login-button-form{
+        background: #179b77;
+        width: 65%;
+        border: none;
+    }
+
+    #register-button-arrow.login-button-form{
+        background: #179b77;
+        width: 25%;
+        border: none;
+    }
+
+
+    .round, .round2 {
+        position: absolute;
+        width: 30px;
+        height: 60px;
+    }
+
+    #cta, #cta2{
+        width:100%; cursor: pointer; position: absolute;
+    }
+
+    #cta .arrow, #cta2 .arrow2{left: 5px;}
+    .arrow, .arrow2 {position: absolute; bottom: 0;  margin-left:0; width: 12px; height: 12px; background-size: contain; top:24px;}
+    .segunda, .segunda2{margin-left: 8px;}
+    .next, .next2 {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+    }
+
+    @keyframes bounceAlpha {
+        0% {opacity: 1; transform: translateX(0px) scale(1);}
+        25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+        26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+        55% {opacity: 1; transform: translateX(0px) scale(1);}
+    }
+
+    .bounceAlpha, .bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    .arrow.primera.bounceAlpha, .arrow2.primera2.bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-login-button:hover .arrow, #main-page-login-reg-button:hover .arrow2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+    #main-page-login-button:hover .arrow.primera, #main-page-login-reg-button:hover .arrow2.primera2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-forgot a{
+        color:black;
+        text-decoration: none;
+    }
+
+    #main-page-forgot{
+        color:black;
+        font-size: 12px;
+        margin-top: 5px;
+        font-weight: bold;
+        font-family: Text2;
+        margin-left: 10%;
+    }
 }
 
-.info-button.lang{
-    padding-right: 5%;
+@media  only screen and (max-width: 700px){
+    #main-page-header{
+        width: 100%;
+        height: 50px;
+
+    }
+
+    #main-page-header-logo{
+        float: left;
+        width: 35% !important;
+        height: 100%;
+        color:white;
+    }
+
+    #main-page-header-logo i{
+        line-height: 50px;
+        padding-left: 5%;
+    }
+
+    #main-page-header-title{
+        float: left;
+        width: 30% !important;
+        height: 100%;
+        color:white;
+        font-size: 14px !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase;
+        font-family: Text;
+        line-height: 17px !important;
+        padding-top: 5px;
+        text-align: center;
+    }
+
+    .cs-placeholder{
+        color:white !important;
+        font-size: 10px !important;
+    }
+
+    #lang{
+        margin-left: 5%;
+        margin-top: 26px;
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+
+    .main-title{
+        cursor: pointer;
+    }
+
+    .cs-select{
+        font-size: 12px !important;
+        color:black !important;
+        font-family: Text;
+    }
+
+    #main-page-header-links{
+        float: left;
+        width: 35% !important;
+        height: 100%;
+        margin-top: 3px;
+        font-family: Text;
+        text-align: right !important;
+        font-size: 11px !important;
+        color:white;
+        line-height: 15px !important;
+        text-transform: uppercase;
+    }
+
+    .info-button{
+        width: 90% !important;
+        margin-right: 10% !important;
+        float: right;
+    }
+
 }
 
-#main-page-content{
-    width: 60%;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 55%;
-}
+@media  only screen and (max-width: 767px){
+    #main-page-header{
+        width: 100%;
+        height: 50px;
+    }
 
-#main-page-login.form{
-    background: rgba(255,255,255,0.9) !important;
-    float: left;
-    width: 70%;
-    height: 100%;
-    background: white;
-}
+    #main-page-header-logo{
+        float: left;
+        width: 30%;
+        height: 100%;
+        color:white;
+    }
 
-#main-page-login.side{
-    float: left;
-    width: 30%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-}
+    #main-page-header-logo i{
+        line-height: 50px;
+        padding-left: 5%;
+    }
 
-#main-page-login-reg-title{
-    width: 80%;
-    padding-top: 15%;
-    padding-left: 10%;
-    padding-right: 10%;
-    text-align: left;
-    font-size: 30px;
-    color:white;
-    font-family: Text;
-}
+    #main-page-header-title{
+        float: left;
+        width: 40%;
+        height: 100%;
+        color:white;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: Text;
+        line-height: 50px;
+        text-align: center;
+    }
 
-#main-page-login-reg-desc{
-    width: 80%;
-    padding-top: 15%;
-    padding-left: 10%;
-    padding-right: 10%;
-    text-align: left;
-    font-size: 15px;
-    color:white;
-    font-family: Text2;
-}
+    .main-title{
+        cursor: pointer;
+    }
 
-#main-page-login-reg-button{
-    background: red;
-    width: 80%;
-    margin-top: 15%;
-    margin-bottom: 15%;
-    margin-right: 10%;
-    margin-left: 10%;
-}
+    #main-page-header-links{
+        float: left;
+        width: 30%;
+        height: 100%;
+        font-family: Text;
+        text-align: left;
+        font-size: 11px;
+        padding-left: 5px;
+        color:white;
+        line-height: 50px;
+        text-transform: uppercase;
+    }
 
-#register-button{
-    line-height: 60px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    border-left: 1px solid white;
-    float: left;
-    width: calc(80% - 1px);
-    height: 60px;
-    font-size: 18px;
-    text-align: center;
-    font-family: Text;
-    color: white;
-    background: transparent;
+    .info-button{
+        margin-left: 5px;
+    }
 
-}
+    #main-page-content{
+        margin-bottom: 5%;
+        width: 90%;
+        height: 340px;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-#register-button-arrow{
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-    float: left;
-    width: calc(20% - 1px);
-    height: 60px;
-    font-size: 18px;
-    text-align: center;
-    font-family: Text;
-    color: white;
-    background: transparent;
-}
+    #main-page-login.form{
+        background: rgba(255,255,255,0.9) !important;
+        float: left;
+        width: 100%;
+        height: 100%;
+        background: white;
+    }
 
-#register-button-arrow i{
-    line-height: 60px;
-}
+    #main-page-login.side{
+        float: left;
+        height: 250px;
+        width: 100%;
+        background: rgba(0,0,0,0.5);
+    }
 
-#main-page-login-title{
-    margin-top: 5%;
-    letter-spacing: 2px;
-    margin-left: 10%;
-    font-family: Text;
-    font-size: 25px;
-    text-transform: uppercase;
-}
+    #main-page-login-reg-title{
+        text-transform: uppercase;
+        width: 90%;
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 0;
+        text-align: left;
+        font-size: 18px;
+        color:white;
+        font-family: Text;
+    }
 
-#main-page-login-form{
-    width: 90%;
-    margin-top: 30px;
-    margin-left: 10%;
-}
+    #main-page-login-reg-desc{
+        width: 100%;
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        text-align: left;
+        font-size: 11px;
+        color:white;
+        font-family: Text2;
+    }
 
-#nickname,#password{
-    font-weight: bold;
-    font-family: Text2;
-    font-size: 15px;
-    text-transform: uppercase;
-}
+    #main-page-login-reg-button{
+        width: 70%;
+        margin-top: 5%;
+        margin-bottom: 15%;
+        margin-right: 15%;
+        margin-left: 15%;
+    }
 
-#main-page-login-form input{
-    margin-top: 7px;
-    width: 70%;
-    padding-left: 15px;
-    font-size: 15px;
-    font-family: Text2;
-    font-weight: bold;
-    height: 50px;
-}
+    #lang{
+        margin-left: 5%;
+        margin-top: 7px;
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
 
-#main-page-login-form input:focus{
-    border: 1px solid #1ab188;
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .cs-placeholder{
+        color:white !important;
+    }
+
+    .cs-select{
+        font-size: 12px !important;
+        color:black !important;
+        font-family: Text;
+    }
+
+    #register-button{
+        cursor: pointer;
+        line-height: 40px;
+        text-transform: uppercase;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-left: 1px solid white;
+        float: left;
+        width: calc(80% - 1px);
+        height: 40px;
+        max-font-size: 15px;
+        font-size: 12px;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+
+    }
+
+    #register-button-arrow{
+        cursor: pointer;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        float: left;
+        width: calc(20% - 1px);
+        height: 40px;
+        font-size: 18px;
+        text-align: center;
+        font-family: Text;
+        color: white;
+        background: transparent;
+    }
+
+    #register-button-arrow i{
+        line-height: 40px;
+    }
+
+    #main-page-login-title{
+        margin-top: 5%;
+        letter-spacing: 2px;
+        margin-left: 5%;
+        font-family: Text;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    #main-page-login-form{
+        width: 90%;
+        margin-top: 5%;
+        margin-left: 7%;
+    }
+
+    #email,#password{
+        font-weight: bold;
+        font-family: Text2;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    input:invalid{
+        box-shadow: none;
+    }
+
+    #main-page-login-form input{
+        margin-top: 5px;
+        width: 90%;
+        border: 1px solid #dddddd;
+        padding-right: 5px;
+        padding-left: 5px;
+        font-size: 12px;
+        font-family: Text2;
+        font-weight: bold;
+        height: 30px;
+    }
+
+    #main-page-login-form input:focus{
+        border: 1px solid #1ab188;
+    }
+
+    #main-page-login-button{
+        margin-right: 40%;
+        margin-top: 7%;
+        margin-left: 7%;
+    }
+
+    #register-button.login-button-form{
+        background: #179b77;
+        width: 65%;
+        border: none;
+    }
+
+    #register-button-arrow.login-button-form{
+        background: #179b77;
+        width: 25%;
+        border: none;
+    }
+
+
+    .round, .round2 {
+        position: absolute;
+        width: 30px;
+        height: 60px;
+    }
+
+    #cta, #cta2{
+        width:100%; cursor: pointer; position: absolute;
+    }
+
+    #cta .arrow, #cta2 .arrow2{left: 5px;}
+    .arrow, .arrow2 {position: absolute; bottom: 0;  margin-left:0; width: 10px; height: 10px; background-size: contain; top:16px;}
+    .segunda, .segunda2{margin-left: 8px;}
+    .next, .next2 {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+    }
+
+    @keyframes bounceAlpha {
+        0% {opacity: 1; transform: translateX(0px) scale(1);}
+        25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+        26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+        55% {opacity: 1; transform: translateX(0px) scale(1);}
+    }
+
+    .bounceAlpha, .bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    .arrow.primera.bounceAlpha, .arrow2.primera2.bounceAlpha2 {
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-login-button:hover .arrow, #main-page-login-reg-button:hover .arrow2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+    #main-page-login-button:hover .arrow.primera, #main-page-login-reg-button:hover .arrow2.primera2{
+        animation-name: bounceAlpha;
+        animation-duration:1.4s;
+        animation-delay:0.2s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+    }
+
+    #main-page-forgot a{
+        color:black;
+        text-decoration: none;
+    }
+
+    #main-page-forgot{
+        color:black;
+        font-size: 11px;
+        margin-top: 5px;
+        font-weight: bold;
+        font-family: Text2;
+        margin-left: 10%;
+    }
 }

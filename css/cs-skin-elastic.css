@@ -12,7 +12,7 @@ div.cs-skin-elastic {
 }
 
 .cs-skin-elastic > span {
-	background-color: #fff;
+	background: rgba(255,255,255,0.2);
 	z-index: 100;
 }
 
@@ -29,6 +29,28 @@ div.cs-skin-elastic {
 	pointer-events: auto;
 }
 
+@media (max-width:1199px) and (min-width:768px){
+	.cs-skin-elastic .cs-options > ul::before{
+		background: rgba(255,255,255,0.9) !important;
+	}
+	.cs-skin-elastic .cs-options span:hover,
+	.cs-skin-elastic .cs-options li.cs-focus span,
+	.cs-skin-elastic .cs-options .cs-selected span {
+		color: black !important;
+	}
+}
+
+@media  only screen and (max-width: 767px){
+	.cs-skin-elastic .cs-options > ul::before{
+		background: rgba(255,255,255,0.9) !important;
+	}
+	.cs-skin-elastic .cs-options span:hover,
+	.cs-skin-elastic .cs-options li.cs-focus span,
+	.cs-skin-elastic .cs-options .cs-selected span {
+		color: black !important;
+	}
+}
+
 .cs-skin-elastic .cs-options > ul::before {
 	content: '';
 	position: absolute;
@@ -38,7 +60,7 @@ div.cs-skin-elastic {
 	top: 0;
 	-webkit-transform: scale3d(1,0,1);
 	transform: scale3d(1,0,1);
-	background: #fff;
+	background: rgba(255,255,255,0.2);
 	-webkit-transform-origin: 50% 0%;
 	transform-origin: 50% 0%;
 	-webkit-transition: -webkit-transform 0.3s;
@@ -104,12 +126,6 @@ div.cs-skin-elastic {
 	padding: 0.8em 1em 0.8em 4em;
 }
 
-.cs-skin-elastic .cs-options span:hover,
-.cs-skin-elastic .cs-options li.cs-focus span,
-.cs-skin-elastic .cs-options .cs-selected span {
-	color: #1e4c4a;
-}
-
 .cs-skin-elastic .cs-options .cs-selected span::after {
 	content: '';
 }
@@ -122,7 +138,11 @@ div.cs-skin-elastic {
 	background-image: url(../img/sk.png);
 }
 
-
+.cs-skin-elastic .cs-options span:hover,
+.cs-skin-elastic .cs-options li.cs-focus span,
+.cs-skin-elastic .cs-options .cs-selected span {
+	color: #e9fcf7;
+}
 
 @-webkit-keyframes expand {
 	0% { -webkit-transform: scale3d(1,0,1); }

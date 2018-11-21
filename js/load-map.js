@@ -579,7 +579,7 @@ function initMap2(id) {
 
     map.addListener('click', function() {
         $('.map-item-'+selectedMap).removeClass('selected');
-        let id = map['__gm']['$']['id'].replace('settings-map','')
+        let id = map['__gm']['$']['id'].replace('settings-map','');
         $('.map-item-'+id).addClass('selected');
         setTimeout(function () {
             $.ajax({
