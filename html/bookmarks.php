@@ -112,7 +112,7 @@
                 $.ajax({
                     type:"POST",
                     url: "<?php echo $web; ?>/php/load_posts.php",
-                    data:{action:'bookmarks_post',limit:limit},
+                    data:{action:'bookmarks_post',limit:limit, end_limit:5},
                     success:function(response){
                         $("#body").append(response);
                         new MeteorEmoji();
@@ -121,7 +121,7 @@
                         }
                     }
                 });
-                limit++;
+                limit=limit+5;
                 click=false;
                 setTimeout(function () {
                     click=true;

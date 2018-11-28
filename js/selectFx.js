@@ -57,7 +57,7 @@
 		stickyPlaceholder : true,
 		// callback when changing the value
 		onChange : function( val ) { return false; }
-	}
+	};
 
 	/**
 	 * init function
@@ -340,7 +340,7 @@
 	 * removes the focus class from the option
 	 */
 	SelectFx.prototype._removeFocus = function(opt) {
-		var focusEl = this.selEl.querySelector( 'li.cs-focus' )
+		var focusEl = this.selEl.querySelector( 'li.cs-focus' );
 		if( focusEl ) {
 			classie.remove( focusEl, 'cs-focus' );
 		}

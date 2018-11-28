@@ -108,32 +108,18 @@ body{
     }
 
     #main-page-content-form{
-        width: calc(100% - 300px);
-        height: 100%;
-        float: left;
-        background: rgba(255,255,255,0.9);
-    }
-
-    #main-page-content-form.resetp{
         width: 100%;
         height: 100%;
         float: left;
         background: rgba(255,255,255,0.9);
     }
 
-    #main-page-content-info{
-        width: 300px;
-        height: 100%;
-        float: right;
-        background: rgba(0,0,0,0.6);
-    }
-
     /* --- MAIN CONTAINER - FORM --- */
     #main-page-content-form-container{
-        width: 80%;
+        margin-right: 50px;
         height: 80%;
         margin-left: 50px;
-        margin-top: 45px;
+        margin-top: 35px;
     }
 
     #main-page-content-form-container-title{
@@ -150,13 +136,13 @@ body{
 
     #formular-line{
         width: calc(100% - 10px);
-        margin-top: 35px;
+        margin-top: 25px;
     }
 
-    #formular-a-label,#formular-b-label{
-        font-size: 15px;
+    #formular-a-label{
+        font-size: 14px;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         font-family: Text2;
         font-weight: bold;
     }
@@ -175,27 +161,14 @@ body{
         border: 1px solid #1ab188;
     }
 
-    #forgot-pass{
-        margin-top: 10px;
-    }
-
-    #forgot-pass a{
-        font-weight: bold;
-        font-size: 13px;
-        font-family: Text2;
-        color:black;
-        text-decoration: none;
-    }
-
     #main-page-content-form-container-button{
         margin-left: 10px;
-        margin-top: 40px;
     }
 
     #main-page-content-form-container-button button{
         height: 60px;
         width: 200px;
-        font-size: 18px;
+        font-size: 17px;
         font-family: Text;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -226,66 +199,30 @@ body{
         background-size: contain;
         top:4px;
     }
-    .arrow2{
-        position: absolute;
-        bottom: 0;
-        margin-left:0;
-        width: 14px;
-        height: 14px;
-        background-size: contain;
-        top:3px;
-    }
-
-    .round, .round2 {
+    .round {
         position: absolute;
         width: 24px;
         height: 24px;
     }
 
-    #main-page-content-info-text{
-
-        margin-top: 45px;
-        margin-left: 45px;
-        height: 80%;
-        width: 70%;
-
+    #formular-line-a{
+        margin-bottom: 15px;
+        padding-right: 15px;
+        width: 50%;
+        float: left;
     }
 
-    #main-page-content-info-text-title{
-        font-family: Text;
-        text-transform: uppercase;
-        font-size: 25px;
-        color:white;
-        letter-spacing: 1px;
+    #formular-line-b{
+        padding-left: 15px;
+        width: 50%;
+        float: left;
+        margin-bottom: 15px;
     }
 
-    #main-page-content-info-text-text{
-        font-family: Text2;
-        font-weight: bold;
-        margin-top: 45px;
-        overflow-wrap: break-spaces;
-        padding-left: 3px;
-        font-size: 15px;
-        color: white;
+    #formular-line-b.last, #formular-line-a.last{
+        margin-bottom: 35px !important;
     }
 
-    #main-page-content-info-button{
-        margin-top: 45px;
-    }
-
-    #main-page-content-info-button button{
-        height: 60px;
-        width: 100%;
-        font-size: 16px;
-        font-family: Text;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        background: transparent;
-        cursor: pointer;
-        border: 1px solid white;
-        color:white;
-
-    }
 }
 
 @media (min-width:768px) and (max-width:1199px){
@@ -372,32 +309,18 @@ body{
     }
 
     #main-page-content-form{
-        width: calc(100% - 250px);
-        height: 100%;
-        float: left;
-        background: rgba(255,255,255,0.9);
-    }
-
-    #main-page-content-form.resetp{
         width: 100%;
         height: 100%;
         float: left;
         background: rgba(255,255,255,0.9);
     }
 
-    #main-page-content-info{
-        width: 250px;
-        height: 100%;
-        float: right;
-        background: rgba(0,0,0,0.6);
-    }
-
     /* --- MAIN CONTAINER - FORM --- */
     #main-page-content-form-container{
-        width: 80%;
         height: 80%;
         margin-left: 50px;
-        margin-top: 45px;
+        margin-right: 50px;
+        margin-top: 35px;
     }
 
     #main-page-content-form-container-title{
@@ -414,13 +337,13 @@ body{
 
     #formular-line{
         width: calc(100% - 10px);
-        margin-top: 35px;
+        margin-top: 25px;
     }
 
     #formular-a-label,#formular-b-label{
         font-size: 14px;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         font-family: Text2;
         font-weight: bold;
     }
@@ -439,21 +362,9 @@ body{
         border: 1px solid #1ab188;
     }
 
-    #forgot-pass{
-        margin-top: 10px;
-    }
-
-    #forgot-pass a{
-        font-weight: bold;
-        font-size: 12px;
-        font-family: Text2;
-        color:black;
-        text-decoration: none;
-    }
-
     #main-page-content-form-container-button{
         margin-left: 10px;
-        margin-top: 40px;
+        margin-top: 50px;
     }
 
     #main-page-content-form-container-button button{
@@ -490,64 +401,29 @@ body{
         background-size: contain;
         top:1px;
     }
-    .arrow2{
-        position: absolute;
-        bottom: 0;
-        margin-left:0;
-        width: 14px;
-        height: 14px;
-        background-size: contain;
-        top:0px;
-    }
 
-    .round, .round2 {
+    .round {
         position: absolute;
         width: 24px;
         height: 24px;
     }
 
-    #main-page-content-info-text{
-        margin-top: 45px;
-        margin-left: 45px;
-        height: 80%;
-        width: 70%;
-
+    #formular-line-a{
+        margin-bottom: 15px;
+        padding-right: 15px;
+        width: 50%;
+        float: left;
     }
 
-    #main-page-content-info-text-title{
-        font-family: Text;
-        text-transform: uppercase;
-        font-size: 22px;
-        color:white;
-        letter-spacing: 1px;
+    #formular-line-b{
+        padding-left: 15px;
+        width: 50%;
+        float: left;
+        margin-bottom: 15px;
     }
 
-    #main-page-content-info-text-text{
-        font-family: Text2;
-        font-weight: bold;
-        margin-top: 45px;
-        overflow-wrap: break-spaces;
-        padding-left: 3px;
-        font-size: 14px;
-        color: white;
-    }
-
-    #main-page-content-info-button{
-        margin-top: 45px;
-    }
-
-    #main-page-content-info-button button{
-        height: 60px;
-        width: 95%;
-        font-size: 12px;
-        font-family: Text;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: transparent;
-        cursor: pointer;
-        border: 1px solid white;
-        color:white;
-
+    #formular-line-b.last, #formular-line-a.last{
+        margin-bottom: 35px !important;
     }
 }
 
@@ -624,7 +500,7 @@ body{
     /* --- MAIN CONTAINER --- */
     #main-page-content-container{
         width: 90%;
-        height: 330px;
+        height: 570px;
         max-width: 1200px;
         margin-top: 25px;
         margin-right: auto;
@@ -633,24 +509,24 @@ body{
 
     #main-page-content-form{
         width: 100%;
-        height: 330px;
+        height: 570px;
         float: left;
         background: rgba(255,255,255,0.9);
     }
 
-    #main-page-content-info{
+    #main-page-content-form.resetp{
         width: 100%;
-        height: 280px;
-        float: right;
-        background: rgba(0,0,0,0.6);
+        height: 250px;
+        float: left;
+        background: rgba(255,255,255,0.9);
     }
 
     /* --- MAIN CONTAINER - FORM --- */
     #main-page-content-form-container{
-        width: 80%;
         height: 80%;
         margin-left: 25px;
         margin-top: 20px;
+        margin-right: 25px;
     }
 
     #main-page-content-form-container-title{
@@ -673,7 +549,7 @@ body{
     #formular-a-label,#formular-b-label{
         font-size: 12px;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 7px;
         font-family: Text2;
         font-weight: bold;
     }
@@ -692,21 +568,9 @@ body{
         border: 1px solid #1ab188;
     }
 
-    #forgot-pass{
-        margin-top: 7px;
-    }
-
-    #forgot-pass a{
-        font-weight: bold;
-        font-size: 11px;
-        font-family: Text2;
-        color:black;
-        text-decoration: none;
-    }
-
     #main-page-content-form-container-button{
         margin-left: 10px;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
     #main-page-content-form-container-button button{
@@ -743,66 +607,29 @@ body{
         background-size: contain;
         top:2px;
     }
-    .arrow2{
-        position: absolute;
-        bottom: 0;
-        margin-left:0;
-        width: 10px;
-        height: 10px;
-        background-size: contain;
-        top:2px;
-    }
 
-    .round, .round2 {
+    .round {
         position: absolute;
         width: 10px;
         height: 10px;
     }
 
-    #main-page-content-info-text{
-        margin-top: 20px;
-        margin-left: 25px;
-        height: 80%;
-        width: 80%;
+    #formular-line-a{
+        margin-bottom: 10px;
+        width: 100%;
+        float: left;
     }
 
-    #main-page-content-info-text-title{
-        font-family: Text;
-        text-transform: uppercase;
-        font-size: 18px;
-        color:white;
-        letter-spacing: 1px;
+    #formular-line-b{
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
     }
 
-    #main-page-content-info-text-text{
-        font-family: Text2;
-        font-weight: bold;
-        margin-top: 20px;
-        overflow-wrap: break-spaces;
-        padding-left: 3px;
-        font-size: 12px;
-        color: white;
-    }
-
-    #main-page-content-info-button{
-        margin-top: 25px;
-    }
-
-    #main-page-content-info-button button{
-        height: 40px;
-        width: 180px;
-        font-size: 12px;
-        font-family: Text;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        background: transparent;
-        cursor: pointer;
-        border: 1px solid white;
-        color:white;
-
+    #formular-line-b.last{
+        margin-bottom: 35px !important;
     }
 }
-
 
 
 #button-title{

@@ -1,96 +1,139 @@
 <?php
-    echo require '../config/lang.php';
+session_start();
+require '../config/db.php';
+require '../config/lang.php';
+
+
+if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+    header("location: ../home");
+}
+
 ?>
 
-<HTML>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title><?php echo $lang['title_reset'] ?></title>
-        <link rel="stylesheet" href="<?php echo $web ?>/css/index.css">
-        <link rel="stylesheet" href="<?php echo $web ?>/css/alerts.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $lang['title_index'];?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-select.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-skin-elastic.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/index2.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/alerts-main.css"/>
 
-        <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-select.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-skin-elastic.css" />
-    </head>
 
-    <body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <div id="lang">
-        <select class="cs-select cs-skin-elastic" id="mySelect">
-            <option value="" disabled ><?php echo $lang['select_a_country'] ?></option>
-            <option value="en" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="en")echo "selected"; ?> data-class="flag-sk"><?php echo $lang['en'] ?></option>
-            <option value="sk" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="sk")echo "selected"; ?> data-class="flag-en"><?php echo $lang['sk'] ?></option>
-        </select>
-    </div>
 
-    <div class="form">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="<?php echo $web ?>/js/alerts-main.js"></script>
 
-        <h1><?php echo $lang['choose'] ?></h1>
+</head>
+<body>
+<div id="container-main-page">
 
-        <form action="<?php echo $web ?>/php/reset_password.php" method="post">
+    <div id="main-page-header">
+        <div id="main-page-header-title">
+            <a href="<?php echo $web?>/welcome"><?php echo $lang['title_index']; ?></a>
+        </div>
 
-            <div class="field-wrap">
-                <label id="label-newpassword">
-                    <?php echo $lang['new_password'] ?><span class="req">*</span>
-                </label>
-                <input type="password" minlength=5 required name="newpassword" id="newpassword" autocomplete="off"/>
+        <div id="main-page-header-lang">
+            <div id="lang">
+                <select onchange="changePass()" class="cs-select cs-skin-elastic" id="mySelect">
+                    <option value="" disabled ><?php echo $lang['select_a_country'] ?></option>
+                    <option value="en" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="en")echo "selected"; ?> data-class="flag-sk"><?php echo $lang['en'] ?></option>
+                    <option value="sk" <?php if(isset($_SESSION['lang']) && $_SESSION['lang']=="sk")echo "selected"; ?> data-class="flag-en"><?php echo $lang['sk'] ?></option>
+                </select>
             </div>
+        </div>
+    </div>
 
-            <div class="field-wrap">
-                <label id="label-confirmpassword">
-                    <?php echo $lang['confirm_password'] ?><span class="req">*</span>
-                </label>
-                <input type="password" minlength=5 required name="confirmpassword" id="confirmpassword" autocomplete="off"/>
+    <div id="main-page-content-container">
+
+        <div id="main-page-content-form" class="resetp">
+            <div id="main-page-content-form-container">
+
+                <div id="main-page-content-form-container-title">
+                    <?php echo $lang['reset_your_password']; ?>
+                </div>
+
+                <div id="main-page-content-form-container-formular">
+                    <form action="<?php echo $web?>/php/reset_password.php" method="post">
+                        <div id="formular-line">
+                            <div id="formular-a-label"><?php echo $lang['new_password']; ?></div>
+                            <input name="newpassword" type="password" minlength="5" required placeholder="<?php echo $lang['enter_pass']; ?>"/>
+                        </div>
+
+                        <input name="email" value="<?php echo $_GET['email'];?>" style="display: none">
+                        <input name="hash" value="<?php echo $_GET['hash'];?>" style="display:none;">
+
+                        <div id="formular-line">
+                            <div id="formular-b-label"><?php echo $lang['confirm_password']; ?></div>
+                            <input name="confirmpassword" type="password" minlength="4" required placeholder="<?php echo $lang['enter_pass2']; ?>"/>
+                        </div>
+                </div>
+                <div id="main-page-content-form-container-button">
+                    <button type="submit" class="main-login-button">
+
+                        <div id="button-title">
+                            <?php echo $lang['reset']; ?>
+                        </div>
+
+                        <div id="button-arrow">
+                            <div class="round">
+                                <div id="cta">
+                                    <span class="arrow primera next "></span>
+                                    <span class="arrow segunda next "></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </button>
+                </div>
+                </form>
+
             </div>
-
-            <input type="hidden" name="email" value="<?= $email ?>">
-            <input type="hidden" name="hash" value="<?= $hash ?>">
-
-            <button class="button button-block"/><?php echo $lang['apply'] ?></button>
-
-        </form>
-
+        </div>
     </div>
 
+</div>
 
-    <div id="alerts">
-        <?php require '../php/alerts.php'; ?>
-    </div>
+<div id="timezone">
+</div>
+<div id="alerts">
+    <?php require '../php/alerts.php'; ?>
+</div>
 
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src="<?php echo $web?>/js/index.js"></script>
-    <script>
 
-        if(document.getElementById("newpassword").value !=''){
-            document.getElementById("label-newpassword").className = 'active';
+<script src="<?php echo $web ?>/js/classie.js"></script>
+<script src="<?php echo $web ?>/js/selectFx.js"></script>
+<script>
+
+    $(document).on('click','.main-login-button.reg',function () {
+        window.location.replace('<?php echo $web;?>/register');
+    });
+
+    //Select
+    (function() {
+        [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+            new SelectFx(el);
+        } );
+    })();
+
+    //Close alert
+    let close = document.getElementsByClassName("closebtn");
+    for (let i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            closeAlert('remove');
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+
+
         }
-        if(document.getElementById("confirmpassword").value !=''){
-            document.getElementById("label-confirmpassword").className = 'active';
-        }
+    }
+
+</script>
 
 
-
-        var close = document.getElementsByClassName("closebtn");
-        var i;
-
-        for (i = 0; i < close.length; i++) {
-            close[i].onclick = function(){
-                var div = this.parentElement;
-                div.style.opacity = "0";
-                setTimeout(function(){ div.style.display = "none"; }, 600);
-            }
-        }
-    </script>
-    <script src="<?php echo $web ?>/js/classie.js"></script>
-    <script src="<?php echo $web ?>/js/selectFx.js"></script>
-    <script>
-        (function() {
-            [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
-                new SelectFx(el);
-            } );
-        })();
-    </script>
-
-    </body>
+</body>
 </html>

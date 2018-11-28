@@ -117,9 +117,9 @@
                                 AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
                                 
                                 ORDER BY bookmarks.id DESC
-                                LIMIT ?,1;");
+                                LIMIT ?,?;");
 
-             $stmt->bind_param("ssssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'],$limit);
+             $stmt->bind_param("sssssss",$_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'], $_SESSION['id'],$limit,$_POST['end_limit']);
              $stmt->execute();
              $result = $stmt->get_result();
              $num_rows = mysqli_num_rows($result);
@@ -313,7 +313,110 @@
                  </div>';
              }
              break;
+         case 'searchp':
+
+             if(!isset($_POST['search'])){
+
+                 if(!isset($_POST['place']) || empty($_POST['place'])){
+                     echo '<div id="content-empty">
+                  '. $lang['no_draw'] .' <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+                     return;
+                 }
+
+                 $place = $_POST['place'];
+                 $place1 = '%'.$_POST['place'].'%';
+                 $place2 = '%'.$_POST['place'];
+                 $place3 = $_POST['place'].'%';
+
+                 $query="   SELECT
+                            posts.id, posts.id_user as 'userid', users.profile_picture, posts.place, users.nick_name, users.first_name, posts.description, posts.date,
+                            posts.points, posts.activity, posts.duration, posts.length, posts.collaboration, COUNT(comments.id) as 'countcomments',
+                            CASE WHEN EXISTS (SELECT * FROM likes WHERE likes.id_user = ? AND likes.id_post = posts.id)
+                            THEN '1'
+                            ELSE '0'
+                            END AS 'liked',
+                            CASE WHEN EXISTS (SELECT * FROM bookmarks WHERE bookmarks.id_user = ? AND bookmarks.id_post = posts.id)
+                            THEN '1'
+                            ELSE '0'
+                            END AS 'bookmark',
+                            (SELECT COUNT(*) FROM likes WHERE likes.id_post = posts.id) as 'countlikes'
+                            FROM posts
+                            LEFT JOIN comments ON comments.id_post = posts.id
+                            INNER JOIN users ON users.id = posts.id_user
+                            WHERE LOWER(posts.place) LIKE LOWER(?)
+                            GROUP BY posts.id
+                            HAVING posts.id NOT IN (SELECT blocked_posts.id_post FROM blocked_posts WHERE blocked_posts.id_user = ?)
+                            AND posts.id_user NOT IN (SELECT blocked_users.blocked FROM blocked_users WHERE blocked_users.user_id = ?)
+                            ORDER BY";
+                 $query2=" posts.date DESC";
+
+                 switch ($_POST['filter']){
+                     case 0:
+                         break;
+                     case 1:
+                         $query2= " countlikes DESC";
+                         break;
+                     case 2:
+                         $query2= " posts.date DESC";
+                         break;
+                     case 3:
+                         $query2= " posts.date";
+                         break;
+                 }
+
+                 $stmt = $db->prepare($query.$query2.' LIMIT ?,?');
+
+                 $stmt->bind_param("sssssss", $_SESSION['id'], $_SESSION['id'], $place1 ,$_SESSION['id'],$_SESSION['id'], $limit,$_POST['end_limit']);
+                 $stmt->execute();
+                 $result = $stmt->get_result();
+                 $num_rows = mysqli_num_rows($result);
+                 if ($num_rows == 0) {
+                     if ($limit > 0) {
+                         return;
+                     }
+                     echo '<div id="content-empty">
+                  ' . $lang['empty_all'] . '  <br>  
+                 <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
+                 </div>';
+                 }
+             }else{
+                 echo '
+            <div id="filter-search">
+            
+                <div id="search-text">'.$lang['seach_by_place'].'</div>
+            
+                <div id="search-filter">
+                    <select id="select-filter">
+                        <option style="display:none" value="0" disabled selected>'.$lang['order_by'].'</option>
+                        <option value="1">'.$lang['likes_counts'].'</option>
+                        <option value="2">'.$lang['latest'].'</option>
+                        <option value="3">'.$lang['oldest'].'</option>
+                    </select>
+                </div> 
+             
+                <div id="search-by-place">
+                    <input type="text" placeholder="'.$lang['search'].'" id="searchplace" name="searchbyplace">
+                </div>
+            
+                <div id="search-button">
+                    <button id="test123" type="submit">'.$lang['search'].'</button>
+                </div>
+            
+            </div>
+            
+            <div id="body-a" style="width: 100%; left:0;">
+            </div>
+            
+              ';
+                 $result=null;
+             }
+
+             break;
      }
+
+     if($result==null)return;
 
      while ($row = $result->fetch_assoc()) {
 

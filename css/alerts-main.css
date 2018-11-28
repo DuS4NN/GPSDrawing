@@ -1,5 +1,6 @@
 @media only screen and (max-width: 768px) {
     #alerts-2{
+
         position: fixed;
         bottom: 0;
         width: 80%;

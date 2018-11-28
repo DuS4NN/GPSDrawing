@@ -372,11 +372,16 @@ window.initMap = function (id,point,color,collab,color_icon,icons, theme,travelm
             const elevArray = [];
             const colorArray = [];
 
-            //Google charts nepodporuje HSL format, takže ho prekonvertujeme na RPG a pridáme farby
+            //Google charts nepodporuje HSL format, takže ho prekonvertujeme na RGB a pridáme farby
             for(let i=0;i<users.length;i++){
-                let color = line_colors[i].replace(/[%()hsl]/g,'').split(',');
-                let hslColor = hslToRgb(color[0],color[1]/100,color[2]/100);
-                colorArray.push('rgb('+hslColor[0]+','+hslColor[1]+','+hslColor[2]+')');
+                if(collab === '1'){
+                    let color = line_colors[i].replace(/[%()hsl]/g,'').split(',');
+                    let hslColor = hslToRgb(color[0],color[1]/100,color[2]/100);
+                    colorArray.push('rgb('+hslColor[0]+','+hslColor[1]+','+hslColor[2]+')');
+                }else{
+                    //Ak má užívate¾ vypnuté multi color èiary, len sa pridajú už z vytvoreného po¾a
+                    colorArray.push(line_colors[i]);
+                }
             }
 
             const options = {

@@ -281,7 +281,7 @@
                         $.ajax({
                             type:"POST",
                             url: "<?php echo $web; ?>/php/load_posts.php",
-                            data:{action:old_item,limit:limit,end_limit:1,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
+                            data:{action:old_item,limit:limit,end_limit:5,collab:<?php echo $row_u['collabcount']?>, user:'<?php echo $row_u['id'];?>'},
                             success:function(response){
                                 $("#body").append(response);
                                 new MeteorEmoji();
@@ -290,7 +290,7 @@
                                 }
                             }
                         });
-                        limit++;
+                        limit=limit+5;
                         click=false;
                         setTimeout(function () {
                             click=true;

@@ -1,21 +1,4 @@
-/* Default custom select styles */
-@media screen and (max-width: 30em) {
-	div.cs-select {
-		width: 90px !important;
-	}
 
-	.cs-options li{
-		font-size: 10px !important;
-		margin-left: -10px !important;
-	}
-
-}
-
-@media screen and (min-width: 31em) {
-	div.cs-select {
-		max-width: 220px;
-	}
-}
 
 div.cs-select {
 	display: inline-block;
@@ -71,7 +54,7 @@ div.cs-select:focus {
 
 .cs-select .cs-selected span::after {
 	content: '\2713';
-	margin-left: 1em;
+	margin-left: 0;
 }
 
 .cs-select.cs-active > span::after {
@@ -96,6 +79,7 @@ div.cs-active {
 	visibility: visible;
 }
 
+
 .cs-select ul {
 	list-style: none;
 	margin: 0;
@@ -103,19 +87,4 @@ div.cs-active {
 	width: 100%;
 }
 
-.cs-select ul span {
-	padding: 1em;
-}
 
-.cs-select ul li.cs-focus span {
-	background-color: #ddd;
-}
-
-/* Optgroup and optgroup label */
-.cs-select li.cs-optgroup ul {
-	padding-left: 1em;
-}
-
-.cs-select li.cs-optgroup > span {
-	cursor: default;
-}

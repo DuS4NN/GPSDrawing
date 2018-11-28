@@ -246,7 +246,7 @@
                 $id_collaboration = mysqli_insert_id($db);
 
 
-                $stmt =  $db->prepare("SELECT id_post, posts.id_user, posts.duration, posts.length, users.nick_name,posts.points
+                $stmt =  $db->prepare("SELECT id_post, posts.id_user, posts.place, posts.duration, posts.length, users.nick_name,posts.points
                                                 FROM projects
                                                 INNER JOIN  projects_posts ON projects.id = projects_posts.id_project
                                                 INNER JOIN posts ON posts.id = projects_posts.id_post
@@ -264,11 +264,16 @@
                 date_default_timezone_set('UTC');
                 $date = date("Y-m-d H:i");
 
+                $duration=0;
+                $length=0;
+                $place="";
+
+
                 while ($row = $result->fetch_assoc()){
                     $duration = $duration+$row['duration'];
                     $length =  $length+$row['length'];
                     $points = $points."*".$row['nick_name']."*".$row['points'];
-
+                    $place = $row['place'];
                     $query = $query." (".$id_collaboration.",".$row['id_user']."),";
 
                     if($row['id_user']!=$_SESSION['id']){
@@ -280,8 +285,8 @@
                 $query_notif = substr($query_notif,0,strlen($query_notif)-1);
 
                 //pridat post
-                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`, `duration`, `length`) VALUES (?, ?, ?, ?, ?, ?,?,?)");
-                $stmt->bind_param("ssssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration,$duration,$length);
+                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`, `duration`, `length`, `place`) VALUES (?, ?, ?, ?, ?, ?,?,?,?)");
+                $stmt->bind_param("sssssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration,$duration,$length,$place);
                 $stmt->execute();
                 $id_post = mysqli_insert_id($db);
 
@@ -316,9 +321,7 @@
                 $stmt->bind_param("iiiisi",$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$_SESSION['id'],$date, $_SESSION['id']);
                 $stmt->execute();
 
-
                 $_SESSION['alerts'] = "info:23";
-
             }
             break;
     }

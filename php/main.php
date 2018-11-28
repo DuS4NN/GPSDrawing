@@ -32,12 +32,11 @@
 <body>
 
     <?php require '../html/header.html'; ?>
-
     <table id="main-nav-bar" border="0">
         <tr>
             <td align="bottom">
                 <div id="main-nav-item" class="following selected">
-                    <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '1ab188'; else echo '1ab188'; ?>/following.png"><span id="main-nav-text"><?php echo $lang['following'];?></span>
+                    <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/1ab188/following.png"><span id="main-nav-text"><?php echo $lang['following'];?></span>
                 </div>
             </td>
             <td>
@@ -55,13 +54,23 @@
                     <img id="main-nav-img" src="https://png.icons8.com/ios-glyphs/90/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/activity-feed-2.png"><span id="main-nav-text"><?php echo $lang['new'];?></span>
                 </div>
             </td>
+            <td>
+                <div id="main-nav-item" class="searchp">
+                    <img id="main-nav-img" src="https://img.icons8.com/ios/50/<?php if($_SESSION['night_mode']==1)echo '505050'; else echo 'bbbbbb'; ?>/search-filled.png"><span id="main-nav-text"><?php echo $lang['search'];?></span>
+                </div>
+            </td>
         </tr>
     </table>
+
+    <div id="filter">
+
+    </div>
 
     <div id="body" style="width: 100%; left:0;">
 
 
         <script>
+
             $.ajax({
                 type:"POST",
                 url: "<?php echo $web; ?>/php/load_posts.php",
@@ -82,6 +91,29 @@
         let limit = 5;
         let old_item_class = "following";
         let click = true;
+        let place = "";
+        let filter = 0;
+
+        $(document).on('click','#test123',function () {
+
+           place = $('#searchplace').val();
+           filter = $('#select-filter').find(":selected").val();
+
+            $.ajax({
+                type:"POST",
+                url: "<?php echo $web; ?>/php/load_posts.php",
+                data:{action:old_item_class,place:place,filter:filter,limit:0,end_limit:5},
+                success:function(response){
+                    $("#body-a").html(response);
+                    new MeteorEmoji();
+                    $(window).bind('scroll DOMMouseScroll', onscroll);
+                    if(response.length<1500){
+                        $(window).unbind('scroll DOMMouseScroll');
+                    }
+                }
+            });
+            limit=5;
+        });
 
         $(document).on('click','#main-nav-item',function (e) {
             if(e.target.id === 'main-nav-item')return;
@@ -105,11 +137,11 @@
             $.ajax({
                 type:"POST",
                 url: "<?php echo $web; ?>/php/load_posts.php",
-                data:{action:new_item_class,limit:0,end_limit:5},
+                data:{action:new_item_class,limit:0,search:1,end_limit:5},
                 success:function(response){
                     $("#body").html(response);
                     new MeteorEmoji();
-                    if(response.length<200){
+                    if(response.length<1500){
                         $(window).unbind('scroll DOMMouseScroll');
                     }
                 }
@@ -131,16 +163,22 @@
                     $.ajax({
                         type:"POST",
                         url: "<?php echo $web; ?>/php/load_posts.php",
-                        data:{action:old_item_class,limit:limit,end_limit:1},
+                        data:{action:old_item_class,place:place,filter:filter,limit:limit,end_limit:5},
                         success:function(response){
-                            $("#body").append(response);
+                            console.log(response.length);
+                            if(old_item_class==='searchp'){
+                                $("#body-a").append(response);
+                            }else{
+                                $("#body").append(response);
+                            }
+
                             new MeteorEmoji();
-                            if(response.length<200){
+                            if(response.length<1500){
                                 $(window).unbind('scroll DOMMouseScroll');
                             }
                         }
                     });
-                    limit++;
+                    limit=limit+5;
                     click=false;
                     setTimeout(function () {
                         click=true;

@@ -11,34 +11,35 @@ require '../config/lang.php';
     <title><?php echo $lang['title_index'];?></title>
     <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-select.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/cs-skin-elastic.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/alerts-main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=<?php echo $_SESSION['lang']?>"></script>
-    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/index2.css" />
-    <script src="<?php echo $web; ?>/js/load-theme.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo $web ?>/css/register.css"/>
+    <script src="<?php echo $web ?>/js/alerts-main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+    <script>
+        //Recaptcha
+        var onloadCallback = function() {
+            grecaptcha.execute();
+        };
+
+        function setResponse(response) {
+            document.getElementById('captcha-response').value = response;
+        }
+    </script>
+
 </head>
 <body>
 <div id="container-main-page">
-    <script>
 
-        let styledMapType = get_theme(Math.floor(101+Math.random() * 14));
-        //101 - 114
-
-        let map = new google.maps.Map(document.getElementById('container-main-page'), {
-            mapTypeControlOptions: {
-                mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-                    'styled_map']
-            },
-            disableDefaultUI: true,
-            center: {lat: 40.674, lng: 0},
-            zoom: 3,
-
-        });
-        map.mapTypes.set('styled_map', styledMapType);
-        map.setMapTypeId('styled_map');
-    </script>
     <div id="main-page-header">
-        <div id="main-page-header-logo">
+        <div id="main-page-header-title">
+            <a href="<?php echo $web?>/welcome"><?php echo $lang['title_index']; ?></a>
+        </div>
+
+        <div id="main-page-header-lang">
             <div id="lang">
                 <select onchange="changePass()" class="cs-select cs-skin-elastic" id="mySelect">
                     <option value="" disabled ><?php echo $lang['select_a_country'] ?></option>
@@ -47,123 +48,96 @@ require '../config/lang.php';
                 </select>
             </div>
         </div>
-        <div id="main-page-header-title">
-                <span class="main-title">
-                    <a href="<?php echo $web;?>/welcome"><?php echo $lang['title_index']; ?></a>
-                </span>
+    </div>
 
-        </div>
-        <div id="main-page-header-links">
-                <span class="info-button">
-                    <a href="<?php echo $web; ?>/welcome" ><?php echo $lang['log_in']; ?> </a>
-                </span>
+    <div id="main-page-content-container">
 
-            <span class="info-button">
-                    <a href="<?php echo $web; ?>/register"> <?php echo $lang['sign_up']; ?> </a>
-                </span>
+        <div id="main-page-content-form">
+            <div id="main-page-content-form-container">
 
-            <span class="info-button about">
-                    <a href="<?php echo $web; ?>/about"> <?php echo $lang['about']; ?> </a>
-                </span>
+                <div id="main-page-content-form-container-title">
+                    <?php echo $lang['sign_up']; ?>
+                </div>
 
+                <form action="<?php echo $web; ?>/php/register.php" id="i-recaptcha" method="post" autocomplete="off">
+
+                    <div id="main-page-content-form-container-formular">
+
+                        <div id="formular-line">
+
+                            <div id="formular-line-a">
+                                <div id="formular-a-label"><?php echo $lang['first_name']; ?></div>
+                                <input type="text" name="firstname" required placeholder="<?php echo $lang['enter_fname']; ?>"/>
+                            </div>
+
+                            <div id="formular-line-b">
+                                <div id="formular-a-label"><?php echo $lang['last_name']; ?></div>
+                                <input type="text" name="lastname" required placeholder="<?php echo $lang['enter_lname']; ?>"/>
+                            </div>
+
+                        </div>
+
+                        <div id="formular-line">
+
+                            <div id="formular-line-a">
+                                <div id="formular-a-label"><?php echo $lang['nick_name']; ?></div>
+                                <input type="text" name="nickname" required minlength="5" placeholder="<?php echo $lang['enter_nick']; ?>"/>
+                            </div>
+
+                            <div id="formular-line-b">
+                                <div id="formular-a-label"><?php echo $lang['email_address']; ?></div>
+                                <input type="email" name="email" required minlength="5" placeholder="<?php echo $lang['enter_email']; ?>"/>
+                            </div>
+
+                        </div>
+
+                        <div id="formular-line">
+
+                            <div id="formular-line-a" class="last">
+                                <div id="formular-a-label" ><?php echo $lang['password']; ?></div>
+                                <input type="password" name="password" required minlength="4" placeholder="<?php echo $lang['enter_pass']; ?>"/>
+                            </div>
+
+                            <div id="formular-line-b" class="last">
+                                <div id="formular-a-label" ><?php echo $lang['confirm_pass']; ?></div>
+                                <input type="password" name="confirmpassword" required minlength="4" placeholder="<?php echo $lang['enter_pass2']; ?>"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="main-page-content-form-container-button">
+                        <button class="main-login-button" type="submit">
+                            <div id="button-title">
+                                <?php echo $lang['sign_up']; ?>
+                            </div>
+                            <div id="button-arrow">
+                                <div class="round">
+                                    <div id="cta">
+                                        <span class="arrow primera next "></span>
+                                        <span class="arrow segunda next "></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="6LfQ03wUAAAAAB3OUrzjOb6IJyDOG7_1Cb5dP548" data-size="invisible" data-callback="setResponse"></div>
+
+                    <input type="hidden" id="captcha-response" name="captcha-response" />
+
+                </form>
+
+            </div>
         </div>
     </div>
 
-
-    <div id="main-page-content">
-        <div id="main-page-login" class="form">
-            <div id="main-page-login-title">
-                <?php echo $lang['sign_up']?>
-            </div>
-
-            <div id="register-form-container">
-
-                <div id="register-form-line">
-                    <div id="register-form-a">
-                        <span id="nickname"><?php echo $lang['first_name'];?></span><br>
-                        <input type="text" placeholder="<?php echo $lang['enter_fname'];?>" name="f-name" minlength="3" required />
-                    </div>
-                    <div id="register-form-b">
-                        <span id="nickname"><?php echo $lang['last_name'];?></span><br>
-                        <input type="text" placeholder="<?php echo $lang['enter_lname'];?>" name="l-name" minlength="3" required />
-                    </div>
-                </div>
-
-                <div id="register-form-line">
-                    <div id="register-form-a">
-                        <span id="nickname"><?php echo $lang['nick_name'];?></span><br>
-                        <input type="text" placeholder="<?php echo $lang['enter_nick'];?>" name="nick" minlength="3" required />
-                    </div>
-                    <div id="register-form-b">
-                        <span id="nickname"><?php echo $lang['email_address'];?></span><br>
-                        <input type="text" placeholder="<?php echo $lang['enter_email'];?>" name="email" minlength="3" required />
-                    </div>
-                </div>
-
-                <div id="register-form-line">
-                    <div id="register-form-a" class="last">
-                        <span id="nickname"><?php echo $lang['password'];?></span><br>
-                        <input type="password" placeholder="<?php echo $lang['enter_pass'];?>" name="password" minlength="3" required />
-                    </div>
-                    <div id="register-form-b" class="last">
-                        <span id="nickname"><?php echo $lang['password'];?></span><br>
-                        <input type="password" placeholder="<?php echo $lang['enter_pass2'];?>" name="repassword" minlength="3" required />
-                    </div>
-                </div>
-
-            </div>
+</div>
 
 
-
-
-            <div id="main-page-login-button" class="reg">
-                <div id="register-button" class="login-button-form">
-                    <?php echo $lang['sign_up'] ?>
-                </div>
-                <div id="register-button-arrow" class="login-button-form">
-                    <div class="round">
-                        <div id="cta">
-                            <span class="arrow primera next "></span>
-                            <span class="arrow segunda next "></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div id="main-page-login" class="side">
-            <div id="main-page-login-reg-title">
-                <?php echo $lang['member3'] ?><BR>
-                <?php echo $lang['member4'] ?>
-            </div>
-
-            <div id="main-page-login-reg-desc">
-                <?php echo $lang['member_desc3']; ?>
-                <br><br>
-                <?php echo $lang['member_desc4'];?>
-
-
-            </div>
-
-            <div id="main-page-login-reg-button">
-                <div id="register-button">
-                    <?php echo $lang['log_in']; ?>
-                </div>
-                <div id="register-button-arrow">
-                    <div class="round2">
-                        <div id="cta2">
-                            <span class="arrow2 primera2 next2 "></span>
-                            <span class="arrow2 segunda2 next2 "></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
+<div id="alerts">
+    <?php require '../php/alerts.php'; ?>
 </div>
 
 
@@ -176,22 +150,18 @@ require '../config/lang.php';
         } );
     })();
 
+    //Close alert
+    let close = document.getElementsByClassName("closebtn");
+    for (let i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            closeAlert('remove');
+            setTimeout(function(){ div.style.display = "none"; }, 600);
 
-    $(document).on('click','#main-page-login-reg-button',function () {
-        window.location.replace('<?php echo $web;?>/welcome');
-    });
 
-
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('container-main-page'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-        });
+        }
     }
-
-
-
-
 </script>
 
 

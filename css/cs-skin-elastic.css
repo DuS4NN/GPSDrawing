@@ -21,7 +21,7 @@ div.cs-skin-elastic {
 	background: transparent;
 	opacity: 1;
 	visibility: visible;
-	padding-bottom: 1.25em;
+	padding-bottom: 1em;
 	pointer-events: none;
 }
 
@@ -121,9 +121,9 @@ div.cs-skin-elastic {
 
 .cs-skin-elastic .cs-options span {
 	background-repeat: no-repeat;
-	background-position: 1.5em 50%;
-	background-size: 2em auto;
-	padding: 0.8em 1em 0.8em 4em;
+	background-position: 0.8em 50%;
+	background-size: 1.9em auto;
+	padding: 1em 1em 0.8em 3.3em;
 }
 
 .cs-skin-elastic .cs-options .cs-selected span::after {

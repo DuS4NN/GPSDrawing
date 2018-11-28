@@ -108,7 +108,7 @@ header('Content-type: text/html; charset=UTF-8');
         });
 
         setTimeout(function () {
-            window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
+            //window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
         },100);
 
 

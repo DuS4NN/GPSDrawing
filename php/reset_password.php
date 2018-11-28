@@ -20,6 +20,7 @@
             $stmt->bind_param("ss",$hash2, $email);
             $stmt->execute();
 
+
             $_SESSION['alerts'] = "success:3";
             header("location: ../welcome");
         }else{
