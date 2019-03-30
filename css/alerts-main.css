@@ -43,7 +43,7 @@
     }
 }
 
-@media (max-width:1199px) and (min-width:768px){
+@media (max-width:1200px) and (min-width:768px){
     #alerts-2{
         position: fixed;
         bottom: 0;

@@ -1,11 +1,13 @@
 ﻿<?php
     session_start();
-    if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-        $_SESSION['alerts'] = "error:9";
-        header("location: ../GPSDrawing/welcome");
-    }
     require '../config/db.php';
     require '../config/lang.php';
+
+    if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+        $_SESSION['alerts'] = "error:9";
+        header("location: ".$web."/welcome");
+    }
+
     ini_set("default_charset", "UTF-8");
     header('Content-type: text/html; charset=UTF-8');
 ?>
@@ -250,29 +252,44 @@
                    $result2 = $stmt->get_result();
                    $num_rows = mysqli_num_rows($result2);
                    $class= "";
-                   for($i=1;$i<=$num_rows;$i++){
+                   for($i=1;$i<=$num_rows;$i=$i+2){
                        $row_mt = $result2->fetch_assoc();
+
                        if($row['map_theme']==$row_mt['id']){
                            $class = "selected";
                        }else{
                            $class= "";
                        }
-                       if($i%2!=0){
-                           echo '<div id="map-item-left" class="map-item-'.$row_mt['id'].'"> 
+
+                       echo '<div id="map-item-row">';
+                       echo '<div id="map-item-left" class="map-item-'.$row_mt['id'].'"> 
                                     <div class="settings-map" id="settings-map'.$row_mt['id'].'">
                                         <img src="'.$web.'/img/load.png" onload="initMap2('.$row_mt['id'].');">
                                     </div>
                                     <div id="map-item-title">'.$row_mt['name'].'</div>
                                 </div>';
 
+                       $row_mt = $result2->fetch_assoc();
+
+                       if($row['map_theme']==$row_mt['id']){
+                           $class = "selected";
                        }else{
-                           echo '<div id="map-item-right"  class="map-item-'.$row_mt['id'].'">
+                           $class= "";
+                       }
+                       echo '<div id="map-item-right"  class="map-item-'.$row_mt['id'].'">
                                      <div class="settings-map" id="settings-map'.$row_mt['id'].'">
                                         <img src="'.$web.'/img/load.png" onload="initMap2('.$row_mt['id'].')">
                                     </div>
                                     <div id="map-item-title">'.$row_mt['name'].'</div>
                                 </div>';
-                       }
+
+
+                       echo '</div>';
+
+
+
+
+
                    }
                    ?>
                 </div>
@@ -641,11 +658,18 @@
                 let new_pass = $('.new_password').val();
                 let confirm_pass = $('.confirm_password').val();
 
+                console.log(old_pass+" "+new_pass);
+
                 $.ajax({
                     type:"POST",
                     url: localStorage.getItem("web")+"/php/settings.php",
                     data: {action: 2,old_pass: old_pass, new_pass: new_pass, confirm_pass: confirm_pass},
                     success: function(response){
+
+                        $('.old_password').val('');
+                        $('.new_password').val('');
+                        $('.confirm_password').val('');
+
                         let alertSection = document.getElementById("alerts-2");
                         let text = alertSection.innerHTML;
                         alertSection.innerHTML = text + response;

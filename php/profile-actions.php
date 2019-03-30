@@ -4,7 +4,6 @@
     require '../config/lang.php';
 
     if(!isset($_POST['id']) || empty($_POST['id']) || !isset($_POST['action']) ){
-        echo 'das';
         return;
     }
 
@@ -28,12 +27,13 @@
             ini_set('session.gc_probability', 1);
             ini_set('session.gc_divisor', 1);
             // Completely destroy our server sessions..
-            session_destroy();
             $_SESSION = [];
+            session_unset();
+            session_destroy();
             break;
         case 1:
             if(isset($_POST['reason'])){
-                $stmt = $db->prepare("INSERT INTO `reported_users` (`user_id`, `reported`, reason) VALUES (?, ?, ?);");
+                $stmt = $db->prepare("INSERT INTO reported_users (user_id, reported, reason) VALUES (?, ?, ?);");
                 $stmt->bind_param("iis", $_SESSION['id'],$id, $_POST['reason']);
                 $stmt->execute();
                 echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span>'.$lang['info5'].'</div>';
@@ -47,7 +47,7 @@
             date_default_timezone_set('UTC');
             $date = date("Y-m-d H:i");
 
-            $stmt = $db->prepare("INSERT INTO `blocked_users` (`user_id`, `blocked`, `date` ) VALUES (?, ?, ?);");
+            $stmt = $db->prepare("INSERT INTO blocked_users (user_id, blocked, date ) VALUES (?, ?, ?);");
             $stmt->bind_param("iis", $_SESSION['id'],$id, $date);
             $stmt->execute();
             $_SESSION['alerts'] = "info:11";

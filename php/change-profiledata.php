@@ -119,7 +119,7 @@
         $verify = $_SESSION['verify'];
     }
 
-    $stmt =  $db->prepare("UPDATE `users` 
+    $stmt =  $db->prepare("UPDATE users
                           SET 
                           email = ?, 
                           nick_name = ?, 
@@ -127,17 +127,17 @@
                           last_name = ?,
                           verify = ?
                           WHERE id = ? ");
-    $stmt->bind_param("sssssss", $_POST['email'], $_POST['nick'], $_POST['f-name'], $_POST['l-name'],$verify,$_SESSION['id']);
+    $stmt->bind_param("ssssss", $_POST['email'], $_POST['nick'], $_POST['f-name'], $_POST['l-name'],$verify,$_SESSION['id']);
     $stmt->execute();
 
     $stmt2 = $db->prepare("
-                        UPDATE `users_options` 
+                        UPDATE users_options
                           SET 
                           lang = ?,
                           collab = ?
-                          WHERE `users_options`.`id_user` = ?");
+                          WHERE users_options.id_user = ?");
 
-    $stmt2->bind_param("sss",$_POST['lang'],$_POST['collab'],$_SESSION['id']);
+    $stmt2->bind_param("ssi",$_POST['lang'],$_POST['collab'],$_SESSION['id']);
     $stmt2->execute();
 
 

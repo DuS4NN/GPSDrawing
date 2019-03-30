@@ -1,11 +1,13 @@
 <?php
     session_start();
-    if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-        $_SESSION['alerts'] = "error:9";
-        header("location: ../GPSDrawing/welcome");
-    }
     require '../config/db.php';
     require '../config/lang.php';
+
+    if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+        $_SESSION['alerts'] = "error:9";
+        header("location: ".$web."/welcome");
+    }
+
     ini_set("default_charset", "UTF-8");
     header('Content-type: text/html; charset=UTF-8');
 

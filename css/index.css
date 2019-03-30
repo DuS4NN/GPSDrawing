@@ -65,7 +65,7 @@ label.active {
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 767px) {
 
 #showPass{
   width: 35px;

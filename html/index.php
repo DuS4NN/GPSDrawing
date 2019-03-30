@@ -5,7 +5,7 @@
 
 
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
-        header("location: ../home");
+        header("location: ".$web."/home");
     }
 
 ?>

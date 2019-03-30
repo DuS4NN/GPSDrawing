@@ -27,12 +27,14 @@
             $checkemail = true;
             $checknickname = true;
 
+
             if(!preg_match("/^[a-zA-Z0-9-.*_]+$/",$nick_name)==1){
                 $_SESSION['alerts'] = "error:10";
                 header("location: ../register");
                 return;
             }
 
+            //Check if passwords match
             if($_POST['password'] != $_POST['confirmpassword']){
                 $_SESSION['alerts'] = "error:32";
                 header("location: ../register");
@@ -91,7 +93,7 @@
 
                 $action = 4;
                 $view = 0;
-                $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES (?,?,?,?,?)");
+                $stmt = $db->prepare("INSERT INTO notification (id_user, action, post_user_id, view, date) VALUES (?,?,?,?,?)");
                 $stmt->bind_param("iiiis", $lastID, $action, $lastID, $view, $date);
                 $stmt->execute();
 

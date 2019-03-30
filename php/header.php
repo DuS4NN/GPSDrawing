@@ -9,13 +9,14 @@
 
     $action = $_POST['action'];
 
+
     switch ($action){
         case 1:
             if(isset($_POST['nick']) && !empty($_POST['nick'])){
+
                 $nick1 = "%".$_POST['nick']."%";
                 $nick2 =  $_POST['nick']."%";
                 $nick3 = "%".$_POST['nick'];
-
 
                 $query = "SELECT
                           users.nick_name, users.profile_picture
@@ -35,17 +36,15 @@
                 $result = $stmt->get_result();
                 $num_rows = mysqli_num_rows($result);
                 if ($num_rows == 0) {
-                    echo '<div id="search-user-empty">
-                          ' . $lang['error11'] . '               
-                         </div>';
-                }else{
+                    echo '<div id="search-user-empty">' . $lang['error11'] . '</div>';
+                }else {
                     $count = 0;
-                    while ($row = $result->fetch_assoc()){
-                        echo '<a href="'.$web.'/user/'.$row['nick_name'].'"><div id="nav-search-item"';
-                        if($count==0)echo ' class="first"';
-                                echo '>
-                                <div id="nav-search-item-img" style="background-image: url( '.$web.'/'.$row['profile_picture'].'"></div>
-                                <div id="nav-search-item-nick">'.$row['nick_name'].'</div>
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<a href="' . $web . '/user/' . $row['nick_name'] . '"><div id="nav-search-item"';
+                        if ($count == 0) echo ' class="first"';
+                        echo '>
+                                <div id="nav-search-item-img" style="background-image: url( ' . $web . '/' . $row['profile_picture'] . '"></div>
+                                <div id="nav-search-item-nick">' . $row['nick_name'] . '</div>
                                 </div><a>';
                         $count++;
                     }

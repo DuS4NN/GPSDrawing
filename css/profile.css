@@ -34,17 +34,17 @@ html{
 
 @media only screen and (min-width: 1920px) {
     #profile-info-nick h5{
-        font-size: 43px;
+        font-size: 43px!important;
     }
 }
 
-@media (max-width:1920px) and (min-width: 1200px ){
+
+@media only screen and (min-width: 1200px ){
+
     #profile-info-nick h5{
         font-size: 2.2vw;
     }
-}
 
-@media only screen and (min-width: 1200px ){
 
     .add_new_post:hover {
         border: dashed 1px #bbbbbb;
@@ -343,7 +343,7 @@ html{
 
 }
 
-@media (max-width:1199px) and (min-width:768px) {
+@media (max-width:1200px) and (min-width:767px) {
 
     .add_new_post:hover {
         border: dashed 1px #bbbbbb;

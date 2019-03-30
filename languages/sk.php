@@ -174,7 +174,7 @@
         "likes_counts" => "Počtu likov",
         "latest" => "Najnovšie",
         "oldest" => "Najstaršie",
-        "error1" => "Meno alebo heslo je nesprávne.",
+        "error1" => "Email alebo heslo je nesprávne.",
         "error2" => "Pre prihlásenie je nutné aktivovať účet prostredníctvom emailu.",
         "error3" => "Tento nick už existuje.",
         "error4" => "Tento email už existuje.",

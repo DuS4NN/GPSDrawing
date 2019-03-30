@@ -1,15 +1,16 @@
 ﻿<?php
     session_start();
+    require '../config/db.php';
+    require '../config/lang.php';
     if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
-        $_SESSION['alerts'] = 'error:9';
-        header("location: ../welcome");
+        $_SESSION['alerts'] = "error:9";
+        header("location: ".$web."/welcome");
     }
     if(!isset($_GET['user']) || empty($_GET['user'])){
         $_SESSION['alerts'] = 'error:11';
-        header("location: ../home");
+        header("location: ".$web."/home");
     }
-    require '../config/db.php';
-    require '../config/lang.php';
+
     ini_set("default_charset", "UTF-8");
     header('Content-type: text/html; charset=UTF-8');
 ?>

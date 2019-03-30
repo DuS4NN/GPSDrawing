@@ -458,7 +458,7 @@
     }
 }
 
-@media (max-width:1199px) and (min-width:768px) {
+@media (max-width:1200px) and (min-width:767px) {
 
     .emojiPicker-table{
         max-width: 90% !important;

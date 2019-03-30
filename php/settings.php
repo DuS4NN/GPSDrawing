@@ -14,13 +14,13 @@ switch ($_POST['action']){
         if(!isset($_POST['color']) || empty($_POST['color']) || !isset($_POST['collab']) || !isset($_POST['icon']) || !isset($_POST['color_icon']) || empty($_POST['color_icon'])){
             return;
         }
-        $stmt =  $db->prepare("UPDATE `users_options` 
+        $stmt =  $db->prepare("UPDATE users_options
                       SET 
                       color = ?, 
                       color_of_collab = ?, 
                       show_icons = ?, 
                       color_icon = ?
-                       WHERE `users_options`.`id_user` = ?");
+                       WHERE users_options.id_user = ?");
         $stmt->bind_param("sssss", $_POST['color'], $_POST['collab'], $_POST['icon'], $_POST['color_icon'],$_SESSION['id']);
         $stmt->execute();
 

@@ -4,8 +4,8 @@ require '../config/db.php';
 require '../config/lang.php';
 
 
-if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
-    header("location: ../home");
+if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
+    header("location: ".$web."/home");
 }
 
 ?>

@@ -377,7 +377,7 @@
                          return;
                      }
                      echo '<div id="content-empty">
-                  ' . $lang['empty_all'] . '  <br>  
+                  ' . $lang['no_draw'] . '  <br>  
                  <img src="https://png.icons8.com/ios-glyphs/90/'; if($_SESSION['night_mode']==1) echo 'FFFFFF'; else echo '000000';  echo'/sad.png"> 
                  </div>';
                  }
@@ -421,7 +421,7 @@
      while ($row = $result->fetch_assoc()) {
 
          if($row['collaboration']!=0){
-             $stmt2 = $db->prepare("SELECT DISTINCT users.nick_name FROM `users_in_collab` INNER JOIN users ON users_in_collab.id_user = users.id WHERE users_in_collab.id_collaboration = ?");
+             $stmt2 = $db->prepare("SELECT DISTINCT users.nick_name FROM users_in_collab INNER JOIN users ON users_in_collab.id_user = users.id WHERE users_in_collab.id_collaboration = ?");
              $stmt2->bind_param("i", $row['collaboration']);
              $stmt2->execute();
              $result2 = $stmt2->get_result();

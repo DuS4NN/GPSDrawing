@@ -28,7 +28,7 @@
             }
             break;
         case 2:
-            $stmt = $db->prepare("INSERT INTO `blocked_comments` (`id`, `id_user`, `id_comment`) VALUES (NULL, ?, ?)");
+            $stmt = $db->prepare("INSERT INTO blocked_comments (id, id_user, id_comment) VALUES (NULL, ?, ?)");
             $stmt->bind_param("ii", $_SESSION['id'],$id);
             $stmt->execute();
             echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info10'].'</div>';

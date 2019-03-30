@@ -583,9 +583,13 @@ function initMap2(id) {
     });
 
     map.addListener('click', function() {
+
         $('.map-item-'+selectedMap).removeClass('selected');
-        let id = map['__gm']['$']['id'].replace('settings-map','');
+
+        let id = map['__gm']['Z']['attributes']['1']['textContent'].replace('settings-map','');
         $('.map-item-'+id).addClass('selected');
+        selectedMap = id;
+
         setTimeout(function () {
             $.ajax({
                 type:"POST",
@@ -600,8 +604,6 @@ function initMap2(id) {
             });
         },200);
     });
-
-
 
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');

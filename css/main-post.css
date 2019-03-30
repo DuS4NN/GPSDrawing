@@ -11,7 +11,7 @@
     src: url('../fonts/text3.otf') format('opentype');
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
 
     #filter-search{
         height: 110px !important;
@@ -230,7 +230,7 @@
     }
 }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
 
 
     td.td-profile-picture{
@@ -374,6 +374,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 }
 
 #search-filter select{
+    cursor: pointer;
     padding-left: 10px;
     padding-right: 10px;
     margin-top: 25px;

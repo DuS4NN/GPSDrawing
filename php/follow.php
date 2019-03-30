@@ -15,12 +15,12 @@
 
     if($action==1){
         if($id==$_SESSION['id'])return;
-        $stmt = $db->prepare("INSERT INTO `followers` (`follower`, `id_user`, `date`) VALUES (?, ?, ?);");
+        $stmt = $db->prepare("INSERT INTO followers (follower, id_user, date) VALUES (?, ?, ?);");
         $stmt->bind_param("iis", $_SESSION['id'],$id, $date);
         $stmt->execute();
 
         $action=2;$view=0;
-        $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`,`date`) VALUES (?,?,?,?,?);");
+        $stmt = $db->prepare("INSERT INTO notification (id_user, action, post_user_id, view,date) VALUES (?,?,?,?,?);");
         $stmt->bind_param("iiiis", $_SESSION['id'],$action,$id,$view,$date);
         $stmt->execute();
 

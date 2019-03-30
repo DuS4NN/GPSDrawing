@@ -25,7 +25,7 @@
             }
 
 
-            $stmt =  $db->prepare("INSERT INTO projects (`id_user`, `name`) VALUES (?, ?)");
+            $stmt =  $db->prepare("INSERT INTO projects (id_user, name) VALUES (?, ?)");
             $stmt->bind_param("is",$_SESSION['id'],$_POST['name']);
             $stmt->execute();
 
@@ -40,6 +40,12 @@
                 $stmt =  $db->prepare("DELETE FROM projects WHERE id=? AND id_user=?");
                 $stmt->bind_param("ii",$_POST['id'],$_SESSION['id']);
                 $stmt->execute();
+
+
+                $stmt =  $db->prepare("DELETE FROM projects_posts WHERE projects_posts.id_project = ? AND projects_posts.id_user = ?");
+                $stmt->bind_param("ii",$_POST['id'], $_SESSION['id']);
+                $stmt->execute();
+
                 echo '<div class="alert info remove" id="alert-main-post"><span class="closebtn">&times;</span> '.$lang['info20'].'</div>';
             }
             break;
@@ -121,7 +127,7 @@
                     $stmt2->execute();
 
                     $action=5;$view=0;
-                    $stmt = $db->prepare("INSERT INTO `notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES (?,?,?,?,?);");
+                    $stmt = $db->prepare("INSERT INTO notification (id_user, action, post_user_id, view, date) VALUES (?,?,?,?,?);");
                     $stmt->bind_param("iiiis", $_SESSION['id'],$action,$_POST['id_post'],$view,$date);
                     $stmt->execute();
 
@@ -241,10 +247,9 @@
         case 7:
             if(isset($_POST['id_project']) && !empty($_POST['id_project']) && isset($_POST['activity']) && isset($_POST['desc'])){
 
-                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`collaboration` (`id_post`) VALUES (0)");
+                $stmt =  $db->prepare("INSERT INTO collaboration (id_post) VALUES (0)");
                 $stmt->execute();
                 $id_collaboration = mysqli_insert_id($db);
-
 
                 $stmt =  $db->prepare("SELECT id_post, posts.id_user, posts.place, posts.duration, posts.length, users.nick_name,posts.points
                                                 FROM projects
@@ -259,7 +264,7 @@
                 $points="";
                 $query = "INSERT INTO users_in_collab (id_collaboration, id_user) VALUES";
 
-                $query_notif = "INSERT INTO `gps_drawing`.`notification` (`id_user`, `action`, `post_user_id`, `view`, `date`) VALUES";
+                $query_notif = "INSERT INTO notification (id_user, action, post_user_id, view, date) VALUES";
 
                 date_default_timezone_set('UTC');
                 $date = date("Y-m-d H:i");
@@ -267,7 +272,6 @@
                 $duration=0;
                 $length=0;
                 $place="";
-
 
                 while ($row = $result->fetch_assoc()){
                     $duration = $duration+$row['duration'];
@@ -285,9 +289,10 @@
                 $query_notif = substr($query_notif,0,strlen($query_notif)-1);
 
                 //pridat post
-                $stmt =  $db->prepare("INSERT INTO `gps_drawing`.`posts` (`id_user`, `date`, `description`, `activity`, `points`, `collaboration`, `duration`, `length`, `place`) VALUES (?, ?, ?, ?, ?, ?,?,?,?)");
-                $stmt->bind_param("sssssssss",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration,$duration,$length,$place);
+                $stmt =  $db->prepare("INSERT INTO posts (id_user, date, description, activity, points, collaboration, duration, length, place) VALUES (?, ?, ?, ?, ?, ?,?,?,?)");
+                $stmt->bind_param("issisiiis",$_SESSION['id'],$date, $_POST['desc'], $_POST['activity'], substr($points,1,strlen($points)), $id_collaboration,$duration,$length,$place);
                 $stmt->execute();
+
                 $id_post = mysqli_insert_id($db);
 
                 $stmt =  $db->prepare($query_notif);
@@ -297,7 +302,7 @@
                 $stmt->execute();
 
                 //pridat users in collab
-                $stmt =  $db->prepare("UPDATE `gps_drawing`.`collaboration` t SET t.`id_post` = ? WHERE t.`id` = ?");
+                $stmt =  $db->prepare("UPDATE collaboration t SET t.id_post = ? WHERE t.id = ?");
                 $stmt->bind_param("ss",$id_post,$id_collaboration);
                 $stmt->execute();
 
@@ -323,5 +328,7 @@
 
                 $_SESSION['alerts'] = "info:23";
             }
+
+
             break;
     }

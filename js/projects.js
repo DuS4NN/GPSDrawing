@@ -39,4 +39,6 @@ function deleteProject() {
     });
     $('.project-'+id).css('display','none');
     close_modal("modal-delete-project");
+    location.reload();
+
 }
