@@ -348,13 +348,12 @@
                 img_medzera=20
             }
 
-
-
             var pocet = parseInt((sirka)/img);
             var medzera = parseInt((sirka-((img-img_medzera)*pocet))/pocet);
 
             $('.profile-badges-img').css('margin-left',medzera/2);
             $('.profile-badges-img').css('margin-right',medzera/2);
+
 
             $('#profile-scroll.left').click(function () {
 

@@ -108,13 +108,13 @@
     function add_post(){
         let file = document.getElementById('upload-file').files[0];
         if(!file){
-            document.getElementById('alerts-2').innerHTML =' <div class="alert remove" id="alert-main-post"> <span class="closebtn">&times;</span><?php echo $lang['error12']; ?></div>  ';
+            document.getElementById('alerts-2').innerHTML =' <div class="alert remove" id="alert-main-post"> ' +
+                '<span class="closebtn">&times;</span><?php echo $lang['error12']; ?></div>  ';
             closeAlert('remove');
             return;
         }
         let reader = new FileReader();
         reader.readAsText(file, "UTF-8");
-
         reader.onload = loaded;
     }
 
@@ -131,10 +131,12 @@
         let lastLon=0;
 
         for(let i=0; i<text.length;i++){
-            if(text[i].toString().includes('lat')){
+            if(text[i].toString().includes('lat') && text[i].toString().includes('lon')){
                 let row = text[i].split("\"");
+                if(!parseFloat(row[1]) || !parseFloat(row[3])) {
+                    continue;
+                }
                 points+=row[1]+";"+row[3]+";";
-
                 if(first){
                     length = length+getDistanceFromLatLonInKm(lastLat,lastLon,row[1],row[3]);
                 }
@@ -171,10 +173,17 @@
                 points=points.substring(0,points.length-1);
                 let desc = document.getElementById('add-desc-textarea').value;
                 let radio = $('input[name=radio]:checked', '#radio').val();
-                $('#alerts-2').load(localStorage.getItem("web")+"/php/add-post.php",{points: points, desc: desc, radio: radio, duration:duration,length:length, place:place});
-                setTimeout(function () {
-                    window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
-                },200);
+
+
+                $.ajax({
+                    type:"POST",
+                    url: localStorage.getItem("web")+"/php/add-post.php",
+                    data: {points: points, desc: desc, radio: radio, duration:duration,length:length, place:place},
+                    success: function(response){
+                        window.location=localStorage.getItem("web")+"/user/<?php echo $_SESSION['nickname']; ?>";
+                    }
+                });
+
             }
         });
     }

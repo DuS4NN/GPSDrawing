@@ -144,7 +144,7 @@
         "no_blocked_posts" => "Nemáte žiadne zablokované príspevky",
         "title_bookmarks" => "Záložky",
         "user_bookmarks" => "Vyzerá to prázdne. Pridajte príspevky do Vašich záložiek.",
-        "create_new_project" => "Vytvoriť nový projekt",
+        "create_new_project" => "Vytvoriť projekt",
         "name_of_project" => "Zadajte názov projektu",
         "create" => "Vytvoriť",
         "delete_project" => "Odstrániť projekt",

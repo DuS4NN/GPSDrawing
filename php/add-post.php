@@ -3,7 +3,6 @@
     require '../config/db.php';
     require '../config/lang.php';
 
-
     if(!isset($_SESSION['id']) || empty($_SESSION['id']) || !isset($_POST['points']) || empty($_POST['points']) ||  !isset($_POST['radio'])){
         return;
     }

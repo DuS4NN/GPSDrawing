@@ -29,6 +29,7 @@ header('Content-type: text/html; charset=UTF-8');
     <script language="javascript" src="https://maps.googleapis.com/maps/api/js?v=3.33&key=AIzaSyC4OeJ9LmgWvXBeGXwy1rUjj4zPxcEAqe8&language=<?php echo $_SESSION['lang']?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="<?php echo $web ?>/js/alerts-main.js"></script>
+    <script src="<?php echo $web ?>/js/load-theme.js"></script>
     <script src="https://www.google.com/jsapi"></script>
 
 
@@ -105,7 +106,6 @@ header('Content-type: text/html; charset=UTF-8');
 <script src="<?php echo $web ?>/js/comments.js"></script>
 <script src="<?php echo $web ?>/js/post-more.js"></script>
 <script src="<?php echo $web ?>/js/like.js"></script>
-<script src="<?php echo $web; ?>/js/load-theme.js"></script>
 <script src="<?php echo $web?>/js/meteorEmoji.min.js"></script>
     <script>
         (() => {

@@ -2778,6 +2778,5 @@ function get_theme(id) {
                 ]
                 ,
                 {name: 'Styled Map'});
-
     }
 }

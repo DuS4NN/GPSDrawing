@@ -15,8 +15,6 @@
         }
     }
 
-    echo "<script>localStorage.setItem('lang','"; echo $_SESSION['lang'];  echo "');</script>";
-
-
-
     require_once "../languages/". $_SESSION['lang'] .".php";
+
+echo "<script>localStorage.setItem('lang','"; echo $_SESSION['lang'];  echo "');</script>";

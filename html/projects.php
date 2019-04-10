@@ -42,7 +42,7 @@ header('Content-type: text/html; charset=UTF-8');
     <div id="projects-container">
         <div id="projects-list">
             <div id="projects-list-item" class="md-trigger"  data-modal="modal-create-new-projects">
-                <div id="projects-list-item-text" class="add-project">Create new project</div>
+                <div id="projects-list-item-text" class="add-project"><?php echo $lang['create_new_project']; ?></div>
                 <div id="projects-list-item-more"></div>
             </div>
 
